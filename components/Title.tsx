@@ -12,7 +12,7 @@ export interface TitleProps {
   lower?: boolean;
 }
 
-const Title: React.FC<TitleProps> = ({
+export default function Title({
   children,
   size = "normal",
   color = "white",
@@ -20,7 +20,7 @@ const Title: React.FC<TitleProps> = ({
   cardHover = false,
   wrap = false,
   lower = false,
-}) => {
+}: TitleProps) {
   const colorClass = useMemo(() => {
     switch (color) {
       case "black": {
@@ -32,7 +32,7 @@ const Title: React.FC<TitleProps> = ({
       case "gray": {
         return "text-gray-500";
       }
-      default: {
+      case "white": {
         return "text-white";
       }
     }
@@ -52,7 +52,7 @@ const Title: React.FC<TitleProps> = ({
       case "gray": {
         return "group-hover:text-gray-500";
       }
-      default: {
+      case "white": {
         return "group-hover:text-white";
       }
     }
@@ -78,6 +78,9 @@ const Title: React.FC<TitleProps> = ({
       case "normal": {
         return "text-xl sm:text-3xl lg:text-5xl";
       }
+      default: {
+        return "text-xl sm:text-3xl lg:text-5xl";
+      }
     }
   }, [size]);
 
@@ -92,7 +95,16 @@ const Title: React.FC<TitleProps> = ({
       case "small": {
         return "group-hover:text-2xl";
       }
-      default: {
+      case "medium": {
+        return "";
+      }
+      case "big": {
+        return "";
+      }
+      case "bigger": {
+        return "";
+      }
+      case "normal": {
         return "";
       }
     }
@@ -109,6 +121,4 @@ const Title: React.FC<TitleProps> = ({
       {children}
     </h1>
   );
-};
-
-export default Title;
+}

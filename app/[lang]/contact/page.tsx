@@ -1,9 +1,10 @@
+import { useTranslations } from "next-intl";
+
 import { getTeamByFullName } from "@/actions/getTeamByName";
 import Container from "@/components/Container";
 import Text from "@/components/Text";
-import Title from "@/components/Title";
+import Title from "@/components/title";
 
-import { getDictionary } from "../../../dictionaries";
 import UserCard from "../team/[teamId]/UserCard";
 import { sortRoles } from "../team/[teamId]/utils";
 import { Admin, EmailAction } from "./emailAction";
@@ -52,25 +53,17 @@ const getMembersData = async (
 };
 
 const formatPhoneNumber = (phoneNumber: string | null | undefined) => {
-  if (!phoneNumber) {return "";}
+  if (!phoneNumber) {
+    return "";
+  }
   const countryCode = phoneNumber.slice(0, 3);
   const restOfNumber = phoneNumber.slice(3);
   const formattedNumber = restOfNumber.replaceAll(/(\d{3})(?=\d)/g, "$1 ");
   return `${countryCode} ${formattedNumber}`;
 };
 
-interface ContactUsProps {
-  params: {
-    lang: string;
-  };
-}
-
-const ContactUs: React.FC<ContactUsProps> = async (props) => {
-  const parameters = await props.params;
-  const language =
-    parameters.lang === "pl" || parameters.lang === "en" ? parameters.lang : "en";
-  const dict = await getDictionary(language);
-  const dictionaryCard = await getDictionary(language, "teamPage");
+export async function ContactUs() {
+  const t = useTranslations("contactUs");
 
   const mainMembers = await getMembersData(
     ["paweł wójcik", "bartosz sobczak", "alicja jeżak", "joanna popielewska"],
@@ -92,40 +85,42 @@ const ContactUs: React.FC<ContactUsProps> = async (props) => {
   );
 
   const roleHistory: RoleHistory = {};
-  for (const member of [...mainMembers, ...projectSupervisors, ...siteAdministration]) {
-      const memberFullName = `${member.name} ${member.surname}`;
-      roleHistory[memberFullName] = sortRoles(
-        member.roles.map((role) => ({
-          role: role.role,
-          bolidName: role.bolidName,
-          department: role.department,
-        })),
-      );
-    }
-  
+  for (const member of [
+    ...mainMembers,
+    ...projectSupervisors,
+    ...siteAdministration,
+  ]) {
+    const memberFullName = `${member.name} ${member.surname}`;
+    roleHistory[memberFullName] = sortRoles(
+      member.roles.map((role) => ({
+        role: role.role,
+        bolidName: role.bolidName,
+        department: role.department,
+      })),
+    );
+  }
 
   return (
     <div className="pt-[100px] md:pt-[120px]">
       <div className="absolute right-0 opacity-5">
         <h1 className="text-[15rem] font-extrabold uppercase leading-none text-black">
-          {dict.contactUs.pageTitle}
+          {t("pageTitle")}
         </h1>
       </div>
       <Container>
         <div className="mb-12 mt-16 flex w-full flex-col items-center">
           <div className="my-4 mb-24 w-3/5 border-b-2 border-black py-4 text-center">
-            <Title color="black">{dict.contactUs.writeToUs}</Title>
+            <Title color="black">{t("writeToUs")}</Title>
           </div>
           <div className="mb-8">
             <Text bold medium>
-              {dict.contactUs.theyWillAnswer}
+              {t("theyWillAnswer")}
             </Text>
           </div>
           <div className="grid w-full grid-cols-1 gap-6 sm:grid-cols-2 xl:grid-cols-4">
             {mainMembers.map((member, index) => (
               <div key={index} className="flex flex-col gap-6">
                 <UserCard
-                  dictionary={dictionaryCard}
                   member={member}
                   teamId="RT15e"
                   roleHistory={roleHistory}
@@ -143,7 +138,7 @@ const ContactUs: React.FC<ContactUsProps> = async (props) => {
       </Container>
       <div className="mb-6 mt-4 text-center md:mt-12">
         <Title color="black" size="medium">
-          {dict.contactUs.whereToFindUs}
+          {t("whereToFindUs")}
         </Title>
       </div>
       <GoogleMapComponent />
@@ -151,12 +146,11 @@ const ContactUs: React.FC<ContactUsProps> = async (props) => {
         <div className="my-8 grid w-full grid-cols-1 gap-12 md:my-12 md:gap-20">
           <div className="flex flex-col items-start gap-4 md:items-center md:gap-6">
             <Text bold medium>
-              {dict.contactUs.projectSupervisors}
+              {t("projectSupervisors")}
             </Text>
             <div className="grid w-full grid-cols-1 gap-6 md:w-3/4 md:grid-cols-3">
               {projectSupervisors.map((member, index) => (
                 <UserCard
-                  dictionary={dictionaryCard}
                   key={index}
                   member={member}
                   teamId="RT14e"
@@ -166,11 +160,10 @@ const ContactUs: React.FC<ContactUsProps> = async (props) => {
             </div>
           </div>
           <div className="flex flex-col items-start gap-4 md:items-center md:gap-6">
-            <Admin text={dict.contactUs.siteAdministration} />
+            <Admin text={t("siteAdministration")} />
             <div className="grid w-full grid-cols-1 gap-6 md:w-1/2 md:grid-cols-2">
               {siteAdministration.map((member, index) => (
                 <UserCard
-                  dictionary={dictionaryCard}
                   key={index}
                   member={member}
                   teamId="RT14e"
@@ -183,6 +176,4 @@ const ContactUs: React.FC<ContactUsProps> = async (props) => {
       </Container>
     </div>
   );
-};
-
-export default ContactUs;
+}

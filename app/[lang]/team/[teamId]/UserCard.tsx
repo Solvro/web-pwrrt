@@ -6,10 +6,6 @@ import React, { useState } from "react";
 import TileHeading from "./TileHeading";
 
 interface UserCardProps {
-  dictionary: {
-    zadzwon: string;
-    napisz: string;
-  };
   opiekun?: boolean;
   member: {
     name: string;
@@ -19,15 +15,17 @@ interface UserCardProps {
     email?: string | null;
   };
   teamId: string;
-  roleHistory: Record<string, {
+  roleHistory: Record<
+    string,
+    {
       role: string;
       bolidName: string;
       department: string;
-    }[]>;
+    }[]
+  >;
 }
 
 const UserCard: React.FC<UserCardProps> = ({
-  dictionary,
   opiekun,
   member,
   teamId,
@@ -45,7 +43,9 @@ const UserCard: React.FC<UserCardProps> = ({
   )}.jpg`;
 
   // Użycie stanu do dynamicznej zmiany obrazka w razie błędu
-  const [memberImageSource, setMemberImageSource] = useState(generatedMemberImageSource);
+  const [memberImageSource, setMemberImageSource] = useState(
+    generatedMemberImageSource,
+  );
 
   const handleImgError = () => {
     // Po błędzie ustawiamy ścieżkę do obrazka zastępczego
@@ -87,7 +87,6 @@ const UserCard: React.FC<UserCardProps> = ({
           roleHistory={roleHistory}
           phoneNumber={member.phoneNumber}
           email={member.email}
-          dictionary={dictionary}
         />
       </div>
     </div>

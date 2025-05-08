@@ -3,24 +3,11 @@
 import { usePathname } from "next/navigation";
 import React, { useEffect, useState } from "react";
 
-import Logo from "./Logo";
-import NavigationMenu from "./NavigationMenu";
-import UserMenu from "./UserMenu/UserMenu";
+import Logo from "./logo";
+import { NavigationMenu } from "./navigation-menu";
+import { UserMenu } from "./usermenu/user-menu";
 
-interface NavbarProps {
-  lang: string;
-  dict: {
-    home: string;
-    bolid: string;
-    team: string;
-    about: string;
-    partners: string;
-    news: string;
-    contact: string;
-  };
-}
-
-const Navbar: React.FC<NavbarProps> = ({ lang, dict }) => {
+export default function Navbar() {
   const [atTop, setAtTop] = useState(true);
   const [isHome, setIsHome] = useState(false);
   const [lastScrollY, setLastScrollY] = useState(0);
@@ -34,14 +21,16 @@ const Navbar: React.FC<NavbarProps> = ({ lang, dict }) => {
 
   useEffect(() => {
     const handleScroll = () => {
-      const position = window.pageYOffset;
+      const position = window.scrollY;
       setAtTop(position === 0);
       setHideNavbar(position > lastScrollY && position > 100);
       setLastScrollY(position);
     };
 
     window.addEventListener("scroll", handleScroll);
-    return () => { window.removeEventListener("scroll", handleScroll); };
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
   }, [lastScrollY]);
 
   return (
@@ -60,13 +49,11 @@ const Navbar: React.FC<NavbarProps> = ({ lang, dict }) => {
             >
               <Logo width={230} height={180} />
             </div>
-            <NavigationMenu dict={dict} />
+            <NavigationMenu />
           </div>
-          <UserMenu dict={dict} lang={lang} />
+          <UserMenu />
         </div>
       </div>
     </header>
   );
-};
-
-export default Navbar;
+}

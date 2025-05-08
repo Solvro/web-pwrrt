@@ -2,9 +2,9 @@ import Image from "next/image";
 
 import { getBolidByBolidId } from "@/actions/getBolidByBolidId";
 import Container from "@/components/Container";
-import BolidSection from "@/components/Section/BolidSection/BolidSection";
+import BolidSection from "@/components/section/BolidSection/BolidSection";
 import Text from "@/components/Text";
-import Title from "@/components/Title";
+import Title from "@/components/title";
 
 import { getDictionary } from "../../../../dictionaries";
 

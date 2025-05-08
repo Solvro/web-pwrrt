@@ -6,7 +6,7 @@ import { useRouter } from "next/navigation";
 import Button from "../../Button";
 import Container from "../../Container";
 import Text from "../../Text";
-import Title from "../../Title";
+import Title from "../../title";
 
 interface TeamSectionProps {
   dict: {
@@ -46,7 +46,9 @@ const TeamSection: React.FC<TeamSectionProps> = ({ dict }) => {
             <div className="mt-8 flex gap-4">
               <Button
                 label={dict.buttonLabel}
-                onClick={() => { router.push(`/team`); }}
+                onClick={() => {
+                  router.push(`/team`);
+                }}
               />
             </div>
           </div>

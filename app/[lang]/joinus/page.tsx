@@ -1,5 +1,5 @@
 import Container from "@/components/Container";
-import Title from "@/components/Title";
+import Title from "@/components/title";
 
 import { getDictionary } from "../../../dictionaries";
 import DepartmentsAbout from "../about/DepartmentsAbout/DepartmentsAbout";
@@ -14,7 +14,9 @@ interface Props {
 const JoinUs: React.FC<Props> = async (props) => {
   const parameters = await props.params;
   const language =
-    parameters.lang === "pl" || parameters.lang === "en" ? parameters.lang : "en";
+    parameters.lang === "pl" || parameters.lang === "en"
+      ? parameters.lang
+      : "en";
   const dict = await getDictionary(language);
 
   return (

@@ -3,7 +3,7 @@ import Image from "next/image";
 import { getTeamByBolid } from "@/actions/getTeamByBolid";
 import Container from "@/components/Container";
 import SecondaryButton from "@/components/SecondaryButton";
-import Title from "@/components/Title";
+import Title from "@/components/title";
 
 import { getDictionary } from "../../../../dictionaries";
 import ClientSlider from "./ClientSlider";

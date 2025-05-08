@@ -3,7 +3,7 @@ import React from "react";
 import { getTeamByFullName } from "@/actions/getTeamByName";
 import Container from "@/components/Container";
 import Text from "@/components/Text";
-import Title from "@/components/Title";
+import Title from "@/components/title";
 
 import { getDictionary } from "../../../../dictionaries";
 import UserCard from "../../team/[teamId]/UserCard";

@@ -1,22 +1,15 @@
 "use client";
 
-import { useRouter } from "next/navigation";
+import { useTranslations } from "next-intl";
 import React, { useEffect, useState } from "react";
 import { FaCamera } from "react-icons/fa";
 import { MdPerson } from "react-icons/md";
 
 import Button from "../Button";
 
-interface SideBarProps {
-  dict: {
-    media: string;
-    recruitment: string;
-  };
-}
-
-const SideBar: React.FC<SideBarProps> = ({ dict }) => {
+export default function SideBar() {
   const [isScrolled, setIsScrolled] = useState(false);
-  const router = useRouter();
+  const t = useTranslations("sidebar");
 
   useEffect(() => {
     const handleScroll = () => {
@@ -25,18 +18,10 @@ const SideBar: React.FC<SideBarProps> = ({ dict }) => {
 
     window.addEventListener("scroll", handleScroll);
 
-    return () => { window.removeEventListener("scroll", handleScroll); };
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
   }, []);
-
-  const scrollToSection = (sectionId: string) => {
-    const section = document.getElementById(sectionId);
-    if (section) {
-      window.scrollTo({
-        top: section.offsetTop,
-        behavior: "smooth",
-      });
-    }
-  };
 
   return (
     <div
@@ -58,7 +43,7 @@ const SideBar: React.FC<SideBarProps> = ({ dict }) => {
         >
           <Button
             icon={FaCamera}
-            label={dict.media}
+            label={t("media")}
             redirectPath="/partners/joinus"
           />
         </div>
@@ -78,13 +63,11 @@ const SideBar: React.FC<SideBarProps> = ({ dict }) => {
           <Button
             icon={MdPerson}
             outline
-            label={dict.recruitment}
+            label={t("recruitment")}
             redirectPath="/joinus"
           />
         </div>
       </div>
     </div>
   );
-};
-
-export default SideBar;
+}

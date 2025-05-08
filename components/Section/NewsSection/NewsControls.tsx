@@ -4,7 +4,7 @@ import { useRouter } from "next/navigation";
 import React from "react";
 
 import Button from "@/components/Button";
-import Title from "@/components/Title";
+import Title from "@/components/title";
 
 interface NewsControlsProps {
   dict: {
@@ -23,12 +23,16 @@ const NewsControls: React.FC<NewsControlsProps> = ({ dict }) => {
       <div className="flex w-full gap-4 md:w-2/5">
         <Button
           label={dict.becomePartner}
-          onClick={() => { router.push(`/partners/joinus`); }}
+          onClick={() => {
+            router.push(`/partners/joinus`);
+          }}
         />
         <Button
           outline
           label={dict.contact}
-          onClick={() => { router.push(`/contact`); }}
+          onClick={() => {
+            router.push(`/contact`);
+          }}
         />
       </div>
     </div>

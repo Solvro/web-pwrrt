@@ -1,6 +1,6 @@
 "use client";
 
-import Slider from "@/components/Section/BolidSection/Slider";
+import Slider from "@/components/section/BolidSection/Slider";
 
 interface ParametersClientSlider {
   teamId: string;

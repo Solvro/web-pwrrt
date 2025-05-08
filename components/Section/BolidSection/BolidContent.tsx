@@ -6,7 +6,7 @@ import { usePathname, useRouter } from "next/navigation";
 import Button from "../../Button";
 import Container from "../../Container";
 import Text from "../../Text";
-import Title from "../../Title";
+import Title from "../../title";
 import BolidSpecs from "./BolidSpecs";
 
 interface BolidData {
@@ -51,9 +51,11 @@ const BolidContent: React.FC<BolidData> = ({
     return (
       <div className="flex items-baseline uppercase">
         <Title color="red">{isSpecialChar ? name.slice(0, -1) : name}</Title>
-        {isSpecialChar ? <Title color="red" size="medium">
+        {isSpecialChar ? (
+          <Title color="red" size="medium">
             {lastChar}
-          </Title> : null}
+          </Title>
+        ) : null}
       </div>
     );
   };
@@ -79,12 +81,16 @@ const BolidContent: React.FC<BolidData> = ({
               <div className="mt-8 hidden gap-4 lg:flex">
                 <Button
                   label={dict.moreAboutBolid}
-                  onClick={() => { bolidRedirect(name); }}
+                  onClick={() => {
+                    bolidRedirect(name);
+                  }}
                 />
                 <Button
                   outline
                   label={`${dict.meetTeam} ${name}`}
-                  onClick={() => { teamRedirect(name); }}
+                  onClick={() => {
+                    teamRedirect(name);
+                  }}
                 />
               </div>
             </div>
@@ -103,12 +109,16 @@ const BolidContent: React.FC<BolidData> = ({
           <div className="flex gap-2 md:gap-4 lg:hidden">
             <Button
               label={dict.moreAboutBolid}
-              onClick={() => { bolidRedirect(name); }}
+              onClick={() => {
+                bolidRedirect(name);
+              }}
             />
             <Button
               outline
               label={`${dict.meetTeam} ${name}`}
-              onClick={() => { teamRedirect(name); }}
+              onClick={() => {
+                teamRedirect(name);
+              }}
             />
           </div>
         </div>

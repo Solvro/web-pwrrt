@@ -5,7 +5,7 @@ import Image from "next/image";
 import Container from "../../Container";
 import SecondaryButton from "../../SecondaryButton";
 import Text from "../../Text";
-import Title from "../../Title";
+import Title from "../../title";
 import Counter from "./Counter";
 
 interface HistorySectionProps {

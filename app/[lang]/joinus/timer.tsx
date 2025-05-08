@@ -3,7 +3,7 @@
 import { useCallback, useEffect, useState } from "react";
 
 import Text from "@/components/Text";
-import Title from "@/components/Title";
+import Title from "@/components/title";
 
 interface TimerProps {
   targetDate: string;
@@ -47,7 +47,9 @@ const Timer: React.FC<TimerProps> = ({ targetDate, dict }) => {
       setTimeLeft(calculateTimeLeft());
     }, 1000);
 
-    return () => { clearInterval(timer); };
+    return () => {
+      clearInterval(timer);
+    };
   }, [calculateTimeLeft]);
 
   return (

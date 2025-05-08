@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { useEffect, useState } from "react";
 
-import Title from "@/components/Title";
+import Title from "@/components/title";
 
 interface HeroAboutProps {
   dict: {
@@ -14,11 +14,15 @@ interface HeroAboutProps {
 const HeroAbout: React.FC<HeroAboutProps> = ({ dict }) => {
   const [offsetY, setOffsetY] = useState(0);
 
-  const handleScroll = () => { setOffsetY(window.pageYOffset); };
+  const handleScroll = () => {
+    setOffsetY(window.pageYOffset);
+  };
 
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
-    return () => { window.removeEventListener("scroll", handleScroll); };
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
   }, []);
 
   return (

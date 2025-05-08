@@ -1,7 +1,7 @@
 import Image from "next/image";
 
 import Container from "@/components/Container";
-import Title from "@/components/Title";
+import Title from "@/components/title";
 
 import { getDictionary } from "../../../dictionaries";
 import PartnersButton from "./partnersButtons";

@@ -2,7 +2,7 @@ import Image from "next/image";
 
 import Container from "@/components/Container";
 import Text from "@/components/Text";
-import Title from "@/components/Title";
+import Title from "@/components/title";
 
 interface ResponsibilityItemProps {
   iconPath: string;

@@ -1,6 +1,8 @@
 "use client";
 
+import { useTranslations } from "next-intl";
 import Image from "next/image";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import {
   FaFacebookF,
@@ -11,54 +13,19 @@ import {
 
 import Button from "../../Button";
 import Container from "../../Container";
-import Logo from "../../Navbar/Logo";
-import SocialIcons from "../../Navbar/UserMenu/SocialIcons";
 import Text from "../../Text";
-import Title from "../../Title";
+import Logo from "../../navbar/logo";
+import SocialIcons from "../../navbar/usermenu/SocialIcons";
+import Title from "../../title";
 import FooterLink from "./FooterLink";
 
-interface FooterSectionProps {
-  dict: {
-    callUs: string;
-    writeUs: string;
-    findUs: string;
-    navigation: string;
-    home: string;
-    bolid: string;
-    team: string;
-    about: string;
-    partners: string;
-    headquarters: string;
-    address: string;
-    phone: string;
-    email: string;
-    joinUs: string;
-    becomePartner: string;
-    generalInfo: string;
-    privacyPolicy: string;
-    cookiesPolicy: string;
-    rodo: string;
-    recruitment: string;
-    createdBy: string;
-    allRightsReserved: string;
-    seasonDescription: string;
-  };
-}
-
-const FooterSection: React.FC<FooterSectionProps> = ({ dict }) => {
-  const handlePhoneClick = () => {
-    window.location.href = "tel:+48517350915";
-  };
-
-  const handleEmailClick = () => {
-    window.location.href = "mailto:racing@gmail.com";
-  };
-
+export default function FooterSection() {
   const handleMapClick = () => {
     window.open("https://maps.app.goo.gl/A3E2pEjZndstzrDT8", "_blank");
   };
 
   const router = useRouter();
+  const t = useTranslations("footer");
 
   return (
     <div id="section-contact" className="relative md:pt-6">
@@ -80,9 +47,9 @@ const FooterSection: React.FC<FooterSectionProps> = ({ dict }) => {
               <Logo width={200} height={180} />
             </div>
             <div className="flex flex-wrap items-center justify-end gap-4 md:flex-row md:gap-12">
-              <div
+              <Link
+                href="tel:+48517350915"
                 className="group flex cursor-pointer flex-col items-center md:items-start"
-                onClick={handlePhoneClick}
               >
                 <div className="flex items-center gap-3 pb-1 uppercase">
                   <svg
@@ -98,7 +65,7 @@ const FooterSection: React.FC<FooterSectionProps> = ({ dict }) => {
                     />
                   </svg>
                   <Title size="subtitle" color="red">
-                    {dict.callUs}
+                    {t("callUs")}
                   </Title>
                 </div>
                 <div className="font-black">
@@ -106,10 +73,10 @@ const FooterSection: React.FC<FooterSectionProps> = ({ dict }) => {
                     +48 517 350 915
                   </Text>
                 </div>
-              </div>
-              <div
+              </Link>
+              <Link
+                href="mailto:racing@gmail.com"
                 className="footer_bug group flex cursor-pointer flex-col"
-                onClick={handleEmailClick}
               >
                 <div className="flex items-center gap-3 pb-1 uppercase">
                   <svg
@@ -128,13 +95,13 @@ const FooterSection: React.FC<FooterSectionProps> = ({ dict }) => {
                     />
                   </svg>
                   <Title size="subtitle" color="red">
-                    {dict.writeUs}
+                    {t("writeUs")}
                   </Title>
                 </div>
                 <Text color="white" opacity1 hoverColor="red" small bold wide>
                   racing.pwr@gmail.com
                 </Text>
-              </div>
+              </Link>
               <div
                 className="group flex cursor-pointer flex-col items-center"
                 onClick={handleMapClick}
@@ -153,7 +120,7 @@ const FooterSection: React.FC<FooterSectionProps> = ({ dict }) => {
                     />
                   </svg>
                   <Title size="subtitle" color="red">
-                    {dict.findUs}
+                    {t("findUs")}
                   </Title>
                 </div>
                 <Text color="white" opacity1 hoverColor="red" small bold wide>
@@ -164,29 +131,31 @@ const FooterSection: React.FC<FooterSectionProps> = ({ dict }) => {
           </div>
           <div className="mt-4 flex flex-col flex-wrap items-center justify-between gap-4 text-center text-white md:flex-row md:items-start md:gap-12 md:px-12 md:text-start">
             <div className="hidden max-w-80 md:block">
-              <Text wide>{dict.seasonDescription}</Text>
+              <Text wide>{t("seasonDescription")}</Text>
             </div>
             <div className="whitespace-nowrap">
               <Text small bold center>
-                {dict.navigation}
+                {t("navigation")}
               </Text>
               <ul className="mt-1 md:mt-2">
-                <FooterLink href="/">{dict.home}</FooterLink>
-                <FooterLink href="/bolid">{dict.bolid}</FooterLink>
-                <FooterLink href="/team">{dict.team}</FooterLink>
-                <FooterLink href="/about">{dict.about}</FooterLink>
-                <FooterLink href="/partners">{dict.partners}</FooterLink>
+                <FooterLink href="/">{t("home")}</FooterLink>
+                <FooterLink href="/bolid">{t("bolid")}</FooterLink>
+                <FooterLink href="/team">{t("team")}</FooterLink>
+                <FooterLink href="/about">{t("about")}</FooterLink>
+                <FooterLink href="/partners">{t("partners")}</FooterLink>
               </ul>
             </div>
             <div className="whitespace-nowrap">
               <Text center small bold>
-                {dict.headquarters}
+                {t("headquarters")}
               </Text>
               <ul className="mt-1 md:mt-2">
-                <FooterLink onClick={handleMapClick}>{dict.address}</FooterLink>
+                <FooterLink onClick={handleMapClick}>{t("address")}</FooterLink>
                 <FooterLink onClick={handleMapClick}>50-344 Wrocław</FooterLink>
-                <FooterLink onClick={handlePhoneClick}>{dict.phone}</FooterLink>
-                <FooterLink onClick={handleEmailClick}>{dict.email}</FooterLink>
+                <FooterLink href={"tel:+48517350915"}>{t("phone")}</FooterLink>
+                <FooterLink href={"mailto:racing@gmail.com"}>
+                  {t("email")}
+                </FooterLink>
               </ul>
             </div>
             <div className="whitespace-nowrap">
@@ -194,20 +163,20 @@ const FooterSection: React.FC<FooterSectionProps> = ({ dict }) => {
                 PWR Racing Team
               </Text>
               <ul className="mt-1 md:mt-2">
-                <FooterLink href="/joinus">{dict.joinUs}</FooterLink>
+                <FooterLink href="/joinus">{t("joinUs")}</FooterLink>
                 <FooterLink href="/partners/joinus">
-                  {dict.becomePartner}
+                  {t("becomePartner")}
                 </FooterLink>
               </ul>
             </div>
             <div className="whitespace-nowrap">
               <Text center small bold>
-                {dict.generalInfo}
+                {t("generalInfo")}
               </Text>
               <ul className="mt-1 md:mt-2">
-                <FooterLink href="/">{dict.privacyPolicy}</FooterLink>
-                <FooterLink href="/">{dict.cookiesPolicy}</FooterLink>
-                <FooterLink href="/">{dict.rodo}</FooterLink>
+                <FooterLink href="/">{t("privacyPolicy")}</FooterLink>
+                <FooterLink href="/">{t("cookiesPolicy")}</FooterLink>
+                <FooterLink href="/">{t("rodo")}</FooterLink>
               </ul>
             </div>
           </div>
@@ -236,28 +205,30 @@ const FooterSection: React.FC<FooterSectionProps> = ({ dict }) => {
             </div>
             <div className="flex w-full gap-4 md:w-1/3">
               <Button
-                label={dict.recruitment}
-                onClick={() => { router.push(`/joinus`); }}
+                label={t("recruitment")}
+                onClick={() => {
+                  router.push(`/joinus`);
+                }}
               />
               <Button
                 outline
-                label={dict.becomePartner}
-                onClick={() => { router.push(`/partners/joinus`); }}
+                label={t("becomePartner")}
+                onClick={() => {
+                  router.push(`/partners/joinus`);
+                }}
               />
             </div>
           </div>
           <div className="flex w-full flex-col items-center justify-between gap-2 border-t-[1px] border-white py-3 md:flex-row md:px-12 md:py-6">
             <Text color="white" center>
-              {dict.createdBy}
+              {t("createdBy")}
             </Text>
             <Text color="white" center>
-              © {new Date().getFullYear()} {dict.allRightsReserved}
+              © {new Date().getFullYear()} {t("allRightsReserved")}
             </Text>
           </div>
         </div>
       </Container>
     </div>
   );
-};
-
-export default FooterSection;
+}

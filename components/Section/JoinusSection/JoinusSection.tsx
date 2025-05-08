@@ -8,7 +8,7 @@ import useRentModal from "@/hooks/useRentModal";
 
 import Button from "../../Button";
 import Container from "../../Container";
-import Title from "../../Title";
+import Title from "../../title";
 
 interface JoinusSectionProps {
   dict: {

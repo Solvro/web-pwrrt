@@ -7,7 +7,7 @@ import React, { useState } from "react";
 import Button from "@/components/Button";
 import Container from "@/components/Container";
 import Text from "@/components/Text";
-import Title from "@/components/Title";
+import Title from "@/components/title";
 
 interface GarageAboutProps {
   dict: {
@@ -50,8 +50,12 @@ const GarageAbout: React.FC<GarageAboutProps> = ({ dict }) => {
               <div className="flex flex-col items-center justify-between gap-6 md:flex-row md:gap-0">
                 <div
                   onClick={handleMapClick}
-                  onMouseEnter={() => { setIsHovered(true); }}
-                  onMouseLeave={() => { setIsHovered(false); }}
+                  onMouseEnter={() => {
+                    setIsHovered(true);
+                  }}
+                  onMouseLeave={() => {
+                    setIsHovered(false);
+                  }}
                   className="group flex cursor-pointer items-center gap-3 capitalize"
                 >
                   <svg
@@ -90,7 +94,9 @@ const GarageAbout: React.FC<GarageAboutProps> = ({ dict }) => {
                   <Button
                     outline
                     label={dict.contact}
-                    onClick={() => { router.push("/contact"); }}
+                    onClick={() => {
+                      router.push("/contact");
+                    }}
                   />
                 </div>
               </div>

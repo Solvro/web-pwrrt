@@ -1,5 +1,6 @@
 "use client";
 
+import { useTranslations } from "next-intl";
 import { useState } from "react";
 import { toast } from "react-hot-toast";
 import { FaEnvelope } from "react-icons/fa";
@@ -23,10 +24,6 @@ interface Role {
 }
 
 interface ParametersTileHeading {
-  dictionary: {
-    zadzwon: string;
-    napisz: string;
-  };
   opiekun?: boolean;
   member: Member;
   roleHistory: Record<string, Role[]>;
@@ -62,7 +59,6 @@ const handleMail = (email: string) => {
 };
 
 const TileHeading: React.FC<ParametersTileHeading> = ({
-  dictionary,
   opiekun,
   member,
   roleHistory,
@@ -70,7 +66,7 @@ const TileHeading: React.FC<ParametersTileHeading> = ({
   email,
 }) => {
   const [isHovered, setIsHovered] = useState(false);
-
+  const t = useTranslations("teamPage");
   // Sprawdzamy długość imienia i nazwiska
   const fullName = `${member.name} ${member.surname}`;
   const dynamicTranslate =
@@ -79,8 +75,12 @@ const TileHeading: React.FC<ParametersTileHeading> = ({
   return (
     <div
       className=""
-      onMouseEnter={() => { setIsHovered(true); }}
-      onMouseLeave={() => { setIsHovered(false); }}
+      onMouseEnter={() => {
+        setIsHovered(true);
+      }}
+      onMouseLeave={() => {
+        setIsHovered(false);
+      }}
     >
       <div
         className={`${
@@ -142,18 +142,22 @@ const TileHeading: React.FC<ParametersTileHeading> = ({
         </div>
 
         <div className="flex w-full flex-col gap-4">
-          {phoneNumber ? <Button
-              label={dictionary.zadzwon}
+          {phoneNumber ? (
+            <Button
+              label={t("zadzwon")}
               onClick={handlePhone(phoneNumber)}
               outline
               icon={FiPhone}
               hoverText={phoneNumber}
-            /> : null}
-          {email ? <Button
-              label={dictionary.napisz}
+            />
+          ) : null}
+          {email ? (
+            <Button
+              label={t("napisz")}
               onClick={handleMail(email)}
               icon={FaEnvelope}
-            /> : null}
+            />
+          ) : null}
         </div>
       </div>
     </div>

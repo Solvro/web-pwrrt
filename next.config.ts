@@ -1,5 +1,8 @@
-/** @type {import('next').NextConfig} */
-const nextConfig = {
+/* eslint-disable unicorn/no-useless-promise-resolve-reject */
+import type { NextConfig } from "next";
+import createNextIntlPlugin from "next-intl/plugin";
+
+const nextConfig: NextConfig = {
   images: {
     unoptimized: true,
 
@@ -11,7 +14,7 @@ const nextConfig = {
     ],
   },
   async redirects() {
-    return [
+    return Promise.resolve([
       {
         source: "/team",
         destination: "/team/RT14e",
@@ -22,8 +25,9 @@ const nextConfig = {
         destination: "/bolid/RT12e",
         permanent: true,
       },
-    ];
+    ]);
   },
 };
 
-export default nextConfig;
+const withNextIntl = createNextIntlPlugin();
+export default withNextIntl(nextConfig);

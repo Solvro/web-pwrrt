@@ -2,8 +2,8 @@
 
 import React, { useEffect, useRef, useState } from "react";
 
-import type { TitleProps } from "../../Title";
-import Title from "../../Title";
+import type { TitleProps } from "../../title";
+import Title from "../../title";
 
 interface CounterProps extends TitleProps {
   targetNumber: number;
@@ -30,7 +30,9 @@ const Counter: React.FC<CounterProps> = ({ targetNumber, ...props }) => {
               const interval = setInterval(() => {
                 start += 1;
                 setCount(start);
-                if (start === targetNumber) {clearInterval(interval);}
+                if (start === targetNumber) {
+                  clearInterval(interval);
+                }
               }, intervalTime);
 
               if (observer) {

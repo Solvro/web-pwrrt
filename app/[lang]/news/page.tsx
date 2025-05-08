@@ -2,7 +2,7 @@
 import { fetchNews } from "@/actions/getNews";
 import Container from "@/components/Container";
 import NewsCard from "@/components/NewsCard";
-import Title from "@/components/Title";
+import Title from "@/components/title";
 
 function AboutUs() {
   const news = await fetchNews();

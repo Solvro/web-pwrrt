@@ -1,6 +1,7 @@
 "use client";
 
-import { useRouter , usePathname } from "next/navigation";
+import { useTranslations } from "next-intl";
+import { usePathname, useRouter } from "next/navigation";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { AiOutlineMenu } from "react-icons/ai";
 import {
@@ -10,38 +11,21 @@ import {
   FaYoutube,
 } from "react-icons/fa";
 
-import useLoginModal from "@/hooks/useLoginModal";
-import useRegisterModal from "@/hooks/useRegisterModal";
-
 import Avatar from "../../Avatar";
-import LangButton from "./LangButton";
 import MenuItem from "./MenuItem";
 import SocialIcons from "./SocialIcons";
 
-interface UserMenuProps {
-  lang: string;
-  dict: {
-    home: string;
-    bolid: string;
-    team: string;
-    about: string;
-    partners: string;
-    news: string;
-    contact: string;
-  };
-}
-
-const UserMenu: React.FC<UserMenuProps> = ({ lang, dict }) => {
+export function UserMenu() {
   const router = useRouter();
   const pathname = usePathname();
-  const registerModal = useRegisterModal();
-  const loginModal = useLoginModal();
   const [isOpen, setIsOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
 
+  const t = useTranslations("navigation");
+
   const handleClickOutside = useCallback((event: MouseEvent) => {
     if (
-      menuRef.current &&
+      menuRef.current != null &&
       !(menuRef.current as HTMLElement).contains(event.target as Node)
     ) {
       setIsOpen(false);
@@ -99,10 +83,11 @@ const UserMenu: React.FC<UserMenuProps> = ({ lang, dict }) => {
               icon={FaYoutube}
               ariaLabel="YouTube"
             />
-            <LangButton lang={lang} />
+            {/* <LangButton lang={lang} /> */}
+            langBtnToDo
           </div>
         </div>
-        <div
+        <button
           onClick={toggleOpen}
           className="userMenu-responsive ml-8 hidden cursor-pointer flex-row items-center gap-3 rounded-full border-[1px] border-white p-2 text-white transition duration-300 hover:border-customRed hover:bg-customRed hover:shadow-md"
         >
@@ -110,34 +95,52 @@ const UserMenu: React.FC<UserMenuProps> = ({ lang, dict }) => {
           <div className="hidden">
             <Avatar></Avatar>
           </div>
-        </div>
+        </button>
       </div>
-      {isOpen ? <div className="absolute right-0 top-12 overflow-hidden rounded-xl bg-white text-sm shadow-md">
+      {isOpen ? (
+        <div className="absolute right-0 top-12 overflow-hidden rounded-xl bg-white text-sm shadow-md">
           <div className="flex cursor-pointer flex-col">
-            <MenuItem onClick={() => { handleMenuItemClick(`/`); }} label="Home" />
             <MenuItem
-              onClick={() => { handleMenuItemClick(`/bolid/RT14e`); }}
-              label={dict.about}
+              onClick={() => {
+                handleMenuItemClick(`/`);
+              }}
+              label="Home"
             />
             <MenuItem
-              onClick={() => { handleMenuItemClick(`/team/RT14e`); }}
-              label={dict.team}
+              onClick={() => {
+                handleMenuItemClick(`/bolid/RT14e`);
+              }}
+              label={t("bolid")}
             />
             <MenuItem
-              onClick={() => { handleMenuItemClick(`/about`); }}
-              label={dict.bolid}
+              onClick={() => {
+                handleMenuItemClick(`/team/RT14e`);
+              }}
+              label={t("team")}
             />
             <MenuItem
-              onClick={() => { handleMenuItemClick(`/partners`); }}
-              label={dict.partners}
+              onClick={() => {
+                handleMenuItemClick(`/about`);
+              }}
+              label={t("about")}
             />
             <MenuItem
-              onClick={() => { handleMenuItemClick(`/news`); }}
-              label={dict.news}
+              onClick={() => {
+                handleMenuItemClick(`/partners`);
+              }}
+              label={t("partners")}
             />
             <MenuItem
-              onClick={() => { handleMenuItemClick(`/contact`); }}
-              label={dict.contact}
+              onClick={() => {
+                handleMenuItemClick(`/news`);
+              }}
+              label={t("news")}
+            />
+            <MenuItem
+              onClick={() => {
+                handleMenuItemClick(`/contact`);
+              }}
+              label={t("contact")}
             />
             <div className="h-[1px] w-full bg-black"></div>
             <div className="social-responsive mx-3 my-2 flex items-center gap-4">
@@ -165,12 +168,12 @@ const UserMenu: React.FC<UserMenuProps> = ({ lang, dict }) => {
                 icon={FaYoutube}
                 ariaLabel="YouTube"
               />
-              <LangButton lang={lang} />
+              {/* <LangButton lang={lang} /> */}
+              langBtnToDo
             </div>
           </div>
-        </div> : null}
+        </div>
+      ) : null}
     </div>
   );
-};
-
-export default UserMenu;
+}

@@ -3,7 +3,7 @@
 import { useRouter } from "next/navigation";
 import React, { useEffect } from "react";
 
-import JoinusSection from "@/components/Section/JoinusSection/JoinusSection";
+import JoinusSection from "@/components/section/JoinusSection/JoinusSection";
 import { useAuth } from "@/context/Auth/AuthContext";
 
 interface AdminPageClientProps {
@@ -24,9 +24,7 @@ const AdminPageContent: React.FC<AdminPageClientProps> = ({ dict }) => {
     }
   }, [isAuthenticated, router]);
 
-  return (
-    <JoinusSection dict={dict} sizeBig />
-  );
+  return <JoinusSection dict={dict} sizeBig />;
 };
 
 const AdminPageClient: React.FC<AdminPageClientProps> = (props) => {

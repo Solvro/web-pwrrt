@@ -1,22 +1,24 @@
+/* eslint-disable unicorn/prevent-abbreviations */
 import type { Metadata } from "next";
-import { Open_Sans, Syncopate } from "next/font/google";
+import { NextIntlClientProvider, hasLocale } from "next-intl";
+import { Open_Sans } from "next/font/google";
+import { notFound } from "next/navigation";
 
 import ClientOnly from "@/components/ClientOnly";
-import ClosestSectionProvider from "@/components/Navbar/ClosestSectionContext";
-import Navbar from "@/components/Navbar/Navbar";
-import SideBar from "@/components/Navbar/SideBar";
-import FooterSection from "@/components/Section/FooterSection/FooterSection";
-import { getDictionary } from "@/dictionaries";
+import Navbar from "@/components/navbar";
+import ClosestSectionProvider from "@/components/navbar/ClosestSectionContext";
+import SideBar from "@/components/navbar/side-bar";
+import FooterSection from "@/components/section/FooterSection/FooterSection";
+import { routing } from "@/i18n/routing";
 import ToasterProvider from "@/providers/ToasterProvider";
 
 import "../globals.css";
 
-export async function generateStaticParams() {
-  return [{ lang: "pl" }, { lang: "en" }];
+export function generateStaticParams() {
+  return routing.locales.map((locale) => ({ locale }));
 }
 
 const font = Open_Sans({ subsets: ["latin"] });
-const syncopate = Syncopate({ subsets: ["latin"], weight: ["400", "700"] });
 
 export const metadata: Metadata = {
   title: "PWR Racing",
@@ -27,35 +29,33 @@ export const metadata: Metadata = {
 interface RootLayoutProps {
   children: React.ReactNode;
   params: Promise<{
-    lang: string;
+    locale: string;
   }>;
 }
-
-type Locale = "pl" | "en";
-
-const isLocale = (lang: string): lang is Locale => {
-  return lang === "pl" || lang === "en";
-};
 
 export default async function RootLayout(props: RootLayoutProps) {
   const parameters = await props.params;
 
   const { children } = props;
 
-  const language = isLocale(parameters.lang) ? parameters.lang : "en";
-  const dict = await getDictionary(language);
+  const { locale } = parameters;
+  if (!hasLocale(routing.locales, locale)) {
+    notFound();
+  }
   return (
-    <html lang={parameters.lang}>
+    <html lang={locale}>
       <body className={font.className}>
-        <ClientOnly>
-          <ClosestSectionProvider>
-            <ToasterProvider />
-            <Navbar lang={parameters.lang} dict={dict.navigation} />
-            <SideBar dict={dict.sidebar} />
-            {children}
-            <FooterSection dict={dict.footer} />
-          </ClosestSectionProvider>
-        </ClientOnly>
+        <NextIntlClientProvider>
+          <ClientOnly>
+            <ClosestSectionProvider>
+              <ToasterProvider />
+              <Navbar />
+              <SideBar />
+              {children}
+              <FooterSection />
+            </ClosestSectionProvider>
+          </ClientOnly>
+        </NextIntlClientProvider>
       </body>
     </html>
   );

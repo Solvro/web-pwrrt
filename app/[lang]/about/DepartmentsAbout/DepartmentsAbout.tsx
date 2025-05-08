@@ -12,7 +12,7 @@ import { IoSettings } from "react-icons/io5";
 
 import Button from "@/components/Button";
 import Container from "@/components/Container";
-import Title from "@/components/Title";
+import Title from "@/components/title";
 
 import DepartmentElement from "./DepartmentElement";
 
@@ -119,7 +119,9 @@ const DepartmentsAbout: React.FC<DepartmentsAboutProps> = ({
                     black
                     icon={IoSettings}
                     label="MECHANICAL"
-                    onClick={() => { handleScrollToSection("mechanical"); }}
+                    onClick={() => {
+                      handleScrollToSection("mechanical");
+                    }}
                   />
                 </div>
                 <div className="flex-1 sm:max-w-72">
@@ -127,7 +129,9 @@ const DepartmentsAbout: React.FC<DepartmentsAboutProps> = ({
                     black
                     icon={FaCube}
                     label="COMPOSITES"
-                    onClick={() => { handleScrollToSection("composites"); }}
+                    onClick={() => {
+                      handleScrollToSection("composites");
+                    }}
                   />
                 </div>
                 <div className="flex-1 sm:max-w-72">
@@ -135,7 +139,9 @@ const DepartmentsAbout: React.FC<DepartmentsAboutProps> = ({
                     black
                     icon={FaBullhorn}
                     label="MARKETING"
-                    onClick={() => { handleScrollToSection("marketing"); }}
+                    onClick={() => {
+                      handleScrollToSection("marketing");
+                    }}
                   />
                 </div>
                 <div className="flex-1 sm:max-w-72">
@@ -143,7 +149,9 @@ const DepartmentsAbout: React.FC<DepartmentsAboutProps> = ({
                     black
                     icon={FaLaptopCode}
                     label="SOFTWARE"
-                    onClick={() => { handleScrollToSection("software"); }}
+                    onClick={() => {
+                      handleScrollToSection("software");
+                    }}
                   />
                 </div>
                 <div className="flex-1 sm:max-w-72">
@@ -151,7 +159,9 @@ const DepartmentsAbout: React.FC<DepartmentsAboutProps> = ({
                     black
                     icon={FaBolt}
                     label="ELECTRICAL"
-                    onClick={() => { handleScrollToSection("electrical"); }}
+                    onClick={() => {
+                      handleScrollToSection("electrical");
+                    }}
                   />
                 </div>
                 <div className="flex-1 whitespace-nowrap sm:max-w-72">
@@ -159,7 +169,9 @@ const DepartmentsAbout: React.FC<DepartmentsAboutProps> = ({
                     black
                     icon={FaChartBar}
                     label="VEHICLE PERFORMANCE"
-                    onClick={() => { handleScrollToSection("vehicle performance"); }}
+                    onClick={() => {
+                      handleScrollToSection("vehicle performance");
+                    }}
                   />
                 </div>
                 <div className="flex-1 sm:max-w-72">
@@ -167,7 +179,9 @@ const DepartmentsAbout: React.FC<DepartmentsAboutProps> = ({
                     black
                     icon={FaDollarSign}
                     label="BUSINESS"
-                    onClick={() => { handleScrollToSection("business"); }}
+                    onClick={() => {
+                      handleScrollToSection("business");
+                    }}
                   />
                 </div>
               </div>

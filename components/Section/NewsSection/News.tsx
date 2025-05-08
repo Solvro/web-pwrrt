@@ -3,7 +3,7 @@
 import Image from "next/image";
 
 import Text from "../../Text";
-import Title from "../../Title";
+import Title from "../../title";
 
 interface NewsProps {
   article: string;

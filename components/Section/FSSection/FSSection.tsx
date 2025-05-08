@@ -5,7 +5,7 @@ import Image from "next/image";
 import Container from "../../Container";
 import SecondaryButton from "../../SecondaryButton";
 import Text from "../../Text";
-import Title from "../../Title";
+import Title from "../../title";
 
 interface FSSectionProps {
   aboutUs?: boolean;
@@ -26,11 +26,13 @@ const FSSection: React.FC<FSSectionProps> = ({ aboutUs, dict }) => {
         <div className="">
           <div className="grid grid-cols-1 gap-4 md:gap-20 lg:grid-cols-2">
             <div className="">
-              {aboutUs ? <div className="my-6">
+              {aboutUs ? (
+                <div className="my-6">
                   <Title size="big" color="black">
                     {dict.title}
                   </Title>
-                </div> : null}
+                </div>
+              ) : null}
               {!aboutUs && (
                 <Title size="big" color="black">
                   {dict.title}

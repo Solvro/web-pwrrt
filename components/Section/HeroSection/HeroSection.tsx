@@ -7,7 +7,7 @@ import { FaArrowRight } from "react-icons/fa";
 import ClientOnly from "../../ClientOnly";
 import Container from "../../Container";
 import Text from "../../Text";
-import Title from "../../Title";
+import Title from "../../title";
 import BackgroundVideo from "./BackgroundVideo";
 
 type Locale = "pl" | "en";
@@ -59,7 +59,9 @@ const HeroSection: React.FC<HeroSectionProps> = ({ dict }) => {
     },
   };
 
-  if (!dict) {return <div>Loading...</div>;}
+  if (!dict) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <ClientOnly>

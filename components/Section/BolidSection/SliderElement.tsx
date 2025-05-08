@@ -1,6 +1,6 @@
 "use client";
 
-import Title from "../../Title";
+import Title from "../../title";
 
 export interface SliderElementProps {
   date: number;
@@ -18,7 +18,9 @@ const SliderElement: React.FC<SliderElementProps> = ({
   darkMode,
 }) => {
   const isActive = currentBolid === bolid;
-  const handleClick = () => { onClick(bolid); };
+  const handleClick = () => {
+    onClick(bolid);
+  };
   let subColor: "white" | "black" | "red" | "gray" | undefined = "black";
   let dotColor = "bg-neutral-300";
   if (darkMode) {
