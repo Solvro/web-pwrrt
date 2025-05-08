@@ -11,7 +11,8 @@ interface Props {
   };
 }
 
-const JoinUs: React.FC<Props> = async ({ params }) => {
+const JoinUs: React.FC<Props> = async props => {
+  const params = await props.params;
   const language =
     params.lang === 'pl' || params.lang === 'en' ? params.lang : 'en';
   const dict = await getDictionary(language);

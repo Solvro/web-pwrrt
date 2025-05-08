@@ -14,7 +14,8 @@ interface Iparams {
 
 type Locale = 'pl' | 'en';
 
-const BolidPage = async ({ params }: { params: Iparams }) => {
+const BolidPage = async (props: { params: Promise<Iparams> }) => {
+  const params = await props.params;
   const { lang, bolidId } = params;
   const currentLocale = lang === 'pl' || lang === 'en' ? lang : 'en';
   const dict = await getDictionary(currentLocale);

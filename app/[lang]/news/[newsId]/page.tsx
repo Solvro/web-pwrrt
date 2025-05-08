@@ -9,7 +9,8 @@ interface Iparams {
   newsId?: string;
 }
 
-const NewsPage = async ({ params }: { params: Iparams }) => {
+const NewsPage = async (props: { params: Promise<Iparams> }) => {
+  const params = await props.params;
   const newsId = params.newsId;
 
   if (!newsId) {

@@ -284,7 +284,8 @@ const SponsorGrid: React.FC<SponsorGridProps> = async ({
   );
 };
 
-const Partners = async ({ params }: { params: { lang: string } }) => {
+const Partners = async (props: { params: Promise<{ lang: string }> }) => {
+  const params = await props.params;
   const lang = params.lang;
 
   const dict = await getDictionary(lang, 'partnersPage');

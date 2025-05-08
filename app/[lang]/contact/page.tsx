@@ -66,7 +66,8 @@ interface ContactUsProps {
   };
 }
 
-const ContactUs: React.FC<ContactUsProps> = async ({ params }) => {
+const ContactUs: React.FC<ContactUsProps> = async props => {
+  const params = await props.params;
   const language =
     params.lang === 'pl' || params.lang === 'en' ? params.lang : 'en';
   const dict = await getDictionary(language);

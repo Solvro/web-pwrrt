@@ -1,11 +1,6 @@
 import type { Metadata } from 'next';
 import { Open_Sans, Syncopate } from 'next/font/google';
-
-import { Analytics } from '@vercel/analytics/react';
-import { SpeedInsights } from '@vercel/speed-insights/next';
 import ClientOnly from '@/components/ClientOnly';
-import LoginModal from '@/components/modals/LoginModal';
-import RegisterModal from '@/components/modals/RegisterModal';
 import ClosestSectionProvider from '@/components/Navbar/ClosestSectionContext';
 import Navbar from '@/components/Navbar/Navbar';
 import SideBar from '@/components/Navbar/SideBar';
@@ -29,9 +24,9 @@ export const metadata: Metadata = {
 
 interface RootLayoutProps {
   children: React.ReactNode;
-  params: {
+  params: Promise<{
     lang: string;
-  };
+  }>;
 }
 
 type Locale = 'pl' | 'en';
@@ -40,10 +35,11 @@ const isLocale = (lang: string): lang is Locale => {
   return lang === 'pl' || lang === 'en';
 };
 
-export default async function RootLayout({
-  children,
-  params,
-}: RootLayoutProps) {
+export default async function RootLayout(props: RootLayoutProps) {
+  const params = await props.params;
+
+  const { children } = props;
+
   const language = isLocale(params.lang) ? params.lang : 'en';
   const dict = await getDictionary(language);
   return (
@@ -57,8 +53,6 @@ export default async function RootLayout({
             {children}
             <FooterSection dict={dict.footer} />
           </ClosestSectionProvider>
-          <SpeedInsights />
-          <Analytics />
         </ClientOnly>
       </body>
     </html>

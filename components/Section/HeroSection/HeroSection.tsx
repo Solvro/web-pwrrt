@@ -1,15 +1,15 @@
-"use client";
+'use client';
 
-import Image from "next/image";
-import { FaArrowRight } from "react-icons/fa";
-import Container from "../../Container";
-import Text from "../../Text";
-import BackgroundVideo from "./BackgroundVideo";
-import Title from "../../Title";
-import ClientOnly from "../../ClientOnly";
-import { motion } from "framer-motion";
+import Image from 'next/image';
+import { FaArrowRight } from 'react-icons/fa';
+import Container from '../../Container';
+import Text from '../../Text';
+import BackgroundVideo from './BackgroundVideo';
+import Title from '../../Title';
+import ClientOnly from '../../ClientOnly';
+import { motion } from 'motion/react';
 
-type Locale = "pl" | "en";
+type Locale = 'pl' | 'en';
 
 interface HeroSectionProps {
   dict: {
@@ -28,16 +28,16 @@ const textVariants = {
     transition: {
       duration: 0.8,
       delay,
-      ease: "easeOut",
+      ease: 'easeOut',
     },
   }),
 };
 
 const HeroSection: React.FC<HeroSectionProps> = ({ dict }) => {
   const handleScroll = () => {
-    const element = document.getElementById("bolid");
+    const element = document.getElementById('bolid');
     if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
+      element.scrollIntoView({ behavior: 'smooth' });
     }
   };
 
@@ -53,7 +53,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ dict }) => {
       opacity: 1,
       transition: {
         duration: 1,
-        ease: "easeOut",
+        ease: 'easeOut',
       },
     },
   };
@@ -72,8 +72,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ dict }) => {
                 initial="hidden"
                 animate="visible"
                 custom={0.4}
-                variants={textVariants}
-              >
+                variants={textVariants}>
                 <Title wrap size="subtitle" color="red">
                   {dict.title1}
                 </Title>
@@ -83,8 +82,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ dict }) => {
                 initial="hidden"
                 animate="visible"
                 custom={0.2}
-                variants={textVariants}
-              >
+                variants={textVariants}>
                 <Title>{dict.title2}</Title>
               </motion.div>
 
@@ -94,8 +92,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ dict }) => {
                 animate="visible"
                 custom={0.6}
                 variants={textVariants}
-                className="my-2 md:my-6"
-              >
+                className="my-2 md:my-6">
                 <Text color="white" main>
                   {dict.description}
                 </Text>
@@ -106,8 +103,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ dict }) => {
                 initial="hidden"
                 animate="visible"
                 custom={0.8}
-                variants={textVariants}
-              >
+                variants={textVariants}>
                 <Title wrap color="red" size="small">
                   {dict.subtitle}
                 </Title>
@@ -120,8 +116,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ dict }) => {
                 custom={1}
                 variants={textVariants}
                 onClick={handleScroll}
-                className="hidden md:flex items-center py-2 text-white rounded hover:pl-8 transition-all duration-300 group"
-              >
+                className="hidden md:flex items-center py-2 text-white rounded hover:pl-8 transition-all duration-300 group">
                 <span>{dict.button}</span>
                 <FaArrowRight className="ml-2 transition-all duration-300 group-hover:text-customRed" />
               </motion.button>
@@ -132,8 +127,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ dict }) => {
               className="flex justify-center mb-8 sm:mb-0 items-center"
               initial="hidden"
               animate="visible"
-              variants={imageVariants}
-            >
+              variants={imageVariants}>
               <Image
                 src="/images/2bolid_main.png"
                 alt="bolid"

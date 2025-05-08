@@ -13,7 +13,8 @@ interface Iparams {
   teamId?: string;
 }
 
-const TeamPage = async ({ params }: { params: Iparams }) => {
+const TeamPage = async (props: { params: Promise<Iparams> }) => {
+  const params = await props.params;
   const teamId = params.teamId ?? 'RT13e';
   const team = await getTeamByBolid(teamId);
 

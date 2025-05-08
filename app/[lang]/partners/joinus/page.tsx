@@ -265,7 +265,8 @@ interface Props {
     lang: string;
   };
 }
-const PartnersJoin: React.FC<Props> = async ({ params }) => {
+const PartnersJoin: React.FC<Props> = async props => {
+  const params = await props.params;
   // Pobieranie języka z dynamicznych parametrów
   const { lang } = params;
 
