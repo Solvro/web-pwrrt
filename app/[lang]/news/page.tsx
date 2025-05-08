@@ -1,18 +1,18 @@
 // pages/about-us.jsx
-import Container from '@/components/Container';
-import NewsCard from '@/components/NewsCard';
-import { fetchNews } from '@/actions/getNews';
-import Title from '@/components/Title';
+import { fetchNews } from "@/actions/getNews";
+import Container from "@/components/Container";
+import NewsCard from "@/components/NewsCard";
+import Title from "@/components/Title";
 
-const AboutUs = async () => {
+function AboutUs() {
   const news = await fetchNews();
   return (
-    <div className=" flex flex-col items-center pt-[100px] md:pt-[120px] bg-neutral-900">
-      <div className="py-4 my-4 md:my-12 border-b-2 md:w-fit px-8 border-white uppercase">
+    <div className="flex flex-col items-center bg-neutral-900 pt-[100px] md:pt-[120px]">
+      <div className="my-4 border-b-2 border-white px-8 py-4 uppercase md:my-12 md:w-fit">
         <Title>AKTUALNOŚCI</Title>
       </div>
       <Container>
-        <div className="my-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 w-full">
+        <div className="my-6 grid w-full grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {news.map((item, index) => (
             <NewsCard
               key={index}
@@ -20,7 +20,7 @@ const AboutUs = async () => {
               title={item.title}
               short_description={item.short_description}
               length_time={item.length_time}
-              logo={item.logo || '/images/logo-czarne.svg'}
+              logo={item.logo || "/images/logo-czarne.svg"}
               main_image={item.main_image}
             />
           ))}
@@ -28,6 +28,6 @@ const AboutUs = async () => {
       </Container>
     </div>
   );
-};
+}
 
 export default AboutUs;

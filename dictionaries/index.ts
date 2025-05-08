@@ -1,12 +1,12 @@
-'use server';
+"use server";
 
 type Dictionaries = {
   [key: string]: () => Promise<Record<string, any>>;
 };
 
 const dictionaries: Dictionaries = {
-  pl: () => import('@/dictionaries/pl.json').then((module) => module.default),
-  en: () => import('@/dictionaries/en.json').then((module) => module.default),
+  pl: () => import("@/dictionaries/pl.json").then((module) => module.default),
+  en: () => import("@/dictionaries/en.json").then((module) => module.default),
 };
 
 type Section = string;

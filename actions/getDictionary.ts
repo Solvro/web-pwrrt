@@ -8,7 +8,7 @@ export async function getDictionary2(lang: string, section: string) {
   const filePath = path.join(
     process.cwd(),
     "app/[lang]/dictionaries",
-    `${lang}.json`
+    `${lang}.json`,
   );
 
   let dict;
@@ -19,7 +19,7 @@ export async function getDictionary2(lang: string, section: string) {
     dict = JSON.parse(fileContents);
   } catch (err) {
     console.error(
-      `Nie znaleziono pliku dla języka: ${lang}. Próbuję użyć domyślnego.`
+      `Nie znaleziono pliku dla języka: ${lang}. Próbuję użyć domyślnego.`,
     );
     try {
       // Jeśli plik dla danego języka nie istnieje, użyj domyślnego (np. 'en.json')
@@ -28,7 +28,7 @@ export async function getDictionary2(lang: string, section: string) {
         "app",
         "en",
         "dictionaries",
-        "en.json"
+        "en.json",
       );
       const fileContents = await readFile(defaultPath, "utf8");
       dict = JSON.parse(fileContents);

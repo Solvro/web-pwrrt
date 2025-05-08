@@ -1,22 +1,23 @@
-'use client';
+"use client";
 
-import { signIn } from 'next-auth/react';
-import { AiFillGithub } from 'react-icons/ai';
-import { FcGoogle } from 'react-icons/fc';
-import { useCallback, useState } from 'react';
-import { FieldValues, SubmitHandler, useForm } from 'react-hook-form';
+import { signIn } from "next-auth/react";
+import { useRouter } from "next/navigation";
+import { useCallback, useState } from "react";
+import type { FieldValues, SubmitHandler} from "react-hook-form";
+import { useForm } from "react-hook-form";
+import toast from "react-hot-toast";
+import { AiFillGithub } from "react-icons/ai";
+import { FcGoogle } from "react-icons/fc";
 
-import useRegisterModal from '@/hooks/useRegisterModal';
-import useLoginModal from '@/hooks/useLoginModal';
+import useLoginModal from "@/hooks/useLoginModal";
+import useRegisterModal from "@/hooks/useRegisterModal";
 
-import Modal from './Modal';
-import Heading from '../Heading';
-import Input from '../inputs/Input';
-import toast from 'react-hot-toast';
-import Button from '../Button';
-import { useRouter } from 'next/navigation';
+import Button from "../Button";
+import Heading from "../Heading";
+import Input from "../inputs/Input";
+import Modal from "./Modal";
 
-const LoginModal = () => {
+function LoginModal() {
   const router = useRouter();
 
   const registerModal = useRegisterModal();
@@ -27,24 +28,24 @@ const LoginModal = () => {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<FieldValues>({
+  } = useForm({
     defaultValues: {
-      email: '',
-      password: '',
+      email: "",
+      password: "",
     },
   });
 
   const onSubmit: SubmitHandler<FieldValues> = (data) => {
     setIsLoading(true);
 
-    signIn('credentials', {
+    signIn("credentials", {
       ...data,
       redirect: false,
     }).then((callback) => {
       setIsLoading(false);
 
       if (callback?.ok) {
-        toast.success('Logged in!');
+        toast.success("Logged in!");
         router.refresh();
         loginModal.onClose();
       }
@@ -84,26 +85,27 @@ const LoginModal = () => {
   );
 
   const footerContent = (
-    <div className="flex flex-col gap-4 mt-3">
+    <div className="mt-3 flex flex-col gap-4">
       <hr />
       <Button
         outline
         label="Continue with Google"
         icon={FcGoogle}
-        onClick={() => signIn('google')}
+        onClick={async () => signIn("google")}
       />
       <Button
         outline
         label="Continue with GitHub"
         icon={AiFillGithub}
-        onClick={() => signIn('github')}
+        onClick={async () => signIn("github")}
       />
-      <div className="text-neutral-500 text-center mt-4 font-light">
-        <div className="justify-center flex flex-row items-center gap-2">
+      <div className="mt-4 text-center font-light text-neutral-500">
+        <div className="flex flex-row items-center justify-center gap-2">
           <div>Nie pamiętasz hasła?</div>
           <div
             onClick={toggle}
-            className="text-neutral-800 cursor-pointer hover:underline">
+            className="cursor-pointer text-neutral-800 hover:underline"
+          >
             Skontaktuj się z administratorem
           </div>
         </div>
@@ -125,6 +127,6 @@ const LoginModal = () => {
       />
     </div>
   );
-};
+}
 
 export default LoginModal;

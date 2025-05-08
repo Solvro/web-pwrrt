@@ -23,57 +23,78 @@ const Title: React.FC<TitleProps> = ({
 }) => {
   const colorClass = useMemo(() => {
     switch (color) {
-      case "black":
+      case "black": {
         return "text-black";
-      case "red":
+      }
+      case "red": {
         return "text-customRed";
-      case "gray":
+      }
+      case "gray": {
         return "text-gray-500";
-      default:
+      }
+      default: {
         return "text-white";
+      }
     }
   }, [color]);
 
   const hoverColorClass = useMemo(() => {
-    if (!hoverColor) return ""; // Jeśli hoverColor nie jest podany, nie dodajemy klasy
+    if (!hoverColor) {
+      return "";
+    } // Jeśli hoverColor nie jest podany, nie dodajemy klasy
     switch (hoverColor) {
-      case "black":
+      case "black": {
         return "group-hover:text-black";
-      case "red":
+      }
+      case "red": {
         return "group-hover:text-customRed";
-      case "gray":
+      }
+      case "gray": {
         return "group-hover:text-gray-500";
-      default:
+      }
+      default: {
         return "group-hover:text-white";
+      }
     }
   }, [hoverColor]);
 
   const sizeClass = useMemo(() => {
     switch (size) {
-      case "small":
+      case "small": {
         return "text-md sm:text-md";
-      case "medium":
+      }
+      case "medium": {
         return "text-lg sm:text-2xl";
-      case "big":
+      }
+      case "big": {
         return "text-sm sm:text-3xl";
-      case "bigger":
+      }
+      case "bigger": {
         return "text-2xl sm:text-5xl lg:text-6xl";
-      case "subtitle":
+      }
+      case "subtitle": {
         return "text-xs md:text-sm tracking-wider";
-      case "normal":
+      }
+      case "normal": {
         return "text-xl sm:text-3xl lg:text-5xl";
+      }
     }
   }, [size]);
 
   const hoverSizeClass = useMemo(() => {
-    if (!cardHover) return ""; // Jeśli cardHover nie jest aktywny, nie dodajemy żadnej klasy
+    if (!cardHover) {
+      return "";
+    } // Jeśli cardHover nie jest aktywny, nie dodajemy żadnej klasy
     switch (size) {
-      case "subtitle":
+      case "subtitle": {
         return "group-hover:text-lg";
-      case "small":
+      }
+      case "small": {
         return "group-hover:text-2xl";
-      default:
+      }
+      default: {
         return "";
+      }
     }
   }, [size, cardHover]);
 

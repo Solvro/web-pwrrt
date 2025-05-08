@@ -1,12 +1,13 @@
-import { getTeamByFullName } from '@/actions/getTeamByName';
-import Container from '@/components/Container';
-import Text from '@/components/Text';
-import Title from '@/components/Title';
-import { getDictionary } from '../../../dictionaries';
-import UserCard from '../team/[teamId]/UserCard';
-import { sortRoles } from '../team/[teamId]/utils';
-import { EmailAction, Admin } from './emailAction';
-import GoogleMapComponent from './map';
+import { getTeamByFullName } from "@/actions/getTeamByName";
+import Container from "@/components/Container";
+import Text from "@/components/Text";
+import Title from "@/components/Title";
+
+import { getDictionary } from "../../../dictionaries";
+import UserCard from "../team/[teamId]/UserCard";
+import { sortRoles } from "../team/[teamId]/utils";
+import { Admin, EmailAction } from "./emailAction";
+import GoogleMapComponent from "./map";
 
 interface Role {
   department: string;
@@ -22,25 +23,23 @@ interface TeamMember {
   email?: string | null;
 }
 
-interface RoleHistory {
-  [key: string]: Role[];
-}
+type RoleHistory = Record<string, Role[]>;
 
 const getMembersData = async (
   names: string[],
-  bolidName: string
+  bolidName: string,
 ): Promise<TeamMember[]> => {
   const teamMembers: TeamMember[] = [];
 
   for (const member of names) {
-    const [name, ...rest] = member.split(' ');
-    const surname = rest.join(' ');
+    const [name, ...rest] = member.split(" ");
+    const surname = rest.join(" ");
     const memberData = await getTeamByFullName(name, surname);
     if (memberData.length > 0) {
       const member = memberData[0];
       const currentRole =
         member.roles.find((role: Role) => role.bolidName === bolidName)?.role ||
-        'No current role';
+        "No current role";
 
       teamMembers.push({
         ...member,
@@ -53,10 +52,10 @@ const getMembersData = async (
 };
 
 const formatPhoneNumber = (phoneNumber: string | null | undefined) => {
-  if (!phoneNumber) return '';
+  if (!phoneNumber) {return "";}
   const countryCode = phoneNumber.slice(0, 3);
   const restOfNumber = phoneNumber.slice(3);
-  const formattedNumber = restOfNumber.replace(/(\d{3})(?=\d)/g, '$1 ');
+  const formattedNumber = restOfNumber.replaceAll(/(\d{3})(?=\d)/g, "$1 ");
   return `${countryCode} ${formattedNumber}`;
 };
 
@@ -66,56 +65,55 @@ interface ContactUsProps {
   };
 }
 
-const ContactUs: React.FC<ContactUsProps> = async props => {
-  const params = await props.params;
+const ContactUs: React.FC<ContactUsProps> = async (props) => {
+  const parameters = await props.params;
   const language =
-    params.lang === 'pl' || params.lang === 'en' ? params.lang : 'en';
+    parameters.lang === "pl" || parameters.lang === "en" ? parameters.lang : "en";
   const dict = await getDictionary(language);
-  const dictionaryCard = await getDictionary(language, 'teamPage');
+  const dictionaryCard = await getDictionary(language, "teamPage");
 
   const mainMembers = await getMembersData(
-    ['paweł wójcik', 'bartosz sobczak', 'alicja jeżak', 'joanna popielewska'],
-    'RT15e'
+    ["paweł wójcik", "bartosz sobczak", "alicja jeżak", "joanna popielewska"],
+    "RT15e",
   );
 
   const projectSupervisors = await getMembersData(
     [
-      'dr hab. inż. Anna Janicka',
-      'dr hab. inż. Damian Derlukiewicz',
-      'dr inż. Gustaw Sierzputowski',
+      "dr hab. inż. Anna Janicka",
+      "dr hab. inż. Damian Derlukiewicz",
+      "dr inż. Gustaw Sierzputowski",
     ],
-    'RT14e'
+    "RT14e",
   );
 
   const siteAdministration = await getMembersData(
-    ['dawid chmal', 'maria kanczewska'],
-    'RT14e'
+    ["dawid chmal", "maria kanczewska"],
+    "RT14e",
   );
 
   const roleHistory: RoleHistory = {};
-  [...mainMembers, ...projectSupervisors, ...siteAdministration].forEach(
-    (member) => {
+  for (const member of [...mainMembers, ...projectSupervisors, ...siteAdministration]) {
       const memberFullName = `${member.name} ${member.surname}`;
       roleHistory[memberFullName] = sortRoles(
         member.roles.map((role) => ({
           role: role.role,
           bolidName: role.bolidName,
           department: role.department,
-        }))
+        })),
       );
     }
-  );
+  
 
   return (
     <div className="pt-[100px] md:pt-[120px]">
-      <div className="absolute opacity-5 right-0">
-        <h1 className="text-[15rem] font-extrabold text-black uppercase leading-none">
+      <div className="absolute right-0 opacity-5">
+        <h1 className="text-[15rem] font-extrabold uppercase leading-none text-black">
           {dict.contactUs.pageTitle}
         </h1>
       </div>
       <Container>
-        <div className="w-full mb-12 flex flex-col items-center mt-16">
-          <div className="mb-24 py-4 my-4 border-b-2 w-3/5 border-black text-center">
+        <div className="mb-12 mt-16 flex w-full flex-col items-center">
+          <div className="my-4 mb-24 w-3/5 border-b-2 border-black py-4 text-center">
             <Title color="black">{dict.contactUs.writeToUs}</Title>
           </div>
           <div className="mb-8">
@@ -123,9 +121,9 @@ const ContactUs: React.FC<ContactUsProps> = async props => {
               {dict.contactUs.theyWillAnswer}
             </Text>
           </div>
-          <div className="grid grid-cols-1 xl:grid-cols-4 sm:grid-cols-2 w-full gap-6">
+          <div className="grid w-full grid-cols-1 gap-6 sm:grid-cols-2 xl:grid-cols-4">
             {mainMembers.map((member, index) => (
-              <div key={index} className="flex flex-col gap-6 ">
+              <div key={index} className="flex flex-col gap-6">
                 <UserCard
                   dictionary={dictionaryCard}
                   member={member}
@@ -133,29 +131,29 @@ const ContactUs: React.FC<ContactUsProps> = async props => {
                   roleHistory={roleHistory}
                 />
                 <EmailAction
-                  email={member.email || 'pawel.wojcik.pwrrt@gmail.com'}
+                  email={member.email || "pawel.wojcik.pwrrt@gmail.com"}
                 />
                 <EmailAction
-                  email={formatPhoneNumber(member.phoneNumber) || 'Brak numeru'}
+                  email={formatPhoneNumber(member.phoneNumber) || "Brak numeru"}
                 />
               </div>
             ))}
           </div>
         </div>
       </Container>
-      <div className="text-center mt-4 md:mt-12 mb-6">
+      <div className="mb-6 mt-4 text-center md:mt-12">
         <Title color="black" size="medium">
           {dict.contactUs.whereToFindUs}
         </Title>
       </div>
       <GoogleMapComponent />
       <Container>
-        <div className="grid grid-cols-1 w-full my-8 md:my-12 gap-12 md:gap-20">
-          <div className="flex flex-col items-start md:items-center gap-4 md:gap-6">
+        <div className="my-8 grid w-full grid-cols-1 gap-12 md:my-12 md:gap-20">
+          <div className="flex flex-col items-start gap-4 md:items-center md:gap-6">
             <Text bold medium>
               {dict.contactUs.projectSupervisors}
             </Text>
-            <div className="grid grid-cols-1 md:grid-cols-3 w-full md:w-3/4 gap-6">
+            <div className="grid w-full grid-cols-1 gap-6 md:w-3/4 md:grid-cols-3">
               {projectSupervisors.map((member, index) => (
                 <UserCard
                   dictionary={dictionaryCard}
@@ -167,9 +165,9 @@ const ContactUs: React.FC<ContactUsProps> = async props => {
               ))}
             </div>
           </div>
-          <div className="flex flex-col items-start md:items-center gap-4 md:gap-6">
+          <div className="flex flex-col items-start gap-4 md:items-center md:gap-6">
             <Admin text={dict.contactUs.siteAdministration} />
-            <div className="grid grid-cols-1 md:grid-cols-2 w-full md:w-1/2 gap-6">
+            <div className="grid w-full grid-cols-1 gap-6 md:w-1/2 md:grid-cols-2">
               {siteAdministration.map((member, index) => (
                 <UserCard
                   dictionary={dictionaryCard}

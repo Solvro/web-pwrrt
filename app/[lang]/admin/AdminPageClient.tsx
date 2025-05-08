@@ -1,10 +1,10 @@
-'use client';
+"use client";
 
-import React, { useEffect } from 'react';
-import { useRouter } from 'next/navigation';
+import { useRouter } from "next/navigation";
+import React, { useEffect } from "react";
 
-import JoinusSection from '@/components/Section/JoinusSection/JoinusSection';
-import { useAuth } from '@/context/Auth/AuthContext';
+import JoinusSection from "@/components/Section/JoinusSection/JoinusSection";
+import { useAuth } from "@/context/Auth/AuthContext";
 
 interface AdminPageClientProps {
   dict: {
@@ -20,14 +20,12 @@ const AdminPageContent: React.FC<AdminPageClientProps> = ({ dict }) => {
 
   useEffect(() => {
     if (isAuthenticated) {
-      router.push('/admin/addNews');
+      router.push("/admin/addNews");
     }
   }, [isAuthenticated, router]);
 
   return (
-    <>
-      <JoinusSection dict={dict} sizeBig />
-    </>
+    <JoinusSection dict={dict} sizeBig />
   );
 };
 

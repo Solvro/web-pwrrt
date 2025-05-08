@@ -1,6 +1,6 @@
-import React from "react";
 import Image from "next/image";
-import { useRouter, usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
+import React from "react";
 
 interface LangButtonProps {
   lang: string;
@@ -25,19 +25,7 @@ const LangButton: React.FC<LangButtonProps> = ({ lang, black = false }) => {
   return (
     <div
       onClick={handleLanguageChange}
-      className={`
-        flex relative
-        items-center
-        justify-center
-        w-8
-        h-8
-        rounded-full
-        border-[2px]
-        ${black ? "border-black text-black" : "border-white text-white"}
-        transition
-        duration-300
-        hover:border-customRed
-        hover:bg-customRed cursor-pointer`}
+      className={`relative flex h-8 w-8 items-center justify-center rounded-full border-[2px] ${black ? "border-black text-black" : "border-white text-white"} cursor-pointer transition duration-300 hover:border-customRed hover:bg-customRed`}
     >
       <Image
         src={`/images/Flaga${flag}.png`}

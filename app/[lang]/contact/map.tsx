@@ -8,30 +8,30 @@ declare global {
   }
 }
 
-const GoogleMapComponent = () => {
+function GoogleMapComponent() {
   useEffect(() => {
     const script = document.createElement("script");
     script.src = `https://maps.googleapis.com/maps/api/js?key=${process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY}&callback=initMap&libraries=maps,marker&v=beta`;
     script.async = true;
-    document.head.appendChild(script);
+    document.head.append(script);
 
-    script.onload = () => {
+    script.addEventListener('load', () => {
       if (window.initMap) {
         window.initMap();
       }
-    };
+    });
 
     return () => {
-      document.head.removeChild(script);
+      script.remove();
     };
   }, []);
 
   useEffect(() => {
     window.initMap = function () {
-      const mapElement = document.getElementById("map");
+      const mapElement = document.querySelector("#map");
       if (mapElement) {
         const map = new window.google.maps.Map(mapElement, {
-          center: { lat: 51.117279052734375, lng: 17.06487274169922 },
+          center: { lat: 51.117_279_052_734_375, lng: 17.064_872_741_699_22 },
           zoom: 14,
           mapId: "DEMO_MAP_ID",
           disableDefaultUI: true, // wyłącza wszystkie domyślne kontrolki
@@ -44,7 +44,7 @@ const GoogleMapComponent = () => {
         });
 
         new window.google.maps.Marker({
-          position: { lat: 51.117279052734375, lng: 17.06487274169922 },
+          position: { lat: 51.117_279_052_734_375, lng: 17.064_872_741_699_22 },
           map,
           title: "My location",
         });
@@ -53,6 +53,6 @@ const GoogleMapComponent = () => {
   }, []);
 
   return <div id="map" style={{ height: "400px", width: "100%" }}></div>;
-};
+}
 
 export default GoogleMapComponent;

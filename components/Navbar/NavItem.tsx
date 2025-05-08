@@ -1,7 +1,8 @@
 "use client";
 
-import React, { useState, useEffect, useContext, useCallback } from "react";
-import { useRouter, usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
+import React, { useCallback, useContext, useEffect, useState } from "react";
+
 import { ClosestSectionContext } from "./ClosestSectionContext";
 
 interface NavItemProps {
@@ -27,26 +28,24 @@ const NavItem: React.FC<NavItemProps> = ({ to, children }) => {
   }, []);
 
   const handleNavigation = useCallback(() => {
-    const currentLocale = pathname!.split("/")[1];
+    const currentLocale = pathname.split("/")[1];
     const newPath = `/${currentLocale}${to}`;
     router.push(newPath);
   }, [router, pathname, to]);
 
   return (
     <li
-      className={`cursor-pointer relative group text-lg transition duration-300 h-full flex items-center px-3 ${
+      className={`group relative flex h-full cursor-pointer items-center px-3 text-lg transition duration-300 ${
         to === closestSectionId ? "text-customRed" : "text-white"
       } hover:text-customRed`}
       onClick={handleNavigation}
     >
       <p className="whitespace-nowrap">{children}</p>
-      {isScrolled && (
-        <span
+      {isScrolled ? <span
           className={`${
             to === closestSectionId ? "scale-x-100" : ""
-          } h-[3px] bg-customRed scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left block absolute bottom-0 left-0 right-0`}
-        ></span>
-      )}
+          } absolute bottom-0 left-0 right-0 block h-[3px] origin-left scale-x-0 bg-customRed transition-transform duration-300 group-hover:scale-x-100`}
+        ></span> : null}
     </li>
   );
 };

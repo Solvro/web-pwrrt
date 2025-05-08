@@ -1,8 +1,8 @@
-'use client';
+"use client";
 
 import Image from "next/image";
 
-const BottomBar = () => {
+function BottomBar() {
   return (
     <div className="w-full">
       <Image
@@ -14,6 +14,6 @@ const BottomBar = () => {
       />
     </div>
   );
-};
+}
 
 export default BottomBar;

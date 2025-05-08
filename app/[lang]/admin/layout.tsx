@@ -1,11 +1,14 @@
 // app/admin/AdminLayout.tsx
-'use client';
+"use client";
 
-import { ReactNode } from 'react';
-import { AuthProvider } from '@/context/Auth/AuthContext';
-import LoginModal from '@/components/modals/LoginModal';
-import RegisterModal from '@/components/modals/RegisterModal';
-import RentModal from '@/components/modals/RentModal';
+import type { ReactNode } from "react";
+
+import LoginModal from "@/components/modals/LoginModal";
+import RegisterModal from "@/components/modals/RegisterModal";
+import RentModal from "@/components/modals/RentModal";
+import { AuthProvider } from "@/context/Auth/AuthContext";
+
+// app/admin/AdminLayout.tsx
 
 interface AdminLayoutProps {
   children: ReactNode;

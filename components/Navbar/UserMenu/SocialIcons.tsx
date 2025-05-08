@@ -1,6 +1,6 @@
 "use client";
 
-import { IconType } from "react-icons";
+import type { IconType } from "react-icons";
 
 interface IconLinkProps {
   href: string;
@@ -23,19 +23,7 @@ const SocialIcons: React.FC<IconLinkProps> = ({
       rel="noopener noreferrer"
     >
       <div
-        className={`
-        flex
-        items-center
-        justify-center
-        w-8
-        h-8
-        rounded-full
-        border-[1px]
-        ${black ? "border-black text-black" : "border-white text-white"}
-        transition
-        duration-300
-        hover:border-customRed
-        hover:bg-customRed`}
+        className={`flex h-8 w-8 items-center justify-center rounded-full border-[1px] ${black ? "border-black text-black" : "border-white text-white"} transition duration-300 hover:border-customRed hover:bg-customRed`}
       >
         <Icon size={16} />
       </div>

@@ -18,7 +18,7 @@ const SliderElement: React.FC<SliderElementProps> = ({
   darkMode,
 }) => {
   const isActive = currentBolid === bolid;
-  const handleClick = () => onClick(bolid);
+  const handleClick = () => { onClick(bolid); };
   let subColor: "white" | "black" | "red" | "gray" | undefined = "black";
   let dotColor = "bg-neutral-300";
   if (darkMode) {
@@ -28,18 +28,18 @@ const SliderElement: React.FC<SliderElementProps> = ({
 
   return (
     <div
-      className={`relative flex flex-col items-center group cursor-pointer"`}
+      className={`cursor-pointer" group relative flex flex-col items-center`}
       onClick={handleClick}
     >
       <div
         className={`${
           isActive ? "bg-customRed opacity-100" : `${dotColor} opacity-90`
-        } h-4 w-4 md:h-6 md:w-6 rounded-full z-10 group-hover:bg-customRed duration-300 ease-in-out`}
+        } z-10 h-4 w-4 rounded-full duration-300 ease-in-out group-hover:bg-customRed md:h-6 md:w-6`}
       ></div>
       <div
         className={`${
           isActive ? "opacity-100" : "opacity-70"
-        } mt-2 flex flex-col text-center select-none uppercase`}
+        } mt-2 flex select-none flex-col text-center uppercase`}
       >
         <Title size="small" color="red">
           {date}

@@ -1,12 +1,12 @@
 "use client";
 
-import Department from "./Department";
 import BottomBar from "./BottomBar";
+import Department from "./Department";
 
-const DepartmentsSubsection = () => {
+function DepartmentsSubsection() {
   return (
     <div>
-      <div className="grid-rows-2 relative border-none">
+      <div className="relative grid-rows-2 border-none">
         <div className="grid grid-cols-1 md:grid-cols-3">
           <Department department="mechanical" objectPositionY="40%" />
           <Department department="composites" objectPositionY="75%" />
@@ -22,6 +22,6 @@ const DepartmentsSubsection = () => {
       <BottomBar />
     </div>
   );
-};
+}
 
 export default DepartmentsSubsection;

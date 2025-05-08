@@ -2,6 +2,7 @@
 
 import { usePathname, useRouter } from "next/navigation";
 import React, { useRef, useState } from "react";
+
 import SliderElement from "./SliderElement";
 
 export interface SliderProps {
@@ -25,11 +26,11 @@ const Slider: React.FC<SliderProps> = ({
 
   const router = useRouter();
   const pathname = usePathname();
-  const currentLocale = pathname!.split("/")[1];
+  const currentLocale = pathname.split("/")[1];
   const teamRedirect = (bolid: string) =>
-    router.push(`/${currentLocale}/team/${bolid}`);
+    { router.push(`/${currentLocale}/team/${bolid}`); };
   const bolidRedirect = (bolid: string) =>
-    router.push(`/${currentLocale}/bolid/${bolid}`);
+    { router.push(`/${currentLocale}/bolid/${bolid}`); };
 
   if (pathname && pathname.includes(`/team/`)) {
     onChangeBolid = teamRedirect;
@@ -39,7 +40,7 @@ const Slider: React.FC<SliderProps> = ({
 
   // Rozpoczęcie przeciągania
   const startDragging = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (!scrollContainerRef.current) return;
+    if (!scrollContainerRef.current) {return;}
 
     setIsDragging(true);
     setStartX(e.pageX - scrollContainerRef.current.offsetLeft);
@@ -48,7 +49,7 @@ const Slider: React.FC<SliderProps> = ({
 
   // Przeciąganie
   const onDrag = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (!isDragging || !scrollContainerRef.current) return;
+    if (!isDragging || !scrollContainerRef.current) {return;}
 
     e.preventDefault();
     const x = e.pageX - scrollContainerRef.current.offsetLeft;
@@ -66,10 +67,10 @@ const Slider: React.FC<SliderProps> = ({
       <div
         className={`${
           darkMode ? "bg-neutral-500" : "bg-neutral-300"
-        } absolute inset-0 mt-5 md:mt-9 w-full h-2 md:h-3 opacity-50`}
+        } absolute inset-0 mt-5 h-2 w-full opacity-50 md:mt-9 md:h-3`}
       ></div>
       <div
-        className={` w-[99vw] h-full relative pt-4 md:pt-8 overflow-x-scroll animation-container ${
+        className={`animation-container relative h-full w-[99vw] overflow-x-scroll pt-4 md:pt-8 ${
           isDragging ? "cursor-grabbing" : "cursor-grab"
         }`}
         ref={scrollContainerRef}
@@ -78,16 +79,14 @@ const Slider: React.FC<SliderProps> = ({
         onMouseLeave={stopDragging}
         onMouseUp={stopDragging}
       >
-        <div className="flex relative gap-12 sm:gap-24 mx-8 md:ml-[calc((100vw-var(--container-width))/2)]">
-          {showRt15e && (
-            <SliderElement
+        <div className="relative mx-8 flex gap-12 sm:gap-24 md:ml-[calc((100vw-var(--container-width))/2)]">
+          {showRt15e ? <SliderElement
               darkMode={darkMode}
               date={2025}
               bolid="RT15e"
               onClick={onChangeBolid}
               currentBolid={currentBolid}
-            />
-          )}
+            /> : null}
           <SliderElement
             darkMode={darkMode}
             date={2024}
@@ -193,7 +192,7 @@ const Slider: React.FC<SliderProps> = ({
             onClick={onChangeBolid}
             currentBolid={currentBolid}
           />
-          <div className="flex-shrink-0 w-1 md:w-[calc((85vw-var(--container-width))/2)]"></div>
+          <div className="w-1 flex-shrink-0 md:w-[calc((85vw-var(--container-width))/2)]"></div>
         </div>
       </div>
     </div>

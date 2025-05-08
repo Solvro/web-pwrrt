@@ -1,5 +1,5 @@
-import { getDictionary } from '../../../dictionaries';
-import AdminPageClient from './AdminPageClient';
+import { getDictionary } from "../../../dictionaries";
+import AdminPageClient from "./AdminPageClient";
 
 interface PageProps {
   params: {
@@ -7,10 +7,10 @@ interface PageProps {
   };
 }
 
-const AdminPage: React.FC<PageProps> = async props => {
-  const params = await props.params;
+const AdminPage: React.FC<PageProps> = async (props) => {
+  const parameters = await props.params;
   const language =
-    params.lang === 'pl' || params.lang === 'en' ? params.lang : 'en';
+    parameters.lang === "pl" || parameters.lang === "en" ? parameters.lang : "en";
   const dict = await getDictionary(language);
 
   return <AdminPageClient dict={dict.admin} />;

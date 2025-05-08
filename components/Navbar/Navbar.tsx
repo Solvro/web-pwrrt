@@ -2,6 +2,7 @@
 
 import { usePathname } from "next/navigation";
 import React, { useEffect, useState } from "react";
+
 import Logo from "./Logo";
 import NavigationMenu from "./NavigationMenu";
 import UserMenu from "./UserMenu/UserMenu";
@@ -40,16 +41,16 @@ const Navbar: React.FC<NavbarProps> = ({ lang, dict }) => {
     };
 
     window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    return () => { window.removeEventListener("scroll", handleScroll); };
   }, [lastScrollY]);
 
   return (
     <header
-      className={`fixed w-full duration-500 transition-all z-50 ${
+      className={`fixed z-50 w-full transition-all duration-500 ${
         !isHome || !atTop ? "bg-black" : "bg-transparent"
       } ${hideNavbar ? "translate-y-[-100%]" : "translate-y-0"}`}
     >
-      <div className="mx-auto xl:px-20 md:px-10 sm:px-2 px-4">
+      <div className="mx-auto px-4 sm:px-2 md:px-10 xl:px-20">
         <div className="flex flex-row items-center justify-between gap-3 md:gap-0">
           <div className="flex transition duration-1000">
             <div

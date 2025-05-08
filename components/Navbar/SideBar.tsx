@@ -4,6 +4,7 @@ import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import { FaCamera } from "react-icons/fa";
 import { MdPerson } from "react-icons/md";
+
 import Button from "../Button";
 
 interface SideBarProps {
@@ -24,7 +25,7 @@ const SideBar: React.FC<SideBarProps> = ({ dict }) => {
 
     window.addEventListener("scroll", handleScroll);
 
-    return () => window.removeEventListener("scroll", handleScroll);
+    return () => { window.removeEventListener("scroll", handleScroll); };
   }, []);
 
   const scrollToSection = (sectionId: string) => {
@@ -40,13 +41,13 @@ const SideBar: React.FC<SideBarProps> = ({ dict }) => {
   return (
     <div
       className={`${
-        isScrolled ? "gap-4 bottom-1/2" : "gap-48 bottom-1/3"
-      } fixed flex flex-col right-0 z-20 transform duration-700`}
+        isScrolled ? "bottom-1/2 gap-4" : "bottom-1/3 gap-48"
+      } fixed right-0 z-20 flex transform flex-col duration-700`}
     >
       <div
         className={`${
-          isScrolled ? "" : "-rotate-90 translate-x-1/2"
-        } duration-300 hidden md:block`}
+          isScrolled ? "" : "translate-x-1/2 -rotate-90"
+        } hidden duration-300 md:block`}
       >
         <div
           className={`w-56 transition-transform duration-1000 ease-in-out ${
@@ -64,8 +65,8 @@ const SideBar: React.FC<SideBarProps> = ({ dict }) => {
       </div>
       <div
         className={`${
-          isScrolled ? "" : "-rotate-90 translate-x-1/2"
-        } duration-300 hidden md:block`}
+          isScrolled ? "" : "translate-x-1/2 -rotate-90"
+        } hidden duration-300 md:block`}
       >
         <div
           className={`w-56 transition-transform duration-1000 ease-in-out ${

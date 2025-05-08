@@ -1,7 +1,8 @@
-import { fetchFiveNews } from '@/actions/getFiveNews';
-import NewsCard from '@/components/NewsCard';
-import Container from '../../Container';
-import NewsControls from './NewsControls';
+import { fetchFiveNews } from "@/actions/getFiveNews";
+import NewsCard from "@/components/NewsCard";
+
+import Container from "../../Container";
+import NewsControls from "./NewsControls";
 
 interface NewsSectionProps {
   dict: {
@@ -19,7 +20,7 @@ const NewsSection: React.FC<NewsSectionProps> = async ({ dict }) => {
       <Container>
         <div className="pt-12">
           <NewsControls dict={dict} />
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 my-10 relative border-none">
+          <div className="relative my-10 grid grid-cols-1 gap-8 border-none sm:grid-cols-2 lg:grid-cols-3">
             {news.map((item, index) => (
               <NewsCard
                 id={item.id}
@@ -29,7 +30,7 @@ const NewsSection: React.FC<NewsSectionProps> = async ({ dict }) => {
                 short_description={item.short_description}
                 long_description={item.long_description}
                 length_time={item.length_time}
-                logo={item.logo || '/images/logo-czarne.svg'}
+                logo={item.logo || "/images/logo-czarne.svg"}
                 main_image={item.main_image}
               />
             ))}

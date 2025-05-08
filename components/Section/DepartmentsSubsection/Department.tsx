@@ -3,10 +3,10 @@
 import Image from "next/image";
 import Link from "next/link";
 
-type DepartmentProps = {
+interface DepartmentProps {
   department: string;
   objectPositionY?: string;
-};
+}
 
 const Department: React.FC<DepartmentProps> = ({
   department,
@@ -16,8 +16,8 @@ const Department: React.FC<DepartmentProps> = ({
 
   return (
     <Link href={`/about#${department}`} passHref scroll>
-      <div className="relative border-0 m-0 cursor-pointer group overflow-hidden">
-        <div className="h-[6rem] md:h-[16rem] transition-transform duration-700 ease-in-out group-hover:scale-110">
+      <div className="group relative m-0 cursor-pointer overflow-hidden border-0">
+        <div className="h-[6rem] transition-transform duration-700 ease-in-out group-hover:scale-110 md:h-[16rem]">
           <Image
             src={imagePath}
             alt={department}
@@ -28,13 +28,13 @@ const Department: React.FC<DepartmentProps> = ({
             }}
           />
         </div>
-        <div className="absolute inset-0 bg-black opacity-50 group-hover:opacity-70 transition duration-300 ease-in-out"></div>
-        <div className="absolute right-0 bottom-0 flex items-center p-4 pr-12 uppercase text-white transition-all duration-300 ease-in-out group-hover:right-1/2 group-hover:bottom-1/2 group-hover:translate-x-1/2 group-hover:translate-y-1/2 group-hover:pr-4">
-          <p className="flex-shrink-0 whitespace-nowrap text-sm md:text-xl font-extrabold px-4 group-hover:text-white group-hover:text-[1rem] md:group-hover:text-[1.5rem] transition-all duration-300 ease-in-out">
+        <div className="absolute inset-0 bg-black opacity-50 transition duration-300 ease-in-out group-hover:opacity-70"></div>
+        <div className="absolute bottom-0 right-0 flex items-center p-4 pr-12 uppercase text-white transition-all duration-300 ease-in-out group-hover:bottom-1/2 group-hover:right-1/2 group-hover:translate-x-1/2 group-hover:translate-y-1/2 group-hover:pr-4">
+          <p className="flex-shrink-0 whitespace-nowrap px-4 text-sm font-extrabold transition-all duration-300 ease-in-out group-hover:text-[1rem] group-hover:text-white md:text-xl md:group-hover:text-[1.5rem]">
             {department}
           </p>
           <svg
-            className="absolute right-4 transition-all duration-300 ease-in-out group-hover:opacity-0 group-hover:translate-x-full"
+            className="absolute right-4 transition-all duration-300 ease-in-out group-hover:translate-x-full group-hover:opacity-0"
             width="35"
             height="32"
             viewBox="0 0 35 32"

@@ -1,7 +1,8 @@
-'use client';
+"use client";
 
-import Button from '@/components/Button';
-import { useRouter } from 'next/navigation';
+import { useRouter } from "next/navigation";
+
+import Button from "@/components/Button";
 
 interface ButtonsSectionProps {
   dict: any;
@@ -12,13 +13,13 @@ const ButtonsSection: React.FC<ButtonsSectionProps> = ({ dict }) => {
 
   const handleFormsClick = () => {
     window.open(
-      'https://docs.google.com/forms/d/1EGLPpMqqDQ15weFgiAibdRCAght7lzGOT00tMSNVsBA/edit',
-      '_blank'
+      "https://docs.google.com/forms/d/1EGLPpMqqDQ15weFgiAibdRCAght7lzGOT00tMSNVsBA/edit",
+      "_blank",
     ); // Otwiera Facebooka w nowej karcie
   };
 
   const handleFacebookClick = () => {
-    window.open('https://www.facebook.com/PWRRacingTeam', '_blank'); // Otwiera Facebooka w nowej karcie
+    window.open("https://www.facebook.com/PWRRacingTeam", "_blank"); // Otwiera Facebooka w nowej karcie
   };
 
   return (

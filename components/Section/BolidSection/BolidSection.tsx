@@ -1,10 +1,11 @@
 "use client";
 
 import { useEffect, useState } from "react";
+
 import BolidContent from "./BolidContent";
 import Slider from "./Slider";
 
-type BolidData = {
+interface BolidData {
   name: string;
   year: string;
   short_description: string;
@@ -12,7 +13,7 @@ type BolidData = {
   acceleration: string;
   mass: string;
   power: string;
-};
+}
 
 interface BolidSectionProps {
   dict: any;
@@ -100,7 +101,7 @@ const BolidSection: React.FC<BolidSectionProps> = ({
 
   return (
     <div id="bolid" className="overflow-hidden">
-      <div className="relative flex flex-col w-[200vw]">
+      <div className="relative flex w-[200vw] flex-col">
         <Slider
           currentBolid={currentBolidData.name}
           onChangeBolid={handleChangeBolid}
@@ -111,13 +112,11 @@ const BolidSection: React.FC<BolidSectionProps> = ({
           }`}
         >
           <BolidContent {...currentBolidData} language={language} dict={dict} />
-          {previousBolidData && (
-            <BolidContent
+          {previousBolidData ? <BolidContent
               {...previousBolidData}
               language={language}
               dict={dict}
-            />
-          )}
+            /> : null}
         </div>
       </div>
     </div>

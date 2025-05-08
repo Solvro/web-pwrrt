@@ -1,12 +1,13 @@
-import Image from 'next/image';
-import Text from '@/components/Text';
-import Container from '@/components/Container';
-import Title from '@/components/Title';
+import Image from "next/image";
+
+import Container from "@/components/Container";
+import Text from "@/components/Text";
+import Title from "@/components/Title";
 
 interface ResponsibilityItemProps {
   iconPath: string;
   text: string;
-  textColor: 'black' | 'white' | 'red' | 'gray';
+  textColor: "black" | "white" | "red" | "gray";
 }
 
 const ResponsibilityItem: React.FC<ResponsibilityItemProps> = ({
@@ -39,36 +40,37 @@ const DepartmentElement: React.FC<DepartmentElementProps> = ({
 }) => {
   const bgColor = lightMode
     ? index % 2 === 0
-      ? 'bg-neutral-300'
-      : 'bg-white'
+      ? "bg-neutral-300"
+      : "bg-white"
     : index % 2 === 0
-    ? 'bg-black'
-    : 'bg-neutral-700';
+      ? "bg-black"
+      : "bg-neutral-700";
 
-  const textColor = lightMode ? 'black' : 'white';
+  const textColor = lightMode ? "black" : "white";
 
   return (
     <div id={department} className={bgColor}>
-      <Container paddingType={index % 2 === 0 ? 'l' : 'r'}>
+      <Container paddingType={index % 2 === 0 ? "l" : "r"}>
         <div
           className={`${
-            index % 2 === 0 ? '' : 'md:flex-row-reverse'
-          } relative flex flex-col md:flex-row gap-4 md:gap-12 lg:gap-20 w-full my-8 md:my-0`}>
-          <div className=" md:py-20">
-            <div className="uppercase mb-4">
+            index % 2 === 0 ? "" : "md:flex-row-reverse"
+          } relative my-8 flex w-full flex-col gap-4 md:my-0 md:flex-row md:gap-12 lg:gap-20`}
+        >
+          <div className="md:py-20">
+            <div className="mb-4 uppercase">
               <Title wrap color={textColor} size="big">
                 {department}
               </Title>
             </div>
             <Text color={textColor}>{text}</Text>
-            <div className="flex flex-col gap-4 mt-4 md:mt-10">
+            <div className="mt-4 flex flex-col gap-4 md:mt-10">
               <Text color={textColor} bold>
                 {departmentSubtitle}
               </Text>
               <div className="flex flex-col gap-2">
-                {responsibilities.map((responsibility, idx) => (
+                {responsibilities.map((responsibility, index_) => (
                   <ResponsibilityItem
-                    key={idx}
+                    key={index_}
                     iconPath={`/images/departments/${responsibility.icon}`}
                     text={responsibility.text}
                     textColor={textColor}
@@ -77,12 +79,12 @@ const DepartmentElement: React.FC<DepartmentElementProps> = ({
               </div>
             </div>
           </div>
-          <div className=" relative flex-shrink-0 bg-red-900 w-auto md:w-[20rem] lg:w-[32rem] xl:w-[40rem]  md:h-auto sm:h-[25rem] h-[15rem]">
+          <div className="relative h-[15rem] w-auto flex-shrink-0 bg-red-900 sm:h-[25rem] md:h-auto md:w-[20rem] lg:w-[32rem] xl:w-[40rem]">
             <Image
               src={`/images/departments/${department}.png`}
               alt="department image"
               fill
-              className=" object-cover"
+              className="object-cover"
               objectPosition="center 20%"
             />
           </div>

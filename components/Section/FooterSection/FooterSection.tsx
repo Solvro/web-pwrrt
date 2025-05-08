@@ -8,6 +8,7 @@ import {
   FaLinkedinIn,
   FaYoutube,
 } from "react-icons/fa";
+
 import Button from "../../Button";
 import Container from "../../Container";
 import Logo from "../../Navbar/Logo";
@@ -73,14 +74,14 @@ const FooterSection: React.FC<FooterSectionProps> = ({ dict }) => {
         <div className="absolute inset-0 bg-black bg-opacity-80"></div>
       </div>
       <Container>
-        <div className="flex flex-col w-full">
-          <div className="w-full md:px-12 flex flex-wrap flex-col md:flex-row justify-center xl:gap-12 items-center gap-x-12">
+        <div className="flex w-full flex-col">
+          <div className="flex w-full flex-col flex-wrap items-center justify-center gap-x-12 md:flex-row md:px-12 xl:gap-12">
             <div className="lg:w-80">
               <Logo width={200} height={180} />
             </div>
-            <div className="flex flex-wrap md:flex-row justify-end items-center gap-4 md:gap-12">
+            <div className="flex flex-wrap items-center justify-end gap-4 md:flex-row md:gap-12">
               <div
-                className="flex flex-col items-center md:items-start cursor-pointer group"
+                className="group flex cursor-pointer flex-col items-center md:items-start"
                 onClick={handlePhoneClick}
               >
                 <div className="flex items-center gap-3 pb-1 uppercase">
@@ -100,17 +101,17 @@ const FooterSection: React.FC<FooterSectionProps> = ({ dict }) => {
                     {dict.callUs}
                   </Title>
                 </div>
-                <div className="font-black ">
+                <div className="font-black">
                   <Text color="white" opacity1 hoverColor="red" small bold wide>
                     +48 517 350 915
                   </Text>
                 </div>
               </div>
               <div
-                className="flex flex-col cursor-pointer group footer_bug"
+                className="footer_bug group flex cursor-pointer flex-col"
                 onClick={handleEmailClick}
               >
-                <div className="flex items-center gap-3 pb-1 uppercase ">
+                <div className="flex items-center gap-3 pb-1 uppercase">
                   <svg
                     width="22"
                     height="22"
@@ -120,8 +121,8 @@ const FooterSection: React.FC<FooterSectionProps> = ({ dict }) => {
                   >
                     <circle cx="10.992" cy="10.992" r="10.992" fill="#D41E3E" />
                     <path
-                      fill-rule="evenodd"
-                      clip-rule="evenodd"
+                      fillRule="evenodd"
+                      clipRule="evenodd"
                       d="M16.6649 7.90923V14.8043L14.0076 11.4415L13.5026 11.8506L16.1858 15.2468H6.15194L8.83514 11.8506L8.33018 11.4415L5.67285 14.8043V7.90922L11.1685 12.7344L16.6649 7.90923ZM16.6645 6.73682V7.04186L11.1688 11.867L5.67311 7.04187V6.73682H16.6645Z"
                       fill="#1F2021"
                     />
@@ -135,7 +136,7 @@ const FooterSection: React.FC<FooterSectionProps> = ({ dict }) => {
                 </Text>
               </div>
               <div
-                className="flex flex-col items-center cursor-pointer group"
+                className="group flex cursor-pointer flex-col items-center"
                 onClick={handleMapClick}
               >
                 <div className="flex items-center gap-3 pb-1 uppercase">
@@ -161,11 +162,11 @@ const FooterSection: React.FC<FooterSectionProps> = ({ dict }) => {
               </div>
             </div>
           </div>
-          <div className="md:px-12 text-white flex-col md:flex-row flex-wrap justify-between flex items-center md:items-start md:text-start text-center md:gap-12 gap-4 mt-4">
-            <div className="hidden md:block max-w-80">
+          <div className="mt-4 flex flex-col flex-wrap items-center justify-between gap-4 text-center text-white md:flex-row md:items-start md:gap-12 md:px-12 md:text-start">
+            <div className="hidden max-w-80 md:block">
               <Text wide>{dict.seasonDescription}</Text>
             </div>
-            <div className=" whitespace-nowrap">
+            <div className="whitespace-nowrap">
               <Text small bold center>
                 {dict.navigation}
               </Text>
@@ -177,7 +178,7 @@ const FooterSection: React.FC<FooterSectionProps> = ({ dict }) => {
                 <FooterLink href="/partners">{dict.partners}</FooterLink>
               </ul>
             </div>
-            <div className=" whitespace-nowrap">
+            <div className="whitespace-nowrap">
               <Text center small bold>
                 {dict.headquarters}
               </Text>
@@ -188,7 +189,7 @@ const FooterSection: React.FC<FooterSectionProps> = ({ dict }) => {
                 <FooterLink onClick={handleEmailClick}>{dict.email}</FooterLink>
               </ul>
             </div>
-            <div className=" whitespace-nowrap">
+            <div className="whitespace-nowrap">
               <Text center small bold>
                 PWR Racing Team
               </Text>
@@ -199,7 +200,7 @@ const FooterSection: React.FC<FooterSectionProps> = ({ dict }) => {
                 </FooterLink>
               </ul>
             </div>
-            <div className=" whitespace-nowrap">
+            <div className="whitespace-nowrap">
               <Text center small bold>
                 {dict.generalInfo}
               </Text>
@@ -210,7 +211,7 @@ const FooterSection: React.FC<FooterSectionProps> = ({ dict }) => {
               </ul>
             </div>
           </div>
-          <div className="w-full flex-col md:flex-row items-center gap-4 flex justify-between md:px-12 py-4 md:py-8">
+          <div className="flex w-full flex-col items-center justify-between gap-4 py-4 md:flex-row md:px-12 md:py-8">
             <div className="flex items-center gap-4">
               <SocialIcons
                 href="https://www.facebook.com/PWRRacingTeam"
@@ -233,27 +234,19 @@ const FooterSection: React.FC<FooterSectionProps> = ({ dict }) => {
                 ariaLabel="YouTube"
               />
             </div>
-            <div className="flex gap-4 w-full md:w-1/3">
+            <div className="flex w-full gap-4 md:w-1/3">
               <Button
                 label={dict.recruitment}
-                onClick={() => router.push(`/joinus`)}
+                onClick={() => { router.push(`/joinus`); }}
               />
               <Button
                 outline
                 label={dict.becomePartner}
-                onClick={() => router.push(`/partners/joinus`)}
+                onClick={() => { router.push(`/partners/joinus`); }}
               />
             </div>
           </div>
-          <div
-            className="
-            w-full
-            flex flex-col md:flex-row
-            border-t-[1px]
-            border-white
-            md:px-12 md:py-6 py-3 justify-between items-center gap-2
-          "
-          >
+          <div className="flex w-full flex-col items-center justify-between gap-2 border-t-[1px] border-white py-3 md:flex-row md:px-12 md:py-6">
             <Text color="white" center>
               {dict.createdBy}
             </Text>

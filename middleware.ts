@@ -1,18 +1,18 @@
-import { NextRequest, NextResponse } from 'next/server';
+import { NextRequest, NextResponse } from "next/server";
 
-const locales = ['pl', 'en'];
-const defaultLocale = 'pl';
+const locales = ["pl", "en"];
+const defaultLocale = "pl";
 
 function getLocale(request: NextRequest) {
-  const acceptLanguage = request.headers.get('accept-language');
+  const acceptLanguage = request.headers.get("accept-language");
 
-  if (!acceptLanguage || acceptLanguage.includes('*')) {
+  if (!acceptLanguage || acceptLanguage.includes("*")) {
     return defaultLocale;
   }
 
   const languages = acceptLanguage
-    .split(',')
-    .map((lang) => lang.split(';')[0].trim());
+    .split(",")
+    .map((lang) => lang.split(";")[0].trim());
 
   for (const locale of languages) {
     if (locales.includes(locale)) {
@@ -25,14 +25,14 @@ function getLocale(request: NextRequest) {
 
 export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
-  const isApiRequest = pathname.startsWith('/api');
-  const isAsset = pathname.startsWith('/_next') || /\.(.*)$/.test(pathname);
+  const isApiRequest = pathname.startsWith("/api");
+  const isAsset = pathname.startsWith("/_next") || /\.(.*)$/.test(pathname);
 
   // Skip redirection for API requests and static assets
   if (isApiRequest || isAsset) return;
 
   const pathnameHasLocale = locales.some(
-    (locale) => pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`
+    (locale) => pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`,
   );
 
   if (pathnameHasLocale) return;
@@ -50,7 +50,7 @@ export const config = {
     /*
      * Exclude all API routes and static files (_next, assets, images, etc.)
      */
-    '/((?!api|_next|.*\\..*).*)',
-    '/',
+    "/((?!api|_next|.*\\..*).*)",
+    "/",
   ],
 };

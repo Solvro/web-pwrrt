@@ -1,10 +1,11 @@
 "use client";
 
 import Image from "next/image";
+
 import Container from "../../Container";
+import SecondaryButton from "../../SecondaryButton";
 import Text from "../../Text";
 import Title from "../../Title";
-import SecondaryButton from "../../SecondaryButton";
 
 interface FSSectionProps {
   aboutUs?: boolean;
@@ -19,25 +20,23 @@ const FSSection: React.FC<FSSectionProps> = ({ aboutUs, dict }) => {
   return (
     <div
       id="formulastudent-section"
-      className="relative py-8 md:py-20 bg-white"
+      className="relative bg-white py-8 md:py-20"
     >
       <Container>
         <div className="">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 md:gap-20">
+          <div className="grid grid-cols-1 gap-4 md:gap-20 lg:grid-cols-2">
             <div className="">
-              {aboutUs && (
-                <div className="my-6">
+              {aboutUs ? <div className="my-6">
                   <Title size="big" color="black">
                     {dict.title}
                   </Title>
-                </div>
-              )}
+                </div> : null}
               {!aboutUs && (
                 <Title size="big" color="black">
                   {dict.title}
                 </Title>
               )}
-              <div className={`${aboutUs ? "" : "my-2 md:my-6"}`}>
+              <div className={aboutUs ? "" : "my-2 md:my-6"}>
                 <Text color="gray">{dict.description}</Text>
               </div>
               {!aboutUs && (

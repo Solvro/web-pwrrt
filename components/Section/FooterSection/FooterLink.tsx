@@ -1,13 +1,13 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { MouseEventHandler } from "react";
+import type { MouseEventHandler } from "react";
 
-type FooterLinkProps = {
+interface FooterLinkProps {
   children: string;
   href?: string; // Optional href prop for navigation
   onClick?: MouseEventHandler<HTMLLIElement>; // Optional onClick prop for custom functions
-};
+}
 
 const FooterLink: React.FC<FooterLinkProps> = ({ children, href, onClick }) => {
   const router = useRouter();
@@ -23,7 +23,7 @@ const FooterLink: React.FC<FooterLinkProps> = ({ children, href, onClick }) => {
   return (
     <li
       onClick={handleClick}
-      className="text-opacity-70 cursor-pointer py-1 whitespace-nowrap duration-300 hover:text-customRed"
+      className="cursor-pointer whitespace-nowrap py-1 text-opacity-70 duration-300 hover:text-customRed"
     >
       {children}
     </li>

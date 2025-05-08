@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
+
 import Button from "../../Button";
 import Container from "../../Container";
 import Text from "../../Text";
@@ -35,11 +36,11 @@ const BolidContent: React.FC<BolidData> = ({
   const path = usePathname();
 
   const teamRedirect = (bolid: string) => {
-    const currentLocale = path!.split("/")[1];
+    const currentLocale = path.split("/")[1];
     router.push(`/${currentLocale}/team/${bolid}`);
   };
   const bolidRedirect = (bolid: string) => {
-    const currentLocale = path!.split("/")[1];
+    const currentLocale = path.split("/")[1];
     router.push(`/${currentLocale}/bolid/${bolid}#achievements`);
   };
 
@@ -48,13 +49,11 @@ const BolidContent: React.FC<BolidData> = ({
     const isSpecialChar = lastChar === "e" || lastChar === "b";
 
     return (
-      <div className="uppercase flex items-baseline">
+      <div className="flex items-baseline uppercase">
         <Title color="red">{isSpecialChar ? name.slice(0, -1) : name}</Title>
-        {isSpecialChar && (
-          <Title color="red" size="medium">
+        {isSpecialChar ? <Title color="red" size="medium">
             {lastChar}
-          </Title>
-        )}
+          </Title> : null}
       </div>
     );
   };
@@ -65,9 +64,9 @@ const BolidContent: React.FC<BolidData> = ({
   return (
     <div className="relative flex flex-col">
       <Container>
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-12 py-4 sm:py-12 transition-all ease-out duration-500">
+        <div className="grid grid-cols-1 gap-4 py-4 transition-all duration-500 ease-out sm:py-12 lg:grid-cols-2 lg:gap-12">
           <div
-            className={`flex justify-center items-center transition-all ease-out duration-500`}
+            className={`flex items-center justify-center transition-all duration-500 ease-out`}
           >
             <div>
               <Title size="subtitle" color="gray">
@@ -77,21 +76,21 @@ const BolidContent: React.FC<BolidData> = ({
               <div className="my-2 sm:my-6">
                 <Text color="gray">{description}</Text>
               </div>
-              <div className="gap-4 mt-8 hidden lg:flex">
+              <div className="mt-8 hidden gap-4 lg:flex">
                 <Button
                   label={dict.moreAboutBolid}
-                  onClick={() => bolidRedirect(name)}
+                  onClick={() => { bolidRedirect(name); }}
                 />
                 <Button
                   outline
                   label={`${dict.meetTeam} ${name}`}
-                  onClick={() => teamRedirect(name)}
+                  onClick={() => { teamRedirect(name); }}
                 />
               </div>
             </div>
           </div>
           <div
-            className={`flex flex-col justify-end items-center h-full w-full transition-all ease-out duration-500`}
+            className={`flex h-full w-full flex-col items-center justify-end transition-all duration-500 ease-out`}
           >
             <Image
               src={`/images/bolid/${name}/${name}.png`}
@@ -101,15 +100,15 @@ const BolidContent: React.FC<BolidData> = ({
               height={300}
             />
           </div>
-          <div className="gap-2 md:gap-4 flex lg:hidden">
+          <div className="flex gap-2 md:gap-4 lg:hidden">
             <Button
               label={dict.moreAboutBolid}
-              onClick={() => bolidRedirect(name)}
+              onClick={() => { bolidRedirect(name); }}
             />
             <Button
               outline
               label={`${dict.meetTeam} ${name}`}
-              onClick={() => teamRedirect(name)}
+              onClick={() => { teamRedirect(name); }}
             />
           </div>
         </div>

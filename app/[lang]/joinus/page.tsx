@@ -1,9 +1,9 @@
-import Container from '@/components/Container';
-import Title from '@/components/Title';
-import DepartmentsAbout from '../about/DepartmentsAbout/DepartmentsAbout';
-import { getDictionary } from '../../../dictionaries';
-import ButtonsSection from './buttonJoinUs';
-import Timer from './timer';
+import Container from "@/components/Container";
+import Title from "@/components/Title";
+
+import { getDictionary } from "../../../dictionaries";
+import DepartmentsAbout from "../about/DepartmentsAbout/DepartmentsAbout";
+import Timer from "./timer";
 
 interface Props {
   params: {
@@ -11,22 +11,22 @@ interface Props {
   };
 }
 
-const JoinUs: React.FC<Props> = async props => {
-  const params = await props.params;
+const JoinUs: React.FC<Props> = async (props) => {
+  const parameters = await props.params;
   const language =
-    params.lang === 'pl' || params.lang === 'en' ? params.lang : 'en';
+    parameters.lang === "pl" || parameters.lang === "en" ? parameters.lang : "en";
   const dict = await getDictionary(language);
 
   return (
     <div className="pt-[120px]">
-      <div className="absolute opacity-5 right-0">
-        <h1 className="text-[15rem] font-extrabold text-black uppercase leading-none">
+      <div className="absolute right-0 opacity-5">
+        <h1 className="text-[15rem] font-extrabold uppercase leading-none text-black">
           {dict.joinUs.pageTitle}
         </h1>
       </div>
       <Container>
-        <div className="w-full flex flex-col items-center mt-16">
-          <div className="mb-24 py-4 my-4 border-b-2 md:w-3/5 border-black text-center">
+        <div className="mt-16 flex w-full flex-col items-center">
+          <div className="my-4 mb-24 border-b-2 border-black py-4 text-center md:w-3/5">
             <Title color="black">{dict.joinUs.becomeMember}</Title>
           </div>
           <Timer targetDate="2025-10-15T00:00:00" dict={dict.joinUs} />

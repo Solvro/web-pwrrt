@@ -2,17 +2,28 @@
   "name": "pwr-racing",
   "version": "0.1.0",
   "private": true,
+  "type": "module",
   "scripts": {
-    "dev": "next dev --turbopack",
     "build": "prisma generate && next build",
-    "start": "next start",
-    "lint": "next lint --fix",
-    "lint:check": "next lint --max-warnings=0",
+    "dev": "next dev --turbopack",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "postinstall": "prisma generate",
+    "knip": "knip",
+    "lint": "next lint --max-warnings=0",
+    "lint:fix": "next lint --fix",
+    "prepare": "husky || true",
     "seed": "node prisma/seedTeamMember.js",
+    "start": "next start",
     "typecheck": "tsc"
+  },
+  "lint-staged": {
+    "*": "prettier -w --ignore-unknown"
+  },
+  "prettier": "@solvro/config/prettier",
+  "overrides": {
+    "@types/react": "19.1.3",
+    "@types/react-dom": "19.1.3"
   },
   "dependencies": {
     "@next-auth/prisma-adapter": "^1.0.7",
@@ -23,6 +34,7 @@
     "body-parser": "^1.20.2",
     "dotenv": "^16.4.7",
     "express": "^4.19.2",
+    "knip": "^5.55.1",
     "motion": "^12.10.4",
     "next": "15.3.2",
     "next-auth": "^4.24.11",
@@ -38,6 +50,8 @@
     "zustand": "^5.0.4"
   },
   "devDependencies": {
+    "@commitlint/cli": "^19.8.1",
+    "@next/eslint-plugin-next": "^15.3.2",
     "@solvro/config": "^1.13.5",
     "@types/bcrypt": "^5.0.2",
     "@types/node": "^20.0.0",
@@ -48,6 +62,8 @@
     "csvtojson": "^2.0.10",
     "eslint": "^9.26.0",
     "eslint-config-next": "15.3.2",
+    "husky": "^9.1.7",
+    "lint-staged": "^15.5.2",
     "postcss": "^8.4.35",
     "prettier": "3.5.3",
     "prisma": "^5.10.2",
@@ -56,10 +72,5 @@
   },
   "prisma": {
     "seed": "node prisma/seedTeamMember.js"
-  },
-  "type": "module",
-  "overrides": {
-    "@types/react": "19.1.3",
-    "@types/react-dom": "19.1.3"
   }
 }

@@ -17,7 +17,7 @@ interface NavigationMenuProps {
 const NavigationMenu: React.FC<NavigationMenuProps> = ({ dict }) => {
   return (
     <nav className="nav-responsive ml-16">
-      <ul className="flex space-x-4 h-full">
+      <ul className="flex h-full space-x-4">
         <NavItem to="/">{dict.home}</NavItem>
         <NavItem to="/bolid/RT14e">{dict.bolid}</NavItem>
         <NavItem to="/team/RT15e">{dict.team}</NavItem>

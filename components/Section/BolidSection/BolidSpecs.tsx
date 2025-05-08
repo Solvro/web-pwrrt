@@ -19,10 +19,10 @@ const BolidSpecs: React.FC<BolidSpecsProps> = ({
   return (
     <div className="">
       <div
-        className={`${animate} relative w-[100vw] flex justify-between bg-neutral-700 transition duration-200 ease-out`}
+        className={`${animate} relative flex w-[100vw] justify-between bg-neutral-700 transition duration-200 ease-out`}
       >
-        <div className="bg-neutral-800 pl-[calc((100vw-var(--container-width))/3)] z-10 hidden lg:flex justify-between items-center pr-8 ">
-          <div className=" flex flex-col">
+        <div className="z-10 hidden items-center justify-between bg-neutral-800 pl-[calc((100vw-var(--container-width))/3)] pr-8 lg:flex">
+          <div className="flex flex-col">
             <Text bold medium color="white" opacity1>
               {dict.specyfikacja}
             </Text>
@@ -31,7 +31,7 @@ const BolidSpecs: React.FC<BolidSpecsProps> = ({
             </Text>
           </div>
           <svg
-            className="w-16 h-8 lg:w-36 lg:h-36"
+            className="h-8 w-16 lg:h-36 lg:w-36"
             viewBox="0 0 89 38"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
@@ -51,9 +51,9 @@ const BolidSpecs: React.FC<BolidSpecsProps> = ({
             />
           </svg>
         </div>
-        <div className="flex justify-center items-center py-2 gap-2 pl-4 lg:pl-0">
+        <div className="flex items-center justify-center gap-2 py-2 pl-4 lg:pl-0">
           <svg
-            className="w-14 h-10 md:w-20 md:h-20"
+            className="h-10 w-14 md:h-20 md:w-20"
             viewBox="0 0 74 73"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
@@ -63,22 +63,22 @@ const BolidSpecs: React.FC<BolidSpecsProps> = ({
               fill="white"
             />
           </svg>
-          <div className="flex flex-col justify-center max-w-52">
+          <div className="flex max-w-52 flex-col justify-center">
             <h1
-              className={`text-white font-akiraExpanded text-md md:text-3xl font-extrabold leading-tight`}
+              className={`font-akiraExpanded text-md font-extrabold leading-tight text-white md:text-3xl`}
             >
               {acceleration}
             </h1>
             <h2
-              className={`hidden md:block text-customRed font-akiraExpanded text-2xl font-extrabold leading-tight`}
+              className={`font-akiraExpanded hidden text-2xl font-extrabold leading-tight text-customRed md:block`}
             >
               {dict.TXTacceleration}
             </h2>
           </div>
         </div>
-        <div className="flex justify-center items-center py-2 gap-2">
+        <div className="flex items-center justify-center gap-2 py-2">
           <svg
-            className="w-14 h-14 md:w-24 md:h-20"
+            className="h-14 w-14 md:h-20 md:w-24"
             viewBox="0 0 88 88"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
@@ -100,22 +100,22 @@ const BolidSpecs: React.FC<BolidSpecsProps> = ({
               fill="white"
             />
           </svg>
-          <div className="flex flex-col justify-center max-w-52">
+          <div className="flex max-w-52 flex-col justify-center">
             <h1
-              className={`text-white font-akiraExpanded text-md md:text-3xl font-extrabold leading-tight`}
+              className={`font-akiraExpanded text-md font-extrabold leading-tight text-white md:text-3xl`}
             >
               {power}
             </h1>
             <h2
-              className={`hidden min-w-fit md:block text-customRed font-akiraExpanded text-2xl font-extrabold leading-tight`}
+              className={`font-akiraExpanded hidden min-w-fit text-2xl font-extrabold leading-tight text-customRed md:block`}
             >
               {dict.TXTpower}
             </h2>
           </div>
         </div>
-        <div className="flex justify-center items-center py-2 pr-4 lg:pr-[calc((100vw-var(--container-width))/3)] gap-2">
+        <div className="flex items-center justify-center gap-2 py-2 pr-4 lg:pr-[calc((100vw-var(--container-width))/3)]">
           <svg
-            className="w-12 h-12 md:w-20 md:h-20"
+            className="h-12 w-12 md:h-20 md:w-20"
             viewBox="0 0 76 83"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
@@ -141,14 +141,14 @@ const BolidSpecs: React.FC<BolidSpecsProps> = ({
               fill="white"
             />
           </svg>
-          <div className="flex flex-col justify-center max-w-52">
+          <div className="flex max-w-52 flex-col justify-center">
             <h1
-              className={`text-white font-akiraExpanded text-md md:text-3xl font-extrabold leading-tight`}
+              className={`font-akiraExpanded text-md font-extrabold leading-tight text-white md:text-3xl`}
             >
               {mass}
             </h1>
             <h2
-              className={`hidden md:block text-customRed font-akiraExpanded text-2xl font-extrabold leading-tight`}
+              className={`font-akiraExpanded hidden text-2xl font-extrabold leading-tight text-customRed md:block`}
             >
               {dict.TXTmass}
             </h2>

@@ -1,26 +1,27 @@
-import { getBolidByBolidId } from '@/actions/getBolidByBolidId';
-import Container from '@/components/Container';
-import BolidSection from '@/components/Section/BolidSection/BolidSection';
-import Text from '@/components/Text';
-import Title from '@/components/Title';
-import Image from 'next/image';
-import { getDictionary } from '../../../../dictionaries';
-import { getDictionary2 } from '@/actions/getDictionary';
+import Image from "next/image";
+
+import { getBolidByBolidId } from "@/actions/getBolidByBolidId";
+import Container from "@/components/Container";
+import BolidSection from "@/components/Section/BolidSection/BolidSection";
+import Text from "@/components/Text";
+import Title from "@/components/Title";
+
+import { getDictionary } from "../../../../dictionaries";
 
 interface Iparams {
   lang: string;
   bolidId?: string;
 }
 
-type Locale = 'pl' | 'en';
+type Locale = "pl" | "en";
 
-const BolidPage = async (props: { params: Promise<Iparams> }) => {
-  const params = await props.params;
-  const { lang, bolidId } = params;
-  const currentLocale = lang === 'pl' || lang === 'en' ? lang : 'en';
+function BolidPage(props: { params: Promise<Iparams> }) {
+  const parameters = await props.params;
+  const { lang, bolidId } = parameters;
+  const currentLocale = lang === "pl" || lang === "en" ? lang : "en";
   const dict = await getDictionary(currentLocale);
 
-  const bolidIdValue = bolidId ?? 'RT13e';
+  const bolidIdValue = bolidId ?? "RT13e";
   const bolid = await getBolidByBolidId(bolidIdValue);
 
   if (!bolid) {
@@ -34,26 +35,26 @@ const BolidPage = async (props: { params: Promise<Iparams> }) => {
         language={currentLocale}
         presetBolid={bolidIdValue}
       />
-      <div className=" w-full" id="achievements">
+      <div className="w-full" id="achievements">
         <Container>
-          <div className="flex flex-col w-full py-8 md:py-16">
+          <div className="flex w-full flex-col py-8 md:py-16">
             <Title size="big" color="black">
               {dict.bolidSection.achievements} {bolid.year}
             </Title>
 
             <div className="flex">
-              <div className="w-full grid grid-cols-1 md:grid-cols-3 gap-8 pt-6 text-white">
-                <div className="relative rounded overflow-hidden h-52 md:h-60">
+              <div className="grid w-full grid-cols-1 gap-8 pt-6 text-white md:grid-cols-3">
+                <div className="relative h-52 overflow-hidden rounded md:h-60">
                   <Image
                     src="/images/bolid/RT12e/images/zawody/1.jpg"
                     alt="Zdjęcie 2"
                     layout="fill"
                     objectFit="cover"
                   />
-                  <div className=" absolute inset-0 bg-black opacity-50"></div>
-                  <div className=" absolute inset-0 p-4 flex flex-col justify-between ">
+                  <div className="absolute inset-0 bg-black opacity-50"></div>
+                  <div className="absolute inset-0 flex flex-col justify-between p-4">
                     <Title size="small">FORMULA STUDENT GERMANY</Title>
-                    <div className=" flex justify-between items-end ">
+                    <div className="flex items-end justify-between">
                       <div className=" ">
                         <Text extrasmall>6th Overall</Text>
                         <Text extrasmall>8th Skidpad</Text>
@@ -73,17 +74,17 @@ const BolidPage = async (props: { params: Promise<Iparams> }) => {
                     </div>
                   </div>
                 </div>
-                <div className="relative rounded overflow-hidden h-52 md:h-60">
+                <div className="relative h-52 overflow-hidden rounded md:h-60">
                   <Image
                     src="/images/bolid/RT12e/images/zawody/2.jpg"
                     alt="Zdjęcie 2"
                     layout="fill"
                     objectFit="cover"
                   />
-                  <div className=" absolute inset-0 bg-black opacity-50"></div>
-                  <div className=" absolute inset-0 p-4 flex flex-col justify-between">
+                  <div className="absolute inset-0 bg-black opacity-50"></div>
+                  <div className="absolute inset-0 flex flex-col justify-between p-4">
                     <Title size="small">FORMULA STUDENT ALPE ADRIA</Title>
-                    <div className=" flex justify-between items-end">
+                    <div className="flex items-end justify-between">
                       <div className="">
                         <Text extrasmall>6th Overall</Text>
                         <Text extrasmall>8th Skidpad</Text>
@@ -103,17 +104,17 @@ const BolidPage = async (props: { params: Promise<Iparams> }) => {
                     </div>
                   </div>
                 </div>
-                <div className="relative rounded overflow-hidden h-52 md:h-60">
+                <div className="relative h-52 overflow-hidden rounded md:h-60">
                   <Image
                     src="/images/bolid/RT12e/images/zawody/3.jpg"
                     alt="Zdjęcie 2"
                     layout="fill"
                     objectFit="cover"
                   />
-                  <div className=" absolute inset-0 bg-black opacity-50"></div>
-                  <div className=" absolute inset-0 p-4 flex flex-col justify-between">
+                  <div className="absolute inset-0 bg-black opacity-50"></div>
+                  <div className="absolute inset-0 flex flex-col justify-between p-4">
                     <Title size="small">FORMULA STUDENT ITALY</Title>
-                    <div className=" flex justify-between items-end">
+                    <div className="flex items-end justify-between">
                       <div className="">
                         <Text extrasmall>6th Overall</Text>
                         <Text extrasmall>8th Skidpad</Text>
@@ -142,31 +143,33 @@ const BolidPage = async (props: { params: Promise<Iparams> }) => {
         {bolid.parts.map((part, depIndex) => (
           <div
             key={part.partName}
-            className={`${depIndex % 2 === 0 ? 'bg-neutral-200' : 'bg-white'}`}>
+            className={depIndex % 2 === 0 ? "bg-neutral-200" : "bg-white"}
+          >
             <Container>
               <div
                 className={`${
-                  depIndex % 2 === 0 ? '' : ' md:flex-row-reverse'
-                } flex md:flex-row flex-col gap-0 md:gap-16 my-8 `}>
-                <div className=" my-0 md:my-20 md:w-2/3">
-                  <div className=" uppercase">
+                  depIndex % 2 === 0 ? "" : "md:flex-row-reverse"
+                } my-8 flex flex-col gap-0 md:flex-row md:gap-16`}
+              >
+                <div className="my-0 md:my-20 md:w-2/3">
+                  <div className="uppercase">
                     <Title size="big" color="black">
                       {part.partName}
                     </Title>
                   </div>
-                  <div className=" my-4 md:my-6">
+                  <div className="my-4 md:my-6">
                     <Text color="black">{part.description}</Text>
                   </div>
                 </div>
-                <div className=" my-auto md:w-1/3">
+                <div className="my-auto md:w-1/3">
                   <Image
                     src={`/images/bolid/RT12e/parts/${part.partName}.png`}
                     alt={`Zdjęcie ${part.partName}`}
                     width={300} // Używaj rzeczywistych proporcji obrazu
                     height={400} // Używaj rzeczywistych proporcji obrazu
                     style={{
-                      width: '100%',
-                      height: 'auto',
+                      width: "100%",
+                      height: "auto",
                     }}
                     sizes="(max-width: 768px) 100vw, 25vw"
                   />
@@ -178,6 +181,6 @@ const BolidPage = async (props: { params: Promise<Iparams> }) => {
       </div>
     </div>
   );
-};
+}
 
 export default BolidPage;

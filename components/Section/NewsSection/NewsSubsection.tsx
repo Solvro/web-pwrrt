@@ -2,10 +2,10 @@
 
 import Text from "../../Text";
 
-const NewsSeubsection = () => {
+function NewsSeubsection() {
   return (
-    <div className="relative hidden md:flex gap-20 h-40 w-full justify-center bg-neutral-200">
-      <div className="flex justify-center items-center gap-4">
+    <div className="relative hidden h-40 w-full justify-center gap-20 bg-neutral-200 md:flex">
+      <div className="flex items-center justify-center gap-4">
         <svg
           width="51"
           height="51"
@@ -29,7 +29,7 @@ const NewsSeubsection = () => {
           <Text color="red">Lorem ipsum dolor</Text>
         </div>
       </div>
-      <div className="flex justify-center items-center gap-4">
+      <div className="flex items-center justify-center gap-4">
         <svg
           width="54"
           height="50"
@@ -69,7 +69,7 @@ const NewsSeubsection = () => {
           <Text color="red">Lorem ipsum dolor</Text>
         </div>
       </div>
-      <div className="flex justify-center items-center gap-4">
+      <div className="flex items-center justify-center gap-4">
         <svg
           width="43"
           height="51"
@@ -109,7 +109,7 @@ const NewsSeubsection = () => {
           <Text color="red">Lorem ipsum dolor</Text>
         </div>
       </div>
-      <div className="flex justify-center items-center gap-4">
+      <div className="flex items-center justify-center gap-4">
         <svg
           width="58"
           height="51"
@@ -169,7 +169,7 @@ const NewsSeubsection = () => {
           <Text color="red">Lorem ipsum dolor</Text>
         </div>
       </div>
-      <div className="flex justify-center items-center gap-4">
+      <div className="flex items-center justify-center gap-4">
         <svg
           width="51"
           height="51"
@@ -203,6 +203,6 @@ const NewsSeubsection = () => {
       </div>
     </div>
   );
-};
+}
 
 export default NewsSeubsection;

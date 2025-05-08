@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import React, { useState } from "react";
+
 import TileHeading from "./TileHeading";
 
 interface UserCardProps {
@@ -18,13 +19,11 @@ interface UserCardProps {
     email?: string | null;
   };
   teamId: string;
-  roleHistory: {
-    [key: string]: {
+  roleHistory: Record<string, {
       role: string;
       bolidName: string;
       department: string;
-    }[];
-  };
+    }[]>;
 }
 
 const UserCard: React.FC<UserCardProps> = ({
@@ -37,27 +36,27 @@ const UserCard: React.FC<UserCardProps> = ({
   const placeholderImage = "/images/TeamPlaceholder.jpg";
 
   // Generowanie ścieżki do obrazka członka zespołu
-  const generatedMemberImageSrc = `https://storage.googleapis.com/pwr-rt/${
+  const generatedMemberImageSource = `https://storage.googleapis.com/pwr-rt/${
     teamId === "RT11b" ? "RT11" : teamId
   }/${encodeURIComponent(
-    member.name[0].toUpperCase() + member.name.slice(1)
+    member.name[0].toUpperCase() + member.name.slice(1),
   )}%20${encodeURIComponent(
-    member.surname[0].toUpperCase() + member.surname.slice(1)
+    member.surname[0].toUpperCase() + member.surname.slice(1),
   )}.jpg`;
 
   // Użycie stanu do dynamicznej zmiany obrazka w razie błędu
-  const [memberImageSrc, setMemberImageSrc] = useState(generatedMemberImageSrc);
+  const [memberImageSource, setMemberImageSource] = useState(generatedMemberImageSource);
 
   const handleImgError = () => {
     // Po błędzie ustawiamy ścieżkę do obrazka zastępczego
-    setMemberImageSrc(placeholderImage);
+    setMemberImageSource(placeholderImage);
   };
 
   return (
-    <div className="relative group w-full">
-      <div className="absolute inset-0 z-0 w-full h-full rounded-full blur-3xl bg-white opacity-10"></div>
-      <div className="relative rounded-md overflow-hidden bg-black pb-14">
-        <div className=" absolute w-full h-[350px]">
+    <div className="group relative w-full">
+      <div className="absolute inset-0 z-0 h-full w-full rounded-full bg-white opacity-10 blur-3xl"></div>
+      <div className="relative overflow-hidden rounded-md bg-black pb-14">
+        <div className="absolute h-[350px] w-full">
           {/* Możesz wykorzystać obrazek zastępczy jako tło */}
           <Image
             src="/images/TeamPlaceholder.jpg"
@@ -72,7 +71,7 @@ const UserCard: React.FC<UserCardProps> = ({
         </div>
         <div className="relative h-[350px]">
           <Image
-            src={memberImageSrc}
+            src={memberImageSource}
             alt={`Zdjęcie ${member.name} ${member.surname}`}
             fill
             style={{ objectFit: "cover" }}

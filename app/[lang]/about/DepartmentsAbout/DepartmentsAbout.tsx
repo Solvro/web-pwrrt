@@ -1,8 +1,5 @@
-'use client';
+"use client";
 
-import Button from '@/components/Button';
-import Container from '@/components/Container';
-import Title from '@/components/Title';
 import {
   FaBolt,
   FaBullhorn,
@@ -10,11 +7,16 @@ import {
   FaCube,
   FaDollarSign,
   FaLaptopCode,
-} from 'react-icons/fa';
-import { IoSettings } from 'react-icons/io5';
-import DepartmentElement from './DepartmentElement';
+} from "react-icons/fa";
+import { IoSettings } from "react-icons/io5";
 
-type DepartmentsAboutProps = {
+import Button from "@/components/Button";
+import Container from "@/components/Container";
+import Title from "@/components/Title";
+
+import DepartmentElement from "./DepartmentElement";
+
+interface DepartmentsAboutProps {
   lightMode?: boolean;
   dict: {
     title: string;
@@ -49,7 +51,7 @@ type DepartmentsAboutProps = {
       responsibilities: { text: string; icon: string }[];
     };
   };
-};
+}
 
 const DepartmentsAbout: React.FC<DepartmentsAboutProps> = ({
   lightMode,
@@ -57,37 +59,37 @@ const DepartmentsAbout: React.FC<DepartmentsAboutProps> = ({
 }) => {
   const departments = [
     {
-      name: 'mechanical',
+      name: "mechanical",
       description: dict.mechanical.description,
       responsibilities: dict.mechanical.responsibilities,
     },
     {
-      name: 'composites',
+      name: "composites",
       description: dict.composites.description,
       responsibilities: dict.composites.responsibilities,
     },
     {
-      name: 'marketing',
+      name: "marketing",
       description: dict.marketing.description,
       responsibilities: dict.marketing.responsibilities,
     },
     {
-      name: 'software',
+      name: "software",
       description: dict.software.description,
       responsibilities: dict.software.responsibilities,
     },
     {
-      name: 'electrical',
+      name: "electrical",
       description: dict.electrical.description,
       responsibilities: dict.electrical.responsibilities,
     },
     {
-      name: 'vehicle performance',
+      name: "vehicle performance",
       description: dict.vehiclePerformance.description,
       responsibilities: dict.vehiclePerformance.responsibilities,
     },
     {
-      name: 'business',
+      name: "business",
       description: dict.business.description,
       responsibilities: dict.business.responsibilities,
     },
@@ -96,20 +98,14 @@ const DepartmentsAbout: React.FC<DepartmentsAboutProps> = ({
   const handleScrollToSection = (id: string) => {
     const element = document.getElementById(id.toLowerCase());
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+      element.scrollIntoView({ behavior: "smooth" });
     }
   };
 
   return (
     <div id="department-section" className="relative bg-white">
-      {!lightMode ? (
-        <Container>
-          <div className=" w-full mb-4 md:mb-6">
-            <Title color="black">{dict.title}</Title>
-          </div>
-        </Container>
-      ) : (
-        <div className="mt-12 mb-6 text-center flex flex-col gap-6 ">
+      {lightMode ? (
+        <div className="mb-6 mt-12 flex flex-col gap-6 text-center">
           <Container>
             <Title wrap color="black">
               {dict.interestedIn}
@@ -117,67 +113,73 @@ const DepartmentsAbout: React.FC<DepartmentsAboutProps> = ({
           </Container>
           <div className="w-full">
             <Container>
-              <div className="flex gap-4 md:w-3/4 flex-wrap justify-center items-center">
-                <div className="sm:max-w-72 flex-1">
+              <div className="flex flex-wrap items-center justify-center gap-4 md:w-3/4">
+                <div className="flex-1 sm:max-w-72">
                   <Button
                     black
                     icon={IoSettings}
                     label="MECHANICAL"
-                    onClick={() => handleScrollToSection('mechanical')}
+                    onClick={() => { handleScrollToSection("mechanical"); }}
                   />
                 </div>
-                <div className="sm:max-w-72 flex-1">
+                <div className="flex-1 sm:max-w-72">
                   <Button
                     black
                     icon={FaCube}
                     label="COMPOSITES"
-                    onClick={() => handleScrollToSection('composites')}
+                    onClick={() => { handleScrollToSection("composites"); }}
                   />
                 </div>
-                <div className="sm:max-w-72 flex-1">
+                <div className="flex-1 sm:max-w-72">
                   <Button
                     black
                     icon={FaBullhorn}
                     label="MARKETING"
-                    onClick={() => handleScrollToSection('marketing')}
+                    onClick={() => { handleScrollToSection("marketing"); }}
                   />
                 </div>
-                <div className="sm:max-w-72 flex-1">
+                <div className="flex-1 sm:max-w-72">
                   <Button
                     black
                     icon={FaLaptopCode}
                     label="SOFTWARE"
-                    onClick={() => handleScrollToSection('software')}
+                    onClick={() => { handleScrollToSection("software"); }}
                   />
                 </div>
-                <div className="sm:max-w-72 flex-1">
+                <div className="flex-1 sm:max-w-72">
                   <Button
                     black
                     icon={FaBolt}
                     label="ELECTRICAL"
-                    onClick={() => handleScrollToSection('electrical')}
+                    onClick={() => { handleScrollToSection("electrical"); }}
                   />
                 </div>
-                <div className="sm:max-w-72 flex-1 whitespace-nowrap">
+                <div className="flex-1 whitespace-nowrap sm:max-w-72">
                   <Button
                     black
                     icon={FaChartBar}
                     label="VEHICLE PERFORMANCE"
-                    onClick={() => handleScrollToSection('vehicle performance')}
+                    onClick={() => { handleScrollToSection("vehicle performance"); }}
                   />
                 </div>
-                <div className="sm:max-w-72 flex-1">
+                <div className="flex-1 sm:max-w-72">
                   <Button
                     black
                     icon={FaDollarSign}
                     label="BUSINESS"
-                    onClick={() => handleScrollToSection('business')}
+                    onClick={() => { handleScrollToSection("business"); }}
                   />
                 </div>
               </div>
             </Container>
           </div>
         </div>
+      ) : (
+        <Container>
+          <div className="mb-4 w-full md:mb-6">
+            <Title color="black">{dict.title}</Title>
+          </div>
+        </Container>
       )}
       <div className="w-full">
         <div className="flex flex-col">

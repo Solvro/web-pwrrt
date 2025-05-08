@@ -1,42 +1,46 @@
-'use client'
+"use client";
 
-import React, { createContext, useState, useEffect } from 'react';
+import React, { createContext, useEffect, useState } from "react";
 
-export const ClosestSectionContext = createContext('');
+export const ClosestSectionContext = createContext("");
 
 interface ClosestSectionProviderProps {
   children: React.ReactNode;
 }
 
-const ClosestSectionProvider: React.FC<ClosestSectionProviderProps> = ({ children }) => {
-  const [closestSectionId, setClosestSectionId] = useState('');
+const ClosestSectionProvider: React.FC<ClosestSectionProviderProps> = ({
+  children,
+}) => {
+  const [closestSectionId, setClosestSectionId] = useState("");
 
   useEffect(() => {
     const highlightClosestSection = () => {
       const sections = document.querySelectorAll('[id^="section-"]');
-      let currentClosestSectionId = '';
+      let currentClosestSectionId = "";
       let maxVisibility = 0;
 
-      sections.forEach(section => {
+      for (const section of sections) {
         const rect = section.getBoundingClientRect();
-        const visibleHeight = Math.min(rect.bottom, window.innerHeight) - Math.max(rect.top, 0);
+        const visibleHeight =
+          Math.min(rect.bottom, window.innerHeight) - Math.max(rect.top, 0);
         const totalHeight = rect.bottom - rect.top;
-        const visibilityPercentage = (visibleHeight > 0) ? (visibleHeight / totalHeight) : 0;
+        const visibilityPercentage =
+          visibleHeight > 0 ? visibleHeight / totalHeight : 0;
 
         if (visibilityPercentage > maxVisibility) {
           maxVisibility = visibilityPercentage;
           currentClosestSectionId = section.id;
         }
-      });
+      }
       setClosestSectionId(currentClosestSectionId); // Aktualizuj stan za pomocą wyznaczonej najbliższej sekcji
     };
 
-    window.addEventListener('scroll', highlightClosestSection);
+    window.addEventListener("scroll", highlightClosestSection);
     setTimeout(() => {
       highlightClosestSection();
     }, 100);
 
-    return () => window.removeEventListener('scroll', highlightClosestSection);
+    return () => { window.removeEventListener("scroll", highlightClosestSection); };
   }, []);
 
   return (
@@ -46,4 +50,4 @@ const ClosestSectionProvider: React.FC<ClosestSectionProviderProps> = ({ childre
   );
 };
 
-export default ClosestSectionProvider
+export default ClosestSectionProvider;

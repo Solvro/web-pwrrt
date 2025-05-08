@@ -1,12 +1,12 @@
-'use client';
+"use client";
 
-import Slider from '@/components/Section/BolidSection/Slider';
+import Slider from "@/components/Section/BolidSection/Slider";
 
-interface ParamsParamsClientSlider {
+interface ParametersClientSlider {
   teamId: string;
   showRt15e?: boolean;
 }
-const ClientSlider: React.FC<ParamsParamsClientSlider> = ({
+const ClientSlider: React.FC<ParametersClientSlider> = ({
   teamId,
   showRt15e,
 }) => {

@@ -1,7 +1,8 @@
-import Container from '@/components/Container';
-import Text from '@/components/Text';
-import Title from '@/components/Title';
-import Image from 'next/image';
+import Image from "next/image";
+
+import Container from "@/components/Container";
+import Text from "@/components/Text";
+import Title from "@/components/Title";
 
 interface FSAboutProps {
   dict: {
@@ -44,59 +45,59 @@ const FSAbout: React.FC<FSAboutProps> = ({ dict }) => {
   const { dynamicCompetitions, staticCompetitions, competitions } = dict;
 
   return (
-    <div className=" relative bg-white">
+    <div className="relative bg-white">
       <Container>
         <div className="w-full">
           <div className="">
             <Title wrap size="medium" color="black">
               {dynamicCompetitions}
             </Title>
-            <div className=" grid grid-cols-1 sm:grid-cols-2  md:grid-cols-4 gap-6 my-6">
+            <div className="my-6 grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-4">
               <FlipCard
-                height={'h-60'}
+                height={"h-60"}
                 src="/images/FS/acceleration.png"
                 title={competitions.acceleration.title}
                 text={competitions.acceleration.text}
               />
               <FlipCard
-                height={'h-60'}
+                height={"h-60"}
                 src="/images/FS/skipad.png"
                 title={competitions.skidPad.title}
                 text={competitions.skidPad.text}
               />
               <FlipCard
-                height={'h-60'}
+                height={"h-60"}
                 src="/images/FS/autocross.png"
                 title={competitions.autocross.title}
                 text={competitions.autocross.text}
               />
               <FlipCard
-                height={'h-60'}
+                height={"h-60"}
                 src="/images/FS/endurance.png"
                 title={competitions.endurance.title}
                 text={competitions.endurance.text}
               />
             </div>
           </div>
-          <div className=" my-8 md:my-12">
+          <div className="my-8 md:my-12">
             <Title wrap size="medium" color="black">
               {staticCompetitions}
             </Title>
-            <div className=" grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 my-6">
+            <div className="my-6 grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3">
               <FlipCard
-                height={'h-56 md:h-80'}
+                height={"h-56 md:h-80"}
                 src="/images/FS/cost.png"
                 title={competitions.cost.title}
                 text={competitions.cost.text}
               />
               <FlipCard
-                height={'h-56 md:h-80'}
+                height={"h-56 md:h-80"}
                 src="/images/FS/engineering.png"
                 title={competitions.engineering.title}
                 text={competitions.engineering.text}
               />
               <FlipCard
-                height={'h-56 md:h-80'}
+                height={"h-56 md:h-80"}
                 src="/images/FS/business.png"
                 title={competitions.business.title}
                 text={competitions.business.text}
@@ -122,10 +123,10 @@ const FlipCard: React.FC<FlipCardProps> = ({ text, src, title, height }) => {
   return (
     <div className={`flip-card ${height} relative rounded-md`}>
       <div className="flip-card-inner">
-        <div className="flip-card-front relative w-full h-full">
+        <div className="flip-card-front relative h-full w-full">
           <Image src={src} alt={title} layout="fill" objectFit="fill" />
         </div>
-        <div className=" text-center flip-card-back absolute inset-0 z-20 flex flex-col justify-center items-center gap-4 rounded-md p-8 bg-neutral-200">
+        <div className="flip-card-back absolute inset-0 z-20 flex flex-col items-center justify-center gap-4 rounded-md bg-neutral-200 p-8 text-center">
           <Title wrap color="black" size="small">
             {title}
           </Title>

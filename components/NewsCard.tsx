@@ -1,9 +1,9 @@
 import Image from "next/image";
-import Title from "./Title";
-import Text from "./Text";
 import Link from "next/link";
 
-type NewsCardProps = {
+import Text from "./Text";
+
+interface NewsCardProps {
   id: string;
   title: string;
   short_description: string;
@@ -12,7 +12,7 @@ type NewsCardProps = {
   logo: string;
   main_image: string;
   whiteMode?: boolean;
-};
+}
 const NewsCard: React.FC<NewsCardProps> = ({
   id,
   title,
@@ -25,20 +25,20 @@ const NewsCard: React.FC<NewsCardProps> = ({
 }) => {
   return (
     <Link href={`/news/${id}`} passHref>
-      <div className=" group h-[26rem] md:h-[34rem] rounded-md flex flex-col overflow-hidden cursor-pointer">
-        <div className="h-full relative overflow-hidden">
+      <div className="group flex h-[26rem] cursor-pointer flex-col overflow-hidden rounded-md md:h-[34rem]">
+        <div className="relative h-full overflow-hidden">
           <Image
             src={main_image}
             alt={"test"}
             fill
             style={{ objectFit: "cover" }}
-            className="group-hover:scale-105 duration-500 ease-in-out"
+            className="duration-500 ease-in-out group-hover:scale-105"
           />
         </div>
         <div
           className={` ${
             whiteMode ? "bg-neutral-200" : "bg-neutral-200"
-          } w-full px-5 py-4 flex flex-col`}
+          } flex w-full flex-col px-5 py-4`}
         >
           <Text color="black" small wide bold opacity1 center>
             {title}
