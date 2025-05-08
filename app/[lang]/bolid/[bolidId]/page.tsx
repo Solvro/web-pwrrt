@@ -1,25 +1,25 @@
-import { getBolidByBolidId } from "@/app/actions/getBolidByBolidId";
-import Container from "@/app/components/Container";
-import BolidSection from "@/app/components/Section/BolidSection/BolidSection";
-import Text from "@/app/components/Text";
-import Title from "@/app/components/Title";
-import Image from "next/image";
-import { getDictionary } from "../../dictionaries";
-import { getDictionary2 } from "@/app/actions/getDictionary";
+import { getBolidByBolidId } from '@/actions/getBolidByBolidId';
+import Container from '@/components/Container';
+import BolidSection from '@/components/Section/BolidSection/BolidSection';
+import Text from '@/components/Text';
+import Title from '@/components/Title';
+import Image from 'next/image';
+import { getDictionary } from '../../../../dictionaries';
+import { getDictionary2 } from '@/actions/getDictionary';
 
 interface Iparams {
   lang: string;
   bolidId?: string;
 }
 
-type Locale = "pl" | "en";
+type Locale = 'pl' | 'en';
 
 const BolidPage = async ({ params }: { params: Iparams }) => {
   const { lang, bolidId } = params;
-  const currentLocale = lang === "pl" || lang === "en" ? lang : "en";
+  const currentLocale = lang === 'pl' || lang === 'en' ? lang : 'en';
   const dict = await getDictionary(currentLocale);
 
-  const bolidIdValue = bolidId ?? "RT13e";
+  const bolidIdValue = bolidId ?? 'RT13e';
   const bolid = await getBolidByBolidId(bolidIdValue);
 
   if (!bolid) {
@@ -141,14 +141,12 @@ const BolidPage = async ({ params }: { params: Iparams }) => {
         {bolid.parts.map((part, depIndex) => (
           <div
             key={part.partName}
-            className={`${depIndex % 2 === 0 ? "bg-neutral-200" : "bg-white"}`}
-          >
+            className={`${depIndex % 2 === 0 ? 'bg-neutral-200' : 'bg-white'}`}>
             <Container>
               <div
                 className={`${
-                  depIndex % 2 === 0 ? "" : " md:flex-row-reverse"
-                } flex md:flex-row flex-col gap-0 md:gap-16 my-8 `}
-              >
+                  depIndex % 2 === 0 ? '' : ' md:flex-row-reverse'
+                } flex md:flex-row flex-col gap-0 md:gap-16 my-8 `}>
                 <div className=" my-0 md:my-20 md:w-2/3">
                   <div className=" uppercase">
                     <Title size="big" color="black">
@@ -166,8 +164,8 @@ const BolidPage = async ({ params }: { params: Iparams }) => {
                     width={300} // Używaj rzeczywistych proporcji obrazu
                     height={400} // Używaj rzeczywistych proporcji obrazu
                     style={{
-                      width: "100%",
-                      height: "auto",
+                      width: '100%',
+                      height: 'auto',
                     }}
                     sizes="(max-width: 768px) 100vw, 25vw"
                   />

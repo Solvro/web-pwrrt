@@ -1,12 +1,12 @@
-"use client";
+'use client';
 
-import Image from "next/image";
-import Container from "../../Container";
-import Button from "../../Button";
-import Title from "../../Title";
-import { useRouter } from "next/navigation";
-import useLoginModal from "@/app/hooks/useLoginModal";
-import useRentModal from "@/app/hooks/useRentModal";
+import Image from 'next/image';
+import Container from '../../Container';
+import Button from '../../Button';
+import Title from '../../Title';
+import { useRouter } from 'next/navigation';
+import useLoginModal from '@/hooks/useLoginModal';
+import useRentModal from '@/hooks/useRentModal';
 
 interface JoinusSectionProps {
   dict: {
@@ -28,14 +28,12 @@ const JoinusSection: React.FC<JoinusSectionProps> = ({
   return (
     <div
       id="joinus"
-      className={`${sizeBig ? "h-screen" : "h-[633px]"} relative`}
-    >
+      className={`${sizeBig ? 'h-screen' : 'h-[633px]'} relative`}>
       <div
         className="absolute inset-0 z-10"
         style={{
           background: `linear-gradient(0deg, rgba(0, 0, 0, 0.16), rgba(0, 0, 0, 0.16)), radial-gradient(75% 75% at 50% 50%, #000000 0%, rgba(0, 0, 0, 0) 100%)`,
-        }}
-      ></div>
+        }}></div>
       <div className="grid h-full grid-cols-[25%_40%_35%] relative">
         {/* Pierwsza kolumna */}
         <div className="relative h-full col-span-3 md:col-span-1">

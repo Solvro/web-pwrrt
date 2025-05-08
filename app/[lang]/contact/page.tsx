@@ -1,12 +1,12 @@
-import { getTeamByFullName } from "@/app/actions/getTeamByName";
-import Container from "@/app/components/Container";
-import Text from "@/app/components/Text";
-import Title from "@/app/components/Title";
-import { getDictionary } from "../dictionaries";
-import UserCard from "../team/[teamId]/UserCard";
-import { sortRoles } from "../team/[teamId]/utils";
-import { EmailAction, Admin } from "./emailAction";
-import GoogleMapComponent from "./map";
+import { getTeamByFullName } from '@/actions/getTeamByName';
+import Container from '@/components/Container';
+import Text from '@/components/Text';
+import Title from '@/components/Title';
+import { getDictionary } from '../../../dictionaries';
+import UserCard from '../team/[teamId]/UserCard';
+import { sortRoles } from '../team/[teamId]/utils';
+import { EmailAction, Admin } from './emailAction';
+import GoogleMapComponent from './map';
 
 interface Role {
   department: string;
@@ -33,14 +33,14 @@ const getMembersData = async (
   const teamMembers: TeamMember[] = [];
 
   for (const member of names) {
-    const [name, ...rest] = member.split(" ");
-    const surname = rest.join(" ");
+    const [name, ...rest] = member.split(' ');
+    const surname = rest.join(' ');
     const memberData = await getTeamByFullName(name, surname);
     if (memberData.length > 0) {
       const member = memberData[0];
       const currentRole =
         member.roles.find((role: Role) => role.bolidName === bolidName)?.role ||
-        "No current role";
+        'No current role';
 
       teamMembers.push({
         ...member,
@@ -53,10 +53,10 @@ const getMembersData = async (
 };
 
 const formatPhoneNumber = (phoneNumber: string | null | undefined) => {
-  if (!phoneNumber) return "";
+  if (!phoneNumber) return '';
   const countryCode = phoneNumber.slice(0, 3);
   const restOfNumber = phoneNumber.slice(3);
-  const formattedNumber = restOfNumber.replace(/(\d{3})(?=\d)/g, "$1 ");
+  const formattedNumber = restOfNumber.replace(/(\d{3})(?=\d)/g, '$1 ');
   return `${countryCode} ${formattedNumber}`;
 };
 
@@ -68,27 +68,27 @@ interface ContactUsProps {
 
 const ContactUs: React.FC<ContactUsProps> = async ({ params }) => {
   const language =
-    params.lang === "pl" || params.lang === "en" ? params.lang : "en";
+    params.lang === 'pl' || params.lang === 'en' ? params.lang : 'en';
   const dict = await getDictionary(language);
-  const dictionaryCard = await getDictionary(language, "teamPage");
+  const dictionaryCard = await getDictionary(language, 'teamPage');
 
   const mainMembers = await getMembersData(
-    ["paweł wójcik", "bartosz sobczak", "alicja jeżak", "joanna popielewska"],
-    "RT15e"
+    ['paweł wójcik', 'bartosz sobczak', 'alicja jeżak', 'joanna popielewska'],
+    'RT15e'
   );
 
   const projectSupervisors = await getMembersData(
     [
-      "dr hab. inż. Anna Janicka",
-      "dr hab. inż. Damian Derlukiewicz",
-      "dr inż. Gustaw Sierzputowski",
+      'dr hab. inż. Anna Janicka',
+      'dr hab. inż. Damian Derlukiewicz',
+      'dr inż. Gustaw Sierzputowski',
     ],
-    "RT14e"
+    'RT14e'
   );
 
   const siteAdministration = await getMembersData(
-    ["dawid chmal", "maria kanczewska"],
-    "RT14e"
+    ['dawid chmal', 'maria kanczewska'],
+    'RT14e'
   );
 
   const roleHistory: RoleHistory = {};
@@ -132,10 +132,10 @@ const ContactUs: React.FC<ContactUsProps> = async ({ params }) => {
                   roleHistory={roleHistory}
                 />
                 <EmailAction
-                  email={member.email || "pawel.wojcik.pwrrt@gmail.com"}
+                  email={member.email || 'pawel.wojcik.pwrrt@gmail.com'}
                 />
                 <EmailAction
-                  email={formatPhoneNumber(member.phoneNumber) || "Brak numeru"}
+                  email={formatPhoneNumber(member.phoneNumber) || 'Brak numeru'}
                 />
               </div>
             ))}

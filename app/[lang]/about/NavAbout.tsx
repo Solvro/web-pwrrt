@@ -1,9 +1,9 @@
-"use client";
+'use client';
 
-import Container from "@/app/components/Container";
-import Text from "@/app/components/Text";
-import Image from "next/image";
-import Link from "next/link";
+import Container from '@/components/Container';
+import Text from '@/components/Text';
+import Image from 'next/image';
+import Link from 'next/link';
 
 interface NavAboutProps {
   dict: {

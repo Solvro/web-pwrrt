@@ -1,8 +1,8 @@
-"use client";
+'use client';
 
-import Title from "@/app/components/Title";
-import Image from "next/image";
-import { useEffect, useState } from "react";
+import Title from '@/components/Title';
+import Image from 'next/image';
+import { useEffect, useState } from 'react';
 
 interface HeroAboutProps {
   dict: {
@@ -16,15 +16,14 @@ const HeroAbout: React.FC<HeroAboutProps> = ({ dict }) => {
   const handleScroll = () => setOffsetY(window.pageYOffset);
 
   useEffect(() => {
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   return (
     <div
       className=" fixed w-full grid-cols-1 grid md:grid-cols-2 h-[40rem]"
-      style={{ transform: `translateY(${offsetY * -0.1}px)` }}
-    >
+      style={{ transform: `translateY(${offsetY * -0.1}px)` }}>
       <div className="pt-[100px] opacity-90 md:opacity-100 bg-neutral-900 z-10">
         <div className="h-full p-20">
           <div className="flex flex-col justify-between h-full max-w-[400px]">
@@ -36,8 +35,7 @@ const HeroAbout: React.FC<HeroAboutProps> = ({ dict }) => {
               height="119"
               viewBox="0 0 49 119"
               fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
+              xmlns="http://www.w3.org/2000/svg">
               <path
                 fill-rule="evenodd"
                 clip-rule="evenodd"

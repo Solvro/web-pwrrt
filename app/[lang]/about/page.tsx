@@ -1,13 +1,13 @@
-import FSSection from "@/app/components/Section/FSSection/FSSection";
-import HistorySection from "@/app/components/Section/HistorySection/HistorySection";
-import JoinusSection from "@/app/components/Section/JoinusSection/JoinusSection";
-import SponsorsSection from "@/app/components/Section/SponsorsSection/SponsorsSection";
-import { getDictionary } from "../dictionaries";
-import DepartmentsAbout from "./DepartmentsAbout/DepartmentsAbout";
-import FSAbout from "./FSAbout";
-import GarageAbout from "./GarabeAbout";
-import HeroAbout from "./HeroAbout";
-import NavAbout from "./NavAbout";
+import FSSection from '@/components/Section/FSSection/FSSection';
+import HistorySection from '@/components/Section/HistorySection/HistorySection';
+import JoinusSection from '@/components/Section/JoinusSection/JoinusSection';
+import SponsorsSection from '@/components/Section/SponsorsSection/SponsorsSection';
+import { getDictionary } from '../../../dictionaries';
+import DepartmentsAbout from './DepartmentsAbout/DepartmentsAbout';
+import FSAbout from './FSAbout';
+import GarageAbout from './GarabeAbout';
+import HeroAbout from './HeroAbout';
+import NavAbout from './NavAbout';
 
 interface AboutUsProps {
   params: {
@@ -17,7 +17,7 @@ interface AboutUsProps {
 
 const AboutUs: React.FC<AboutUsProps> = async ({ params }) => {
   const language =
-    params.lang === "pl" || params.lang === "en" ? params.lang : "en";
+    params.lang === 'pl' || params.lang === 'en' ? params.lang : 'en';
   const dict = await getDictionary(language);
 
   return (

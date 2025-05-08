@@ -1,9 +1,9 @@
-import { redirect } from "next/navigation";
-import getNewsById from "@/app/actions/getNewsById";
-import Container from "@/app/components/Container";
-import Text from "@/app/components/Text";
-import Title from "@/app/components/Title";
-import Image from "next/image";
+import { redirect } from 'next/navigation';
+import getNewsById from '@/actions/getNewsById';
+import Container from '@/components/Container';
+import Text from '@/components/Text';
+import Title from '@/components/Title';
+import Image from 'next/image';
 
 interface Iparams {
   newsId?: string;
@@ -14,13 +14,13 @@ const NewsPage = async ({ params }: { params: Iparams }) => {
 
   if (!newsId) {
     // Przekierowanie, gdy newsId jest undefined
-    redirect("/news");
+    redirect('/news');
   }
 
   const news = await getNewsById(newsId);
 
   if (!news) {
-    redirect("/news");
+    redirect('/news');
   }
 
   return (
@@ -43,7 +43,7 @@ const NewsPage = async ({ params }: { params: Iparams }) => {
                 src={news.main_image}
                 alt={news.title}
                 fill
-                style={{ objectFit: "cover" }}
+                style={{ objectFit: 'cover' }}
                 className="group-hover:scale-105 duration-500 ease-in-out"
               />
             </div>

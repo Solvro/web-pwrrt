@@ -1,12 +1,12 @@
-"use client";
+'use client';
 
-import { useState } from "react";
+import { useState } from 'react';
 
-import Text from "@/app/components/Text";
-import { toast } from "react-hot-toast";
-import { FaEnvelope } from "react-icons/fa";
-import { FiPhone } from "react-icons/fi";
-import Button from "../../../components/Button";
+import Text from '@/components/Text';
+import { toast } from 'react-hot-toast';
+import { FaEnvelope } from 'react-icons/fa';
+import { FiPhone } from 'react-icons/fi';
+import Button from '@/components/Button';
 
 interface Member {
   name: string;
@@ -55,7 +55,7 @@ const handleMail = (email: string) => {
           toast.success(`E-mail skopiowany do schowka! ${email}`);
         })
         .catch((err) => {
-          toast.error("Nie udało się skopiować maila.");
+          toast.error('Nie udało się skopiować maila.');
         });
     }
   };
@@ -74,56 +74,50 @@ const TileHeading: React.FC<ParamsTileHeading> = ({
   // Sprawdzamy długość imienia i nazwiska
   const fullName = `${member.name} ${member.surname}`;
   const dynamicTranslate =
-    fullName.length > 25 ? "translate-y-[76%]" : "translate-y-[82%]";
+    fullName.length > 25 ? 'translate-y-[76%]' : 'translate-y-[82%]';
 
   return (
     <div
       className=""
       onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
-    >
+      onMouseLeave={() => setIsHovered(false)}>
       <div
         className={`${
           opiekun
-            ? "bottom-0"
+            ? 'bottom-0'
             : `capitalize absolute inset-0 ${dynamicTranslate} group-hover:opacity-[98%] group-hover:translate-y-0 group-hover:p-6 transition duration-300 ease-in-out`
-        } absolute p-3 flex flex-col justify-between bg-black`}
-      >
+        } absolute p-3 flex flex-col justify-between bg-black`}>
         <div className="absolute inset-0 z-0 w-full h-full rounded-full blur-3xl bg-white opacity-15"></div>
         <div
           className={` ${
-            opiekun ? "" : "group-hover:my-1"
-          }flex flex-col transition-all duration-300 ease-in-out z-30`}
-        >
+            opiekun ? '' : 'group-hover:my-1'
+          }flex flex-col transition-all duration-300 ease-in-out z-30`}>
           <div
             className={` ${
-              opiekun ? "" : "group-hover:text-center"
-            } w-full duration-300 ease-in-out`}
-          >
+              opiekun ? '' : 'group-hover:text-center'
+            } w-full duration-300 ease-in-out`}>
             <Text color="white" opacity1 small wide bold center>
               {member.name} {member.surname}
             </Text>
           </div>
           <div
             className={`${
-              opiekun ? "" : "group-hover:text-center "
-            }w-full transition-all duration-300 ease-in-out capitalize`}
-          >
+              opiekun ? '' : 'group-hover:text-center '
+            }w-full transition-all duration-300 ease-in-out capitalize`}>
             <Text color="red" opacity1 bold center>
               {isHovered
                 ? member.currentRole
                 : member.currentRole.length > 28
-                ? `${member.currentRole.slice(0, 28)}...`
-                : member.currentRole}
+                  ? `${member.currentRole.slice(0, 28)}...`
+                  : member.currentRole}
             </Text>
           </div>
         </div>
 
         <div
           className={`${
-            opiekun ? "hidden" : "flex"
-          } relative py-4 my-4 items-center`}
-        >
+            opiekun ? 'hidden' : 'flex'
+          } relative py-4 my-4 items-center`}>
           <div className="absolute ml-[3px] h-full w-[2px] bg-neutral-400 rounded-lg"></div>
           <div className="flex flex-col gap-2 z-30 text-white max-h-28 w-full overflow-scroll overflow-x-hidden custom-scrollbar">
             {roleHistory[`${member.name} ${member.surname}`]?.map(

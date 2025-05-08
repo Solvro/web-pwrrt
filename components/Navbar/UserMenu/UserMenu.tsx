@@ -1,21 +1,21 @@
-"use client";
+'use client';
 
-import { AiOutlineMenu } from "react-icons/ai";
+import { AiOutlineMenu } from 'react-icons/ai';
 import {
   FaFacebookF,
   FaInstagram,
   FaLinkedinIn,
   FaYoutube,
-} from "react-icons/fa";
-import Avatar from "../../Avatar";
-import { useCallback, useState, useRef, useEffect } from "react";
-import MenuItem from "./MenuItem";
-import useRegisterModal from "@/app/hooks/useRegisterModal";
-import useLoginModal from "@/app/hooks/useLoginModal";
-import SocialIcons from "./SocialIcons";
-import { useRouter } from "next/navigation";
-import { usePathname } from "next/navigation";
-import LangButton from "./LangButton";
+} from 'react-icons/fa';
+import Avatar from '../../Avatar';
+import { useCallback, useState, useRef, useEffect } from 'react';
+import MenuItem from './MenuItem';
+import useRegisterModal from '@/hooks/useRegisterModal';
+import useLoginModal from '@/hooks/useLoginModal';
+import SocialIcons from './SocialIcons';
+import { useRouter } from 'next/navigation';
+import { usePathname } from 'next/navigation';
+import LangButton from './LangButton';
 
 interface UserMenuProps {
   lang: string;
@@ -49,13 +49,13 @@ const UserMenu: React.FC<UserMenuProps> = ({ lang, dict }) => {
 
   useEffect(() => {
     if (isOpen) {
-      document.addEventListener("mousedown", handleClickOutside);
+      document.addEventListener('mousedown', handleClickOutside);
     } else {
-      document.removeEventListener("mousedown", handleClickOutside);
+      document.removeEventListener('mousedown', handleClickOutside);
     }
 
     return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
+      document.removeEventListener('mousedown', handleClickOutside);
     };
   }, [isOpen, handleClickOutside]);
 
@@ -65,7 +65,7 @@ const UserMenu: React.FC<UserMenuProps> = ({ lang, dict }) => {
 
   const handleMenuItemClick = useCallback(
     (path: string) => {
-      const currentLocale = pathname!.split("/")[1];
+      const currentLocale = pathname!.split('/')[1];
       const newPath = `/${currentLocale}${path}`;
       router.push(newPath);
       setIsOpen(false);
@@ -118,8 +118,7 @@ const UserMenu: React.FC<UserMenuProps> = ({ lang, dict }) => {
             transition
             duration-300
           hover:border-customRed
-          hover:bg-customRed"
-        >
+          hover:bg-customRed">
           <AiOutlineMenu />
           <div className="hidden">
             <Avatar></Avatar>

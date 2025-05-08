@@ -1,4 +1,4 @@
-import prisma from "@/app/libs/prismadb";
+import prisma from '@/libs/prismadb';
 
 export async function getTeamByBolid(bolidName: string) {
   const teamMembers = await prisma.teamMember.findMany({

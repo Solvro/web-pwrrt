@@ -1,9 +1,9 @@
-"use client";
+'use client';
 
-import Button from "@/app/components/Button";
-import Title from "@/app/components/Title";
-import { useRouter } from "next/navigation";
-import React from "react";
+import Button from '@/components/Button';
+import Title from '@/components/Title';
+import { useRouter } from 'next/navigation';
+import React from 'react';
 
 interface NewsControlsProps {
   dict: {

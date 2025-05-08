@@ -1,8 +1,8 @@
 // pages/about-us.jsx
-import Container from "@/app/components/Container";
-import NewsCard from "@/app/components/NewsCard";
-import { fetchNews } from "@/app/actions/getNews";
-import Title from "@/app/components/Title";
+import Container from '@/components/Container';
+import NewsCard from '@/components/NewsCard';
+import { fetchNews } from '@/actions/getNews';
+import Title from '@/components/Title';
 
 const AboutUs = async () => {
   const news = await fetchNews();
@@ -20,7 +20,7 @@ const AboutUs = async () => {
               title={item.title}
               short_description={item.short_description}
               length_time={item.length_time}
-              logo={item.logo || "/images/logo-czarne.svg"}
+              logo={item.logo || '/images/logo-czarne.svg'}
               main_image={item.main_image}
             />
           ))}

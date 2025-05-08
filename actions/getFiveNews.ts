@@ -1,10 +1,10 @@
-import prisma from "@/app/libs/prismadb";
+import prisma from '@/libs/prismadb';
 
 export async function fetchFiveNews() {
   const news = await prisma.news.findMany({
     orderBy: [
       {
-        date: "desc", // Sortuje wyniki malejąco, więc najnowsze newsy będą na górze
+        date: 'desc', // Sortuje wyniki malejąco, więc najnowsze newsy będą na górze
       },
     ],
     take: 3, // Pobiera tylko 5 najnowszych wiadomości

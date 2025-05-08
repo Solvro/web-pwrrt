@@ -1,8 +1,8 @@
-"use client";
+'use client';
 
-import Text from "@/app/components/Text";
-import Title from "@/app/components/Title";
-import { useEffect, useState, useCallback } from "react";
+import Text from '@/components/Text';
+import Title from '@/components/Title';
+import { useEffect, useState, useCallback } from 'react';
 
 interface TimerProps {
   targetDate: string;
@@ -13,26 +13,26 @@ const Timer: React.FC<TimerProps> = ({ targetDate, dict }) => {
   const calculateTimeLeft = useCallback(() => {
     const difference = +new Date(targetDate) - +new Date();
     let timeLeft = {
-      days: "00",
-      hours: "00",
-      minutes: "00",
-      seconds: "00",
+      days: '00',
+      hours: '00',
+      minutes: '00',
+      seconds: '00',
     };
 
     if (difference > 0) {
       timeLeft = {
         days: String(Math.floor(difference / (1000 * 60 * 60 * 24))).padStart(
           2,
-          "0"
+          '0'
         ),
         hours: String(
           Math.floor((difference / (1000 * 60 * 60)) % 24)
-        ).padStart(2, "0"),
+        ).padStart(2, '0'),
         minutes: String(Math.floor((difference / 1000 / 60) % 60)).padStart(
           2,
-          "0"
+          '0'
         ),
-        seconds: String(Math.floor((difference / 1000) % 60)).padStart(2, "0"),
+        seconds: String(Math.floor((difference / 1000) % 60)).padStart(2, '0'),
       };
     }
 

@@ -1,20 +1,20 @@
-"use client";
+'use client';
 
-import { signIn } from "next-auth/react";
-import { AiFillGithub } from "react-icons/ai";
-import { FcGoogle } from "react-icons/fc";
-import { useCallback, useState } from "react";
-import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
+import { signIn } from 'next-auth/react';
+import { AiFillGithub } from 'react-icons/ai';
+import { FcGoogle } from 'react-icons/fc';
+import { useCallback, useState } from 'react';
+import { FieldValues, SubmitHandler, useForm } from 'react-hook-form';
 
-import useRegisterModal from "@/app/hooks/useRegisterModal";
-import useLoginModal from "@/app/hooks/useLoginModal";
+import useRegisterModal from '@/hooks/useRegisterModal';
+import useLoginModal from '@/hooks/useLoginModal';
 
-import Modal from "./Modal";
-import Heading from "../Heading";
-import Input from "../inputs/Input";
-import toast from "react-hot-toast";
-import Button from "../Button";
-import { useRouter } from "next/navigation";
+import Modal from './Modal';
+import Heading from '../Heading';
+import Input from '../inputs/Input';
+import toast from 'react-hot-toast';
+import Button from '../Button';
+import { useRouter } from 'next/navigation';
 
 const LoginModal = () => {
   const router = useRouter();
@@ -29,22 +29,22 @@ const LoginModal = () => {
     formState: { errors },
   } = useForm<FieldValues>({
     defaultValues: {
-      email: "",
-      password: "",
+      email: '',
+      password: '',
     },
   });
 
   const onSubmit: SubmitHandler<FieldValues> = (data) => {
     setIsLoading(true);
 
-    signIn("credentials", {
+    signIn('credentials', {
       ...data,
       redirect: false,
     }).then((callback) => {
       setIsLoading(false);
 
       if (callback?.ok) {
-        toast.success("Logged in!");
+        toast.success('Logged in!');
         router.refresh();
         loginModal.onClose();
       }
@@ -90,21 +90,20 @@ const LoginModal = () => {
         outline
         label="Continue with Google"
         icon={FcGoogle}
-        onClick={() => signIn("google")}
+        onClick={() => signIn('google')}
       />
       <Button
         outline
         label="Continue with GitHub"
         icon={AiFillGithub}
-        onClick={() => signIn("github")}
+        onClick={() => signIn('github')}
       />
       <div className="text-neutral-500 text-center mt-4 font-light">
         <div className="justify-center flex flex-row items-center gap-2">
           <div>Nie pamiętasz hasła?</div>
           <div
             onClick={toggle}
-            className="text-neutral-800 cursor-pointer hover:underline"
-          >
+            className="text-neutral-800 cursor-pointer hover:underline">
             Skontaktuj się z administratorem
           </div>
         </div>

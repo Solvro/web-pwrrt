@@ -1,5 +1,5 @@
 // actions/getNewsById.ts
-import prisma from "@/app/libs/prismadb";
+import prisma from '@/libs/prismadb';
 
 export default async function getNewsById(newsId: string) {
   const news = await prisma.news.findUnique({

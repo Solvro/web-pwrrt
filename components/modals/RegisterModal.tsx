@@ -1,19 +1,19 @@
-"use client";
+'use client';
 
-import axios from "axios";
-import { AiFillGithub } from "react-icons/ai";
-import { FcGoogle } from "react-icons/fc";
-import { useCallback, useState } from "react";
-import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
+import axios from 'axios';
+import { AiFillGithub } from 'react-icons/ai';
+import { FcGoogle } from 'react-icons/fc';
+import { useCallback, useState } from 'react';
+import { FieldValues, SubmitHandler, useForm } from 'react-hook-form';
 
-import useRegisterModal from "../../hooks/useRegisterModal";
-import Modal from "./Modal";
-import Heading from "../Heading";
-import Input from "../inputs/Input";
-import toast from "react-hot-toast";
-import Button from "../Button";
-import { signIn } from "next-auth/react";
-import useLoginModal from "@/app/hooks/useLoginModal";
+import useRegisterModal from '../../hooks/useRegisterModal';
+import Modal from './Modal';
+import Heading from '../Heading';
+import Input from '../inputs/Input';
+import toast from 'react-hot-toast';
+import Button from '../Button';
+import { signIn } from 'next-auth/react';
+import useLoginModal from '@/hooks/useLoginModal';
 
 const RegisterModal = () => {
   const registerModal = useRegisterModal();
@@ -26,9 +26,9 @@ const RegisterModal = () => {
     formState: { errors },
   } = useForm<FieldValues>({
     defaultValues: {
-      name: "",
-      email: "",
-      password: "",
+      name: '',
+      email: '',
+      password: '',
     },
   });
 
@@ -36,18 +36,18 @@ const RegisterModal = () => {
     setIsLoading(true);
 
     axios
-      .post("/api/register", data)
+      .post('/api/register', data)
       .then(() => {
-        toast.success("Account created!");
+        toast.success('Account created!');
         registerModal.onClose();
         loginModal.onOpen();
       })
       .catch(() => {
-        toast.error("Something went wrong");
+        toast.error('Something went wrong');
       })
       .finally(() => {
         setIsLoading(false);
-        toast.success("Account created!");
+        toast.success('Account created!');
       });
   };
 
@@ -94,21 +94,20 @@ const RegisterModal = () => {
         outline
         label="Continue with Google"
         icon={FcGoogle}
-        onClick={() => signIn("google")}
+        onClick={() => signIn('google')}
       />
       <Button
         outline
         label="Continue with GitHub"
         icon={AiFillGithub}
-        onClick={() => signIn("github")}
+        onClick={() => signIn('github')}
       />
       <div className="text-neutral-500 text-center mt-4 font-light">
         <div className="justify-center flex flex-row items-center gap-2">
           <div>Masz już konto?</div>
           <div
             onClick={toggle}
-            className="text-neutral-800 cursor-pointer hover:underline"
-          >
+            className="text-neutral-800 cursor-pointer hover:underline">
             Zaloguj się
           </div>
         </div>

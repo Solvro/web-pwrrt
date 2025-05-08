@@ -1,9 +1,9 @@
-import Container from "@/app/components/Container";
-import Title from "@/app/components/Title";
-import DepartmentsAbout from "../about/DepartmentsAbout/DepartmentsAbout";
-import { getDictionary } from "../dictionaries";
-import ButtonsSection from "./buttonJoinUs";
-import Timer from "./timer";
+import Container from '@/components/Container';
+import Title from '@/components/Title';
+import DepartmentsAbout from '../about/DepartmentsAbout/DepartmentsAbout';
+import { getDictionary } from '../../../dictionaries';
+import ButtonsSection from './buttonJoinUs';
+import Timer from './timer';
 
 interface Props {
   params: {
@@ -13,7 +13,7 @@ interface Props {
 
 const JoinUs: React.FC<Props> = async ({ params }) => {
   const language =
-    params.lang === "pl" || params.lang === "en" ? params.lang : "en";
+    params.lang === 'pl' || params.lang === 'en' ? params.lang : 'en';
   const dict = await getDictionary(language);
 
   return (

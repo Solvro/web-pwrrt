@@ -1,12 +1,12 @@
-import { getTeamByBolid } from "@/app/actions/getTeamByBolid";
-import Container from "@/app/components/Container";
-import SecondaryButton from "@/app/components/SecondaryButton";
-import Title from "@/app/components/Title";
-import Image from "next/image";
-import ClientSlider from "./ClientSlider";
-import UserCard from "./UserCard";
-import { sortRoles } from "./utils";
-import { getDictionary } from "../../dictionaries";
+import { getTeamByBolid } from '@/actions/getTeamByBolid';
+import Container from '@/components/Container';
+import SecondaryButton from '@/components/SecondaryButton';
+import Title from '@/components/Title';
+import Image from 'next/image';
+import ClientSlider from './ClientSlider';
+import UserCard from './UserCard';
+import { sortRoles } from './utils';
+import { getDictionary } from '../../../../dictionaries';
 
 interface Iparams {
   lang: string;
@@ -14,7 +14,7 @@ interface Iparams {
 }
 
 const TeamPage = async ({ params }: { params: Iparams }) => {
-  const teamId = params.teamId ?? "RT13e";
+  const teamId = params.teamId ?? 'RT13e';
   const team = await getTeamByBolid(teamId);
 
   interface Member {
@@ -66,8 +66,8 @@ const TeamPage = async ({ params }: { params: Iparams }) => {
           departmentMember = {
             name: member.name,
             surname: member.surname,
-            phoneNumber: member.phoneNumber ?? "", // Default value for phoneNumber
-            email: member.email ?? "", // Default value for email
+            phoneNumber: member.phoneNumber ?? '', // Default value for phoneNumber
+            email: member.email ?? '', // Default value for email
             currentRole: role.role,
           } as Member;
           membersByDepartment[role.department].push(departmentMember);
@@ -81,25 +81,25 @@ const TeamPage = async ({ params }: { params: Iparams }) => {
   }
 
   const departmentOrder = [
-    "management",
-    "marketing",
-    "business",
-    "composites",
-    "software",
-    "electrical",
-    "mechanical",
-    "vehicle performance",
-    "workshop",
-    "drivers",
-    "opiekun naukowy",
+    'management',
+    'marketing',
+    'business',
+    'composites',
+    'software',
+    'electrical',
+    'mechanical',
+    'vehicle performance',
+    'workshop',
+    'drivers',
+    'opiekun naukowy',
   ];
 
   const sortedDepartments = Object.keys(membersByDepartment).sort((a, b) => {
     const aIndex = departmentOrder.indexOf(a);
     const bIndex = departmentOrder.indexOf(b);
 
-    if (a === "opiekun naukowy") return 1;
-    if (b === "opiekun naukowy") return -1;
+    if (a === 'opiekun naukowy') return 1;
+    if (b === 'opiekun naukowy') return -1;
 
     if (aIndex === -1 && bIndex === -1) return a.localeCompare(b);
     if (aIndex === -1) return 1;
@@ -110,7 +110,7 @@ const TeamPage = async ({ params }: { params: Iparams }) => {
 
   const lang = params.lang;
 
-  const dict = await getDictionary(lang, "teamPage");
+  const dict = await getDictionary(lang, 'teamPage');
 
   return (
     <div className="relative bg-neutral-950 pt-32 pb-12">
@@ -122,45 +122,42 @@ const TeamPage = async ({ params }: { params: Iparams }) => {
             <div key={department} className="">
               <div
                 className={`absolute opacity-5 ${
-                  depIndex % 2 === 0 ? "left-0" : "right-0"
-                }`}
-              >
+                  depIndex % 2 === 0 ? 'left-0' : 'right-0'
+                }`}>
                 <h1 className="text-[15rem] font-extrabold text-white uppercase leading-none">
-                  {department === "management" ? "Team" : department}
+                  {department === 'management' ? 'Team' : department}
                 </h1>
               </div>
               <Container>
                 <div
                   className={`${
-                    department === "management"
-                      ? " grid-cols-1 lg:grid-cols-2"
-                      : "grid-cols-1"
-                  } grid my-8 align-middle justify-center gap-8 lg:gap-16 w-full`}
-                >
+                    department === 'management'
+                      ? ' grid-cols-1 lg:grid-cols-2'
+                      : 'grid-cols-1'
+                  } grid my-8 align-middle justify-center gap-8 lg:gap-16 w-full`}>
                   <div className=" order-2 lg:order-1">
                     <div className="flex flex-col items-center">
                       <div className="uppercase text-center my-6 p-2 px-20 border-white border-b-2">
                         <Title color="white">
-                          {department === "management" ? teamId : department}
+                          {department === 'management' ? teamId : department}
                         </Title>
                       </div>
                     </div>
                     <div
                       key={department}
                       className={`${
-                        department === "management"
-                          ? " grid-cols-1 sm:grid-cols-2"
-                          : " grid-cols-1 sm:grid-cols-2 lg:grid-cols-4"
-                      } grid my-4 gap-6`}
-                    >
+                        department === 'management'
+                          ? ' grid-cols-1 sm:grid-cols-2'
+                          : ' grid-cols-1 sm:grid-cols-2 lg:grid-cols-4'
+                      } grid my-4 gap-6`}>
                       {membersByDepartment[department]
                         .sort((a, b) => {
                           const isLeaderA =
-                            a.currentRole.toLowerCase().includes("leader") ||
-                            a.currentRole.toLowerCase().includes("lider");
+                            a.currentRole.toLowerCase().includes('leader') ||
+                            a.currentRole.toLowerCase().includes('lider');
                           const isLeaderB =
-                            b.currentRole.toLowerCase().includes("leader") ||
-                            b.currentRole.toLowerCase().includes("lider");
+                            b.currentRole.toLowerCase().includes('leader') ||
+                            b.currentRole.toLowerCase().includes('lider');
                           if (isLeaderA && !isLeaderB) return -1;
                           if (!isLeaderA && isLeaderB) return 1;
                           if (isLeaderA && isLeaderB) return 0;
@@ -177,7 +174,7 @@ const TeamPage = async ({ params }: { params: Iparams }) => {
                         ))}
                     </div>
                   </div>
-                  {department === "management" && (
+                  {department === 'management' && (
                     <div className="flex flex-col justify-center order-1">
                       <div className="relative">
                         <div className=" absolute">

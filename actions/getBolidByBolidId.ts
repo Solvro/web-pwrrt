@@ -1,5 +1,5 @@
 // actions/getBolidByBolidId.ts
-import prisma from "@/app/libs/prismadb";
+import prisma from '@/libs/prismadb';
 
 export async function getBolidByBolidId(bolidId: string) {
   const bolid = await prisma.bolid.findUnique({

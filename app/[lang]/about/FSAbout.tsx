@@ -1,7 +1,7 @@
-import Container from "@/app/components/Container";
-import Text from "@/app/components/Text";
-import Title from "@/app/components/Title";
-import Image from "next/image";
+import Container from '@/components/Container';
+import Text from '@/components/Text';
+import Title from '@/components/Title';
+import Image from 'next/image';
 
 interface FSAboutProps {
   dict: {
@@ -53,25 +53,25 @@ const FSAbout: React.FC<FSAboutProps> = ({ dict }) => {
             </Title>
             <div className=" grid grid-cols-1 sm:grid-cols-2  md:grid-cols-4 gap-6 my-6">
               <FlipCard
-                height={"h-60"}
+                height={'h-60'}
                 src="/images/FS/acceleration.png"
                 title={competitions.acceleration.title}
                 text={competitions.acceleration.text}
               />
               <FlipCard
-                height={"h-60"}
+                height={'h-60'}
                 src="/images/FS/skipad.png"
                 title={competitions.skidPad.title}
                 text={competitions.skidPad.text}
               />
               <FlipCard
-                height={"h-60"}
+                height={'h-60'}
                 src="/images/FS/autocross.png"
                 title={competitions.autocross.title}
                 text={competitions.autocross.text}
               />
               <FlipCard
-                height={"h-60"}
+                height={'h-60'}
                 src="/images/FS/endurance.png"
                 title={competitions.endurance.title}
                 text={competitions.endurance.text}
@@ -84,19 +84,19 @@ const FSAbout: React.FC<FSAboutProps> = ({ dict }) => {
             </Title>
             <div className=" grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 my-6">
               <FlipCard
-                height={"h-56 md:h-80"}
+                height={'h-56 md:h-80'}
                 src="/images/FS/cost.png"
                 title={competitions.cost.title}
                 text={competitions.cost.text}
               />
               <FlipCard
-                height={"h-56 md:h-80"}
+                height={'h-56 md:h-80'}
                 src="/images/FS/engineering.png"
                 title={competitions.engineering.title}
                 text={competitions.engineering.text}
               />
               <FlipCard
-                height={"h-56 md:h-80"}
+                height={'h-56 md:h-80'}
                 src="/images/FS/business.png"
                 title={competitions.business.title}
                 text={competitions.business.text}

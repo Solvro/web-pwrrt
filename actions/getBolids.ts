@@ -1,4 +1,4 @@
-import prisma from "@/app/libs/prismadb";
+import prisma from '@/libs/prismadb';
 
 export const getBolids = async () => {
   const bolids = await prisma.bolid.findMany({
@@ -7,5 +7,5 @@ export const getBolids = async () => {
     },
   });
 
-  return bolids.map(bolid => bolid.name);
+  return bolids.map((bolid) => bolid.name);
 };

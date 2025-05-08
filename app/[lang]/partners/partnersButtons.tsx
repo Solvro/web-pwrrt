@@ -1,7 +1,7 @@
-"use client";
+'use client';
 
-import Button from "@/app/components/Button";
-import { useRouter } from "next/navigation";
+import Button from '@/components/Button';
+import { useRouter } from 'next/navigation';
 
 interface PartnersButtonProps {
   dict: { becomePartner: string; contact: string };

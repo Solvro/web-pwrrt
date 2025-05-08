@@ -1,8 +1,8 @@
-"use client";
+'use client';
 
-import Button from "@/app/components/Button";
-import Container from "@/app/components/Container";
-import Title from "@/app/components/Title";
+import Button from '@/components/Button';
+import Container from '@/components/Container';
+import Title from '@/components/Title';
 import {
   FaBolt,
   FaBullhorn,
@@ -10,9 +10,9 @@ import {
   FaCube,
   FaDollarSign,
   FaLaptopCode,
-} from "react-icons/fa";
-import { IoSettings } from "react-icons/io5";
-import DepartmentElement from "./DepartmentElement";
+} from 'react-icons/fa';
+import { IoSettings } from 'react-icons/io5';
+import DepartmentElement from './DepartmentElement';
 
 type DepartmentsAboutProps = {
   lightMode?: boolean;
@@ -57,37 +57,37 @@ const DepartmentsAbout: React.FC<DepartmentsAboutProps> = ({
 }) => {
   const departments = [
     {
-      name: "mechanical",
+      name: 'mechanical',
       description: dict.mechanical.description,
       responsibilities: dict.mechanical.responsibilities,
     },
     {
-      name: "composites",
+      name: 'composites',
       description: dict.composites.description,
       responsibilities: dict.composites.responsibilities,
     },
     {
-      name: "marketing",
+      name: 'marketing',
       description: dict.marketing.description,
       responsibilities: dict.marketing.responsibilities,
     },
     {
-      name: "software",
+      name: 'software',
       description: dict.software.description,
       responsibilities: dict.software.responsibilities,
     },
     {
-      name: "electrical",
+      name: 'electrical',
       description: dict.electrical.description,
       responsibilities: dict.electrical.responsibilities,
     },
     {
-      name: "vehicle performance",
+      name: 'vehicle performance',
       description: dict.vehiclePerformance.description,
       responsibilities: dict.vehiclePerformance.responsibilities,
     },
     {
-      name: "business",
+      name: 'business',
       description: dict.business.description,
       responsibilities: dict.business.responsibilities,
     },
@@ -96,7 +96,7 @@ const DepartmentsAbout: React.FC<DepartmentsAboutProps> = ({
   const handleScrollToSection = (id: string) => {
     const element = document.getElementById(id.toLowerCase());
     if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
+      element.scrollIntoView({ behavior: 'smooth' });
     }
   };
 
@@ -123,7 +123,7 @@ const DepartmentsAbout: React.FC<DepartmentsAboutProps> = ({
                     black
                     icon={IoSettings}
                     label="MECHANICAL"
-                    onClick={() => handleScrollToSection("mechanical")}
+                    onClick={() => handleScrollToSection('mechanical')}
                   />
                 </div>
                 <div className="sm:max-w-72 flex-1">
@@ -131,7 +131,7 @@ const DepartmentsAbout: React.FC<DepartmentsAboutProps> = ({
                     black
                     icon={FaCube}
                     label="COMPOSITES"
-                    onClick={() => handleScrollToSection("composites")}
+                    onClick={() => handleScrollToSection('composites')}
                   />
                 </div>
                 <div className="sm:max-w-72 flex-1">
@@ -139,7 +139,7 @@ const DepartmentsAbout: React.FC<DepartmentsAboutProps> = ({
                     black
                     icon={FaBullhorn}
                     label="MARKETING"
-                    onClick={() => handleScrollToSection("marketing")}
+                    onClick={() => handleScrollToSection('marketing')}
                   />
                 </div>
                 <div className="sm:max-w-72 flex-1">
@@ -147,7 +147,7 @@ const DepartmentsAbout: React.FC<DepartmentsAboutProps> = ({
                     black
                     icon={FaLaptopCode}
                     label="SOFTWARE"
-                    onClick={() => handleScrollToSection("software")}
+                    onClick={() => handleScrollToSection('software')}
                   />
                 </div>
                 <div className="sm:max-w-72 flex-1">
@@ -155,7 +155,7 @@ const DepartmentsAbout: React.FC<DepartmentsAboutProps> = ({
                     black
                     icon={FaBolt}
                     label="ELECTRICAL"
-                    onClick={() => handleScrollToSection("electrical")}
+                    onClick={() => handleScrollToSection('electrical')}
                   />
                 </div>
                 <div className="sm:max-w-72 flex-1 whitespace-nowrap">
@@ -163,7 +163,7 @@ const DepartmentsAbout: React.FC<DepartmentsAboutProps> = ({
                     black
                     icon={FaChartBar}
                     label="VEHICLE PERFORMANCE"
-                    onClick={() => handleScrollToSection("vehicle performance")}
+                    onClick={() => handleScrollToSection('vehicle performance')}
                   />
                 </div>
                 <div className="sm:max-w-72 flex-1">
@@ -171,7 +171,7 @@ const DepartmentsAbout: React.FC<DepartmentsAboutProps> = ({
                     black
                     icon={FaDollarSign}
                     label="BUSINESS"
-                    onClick={() => handleScrollToSection("business")}
+                    onClick={() => handleScrollToSection('business')}
                   />
                 </div>
               </div>
