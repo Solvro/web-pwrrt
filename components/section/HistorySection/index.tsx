@@ -1,36 +1,27 @@
 "use client";
 
+import { useTranslations } from "next-intl";
 import Image from "next/image";
 
 import Container from "../../Container";
 import SecondaryButton from "../../SecondaryButton";
 import Text from "../../Text";
 import Title from "../../title";
-import Counter from "./Counter";
+import { Counter } from "./counter";
 
 interface HistorySectionProps {
   aboutUs?: boolean;
-  dict: {
-    title: string;
-    subtitle: string;
-    members: string;
-    membersDescription: string;
-    projects: string;
-    projectsDescription: string;
-    achievements: string;
-    achievementsDescription: string;
-    description: string;
-    buttonText: string;
-  };
 }
 
-const HistorySection: React.FC<HistorySectionProps> = ({ aboutUs, dict }) => {
+export function HistorySection({ aboutUs = false }: HistorySectionProps) {
+  const t = useTranslations("historySection");
+
   return (
     <div id="history-section" className="relative bg-white">
       <Container>
         <div className="my-8 md:my-28">
           <div className="hidden md:mb-8 md:block">
-            {aboutUs ? <Title color="black">{dict.title}</Title> : null}
+            {aboutUs ? <Title color="black">{t("title")}</Title> : null}
           </div>
           <div className="grid grid-cols-1 gap-4 md:gap-20 lg:grid-cols-2">
             <div className="relative order-3 flex h-[22rem] items-center justify-center lg:order-1 lg:h-full">
@@ -59,11 +50,11 @@ const HistorySection: React.FC<HistorySectionProps> = ({ aboutUs, dict }) => {
                   </Counter>
                   <div className="text-lg">
                     <Text center bold color="red" wide>
-                      {dict.members}
+                      {t("members")}
                     </Text>
                   </div>
                   <Text center color="gray">
-                    {dict.membersDescription}
+                    {t("membersDescription")}
                   </Text>
                 </div>
                 <div className="flex flex-col">
@@ -72,11 +63,11 @@ const HistorySection: React.FC<HistorySectionProps> = ({ aboutUs, dict }) => {
                   </Counter>
                   <div className="text-lg">
                     <Text center bold color="red" wide>
-                      {dict.projects}
+                      {t("projects")}
                     </Text>
                   </div>
                   <Text center color="gray">
-                    {dict.projectsDescription}
+                    {t("projectsDescription")}
                   </Text>
                 </div>
                 <div className="flex flex-col">
@@ -85,25 +76,25 @@ const HistorySection: React.FC<HistorySectionProps> = ({ aboutUs, dict }) => {
                   </Counter>
                   <div className="text-lg">
                     <Text center bold color="red" wide>
-                      {dict.achievements}
+                      {t("achievements")}
                     </Text>
                   </div>
                   <Text center color="gray">
-                    {dict.achievementsDescription}
+                    {t("achievementsDescription")}
                   </Text>
                 </div>
               </div>
               <div className="">
                 <Title wrap size="big" color="black">
-                  {dict.subtitle}
+                  {t("subtitle")}
                 </Title>
                 <div className="my-2">
-                  <Text color="gray">{dict.description}</Text>
+                  <Text color="gray">{t("description")}</Text>
                 </div>
                 {!aboutUs && (
                   <SecondaryButton
                     to="/about#history-section"
-                    buttonText={dict.buttonText}
+                    buttonText={t("buttonText")}
                   />
                 )}
               </div>
@@ -113,6 +104,4 @@ const HistorySection: React.FC<HistorySectionProps> = ({ aboutUs, dict }) => {
       </Container>
     </div>
   );
-};
-
-export default HistorySection;
+}

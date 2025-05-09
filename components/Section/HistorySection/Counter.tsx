@@ -9,7 +9,7 @@ interface CounterProps extends TitleProps {
   targetNumber: number;
 }
 
-const Counter: React.FC<CounterProps> = ({ targetNumber, ...props }) => {
+export function Counter({ targetNumber, ...props }: CounterProps) {
   const [count, setCount] = useState(0);
   const counterRef = useRef<HTMLDivElement | null>(null);
 
@@ -18,7 +18,7 @@ const Counter: React.FC<CounterProps> = ({ targetNumber, ...props }) => {
     let didCancel = false;
     const currentRef = counterRef.current;
 
-    if (currentRef) {
+    if (currentRef != null) {
       observer = new IntersectionObserver(
         (entries) => {
           for (const entry of entries) {
@@ -35,7 +35,7 @@ const Counter: React.FC<CounterProps> = ({ targetNumber, ...props }) => {
                 }
               }, intervalTime);
 
-              if (observer) {
+              if (observer != null) {
                 observer.unobserve(currentRef);
               }
             }
@@ -50,7 +50,7 @@ const Counter: React.FC<CounterProps> = ({ targetNumber, ...props }) => {
 
     return () => {
       didCancel = true;
-      if (observer && currentRef) {
+      if (observer != null && currentRef != null) {
         observer.unobserve(currentRef);
       }
     };
@@ -61,6 +61,4 @@ const Counter: React.FC<CounterProps> = ({ targetNumber, ...props }) => {
       <Title {...props}>{count}</Title>
     </div>
   );
-};
-
-export default Counter;
+}

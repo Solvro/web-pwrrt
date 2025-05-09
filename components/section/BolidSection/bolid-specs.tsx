@@ -1,5 +1,7 @@
 "use client";
 
+import { useTranslations } from "next-intl";
+
 import Text from "../../Text";
 
 interface BolidSpecsProps {
@@ -7,15 +9,14 @@ interface BolidSpecsProps {
   acceleration: string;
   power: string;
   mass: string;
-  dict: any;
 }
-const BolidSpecs: React.FC<BolidSpecsProps> = ({
+export function BolidSpecs({
   animate,
   acceleration,
   power,
   mass,
-  dict,
-}) => {
+}: BolidSpecsProps) {
+  const t = useTranslations("bolidSection");
   return (
     <div className="">
       <div
@@ -24,10 +25,10 @@ const BolidSpecs: React.FC<BolidSpecsProps> = ({
         <div className="z-10 hidden items-center justify-between bg-neutral-800 pl-[calc((100vw-var(--container-width))/3)] pr-8 lg:flex">
           <div className="flex flex-col">
             <Text bold medium color="white" opacity1>
-              {dict.specyfikacja}
+              {t("specyfikacja")}
             </Text>
             <Text right center bold medium color="white" opacity1>
-              {dict.bolidu}
+              {t("bolidu")}
             </Text>
           </div>
           <svg
@@ -72,7 +73,7 @@ const BolidSpecs: React.FC<BolidSpecsProps> = ({
             <h2
               className={`font-akiraExpanded hidden text-2xl font-extrabold leading-tight text-customRed md:block`}
             >
-              {dict.TXTacceleration}
+              {t("TXTacceleration")}
             </h2>
           </div>
         </div>
@@ -109,7 +110,7 @@ const BolidSpecs: React.FC<BolidSpecsProps> = ({
             <h2
               className={`font-akiraExpanded hidden min-w-fit text-2xl font-extrabold leading-tight text-customRed md:block`}
             >
-              {dict.TXTpower}
+              {t("TXTpower")}
             </h2>
           </div>
         </div>
@@ -150,13 +151,11 @@ const BolidSpecs: React.FC<BolidSpecsProps> = ({
             <h2
               className={`font-akiraExpanded hidden text-2xl font-extrabold leading-tight text-customRed md:block`}
             >
-              {dict.TXTmass}
+              {t("TXTmass")}
             </h2>
           </div>
         </div>
       </div>
     </div>
   );
-};
-
-export default BolidSpecs;
+}

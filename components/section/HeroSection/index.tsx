@@ -1,7 +1,9 @@
 "use client";
 
 import { motion } from "motion/react";
+import { useTranslations } from "next-intl";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import { FaArrowRight } from "react-icons/fa";
 
 import ClientOnly from "../../ClientOnly";
@@ -10,17 +12,6 @@ import Text from "../../Text";
 import Title from "../../title";
 import BackgroundVideo from "./BackgroundVideo";
 
-type Locale = "pl" | "en";
-
-interface HeroSectionProps {
-  dict: {
-    title1: string;
-    title2: string;
-    description: string;
-    subtitle: string;
-    button: string;
-  };
-}
 const textVariants = {
   hidden: { x: -100, opacity: 0 },
   visible: (delay: number) => ({
@@ -34,34 +25,26 @@ const textVariants = {
   }),
 };
 
-const HeroSection: React.FC<HeroSectionProps> = ({ dict }) => {
-  const handleScroll = () => {
-    const element = document.querySelector("#bolid");
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-    }
-  };
-
-  const imageVariants = {
-    hidden: {
-      scale: 0,
-      y: -100,
-      opacity: 1,
+const imageVariants = {
+  hidden: {
+    scale: 0,
+    y: -100,
+    opacity: 1,
+  },
+  visible: {
+    scale: 1,
+    y: 0,
+    opacity: 1,
+    transition: {
+      duration: 1,
+      ease: "easeOut",
     },
-    visible: {
-      scale: 1,
-      y: 0,
-      opacity: 1,
-      transition: {
-        duration: 1,
-        ease: "easeOut",
-      },
-    },
-  };
+  },
+};
 
-  if (!dict) {
-    return <div>Loading...</div>;
-  }
+export function HeroSection() {
+  const router = useRouter();
+  const t = useTranslations("heroSection");
 
   return (
     <ClientOnly>
@@ -78,7 +61,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ dict }) => {
                 variants={textVariants}
               >
                 <Title wrap size="subtitle" color="red">
-                  {dict.title1}
+                  {t("title1")}
                 </Title>
               </motion.div>
 
@@ -88,7 +71,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ dict }) => {
                 custom={0.2}
                 variants={textVariants}
               >
-                <Title>{dict.title2}</Title>
+                <Title>{t("title2")}</Title>
               </motion.div>
 
               {/* Animated Description */}
@@ -100,7 +83,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ dict }) => {
                 className="my-2 md:my-6"
               >
                 <Text color="white" main>
-                  {dict.description}
+                  {t("description")}
                 </Text>
               </motion.div>
 
@@ -112,7 +95,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ dict }) => {
                 variants={textVariants}
               >
                 <Title wrap color="red" size="small">
-                  {dict.subtitle}
+                  {t("subtitle")}
                 </Title>
               </motion.div>
 
@@ -122,10 +105,12 @@ const HeroSection: React.FC<HeroSectionProps> = ({ dict }) => {
                 animate="visible"
                 custom={1}
                 variants={textVariants}
-                onClick={handleScroll}
+                onClick={() => {
+                  router.push("#bolid");
+                }}
                 className="group hidden items-center rounded py-2 text-white transition-all duration-300 hover:pl-8 md:flex"
               >
-                <span>{dict.button}</span>
+                <span>{t("button")}</span>
                 <FaArrowRight className="ml-2 transition-all duration-300 group-hover:text-customRed" />
               </motion.button>
             </div>
@@ -150,6 +135,4 @@ const HeroSection: React.FC<HeroSectionProps> = ({ dict }) => {
       </div>
     </ClientOnly>
   );
-};
-
-export default HeroSection;
+}

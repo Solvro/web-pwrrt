@@ -1,5 +1,6 @@
 "use client";
 
+import { useTranslations } from "next-intl";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 
@@ -8,17 +9,10 @@ import Container from "../../Container";
 import Text from "../../Text";
 import Title from "../../title";
 
-interface TeamSectionProps {
-  dict: {
-    title: string;
-    subtitle: string;
-    description: string;
-    buttonLabel: string;
-  };
-}
-
-const TeamSection: React.FC<TeamSectionProps> = ({ dict }) => {
+export function TeamSection() {
   const router = useRouter();
+  const t = useTranslations("teamSection");
+
   return (
     <div id="section-team" className="relative">
       <div className="absolute inset-0 z-0">
@@ -37,15 +31,15 @@ const TeamSection: React.FC<TeamSectionProps> = ({ dict }) => {
         <div className="flex w-auto flex-col items-center gap-8 overflow-hidden py-8 md:gap-20 md:py-16 lg:flex-row">
           <div className="">
             <Title size="subtitle" color="gray">
-              {dict.title}
+              {t("title")}
             </Title>
-            <Title size="big">{dict.subtitle}</Title>
+            <Title size="big">{t("subtitle")}</Title>
             <div className="my-6">
-              <Text color="white">{dict.description}</Text>
+              <Text color="white">{t("description")}</Text>
             </div>
             <div className="mt-8 flex gap-4">
               <Button
-                label={dict.buttonLabel}
+                label={t("buttonLabel")}
                 onClick={() => {
                   router.push(`/team`);
                 }}
@@ -82,6 +76,4 @@ const TeamSection: React.FC<TeamSectionProps> = ({ dict }) => {
       </Container>
     </div>
   );
-};
-
-export default TeamSection;
+}

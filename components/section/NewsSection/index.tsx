@@ -2,24 +2,16 @@ import { fetchFiveNews } from "@/actions/getFiveNews";
 import NewsCard from "@/components/NewsCard";
 
 import Container from "../../Container";
-import NewsControls from "./NewsControls";
+import { NewsControls } from "./news-controls";
 
-interface NewsSectionProps {
-  dict: {
-    title: string;
-    becomePartner: string;
-    contact: string;
-  };
-}
-
-const NewsSection: React.FC<NewsSectionProps> = async ({ dict }) => {
+export async function NewsSection() {
   const news = await fetchFiveNews();
 
   return (
     <div id="section-news" className="flex flex-col">
       <Container>
         <div className="pt-12">
-          <NewsControls dict={dict} />
+          <NewsControls />
           <div className="relative my-10 grid grid-cols-1 gap-8 border-none sm:grid-cols-2 lg:grid-cols-3">
             {news.map((item, index) => (
               <NewsCard
@@ -39,6 +31,4 @@ const NewsSection: React.FC<NewsSectionProps> = async ({ dict }) => {
       </Container>
     </div>
   );
-};
-
-export default NewsSection;
+}

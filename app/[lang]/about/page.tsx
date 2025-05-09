@@ -1,6 +1,6 @@
-import FSSection from "@/components/section/FSSection/FSSection";
-import HistorySection from "@/components/section/HistorySection/HistorySection";
-import JoinusSection from "@/components/section/JoinusSection/JoinusSection";
+import FSSection from "@/components/section/FSSection";
+import HistorySection from "@/components/section/HistorySection";
+import JoinusSection from "@/components/section/JoinusSection";
 import SponsorsSection from "@/components/section/SponsorsSection/SponsorsSection";
 import { getDictionary } from "@/dictionaries";
 

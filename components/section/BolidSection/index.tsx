@@ -1,9 +1,10 @@
 "use client";
 
+import { useLocale } from "next-intl";
 import { useEffect, useState } from "react";
 
-import BolidContent from "./BolidContent";
 import Slider from "./Slider";
+import { BolidContent } from "./bolid-content";
 
 interface BolidData {
   name: string;
@@ -16,16 +17,10 @@ interface BolidData {
 }
 
 interface BolidSectionProps {
-  dict: any;
-  language: "pl" | "en";
   presetBolid?: string;
 }
 
-const BolidSection: React.FC<BolidSectionProps> = ({
-  dict,
-  language,
-  presetBolid = "RT14e",
-}) => {
+export function BolidSection({ presetBolid = "RT14e" }: BolidSectionProps) {
   const [currentBolidData, setCurrentBolidData] = useState<BolidData>({
     name: presetBolid,
     year: "2023",
@@ -36,13 +31,14 @@ const BolidSection: React.FC<BolidSectionProps> = ({
     mass: "230 KG",
     power: "2 x 48 KW",
   });
+  const locale = useLocale();
 
   const [previousBolidData, setPreviousBolidData] =
     useState<BolidData>(currentBolidData);
   const [isAnimating, setIsAnimating] = useState("");
   const [displayRight, setDisplayRight] = useState(false);
-  const [sameDirection, setsameDirection] = useState("");
-  const [sameDirectionShift, setsameDirectionShift] = useState("duration-500");
+  const [sameDirection, setSameDirection] = useState("");
+  const [sameDirectionShift, setSameDirectionShift] = useState("duration-500");
 
   const fetchBolidData = async (bolidName: string) => {
     const response = await fetch(`/api/bolid/${bolidName}`);
@@ -51,21 +47,21 @@ const BolidSection: React.FC<BolidSectionProps> = ({
       return;
     }
 
-    const data = await response.json();
+    const data = (await response.json()) as BolidData;
 
     if (
       currentBolidData.year < data.year ||
       (currentBolidData.name === "RT11b" && bolidName === "RT13e")
     ) {
       if (sameDirection === "left") {
-        setsameDirectionShift("0");
+        setSameDirectionShift("0");
         setIsAnimating("translate-x-[-50%]");
         setTimeout(() => {
           setIsAnimating("translate-x-[0]");
-          setsameDirectionShift("duration-500");
+          setSameDirectionShift("duration-500");
         }, 10);
       } else {
-        setsameDirection("left");
+        setSameDirection("left");
         setDisplayRight(false);
         setIsAnimating("translate-x-[0]");
       }
@@ -74,14 +70,14 @@ const BolidSection: React.FC<BolidSectionProps> = ({
       (currentBolidData.name === "RT13e" && bolidName === "RT11b")
     ) {
       if (sameDirection === "right") {
-        setsameDirectionShift("");
+        setSameDirectionShift("");
         setIsAnimating("translate-x-[0]");
         setTimeout(() => {
           setIsAnimating("translate-x-[-50%]");
-          setsameDirectionShift("duration-500");
+          setSameDirectionShift("duration-500");
         }, 10);
       } else {
-        setsameDirection("right");
+        setSameDirection("right");
         setDisplayRight(true);
         setIsAnimating("translate-x-[-50%]");
       }
@@ -92,11 +88,11 @@ const BolidSection: React.FC<BolidSectionProps> = ({
   };
 
   useEffect(() => {
-    fetchBolidData(currentBolidData.name);
+    void fetchBolidData(currentBolidData.name);
   }, []);
 
   const handleChangeBolid = (bolidName: string) => {
-    fetchBolidData(bolidName);
+    void fetchBolidData(bolidName);
   };
 
   return (
@@ -111,16 +107,10 @@ const BolidSection: React.FC<BolidSectionProps> = ({
             displayRight ? "flex-row-reverse" : "flex-row"
           }`}
         >
-          <BolidContent {...currentBolidData} language={language} dict={dict} />
-          {previousBolidData ? <BolidContent
-              {...previousBolidData}
-              language={language}
-              dict={dict}
-            /> : null}
+          <BolidContent {...currentBolidData} language={locale} />
+          <BolidContent {...previousBolidData} language={locale} />
         </div>
       </div>
     </div>
   );
-};
-
-export default BolidSection;
+}

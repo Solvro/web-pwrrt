@@ -1,5 +1,6 @@
 "use client";
 
+import { useTranslations } from "next-intl";
 import Image from "next/image";
 
 import Container from "../../Container";
@@ -9,14 +10,10 @@ import Title from "../../title";
 
 interface FSSectionProps {
   aboutUs?: boolean;
-  dict: {
-    title: string;
-    description: string;
-    buttonText: string;
-  };
 }
 
-const FSSection: React.FC<FSSectionProps> = ({ aboutUs, dict }) => {
+export function FSSection({ aboutUs = false }: FSSectionProps) {
+  const t = useTranslations("fsSection");
   return (
     <div
       id="formulastudent-section"
@@ -29,22 +26,22 @@ const FSSection: React.FC<FSSectionProps> = ({ aboutUs, dict }) => {
               {aboutUs ? (
                 <div className="my-6">
                   <Title size="big" color="black">
-                    {dict.title}
+                    {t("title")}
                   </Title>
                 </div>
               ) : null}
               {!aboutUs && (
                 <Title size="big" color="black">
-                  {dict.title}
+                  {t("title")}
                 </Title>
               )}
               <div className={aboutUs ? "" : "my-2 md:my-6"}>
-                <Text color="gray">{dict.description}</Text>
+                <Text color="gray">{t("description")}</Text>
               </div>
               {!aboutUs && (
                 <SecondaryButton
                   to="/about#formulastudent-section"
-                  buttonText={dict.buttonText}
+                  buttonText={t("buttonText")}
                 />
               )}
             </div>
@@ -63,6 +60,4 @@ const FSSection: React.FC<FSSectionProps> = ({ aboutUs, dict }) => {
       </Container>
     </div>
   );
-};
-
-export default FSSection;
+}

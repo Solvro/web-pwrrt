@@ -1,5 +1,6 @@
 "use client";
 
+import { useTranslations } from "next-intl";
 import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
 
@@ -7,7 +8,7 @@ import Button from "../../Button";
 import Container from "../../Container";
 import Text from "../../Text";
 import Title from "../../title";
-import BolidSpecs from "./BolidSpecs";
+import { BolidSpecs } from "./bolid-specs";
 
 interface BolidData {
   name: string;
@@ -18,10 +19,9 @@ interface BolidData {
   mass: string;
   power: string;
   language: "pl" | "en";
-  dict: any;
 }
 
-const BolidContent: React.FC<BolidData> = ({
+export function BolidContent({
   name,
   year,
   short_description,
@@ -30,10 +30,10 @@ const BolidContent: React.FC<BolidData> = ({
   mass,
   power,
   language,
-  dict,
-}) => {
+}: BolidData) {
   const router = useRouter();
   const path = usePathname();
+  const t = useTranslations("bolidSection");
 
   const teamRedirect = (bolid: string) => {
     const currentLocale = path.split("/")[1];
@@ -44,13 +44,13 @@ const BolidContent: React.FC<BolidData> = ({
     router.push(`/${currentLocale}/bolid/${bolid}#achievements`);
   };
 
-  const renderName = (name: string) => {
-    const lastChar = name.slice(-1);
+  const renderName = (rName: string) => {
+    const lastChar = rName.slice(-1);
     const isSpecialChar = lastChar === "e" || lastChar === "b";
 
     return (
       <div className="flex items-baseline uppercase">
-        <Title color="red">{isSpecialChar ? name.slice(0, -1) : name}</Title>
+        <Title color="red">{isSpecialChar ? rName.slice(0, -1) : rName}</Title>
         {isSpecialChar ? (
           <Title color="red" size="medium">
             {lastChar}
@@ -80,14 +80,14 @@ const BolidContent: React.FC<BolidData> = ({
               </div>
               <div className="mt-8 hidden gap-4 lg:flex">
                 <Button
-                  label={dict.moreAboutBolid}
+                  label={t("moreAboutBolid")}
                   onClick={() => {
                     bolidRedirect(name);
                   }}
                 />
                 <Button
                   outline
-                  label={`${dict.meetTeam} ${name}`}
+                  label={`${t("meetTeam")} ${name}`}
                   onClick={() => {
                     teamRedirect(name);
                   }}
@@ -108,14 +108,14 @@ const BolidContent: React.FC<BolidData> = ({
           </div>
           <div className="flex gap-2 md:gap-4 lg:hidden">
             <Button
-              label={dict.moreAboutBolid}
+              label={t("moreAboutBolid")}
               onClick={() => {
                 bolidRedirect(name);
               }}
             />
             <Button
               outline
-              label={`${dict.meetTeam} ${name}`}
+              label={`${t("meetTeam")} ${name}`}
               onClick={() => {
                 teamRedirect(name);
               }}
@@ -128,10 +128,7 @@ const BolidContent: React.FC<BolidData> = ({
         acceleration={acceleration}
         mass={mass}
         power={power}
-        dict={dict}
       />
     </div>
   );
-};
-
-export default BolidContent;
+}

@@ -1,35 +1,29 @@
 "use client";
 
+import { useTranslations } from "next-intl";
 import { useRouter } from "next/navigation";
 import React from "react";
 
 import Button from "@/components/Button";
 import Title from "@/components/title";
 
-interface NewsControlsProps {
-  dict: {
-    title: string;
-    becomePartner: string;
-    contact: string;
-  };
-}
-
-const NewsControls: React.FC<NewsControlsProps> = ({ dict }) => {
+export function NewsControls() {
   const router = useRouter();
+  const t = useTranslations("newsControls");
 
   return (
     <div className="flex flex-col items-center justify-between gap-4 md:flex-row">
-      <Title color="black">{dict.title}</Title>
+      <Title color="black">{t("title")}</Title>
       <div className="flex w-full gap-4 md:w-2/5">
         <Button
-          label={dict.becomePartner}
+          label={t("becomePartner")}
           onClick={() => {
             router.push(`/partners/joinus`);
           }}
         />
         <Button
           outline
-          label={dict.contact}
+          label={t("contact")}
           onClick={() => {
             router.push(`/contact`);
           }}
@@ -37,6 +31,4 @@ const NewsControls: React.FC<NewsControlsProps> = ({ dict }) => {
       </div>
     </div>
   );
-};
-
-export default NewsControls;
+}

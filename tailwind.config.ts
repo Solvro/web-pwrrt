@@ -1,6 +1,6 @@
-/** @type {import('tailwindcss').Config} */
-module.exports = {
-  mode: "jit",
+import type { Config } from "tailwindcss";
+
+const config = {
   content: [
     "./app/**/*.{js,ts,jsx,tsx}",
     "./pages/**/*.{js,ts,jsx,tsx}",
@@ -18,8 +18,8 @@ module.exports = {
       keyframes: {
         rotateX: {
           "0%": { transform: "rotateX(0)" },
-          "50%": { transform: "rotateX(90deg)", opacity: 0 },
-          "100%": { transform: "rotateX(180deg)", opacity: 1 },
+          "50%": { transform: "rotateX(90deg)", opacity: "0" },
+          "100%": { transform: "rotateX(180deg)", opacity: "1" },
         },
       },
       animation: {
@@ -28,4 +28,6 @@ module.exports = {
     },
   },
   plugins: [],
-};
+} satisfies Config;
+
+export default config;

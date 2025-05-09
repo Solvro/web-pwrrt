@@ -1,5 +1,6 @@
 "use client";
 
+import { useTranslations } from "next-intl";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 
@@ -11,21 +12,14 @@ import Container from "../../Container";
 import Title from "../../title";
 
 interface JoinusSectionProps {
-  dict: {
-    title: string;
-    buttonRecruitment: string;
-    buttonPartner: string;
-  };
   sizeBig?: boolean;
 }
 
-const JoinusSection: React.FC<JoinusSectionProps> = ({
-  dict,
-  sizeBig = false,
-}) => {
+export function JoinusSection({ sizeBig = false }: JoinusSectionProps) {
   const router = useRouter();
   const loginModal = useLoginModal();
   const newModal = useRentModal();
+  const t = useTranslations("joinusSection");
 
   return (
     <div
@@ -103,11 +97,11 @@ const JoinusSection: React.FC<JoinusSectionProps> = ({
         <Container>
           <div className="flex max-w-4xl flex-col justify-center">
             <div className="text-center uppercase">
-              <Title wrap>{dict.title}</Title>
+              <Title wrap>{t("title")}</Title>
             </div>
             <div className="mt-8 flex gap-4">
               <Button
-                label={dict.buttonRecruitment}
+                label={t("buttonRecruitment")}
                 onClick={() => {
                   if (sizeBig) {
                     loginModal.onOpen();
@@ -118,7 +112,7 @@ const JoinusSection: React.FC<JoinusSectionProps> = ({
               />
               <Button
                 outline
-                label={dict.buttonPartner}
+                label={t("buttonPartner")}
                 onClick={() => {
                   if (sizeBig) {
                     newModal.onOpen();
@@ -133,6 +127,4 @@ const JoinusSection: React.FC<JoinusSectionProps> = ({
       </div>
     </div>
   );
-};
-
-export default JoinusSection;
+}

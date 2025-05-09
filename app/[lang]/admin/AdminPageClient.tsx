@@ -3,7 +3,7 @@
 import { useRouter } from "next/navigation";
 import React, { useEffect } from "react";
 
-import JoinusSection from "@/components/section/JoinusSection/JoinusSection";
+import JoinusSection from "@/components/section/JoinusSection";
 import { useAuth } from "@/context/Auth/AuthContext";
 
 interface AdminPageClientProps {
