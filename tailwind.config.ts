@@ -2,11 +2,20 @@ import type { Config } from "tailwindcss";
 
 const config = {
   content: [
-    "./app/**/*.{js,ts,jsx,tsx}",
-    "./pages/**/*.{js,ts,jsx,tsx}",
-    "./components/**/*.{js,ts,jsx,tsx}",
+    "./pages/**/*.{ts,tsx}",
+    "./components/**/*.{ts,tsx}",
+    "./app/**/*.{ts,tsx}",
+    "./src/**/*.{ts,tsx}",
+    "*.{html,js}",
   ],
   theme: {
+    container: {
+      center: true,
+      padding: "2rem",
+      screens: {
+        "2xl": "1400px",
+      },
+    },
     extend: {
       colors: {
         customRed: "rgb(203, 31, 58)",
@@ -30,4 +39,5 @@ const config = {
   plugins: [],
 } satisfies Config;
 
+// eslint-disable-next-line import/no-default-export
 export default config;

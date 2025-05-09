@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "build": "prisma generate && next build",
-    "dev": "next dev --turbopack",
+    "dev": "next dev",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "postinstall": "prisma generate",
@@ -13,7 +13,7 @@
     "lint": "next lint --max-warnings=0",
     "lint:fix": "next lint --fix",
     "prepare": "husky || true",
-    "seed": "node prisma/seedTeamMember.js",
+    "seed": "node prisma/seed-team-member.js",
     "start": "next start",
     "typecheck": "tsc"
   },
