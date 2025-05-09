@@ -1,7 +1,7 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import Image from "next/legacy/image";
+import Image from "next/image";
 import { useRouter } from "next/navigation";
 
 import useLoginModal from "@/hooks/useLoginModal";
@@ -38,10 +38,12 @@ export function JoinusSection({ sizeBig = false }: JoinusSectionProps) {
           <Image
             src="/images/joinus/photo1.png"
             alt="Photo 1"
-            layout="fill"
-            objectFit="cover"
-            objectPosition="left center"
-          />
+            fill
+            sizes="100vw"
+            style={{
+              objectFit: "cover",
+              objectPosition: "left center"
+            }} />
         </div>
 
         {/* Druga kolumna, podzielona na dwa wiersze */}
@@ -51,10 +53,12 @@ export function JoinusSection({ sizeBig = false }: JoinusSectionProps) {
             <Image
               src="/images/joinus/photo2.jpeg"
               alt="Photo 2"
-              layout="fill"
-              objectFit="cover"
-              objectPosition="left 80%"
-            />
+              fill
+              sizes="100vw"
+              style={{
+                objectFit: "cover",
+                objectPosition: "left 80%"
+              }} />
           </div>
 
           {/* Drugi wiersz w drugiej kolumnie, podzielony na dwie kolumny */}
@@ -64,20 +68,24 @@ export function JoinusSection({ sizeBig = false }: JoinusSectionProps) {
               <Image
                 src="/images/joinus/photo3.jpeg"
                 alt="Photo 3"
-                layout="fill"
-                objectFit="cover"
-                objectPosition="center center"
-              />
+                fill
+                sizes="100vw"
+                style={{
+                  objectFit: "cover",
+                  objectPosition: "center center"
+                }} />
             </div>
             {/* Druga kolumna w drugim wierszu */}
             <div className="relative">
               <Image
                 src="/images/joinus/photo4.jpeg"
                 alt="Photo 4"
-                layout="fill"
-                objectFit="cover"
-                objectPosition="left center"
-              />
+                fill
+                sizes="100vw"
+                style={{
+                  objectFit: "cover",
+                  objectPosition: "left center"
+                }} />
             </div>
           </div>
         </div>
@@ -87,10 +95,12 @@ export function JoinusSection({ sizeBig = false }: JoinusSectionProps) {
           <Image
             src="/images/joinus/photo5.jpeg"
             alt="Photo 5"
-            layout="fill"
-            objectFit="cover"
-            objectPosition="center center"
-          />
+            fill
+            sizes="100vw"
+            style={{
+              objectFit: "cover",
+              objectPosition: "center center"
+            }} />
         </div>
       </div>
       <div className="absolute inset-0 z-10">

@@ -1,7 +1,7 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import Image from "next/legacy/image";
+import Image from "next/image";
 import { useRouter } from "next/navigation";
 
 import Button from "../../Button";
@@ -19,11 +19,13 @@ export function TeamSection() {
         <Image
           src="/images/team/Bg.jpeg"
           alt="Tło sekcji"
-          layout="fill"
-          objectFit="cover"
           quality={50}
-          style={{ filter: "grayscale(100%)" }}
-        />
+          fill
+          sizes="100vw"
+          style={{
+            filter: "grayscale(100%)",
+            objectFit: "cover"
+          }} />
         {/* Warstwa przyciemniająca */}
         <div className="absolute inset-0 bg-black bg-opacity-80"></div>
       </div>
@@ -51,25 +53,31 @@ export function TeamSection() {
               <Image
                 src="/images/team/team1.jpeg"
                 alt="bolid"
-                layout="fill"
-                objectFit="cover"
-              />
+                fill
+                sizes="100vw"
+                style={{
+                  objectFit: "cover"
+                }} />
             </div>
             <div className="relative hidden h-[300px] w-[400px] sm:block md:h-[400px]">
               <Image
                 src="/images/team/team2.jpeg"
                 alt="bolid"
-                layout="fill"
-                objectFit="cover"
-              />
+                fill
+                sizes="100vw"
+                style={{
+                  objectFit: "cover"
+                }} />
             </div>
             <div className="relative hidden h-[400px] w-[200px] lg:block">
               <Image
                 src="/images/team/team3.jpeg"
                 alt="bolid"
-                layout="fill"
-                objectFit="cover"
-              />
+                fill
+                sizes="100vw"
+                style={{
+                  objectFit: "cover"
+                }} />
             </div>
           </div>
         </div>

@@ -1,4 +1,4 @@
-import Image from "next/legacy/image";
+import Image from "next/image";
 
 import Container from "@/components/Container";
 import Text from "@/components/Text";
@@ -16,7 +16,15 @@ const ResponsibilityItem: React.FC<ResponsibilityItemProps> = ({
   textColor,
 }) => (
   <div className="flex gap-3">
-    <Image src={iconPath} alt="icon" width="22" height="22" />
+    <Image
+      src={iconPath}
+      alt="icon"
+      width="22"
+      height="22"
+      style={{
+        maxWidth: "100%",
+        height: "auto"
+      }} />
     <Text color={textColor}>{text}</Text>
   </div>
 );
@@ -85,8 +93,11 @@ const DepartmentElement: React.FC<DepartmentElementProps> = ({
               alt="department image"
               fill
               className="object-cover"
-              objectPosition="center 20%"
-            />
+              style={{
+                maxWidth: "100%",
+                height: "auto",
+                objectPosition: "center 20%"
+              }} />
           </div>
         </div>
       </Container>

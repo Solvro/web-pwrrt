@@ -1,6 +1,6 @@
 "use client";
 
-import Image from "next/legacy/image";
+import Image from "next/image";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 
@@ -41,10 +41,12 @@ const GarageAbout: React.FC<GarageAboutProps> = ({ dict }) => {
                 <Image
                   src="/images/garage/1.jpg"
                   alt="bolid"
-                  layout="fill"
-                  objectFit="cover"
-                  objectPosition="center 20%"
-                />
+                  fill
+                  sizes="100vw"
+                  style={{
+                    objectFit: "cover",
+                    objectPosition: "center 20%"
+                  }} />
               </div>
               <Text color="black">{dict.paragraph}</Text>
               <div className="flex flex-col items-center justify-between gap-6 md:flex-row md:gap-0">
@@ -106,10 +108,12 @@ const GarageAbout: React.FC<GarageAboutProps> = ({ dict }) => {
                 className="scale-x-[-1]"
                 src="/images/garage/2.jpg"
                 alt="bolid"
-                layout="fill"
-                objectFit="cover"
-                objectPosition="center 20%"
-              />
+                fill
+                sizes="100vw"
+                style={{
+                  objectFit: "cover",
+                  objectPosition: "center 20%"
+                }} />
             </div>
           </div>
         </div>

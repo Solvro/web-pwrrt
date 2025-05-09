@@ -1,4 +1,4 @@
-import Image from "next/legacy/image";
+import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
 import React from "react";
 
@@ -32,7 +32,10 @@ const LangButton: React.FC<LangButtonProps> = ({ lang, black = false }) => {
         alt={altText}
         fill
         className="rounded-full"
-      />
+        style={{
+          maxWidth: "100%",
+          height: "auto"
+        }} />
     </div>
   );
 };

@@ -1,5 +1,5 @@
 import { CldUploadWidget } from "next-cloudinary";
-import Image from "next/legacy/image";
+import Image from "next/image";
 import { useCallback } from "react";
 import { TbPhotoPlus } from "react-icons/tb";
 
@@ -38,9 +38,12 @@ const ImageUpload: React.FC<ImageUploadProps> = ({ onChange, value }) => {
                 <Image
                   alt="Upload"
                   fill
-                  style={{ objectFit: "cover" }}
                   src={value}
-                />
+                  style={{
+                    objectFit: "cover",
+                    maxWidth: "100%",
+                    height: "auto"
+                  }} />
               </div> : null}
           </div>
         );

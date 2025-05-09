@@ -1,6 +1,6 @@
 "use client";
 
-import Image from "next/legacy/image";
+import Image from "next/image";
 
 function BottomBar() {
   return (
@@ -8,10 +8,12 @@ function BottomBar() {
       <Image
         src="/images/pasek.png"
         alt="bolid"
-        layout="intrinsic" // Obraz zachowa oryginalny aspekt przy ustalonej szerokości
         width={1920}
         height={10}
-      />
+        style={{
+          maxWidth: "100%",
+          height: "auto"
+        }} />
     </div>
   );
 }

@@ -1,6 +1,6 @@
 "use client";
 
-import Image from "next/legacy/image";
+import Image from "next/image";
 
 function Avatar() {
   return (
@@ -10,7 +10,10 @@ function Avatar() {
       width="30"
       alt="Avatar"
       src="/images/placeholder.jpg"
-    />
+      style={{
+        maxWidth: "100%",
+        height: "auto"
+      }} />
   );
 }
 

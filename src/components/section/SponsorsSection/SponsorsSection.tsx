@@ -1,6 +1,6 @@
 "use client";
 
-import Image from "next/legacy/image";
+import Image from "next/image";
 import React, { useEffect, useRef, useState } from "react";
 
 const sponsors = [
@@ -126,7 +126,10 @@ function SponsorsSection() {
                 alt={`Sponsor ${index + 1}`}
                 fill
                 className="object-contain"
-              />
+                style={{
+                  maxWidth: "100%",
+                  height: "auto"
+                }} />
             </div>
           ))}
         </div>
@@ -142,7 +145,10 @@ function SponsorsSection() {
                 alt={`Sponsor ${index + 1}`}
                 fill
                 className="object-contain"
-              />
+                style={{
+                  maxWidth: "100%",
+                  height: "auto"
+                }} />
             </div>
           ))}
         </div>

@@ -1,6 +1,6 @@
 "use client";
 
-import Image from "next/legacy/image";
+import Image from "next/image";
 import Link from "next/link";
 
 interface DepartmentProps {
@@ -25,8 +25,9 @@ const Department: React.FC<DepartmentProps> = ({
             style={{
               objectFit: "cover",
               objectPosition: `0 ${objectPositionY}`,
-            }}
-          />
+              maxWidth: "100%",
+              height: "auto"
+            }} />
         </div>
         <div className="absolute inset-0 bg-black opacity-50 transition duration-300 ease-in-out group-hover:opacity-70"></div>
         <div className="absolute bottom-0 right-0 flex items-center p-4 pr-12 uppercase text-white transition-all duration-300 ease-in-out group-hover:bottom-1/2 group-hover:right-1/2 group-hover:translate-x-1/2 group-hover:translate-y-1/2 group-hover:pr-4">

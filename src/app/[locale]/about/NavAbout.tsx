@@ -1,6 +1,6 @@
 "use client";
 
-import Image from "next/legacy/image";
+import Image from "next/image";
 import Link from "next/link";
 
 import Container from "@/components/Container";
@@ -44,10 +44,12 @@ const NavAbout: React.FC<NavAboutProps> = ({ dict }) => {
                   className=""
                   src="/images/poznaj_nas.jpg"
                   alt="bolid"
-                  layout="fill"
-                  objectFit="cover"
-                  objectPosition="center 10%"
-                />
+                  fill
+                  sizes="100vw"
+                  style={{
+                    objectFit: "cover",
+                    objectPosition: "center 10%"
+                  }} />
               </div>
               <div className="flex flex-col gap-8 md:w-3/5">
                 <Text color="black" bold>

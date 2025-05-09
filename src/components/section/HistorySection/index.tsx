@@ -1,7 +1,7 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import Image from "next/legacy/image";
+import Image from "next/image";
 
 import Container from "../../Container";
 import SecondaryButton from "../../SecondaryButton";
@@ -29,10 +29,12 @@ export function HistorySection({ aboutUs = false }: HistorySectionProps) {
                 className=""
                 src="/images/history.jpg"
                 alt="bolid"
-                layout="fill"
-                objectFit="cover"
-                objectPosition="left center"
-              />
+                fill
+                sizes="100vw"
+                style={{
+                  objectFit: "cover",
+                  objectPosition: "left center"
+                }} />
             </div>
             <div
               className={`${

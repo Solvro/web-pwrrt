@@ -1,7 +1,7 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import Image from "next/legacy/image";
+import Image from "next/image";
 
 import Container from "../../Container";
 import SecondaryButton from "../../SecondaryButton";
@@ -50,10 +50,12 @@ export function FSSection({ aboutUs = false }: FSSectionProps) {
                 className=""
                 src="/images/bolidFS.jpeg"
                 alt="bolid"
-                layout="fill"
-                objectFit="cover"
-                objectPosition="70% center"
-              />
+                fill
+                sizes="100vw"
+                style={{
+                  objectFit: "cover",
+                  objectPosition: "70% center"
+                }} />
             </div>
           </div>
         </div>

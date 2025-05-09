@@ -1,6 +1,6 @@
 "use client";
 
-import Image from "next/legacy/image";
+import Image from "next/image";
 import { useEffect, useState } from "react";
 
 import Title from "@/components/title";
@@ -77,10 +77,12 @@ const HeroAbout: React.FC<HeroAboutProps> = ({ dict }) => {
           className=""
           src="/images/history.jpg"
           alt="bolid"
-          layout="fill"
-          objectFit="cover"
-          objectPosition="center 20%"
-        />
+          fill
+          sizes="100vw"
+          style={{
+            objectFit: "cover",
+            objectPosition: "center 20%"
+          }} />
       </div>
     </div>
   );

@@ -1,4 +1,4 @@
-import Image from "next/legacy/image";
+import Image from "next/image";
 
 import { getBolidByBolidId } from "@/actions/bolid";
 import Container from "@/components/Container";
@@ -41,9 +41,11 @@ async function BolidPage(props: { params: Promise<Iparams> }) {
                   <Image
                     src="/images/bolid/RT12e/images/zawody/1.jpg"
                     alt="Zdjęcie 2"
-                    layout="fill"
-                    objectFit="cover"
-                  />
+                    fill
+                    sizes="100vw"
+                    style={{
+                      objectFit: "cover"
+                    }} />
                   <div className="absolute inset-0 bg-black opacity-50"></div>
                   <div className="absolute inset-0 flex flex-col justify-between p-4">
                     <Title size="small">FORMULA STUDENT GERMANY</Title>
@@ -62,7 +64,10 @@ async function BolidPage(props: { params: Promise<Iparams> }) {
                           alt="Zdjęcie 1"
                           width={100}
                           height={100}
-                        />
+                          style={{
+                            maxWidth: "100%",
+                            height: "auto"
+                          }} />
                       </div>
                     </div>
                   </div>
@@ -71,9 +76,11 @@ async function BolidPage(props: { params: Promise<Iparams> }) {
                   <Image
                     src="/images/bolid/RT12e/images/zawody/2.jpg"
                     alt="Zdjęcie 2"
-                    layout="fill"
-                    objectFit="cover"
-                  />
+                    fill
+                    sizes="100vw"
+                    style={{
+                      objectFit: "cover"
+                    }} />
                   <div className="absolute inset-0 bg-black opacity-50"></div>
                   <div className="absolute inset-0 flex flex-col justify-between p-4">
                     <Title size="small">FORMULA STUDENT ALPE ADRIA</Title>
@@ -92,7 +99,10 @@ async function BolidPage(props: { params: Promise<Iparams> }) {
                           alt="Zdjęcie 1"
                           width={100}
                           height={100}
-                        />
+                          style={{
+                            maxWidth: "100%",
+                            height: "auto"
+                          }} />
                       </div>
                     </div>
                   </div>
@@ -101,9 +111,11 @@ async function BolidPage(props: { params: Promise<Iparams> }) {
                   <Image
                     src="/images/bolid/RT12e/images/zawody/3.jpg"
                     alt="Zdjęcie 2"
-                    layout="fill"
-                    objectFit="cover"
-                  />
+                    fill
+                    sizes="100vw"
+                    style={{
+                      objectFit: "cover"
+                    }} />
                   <div className="absolute inset-0 bg-black opacity-50"></div>
                   <div className="absolute inset-0 flex flex-col justify-between p-4">
                     <Title size="small">FORMULA STUDENT ITALY</Title>
@@ -122,7 +134,10 @@ async function BolidPage(props: { params: Promise<Iparams> }) {
                           alt="Zdjęcie 1"
                           width={100}
                           height={100}
-                        />
+                          style={{
+                            maxWidth: "100%",
+                            height: "auto"
+                          }} />
                       </div>
                     </div>
                   </div>
@@ -158,14 +173,17 @@ async function BolidPage(props: { params: Promise<Iparams> }) {
                   <Image
                     src={`/images/bolid/RT12e/parts/${part.partName}.png`}
                     alt={`Zdjęcie ${part.partName}`}
-                    width={300} // Używaj rzeczywistych proporcji obrazu
-                    height={400} // Używaj rzeczywistych proporcji obrazu
+                    // Używaj rzeczywistych proporcji obrazu
+                    width={300}
+                    // Używaj rzeczywistych proporcji obrazu
+                    height={400}
+                    sizes="(max-width: 768px) 100vw, 25vw"
                     style={{
                       width: "100%",
                       height: "auto",
-                    }}
-                    sizes="(max-width: 768px) 100vw, 25vw"
-                  />
+                      maxWidth: "100%",
+                      height: "auto"
+                    }} />
                 </div>
               </div>
             </Container>

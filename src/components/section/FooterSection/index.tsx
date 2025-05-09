@@ -1,7 +1,7 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import Image from "next/legacy/image";
+import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import {
@@ -33,12 +33,13 @@ export function FooterSection() {
         <Image
           src="/images/joinus/photo5.jpeg"
           alt="Tło sekcji"
+          quality={50}
           style={{
             objectFit: "cover",
             objectPosition: "left 70%",
-          }}
-          quality={50}
-        />
+            maxWidth: "100%",
+            height: "auto"
+          }} />
         <div className="absolute inset-0 bg-black bg-opacity-80"></div>
       </div>
       <Container>

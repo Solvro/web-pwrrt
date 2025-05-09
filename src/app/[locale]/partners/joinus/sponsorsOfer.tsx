@@ -1,6 +1,6 @@
 "use client";
 
-import Image from "next/legacy/image";
+import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
 import React from "react";
 
@@ -127,10 +127,13 @@ const SponsorsOfer: React.FC<Props> = ({ dict }) => {
           <Image
             src={`/images/partners.png`}
             alt="partners foto"
-            layout="responsive"
             width={100}
             height={100}
-          />
+            sizes="100vw"
+            style={{
+              width: "100%",
+              height: "auto"
+            }} />
         </div>
         <div className="flex flex-col justify-between gap-2">
           <Text center bold medium wide>

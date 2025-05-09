@@ -1,5 +1,5 @@
 import { useTranslations } from "next-intl";
-import Image from "next/legacy/image";
+import Image from "next/image";
 
 import Container from "@/components/Container";
 import Text from "@/components/Text";
@@ -17,7 +17,14 @@ function FlipCard({ text, src, title, height }: FlipCardProps) {
     <div className={`flip-card ${height} relative rounded-md`}>
       <div className="flip-card-inner">
         <div className="flip-card-front relative h-full w-full">
-          <Image src={src} alt={title} layout="fill" objectFit="fill" />
+          <Image
+            src={src}
+            alt={title}
+            fill
+            sizes="100vw"
+            style={{
+              objectFit: "fill"
+            }} />
         </div>
         <div className="flip-card-back absolute inset-0 z-20 flex flex-col items-center justify-center gap-4 rounded-md bg-neutral-200 p-8 text-center">
           <Title wrap color="black" size="small">

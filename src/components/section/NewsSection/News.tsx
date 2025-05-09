@@ -1,6 +1,6 @@
 "use client";
 
-import Image from "next/legacy/image";
+import Image from "next/image";
 
 import Text from "../../Text";
 import Title from "../../title";
@@ -19,10 +19,12 @@ const News: React.FC<NewsProps> = ({ article, category, title }) => {
       <Image
         src={imagePath}
         alt={article}
-        layout="fill"
-        objectFit="cover"
-        objectPosition="center center"
-      />
+        fill
+        sizes="100vw"
+        style={{
+          objectFit: "cover",
+          objectPosition: "center center"
+        }} />
       <div className="absolute inset-0 flex h-full w-full flex-col justify-end">
         <div className="w-1/3 rounded-tr-sm bg-customRed p-2 text-center">
           <Title size="subtitle">{category}</Title>

@@ -2,7 +2,7 @@
 
 import { motion } from "motion/react";
 import { useTranslations } from "next-intl";
-import Image from "next/legacy/image";
+import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { FaArrowRight } from "react-icons/fa";
 
@@ -125,10 +125,12 @@ export function HeroSection() {
               <Image
                 src="/images/2bolid_main.png"
                 alt="bolid"
-                layout="intrinsic"
                 width={700}
                 height={551}
-              />
+                style={{
+                  maxWidth: "100%",
+                  height: "auto"
+                }} />
             </motion.div>
           </div>
         </Container>

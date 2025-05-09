@@ -1,6 +1,6 @@
 "use client";
 
-import Image from "next/legacy/image";
+import Image from "next/image";
 import React, { useState } from "react";
 
 import TileHeading from "./TileHeading";
@@ -62,24 +62,30 @@ const UserCard: React.FC<UserCardProps> = ({
             src="/images/TeamPlaceholder.jpg"
             alt={`Zdjęcie ${member.name} ${member.surname}`}
             fill
-            style={{ objectFit: "cover" }}
             loading="lazy"
             placeholder="blur"
             blurDataURL={placeholderImage}
             onError={handleImgError}
-          />
+            style={{
+              objectFit: "cover",
+              maxWidth: "100%",
+              height: "auto"
+            }} />
         </div>
         <div className="relative h-[350px]">
           <Image
             src={memberImageSource}
             alt={`Zdjęcie ${member.name} ${member.surname}`}
             fill
-            style={{ objectFit: "cover" }}
             loading="lazy"
             placeholder="blur"
             blurDataURL={placeholderImage}
             onError={handleImgError}
-          />
+            style={{
+              objectFit: "cover",
+              maxWidth: "100%",
+              height: "auto"
+            }} />
         </div>
         <TileHeading
           opiekun={opiekun}

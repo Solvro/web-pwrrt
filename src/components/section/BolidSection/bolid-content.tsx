@@ -1,7 +1,7 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import Image from "next/legacy/image";
+import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
 
 import Button from "../../Button";
@@ -101,10 +101,12 @@ export function BolidContent({
             <Image
               src={`/images/bolid/${name}/${name}.png`}
               alt="bolid"
-              layout="intrinsic"
               width={700}
               height={300}
-            />
+              style={{
+                maxWidth: "100%",
+                height: "auto"
+              }} />
           </div>
           <div className="flex gap-2 md:gap-4 lg:hidden">
             <Button

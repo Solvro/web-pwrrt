@@ -1,4 +1,4 @@
-import Image from "next/legacy/image";
+import Image from "next/image";
 import Link from "next/link";
 
 import Text from "./Text";
@@ -31,9 +31,12 @@ const NewsCard: React.FC<NewsCardProps> = ({
             src={main_image}
             alt={"test"}
             fill
-            style={{ objectFit: "cover" }}
             className="duration-500 ease-in-out group-hover:scale-105"
-          />
+            style={{
+              objectFit: "cover",
+              maxWidth: "100%",
+              height: "auto"
+            }} />
         </div>
         <div
           className={` ${
@@ -47,7 +50,15 @@ const NewsCard: React.FC<NewsCardProps> = ({
             <Text color="black">{short_description}</Text>
           </div>
           <div className="flex justify-between">
-            <Image alt="Logo" height={40} width={80} src={logo} />
+            <Image
+              alt="Logo"
+              height={40}
+              width={80}
+              src={logo}
+              style={{
+                maxWidth: "100%",
+                height: "auto"
+              }} />
             <Text color="gray">{length_time} min czytania</Text>
           </div>
         </div>
