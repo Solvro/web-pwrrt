@@ -8,7 +8,7 @@ interface LogoProps {
   height: number;
 }
 
-export default function Logo({ width, height }: LogoProps) {
+export function Logo({ width, height }: LogoProps) {
   return (
     <Link href="/" className="relative cursor-pointer py-7">
       <Image alt="Logo" height={height} width={width} src="/images/logo.png" />

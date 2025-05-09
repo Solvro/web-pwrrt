@@ -3,7 +3,7 @@
 import { usePathname, useRouter } from "next/navigation";
 import React, { useCallback, useContext, useEffect, useState } from "react";
 
-import { ClosestSectionContext } from "./ClosestSectionContext";
+import { ClosestSectionContext } from "./closest-section-context";
 
 interface NavItemProps {
   to: string;
@@ -41,11 +41,13 @@ const NavItem: React.FC<NavItemProps> = ({ to, children }) => {
       onClick={handleNavigation}
     >
       <p className="whitespace-nowrap">{children}</p>
-      {isScrolled ? <span
+      {isScrolled ? (
+        <span
           className={`${
             to === closestSectionId ? "scale-x-100" : ""
           } absolute bottom-0 left-0 right-0 block h-[3px] origin-left scale-x-0 bg-customRed transition-transform duration-300 group-hover:scale-x-100`}
-        ></span> : null}
+        ></span>
+      ) : null}
     </li>
   );
 };

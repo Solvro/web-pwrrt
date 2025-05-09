@@ -4,13 +4,12 @@ import { NextIntlClientProvider, hasLocale } from "next-intl";
 import { Open_Sans } from "next/font/google";
 import { notFound } from "next/navigation";
 
-import ClientOnly from "@/components/ClientOnly";
-import Navbar from "@/components/navbar";
-import ClosestSectionProvider from "@/components/navbar/ClosestSectionContext";
-import SideBar from "@/components/navbar/side-bar";
-import FooterSection from "@/components/section/FooterSection/FooterSection";
+import { Navbar } from "@/components/navbar";
+import { ClosestSectionProvider } from "@/components/navbar/closest-section-context";
+import { SideBar } from "@/components/navbar/side-bar";
+import { FooterSection } from "@/components/section/FooterSection";
 import { routing } from "@/i18n/routing";
-import ToasterProvider from "@/providers/ToasterProvider";
+import { ToasterProvider } from "@/providers/toaster-provider";
 
 import "../globals.css";
 
@@ -42,15 +41,13 @@ export default async function LocaleLayout({
     <html lang={locale}>
       <body className={font.className}>
         <NextIntlClientProvider>
-          <ClientOnly>
-            <ClosestSectionProvider>
-              <ToasterProvider />
-              <Navbar />
-              <SideBar />
-              {children}
-              <FooterSection />
-            </ClosestSectionProvider>
-          </ClientOnly>
+          <ClosestSectionProvider>
+            <Navbar />
+            <SideBar />
+            {children}
+            <FooterSection />
+            <ToasterProvider />
+          </ClosestSectionProvider>
         </NextIntlClientProvider>
       </body>
     </html>

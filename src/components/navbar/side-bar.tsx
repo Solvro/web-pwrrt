@@ -7,7 +7,7 @@ import { MdPerson } from "react-icons/md";
 
 import Button from "../Button";
 
-export default function SideBar() {
+export function SideBar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const t = useTranslations("sidebar");
 

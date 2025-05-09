@@ -3,11 +3,11 @@
 import { usePathname } from "next/navigation";
 import React, { useEffect, useState } from "react";
 
-import Logo from "./logo";
+import { Logo } from "./logo";
 import { NavigationMenu } from "./navigation-menu";
 import { UserMenu } from "./usermenu/user-menu";
 
-export default function Navbar() {
+export function Navbar() {
   const [atTop, setAtTop] = useState(true);
   const [isHome, setIsHome] = useState(false);
   const [lastScrollY, setLastScrollY] = useState(0);

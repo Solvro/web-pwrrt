@@ -14,12 +14,12 @@ import {
 import Button from "../../Button";
 import Container from "../../Container";
 import Text from "../../Text";
-import Logo from "../../navbar/logo";
+import { Logo } from "../../navbar/logo";
 import SocialIcons from "../../navbar/usermenu/SocialIcons";
 import Title from "../../title";
 import FooterLink from "./FooterLink";
 
-export default function FooterSection() {
+export function FooterSection() {
   const handleMapClick = () => {
     window.open("https://maps.app.goo.gl/A3E2pEjZndstzrDT8", "_blank");
   };
@@ -33,9 +33,10 @@ export default function FooterSection() {
         <Image
           src="/images/joinus/photo5.jpeg"
           alt="Tło sekcji"
-          layout="fill"
-          objectFit="cover"
-          objectPosition="left 70%"
+          style={{
+            objectFit: "cover",
+            objectPosition: "left 70%",
+          }}
           quality={50}
         />
         <div className="absolute inset-0 bg-black bg-opacity-80"></div>

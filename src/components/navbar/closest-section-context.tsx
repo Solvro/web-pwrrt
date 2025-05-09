@@ -8,9 +8,9 @@ interface ClosestSectionProviderProps {
   children: React.ReactNode;
 }
 
-const ClosestSectionProvider: React.FC<ClosestSectionProviderProps> = ({
+export function ClosestSectionProvider({
   children,
-}) => {
+}: ClosestSectionProviderProps) {
   const [closestSectionId, setClosestSectionId] = useState("");
 
   useEffect(() => {
@@ -40,7 +40,9 @@ const ClosestSectionProvider: React.FC<ClosestSectionProviderProps> = ({
       highlightClosestSection();
     }, 100);
 
-    return () => { window.removeEventListener("scroll", highlightClosestSection); };
+    return () => {
+      window.removeEventListener("scroll", highlightClosestSection);
+    };
   }, []);
 
   return (
@@ -48,6 +50,4 @@ const ClosestSectionProvider: React.FC<ClosestSectionProviderProps> = ({
       {children}
     </ClosestSectionContext.Provider>
   );
-};
-
-export default ClosestSectionProvider;
+}
