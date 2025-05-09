@@ -1,5 +1,5 @@
 import { CldUploadWidget } from "next-cloudinary";
-import Image from "next/image";
+import Image from "next/legacy/image";
 import { useCallback } from "react";
 import { TbPhotoPlus } from "react-icons/tb";
 

@@ -1,4 +1,4 @@
-import Image from "next/image";
+import Image from "next/legacy/image";
 import { usePathname, useRouter } from "next/navigation";
 import React from "react";
 
