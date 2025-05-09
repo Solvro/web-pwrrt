@@ -44,8 +44,9 @@ async function BolidPage(props: { params: Promise<Iparams> }) {
                     fill
                     sizes="100vw"
                     style={{
-                      objectFit: "cover"
-                    }} />
+                      objectFit: "cover",
+                    }}
+                  />
                   <div className="absolute inset-0 bg-black opacity-50"></div>
                   <div className="absolute inset-0 flex flex-col justify-between p-4">
                     <Title size="small">FORMULA STUDENT GERMANY</Title>
@@ -66,8 +67,9 @@ async function BolidPage(props: { params: Promise<Iparams> }) {
                           height={100}
                           style={{
                             maxWidth: "100%",
-                            height: "auto"
-                          }} />
+                            height: "auto",
+                          }}
+                        />
                       </div>
                     </div>
                   </div>
@@ -79,8 +81,9 @@ async function BolidPage(props: { params: Promise<Iparams> }) {
                     fill
                     sizes="100vw"
                     style={{
-                      objectFit: "cover"
-                    }} />
+                      objectFit: "cover",
+                    }}
+                  />
                   <div className="absolute inset-0 bg-black opacity-50"></div>
                   <div className="absolute inset-0 flex flex-col justify-between p-4">
                     <Title size="small">FORMULA STUDENT ALPE ADRIA</Title>
@@ -101,8 +104,9 @@ async function BolidPage(props: { params: Promise<Iparams> }) {
                           height={100}
                           style={{
                             maxWidth: "100%",
-                            height: "auto"
-                          }} />
+                            height: "auto",
+                          }}
+                        />
                       </div>
                     </div>
                   </div>
@@ -114,8 +118,9 @@ async function BolidPage(props: { params: Promise<Iparams> }) {
                     fill
                     sizes="100vw"
                     style={{
-                      objectFit: "cover"
-                    }} />
+                      objectFit: "cover",
+                    }}
+                  />
                   <div className="absolute inset-0 bg-black opacity-50"></div>
                   <div className="absolute inset-0 flex flex-col justify-between p-4">
                     <Title size="small">FORMULA STUDENT ITALY</Title>
@@ -136,8 +141,9 @@ async function BolidPage(props: { params: Promise<Iparams> }) {
                           height={100}
                           style={{
                             maxWidth: "100%",
-                            height: "auto"
-                          }} />
+                            height: "auto",
+                          }}
+                        />
                       </div>
                     </div>
                   </div>
@@ -182,8 +188,8 @@ async function BolidPage(props: { params: Promise<Iparams> }) {
                       width: "100%",
                       height: "auto",
                       maxWidth: "100%",
-                      height: "auto"
-                    }} />
+                    }}
+                  />
                 </div>
               </div>
             </Container>

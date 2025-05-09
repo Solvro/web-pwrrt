@@ -23,8 +23,9 @@ const ResponsibilityItem: React.FC<ResponsibilityItemProps> = ({
       height="22"
       style={{
         maxWidth: "100%",
-        height: "auto"
-      }} />
+        height: "auto",
+      }}
+    />
     <Text color={textColor}>{text}</Text>
   </div>
 );
@@ -95,9 +96,9 @@ const DepartmentElement: React.FC<DepartmentElementProps> = ({
               className="object-cover"
               style={{
                 maxWidth: "100%",
-                height: "auto",
-                objectPosition: "center 20%"
-              }} />
+                objectPosition: "center 20%",
+              }}
+            />
           </div>
         </div>
       </Container>

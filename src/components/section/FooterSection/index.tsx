@@ -34,12 +34,13 @@ export function FooterSection() {
           src="/images/joinus/photo5.jpeg"
           alt="Tło sekcji"
           quality={50}
+          fill
           style={{
             objectFit: "cover",
             objectPosition: "left 70%",
             maxWidth: "100%",
-            height: "auto"
-          }} />
+          }}
+        />
         <div className="absolute inset-0 bg-black bg-opacity-80"></div>
       </div>
       <Container>

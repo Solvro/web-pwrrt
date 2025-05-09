@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 
-function BottomBar() {
+export function BottomBar() {
   return (
     <div className="w-full">
       <Image
@@ -12,10 +12,9 @@ function BottomBar() {
         height={10}
         style={{
           maxWidth: "100%",
-          height: "auto"
-        }} />
+          height: "auto",
+        }}
+      />
     </div>
   );
 }
-
-export default BottomBar;

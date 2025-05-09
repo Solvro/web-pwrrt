@@ -1,7 +1,7 @@
 import FSSection from "@/components/section/FSSection";
 import HistorySection from "@/components/section/HistorySection";
 import JoinusSection from "@/components/section/JoinusSection";
-import SponsorsSection from "@/components/section/SponsorsSection/SponsorsSection";
+import SponsorsSection from "@/components/section/SponsorsSection";
 import { getDictionary } from "@/dictionaries";
 
 import DepartmentsAbout from "./DepartmentsAbout/DepartmentsAbout";

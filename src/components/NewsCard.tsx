@@ -35,8 +35,8 @@ const NewsCard: React.FC<NewsCardProps> = ({
             style={{
               objectFit: "cover",
               maxWidth: "100%",
-              height: "auto"
-            }} />
+            }}
+          />
         </div>
         <div
           className={` ${
@@ -57,8 +57,9 @@ const NewsCard: React.FC<NewsCardProps> = ({
               src={logo}
               style={{
                 maxWidth: "100%",
-                height: "auto"
-              }} />
+                height: "auto",
+              }}
+            />
             <Text color="gray">{length_time} min czytania</Text>
           </div>
         </div>

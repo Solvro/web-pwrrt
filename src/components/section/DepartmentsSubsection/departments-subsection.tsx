@@ -1,9 +1,9 @@
 "use client";
 
-import BottomBar from "./BottomBar";
-import Department from "./Department";
+import { BottomBar } from "./bottom-bar";
+import { Department } from "./department";
 
-function DepartmentsSubsection() {
+export function DepartmentsSubsection() {
   return (
     <div>
       <div className="relative grid-rows-2 border-none">
@@ -23,5 +23,3 @@ function DepartmentsSubsection() {
     </div>
   );
 }
-
-export default DepartmentsSubsection;

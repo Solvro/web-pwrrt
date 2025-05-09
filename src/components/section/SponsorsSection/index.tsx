@@ -36,7 +36,7 @@ const sponsors = [
   "/images/sponsors/zkz gears.png",
 ];
 
-function SponsorsSection() {
+export function SponsorsSection() {
   const containerRef = useRef<HTMLDivElement | null>(null);
   let animationFrameId: number | undefined;
 
@@ -98,7 +98,9 @@ function SponsorsSection() {
   };
 
   const onMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (!isDragging || !containerRef.current) {return;}
+    if (!isDragging || !containerRef.current) {
+      return;
+    }
     e.preventDefault();
     const x = e.pageX - containerRef.current.offsetLeft;
     const walk = x - startX; // Mnożnik prędkości przewijania
@@ -128,8 +130,8 @@ function SponsorsSection() {
                 className="object-contain"
                 style={{
                   maxWidth: "100%",
-                  height: "auto"
-                }} />
+                }}
+              />
             </div>
           ))}
         </div>
@@ -147,8 +149,8 @@ function SponsorsSection() {
                 className="object-contain"
                 style={{
                   maxWidth: "100%",
-                  height: "auto"
-                }} />
+                }}
+              />
             </div>
           ))}
         </div>
@@ -157,5 +159,3 @@ function SponsorsSection() {
     </div>
   );
 }
-
-export default SponsorsSection;

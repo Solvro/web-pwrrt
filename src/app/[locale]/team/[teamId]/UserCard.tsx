@@ -69,8 +69,8 @@ const UserCard: React.FC<UserCardProps> = ({
             style={{
               objectFit: "cover",
               maxWidth: "100%",
-              height: "auto"
-            }} />
+            }}
+          />
         </div>
         <div className="relative h-[350px]">
           <Image
@@ -84,8 +84,8 @@ const UserCard: React.FC<UserCardProps> = ({
             style={{
               objectFit: "cover",
               maxWidth: "100%",
-              height: "auto"
-            }} />
+            }}
+          />
         </div>
         <TileHeading
           opiekun={opiekun}
