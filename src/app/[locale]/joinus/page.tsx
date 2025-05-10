@@ -2,7 +2,7 @@ import Container from "@/components/Container";
 import Title from "@/components/title";
 
 import { getDictionary } from "../../../dictionaries";
-import DepartmentsAbout from "../about/DepartmentsAbout/DepartmentsAbout";
+import DepartmentsAbout from "../about/DepartmentsAbout";
 import Timer from "./timer";
 
 interface Props {

@@ -1,21 +1,17 @@
 "use client";
 
+import { useTranslations } from "next-intl";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 
 import Title from "@/components/title";
 
-interface HeroAboutProps {
-  dict: {
-    title: string;
-  };
-}
-
-const HeroAbout: React.FC<HeroAboutProps> = ({ dict }) => {
+export function HeroAbout() {
   const [offsetY, setOffsetY] = useState(0);
+  const t = useTranslations("heroAbout");
 
   const handleScroll = () => {
-    setOffsetY(window.pageYOffset);
+    setOffsetY(window.scrollY);
   };
 
   useEffect(() => {
@@ -28,13 +24,13 @@ const HeroAbout: React.FC<HeroAboutProps> = ({ dict }) => {
   return (
     <div
       className="fixed grid h-[40rem] w-full grid-cols-1 md:grid-cols-2"
-      style={{ transform: `translateY(${offsetY * -0.1}px)` }}
+      style={{ transform: `translateY(${(offsetY * -0.1).toString()}px)` }}
     >
       <div className="z-10 bg-neutral-900 pt-[100px] opacity-90 md:opacity-100">
         <div className="h-full p-20">
           <div className="flex h-full max-w-[400px] flex-col justify-between">
             <Title wrap color="white">
-              {dict.title}
+              {t("title")}
             </Title>
             <svg
               width="49"
@@ -81,11 +77,10 @@ const HeroAbout: React.FC<HeroAboutProps> = ({ dict }) => {
           sizes="100vw"
           style={{
             objectFit: "cover",
-            objectPosition: "center 20%"
-          }} />
+            objectPosition: "center 20%",
+          }}
+        />
       </div>
     </div>
   );
-};
-
-export default HeroAbout;
+}

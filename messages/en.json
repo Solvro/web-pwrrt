@@ -114,113 +114,128 @@
     "sectionSubtitle": "In our department, you will take care of:",
     "mechanical": {
       "description": "The department is responsible for designing and building the suspension system. It is also responsible for the elements of the autonomous steering and braking systems, mounting parts, and metal structures in the monocoque.",
-      "responsibilities": [
-        {
+      "responsibilities": {
+        "responsibility1": {
           "text": "designing and building the suspension system",
           "icon": "plik.svg"
         },
-        {
+        "responsibility2": {
           "text": "designing and building elements of the autonomous steering system",
           "icon": "kolo.svg"
         },
-        {
+        "responsibility3": {
           "text": "designing and building the braking system",
           "icon": "klucz.svg"
         },
-        {
+        "responsibility4": {
           "text": "designing mounting parts and metal structures in the monocoque",
           "icon": "box.svg"
         }
-      ]
+      }
     },
     "composites": {
       "description": "The department is responsible for the handmade production of all composite elements present in the bolid. Starting from the largest element, the load-bearing structure, through the aerodynamic package, to the driver's ergonomics and the protective structure for the high-voltage battery.",
-      "responsibilities": [
-        {
+      "responsibilities": {
+        "responsibility1": {
           "text": "modeling composite elements in CAD programs",
           "icon": "plik.svg"
         },
-        {
+        "responsibility2": {
           "text": "strength simulations and optimization of composite structures",
           "icon": "kolo.svg"
         },
-        {
+        "responsibility3": {
           "text": "CFD simulations of the aerodynamic package",
           "icon": "klucz.svg"
         },
-        {
+        "responsibility4": {
           "text": "production and strength testing of composite elements",
           "icon": "box.svg"
         }
-      ]
+      }
     },
     "marketing": {
       "description": "The department responsible for the team's image and promoting its activities on social media. Additionally, it handles logistics and event organization.",
-      "responsibilities": [
-        { "text": "Creating promotional materials", "icon": "plik.svg" },
-        { "text": "Organizing events", "icon": "box.svg" }
-      ]
+      "responsibilities": {
+        "responsibility1": {
+          "text": "Creating promotional materials",
+          "icon": "plik.svg"
+        },
+        "responsibility2": { "text": "Organizing events", "icon": "box.svg" }
+      }
     },
     "software": {
       "description": "The department is responsible for developing the autonomous system and programming microprocessors that control the driver's interface, braking, or steering of the vehicle. It is responsible for the operation of path planning, vehicle control, and perception systems when the driver is not in the bolid. The software is written in programming languages such as C, C++, and Python.",
-      "responsibilities": [
-        {
+      "responsibilities": {
+        "responsibility1": {
           "text": "developing algorithms that improve autonomous driving",
           "icon": "plik.svg"
         },
-        { "text": "developing embedded systems", "icon": "kolo.svg" }
-      ]
+        "responsibility2": {
+          "text": "developing embedded systems",
+          "icon": "kolo.svg"
+        }
+      }
     },
     "electrical": {
       "description": "The department is responsible for designing PCBs, creating high and low voltage harnesses, and building a custom high-voltage battery.",
-      "responsibilities": [
-        { "text": "designing and manufacturing PCBs", "icon": "plik.svg" },
-        {
+      "responsibilities": {
+        "responsibility1": {
+          "text": "designing and manufacturing PCBs",
+          "icon": "plik.svg"
+        },
+        "responsibility2": {
           "text": "designing in CAD programs and manufacturing high and low voltage harnesses compliant with motorsport standards",
           "icon": "kolo.svg"
         },
-        {
+        "responsibility3": {
           "text": "modeling housings for electronics in CAD programs",
           "icon": "klucz.svg"
         },
-        {
+        "responsibility4": {
           "text": "designing and manufacturing high-voltage batteries",
           "icon": "box.svg"
         },
-        {
+        "responsibility5": {
           "text": "thermal simulations of electronics and batteries",
           "icon": "plik.svg"
         },
-        { "text": "designing CAN bus", "icon": "kolo.svg" }
-      ]
+        "responsibility6": { "text": "designing CAN bus", "icon": "kolo.svg" }
+      }
     },
     "vehiclePerformance": {
       "description": "The department is responsible for maximizing vehicle performance, vehicle kinematics and dynamics, data acquisition, powertrain, and test organization.",
-      "responsibilities": [
-        { "text": "Vehicle dynamics simulations", "icon": "plik.svg" },
-        {
+      "responsibilities": {
+        "responsibility1": {
+          "text": "Vehicle dynamics simulations",
+          "icon": "plik.svg"
+        },
+        "responsibility2": {
           "text": "Designing and developing the powertrain",
           "icon": "kolo.svg"
         },
-        { "text": "Analyzing data from runs", "icon": "klucz.svg" }
-      ]
+        "responsibility3": {
+          "text": "Analyzing data from runs",
+          "icon": "klucz.svg"
+        }
+      }
     },
     "business": {
       "description": "Department responsible for contact with partners, financial management of the Team, and preparation of static competition for Formula Student competitions, such as business presentation.",
-      "responsibilities": [
-        {
+      "responsibilities": {
+        "responsibility1": {
           "text": "Coordination of orders, data analysis, optimization of the Team's work",
           "icon": "plik.svg"
         },
-        {
+        "responsibility2": {
           "text": "Preparation of business presentations",
           "icon": "kolo.svg"
         },
-        {
+        "responsibility3": {
           "text": "Contact with partners",
           "icon": "klucz.svg"
         }
-      ]
+      }
     }
   },
   "fsAbout": {

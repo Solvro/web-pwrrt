@@ -6,13 +6,13 @@ import type { MouseEventHandler } from "react";
 interface FooterLinkProps {
   children: string;
   href?: string; // Optional href prop for navigation
-  onClick?: MouseEventHandler<HTMLLIElement>; // Optional onClick prop for custom functions
+  onClick?: MouseEventHandler<HTMLButtonElement>; // Optional onClick prop for custom functions
 }
 
-const FooterLink: React.FC<FooterLinkProps> = ({ children, href, onClick }) => {
+export function FooterLink({ children, href, onClick }: FooterLinkProps) {
   const router = useRouter();
 
-  const handleClick = (event: React.MouseEvent<HTMLLIElement>) => {
+  const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     if (onClick) {
       onClick(event); // Execute the custom function if provided
     } else if (href) {
@@ -21,13 +21,13 @@ const FooterLink: React.FC<FooterLinkProps> = ({ children, href, onClick }) => {
   };
 
   return (
-    <li
-      onClick={handleClick}
-      className="cursor-pointer whitespace-nowrap py-1 text-opacity-70 duration-300 hover:text-customRed"
-    >
-      {children}
+    <li>
+      <button
+        onClick={handleClick}
+        className="cursor-pointer whitespace-nowrap py-1 text-opacity-70 duration-300 hover:text-customRed"
+      >
+        {children}
+      </button>
     </li>
   );
-};
-
-export default FooterLink;
+}

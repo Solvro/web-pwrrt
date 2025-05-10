@@ -1,32 +1,25 @@
 "use client";
 
+import { useTranslations } from "next-intl";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 
-import Button from "@/components/Button";
 import Container from "@/components/Container";
 import Text from "@/components/Text";
+import { Button } from "@/components/button";
 import Title from "@/components/title";
 
-interface GarageAboutProps {
-  dict: {
-    title: string;
-    paragraph: string;
-    address: string;
-    contact: string;
-  };
-}
+const handleMapClick = () => {
+  window.open(
+    "https://www.google.com/maps/place/Sopocka+16,+50-344+Wroc%C5%82aw/data=!4m2!3m1!1s0x470fe82d5f41f4fd:0xa5be6508736bb57b?sa=X&ved=1t:242&ictx=1",
+    "_blank",
+  );
+};
 
-const GarageAbout: React.FC<GarageAboutProps> = ({ dict }) => {
+export function GarageAbout() {
+  const t = useTranslations("garage");
   const router = useRouter();
-
-  const handleMapClick = () => {
-    window.open(
-      "https://www.google.com/maps/place/Sopocka+16,+50-344+Wroc%C5%82aw/data=!4m2!3m1!1s0x470fe82d5f41f4fd:0xa5be6508736bb57b?sa=X&ved=1t:242&ictx=1",
-      "_blank",
-    );
-  };
 
   const [isHovered, setIsHovered] = useState(false);
 
@@ -34,7 +27,7 @@ const GarageAbout: React.FC<GarageAboutProps> = ({ dict }) => {
     <div id="garage-section" className="relative bg-white pt-12 md:pt-20">
       <Container>
         <div className="w-full">
-          <Title color="black">{dict.title}</Title>
+          <Title color="black">{t("title")}</Title>
           <div className="mt-4 grid grid-cols-1 gap-6 md:grid-cols-5 md:gap-20">
             <div className="col-span-3 flex flex-col gap-6 md:gap-8">
               <div className="relative hidden h-2/3 md:block">
@@ -45,12 +38,13 @@ const GarageAbout: React.FC<GarageAboutProps> = ({ dict }) => {
                   sizes="100vw"
                   style={{
                     objectFit: "cover",
-                    objectPosition: "center 20%"
-                  }} />
+                    objectPosition: "center 20%",
+                  }}
+                />
               </div>
-              <Text color="black">{dict.paragraph}</Text>
+              <Text color="black">{t("paragraph")}</Text>
               <div className="flex flex-col items-center justify-between gap-6 md:flex-row md:gap-0">
-                <div
+                <button
                   onClick={handleMapClick}
                   onMouseEnter={() => {
                     setIsHovered(true);
@@ -89,13 +83,13 @@ const GarageAbout: React.FC<GarageAboutProps> = ({ dict }) => {
                     bold
                     opacity1
                   >
-                    {dict.address}
+                    {t("address")}
                   </Text>
-                </div>
+                </button>
                 <div className="w-full md:w-1/3">
                   <Button
                     outline
-                    label={dict.contact}
+                    label={t("contact")}
                     onClick={() => {
                       router.push("/contact");
                     }}
@@ -112,14 +106,13 @@ const GarageAbout: React.FC<GarageAboutProps> = ({ dict }) => {
                 sizes="100vw"
                 style={{
                   objectFit: "cover",
-                  objectPosition: "center 20%"
-                }} />
+                  objectPosition: "center 20%",
+                }}
+              />
             </div>
           </div>
         </div>
       </Container>
     </div>
   );
-};
-
-export default GarageAbout;
+}

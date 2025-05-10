@@ -10,7 +10,7 @@ import ClientOnly from "../../ClientOnly";
 import Container from "../../Container";
 import Text from "../../Text";
 import Title from "../../title";
-import BackgroundVideo from "./BackgroundVideo";
+import { BackgroundVideo } from "./background-video";
 
 const textVariants = {
   hidden: { x: -100, opacity: 0 },
@@ -129,8 +129,9 @@ export function HeroSection() {
                 height={551}
                 style={{
                   maxWidth: "100%",
-                  height: "auto"
-                }} />
+                  height: "auto",
+                }}
+              />
             </motion.div>
           </div>
         </Container>

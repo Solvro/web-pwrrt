@@ -1,5 +1,6 @@
 "use client";
 
+import { useTranslations } from "next-intl";
 import {
   FaBolt,
   FaBullhorn,
@@ -10,97 +11,55 @@ import {
 } from "react-icons/fa";
 import { IoSettings } from "react-icons/io5";
 
-import Button from "@/components/Button";
 import Container from "@/components/Container";
+import { Button } from "@/components/button";
 import Title from "@/components/title";
 
-import DepartmentElement from "./DepartmentElement";
+import { DepartmentElement } from "./department-element";
+
+const handleScrollToSection = (id: string) => {
+  const element = document.querySelector(id.toLowerCase());
+  if (element) {
+    element.scrollIntoView({ behavior: "smooth" });
+  }
+};
 
 interface DepartmentsAboutProps {
   lightMode?: boolean;
-  dict: {
-    title: string;
-    interestedIn: string;
-    sectionSubtitle: string;
-    mechanical: {
-      description: string;
-      responsibilities: { text: string; icon: string }[];
-    };
-    composites: {
-      description: string;
-      responsibilities: { text: string; icon: string }[];
-    };
-    marketing: {
-      description: string;
-      responsibilities: { text: string; icon: string }[];
-    };
-    software: {
-      description: string;
-      responsibilities: { text: string; icon: string }[];
-    };
-    electrical: {
-      description: string;
-      responsibilities: { text: string; icon: string }[];
-    };
-    vehiclePerformance: {
-      description: string;
-      responsibilities: { text: string; icon: string }[];
-    };
-    business: {
-      description: string;
-      responsibilities: { text: string; icon: string }[];
-    };
-  };
 }
 
-const DepartmentsAbout: React.FC<DepartmentsAboutProps> = ({
-  lightMode,
-  dict,
-}) => {
+export function DepartmentsAbout({ lightMode }: DepartmentsAboutProps) {
+  const t = useTranslations("departmentsAbout");
   const departments = [
     {
       name: "mechanical",
-      description: dict.mechanical.description,
-      responsibilities: dict.mechanical.responsibilities,
+      description: t("mechanical.description"),
     },
     {
       name: "composites",
-      description: dict.composites.description,
-      responsibilities: dict.composites.responsibilities,
+      description: t("composites.description"),
     },
     {
       name: "marketing",
-      description: dict.marketing.description,
-      responsibilities: dict.marketing.responsibilities,
+      description: t("marketing.description"),
     },
     {
       name: "software",
-      description: dict.software.description,
-      responsibilities: dict.software.responsibilities,
+      description: t("software.description"),
     },
     {
       name: "electrical",
-      description: dict.electrical.description,
-      responsibilities: dict.electrical.responsibilities,
+      description: t("electrical.description"),
     },
     {
-      name: "vehicle performance",
-      description: dict.vehiclePerformance.description,
-      responsibilities: dict.vehiclePerformance.responsibilities,
+      name: "vehiclePerformance",
+      description: t("vehiclePerformance.description"),
     },
     {
       name: "business",
-      description: dict.business.description,
-      responsibilities: dict.business.responsibilities,
+      description: t("business.description"),
     },
-  ];
-
-  const handleScrollToSection = (id: string) => {
-    const element = document.getElementById(id.toLowerCase());
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-    }
-  };
+  ] as const;
 
   return (
     <div id="department-section" className="relative bg-white">
@@ -108,7 +67,7 @@ const DepartmentsAbout: React.FC<DepartmentsAboutProps> = ({
         <div className="mb-6 mt-12 flex flex-col gap-6 text-center">
           <Container>
             <Title wrap color="black">
-              {dict.interestedIn}
+              {t("interestedIn")}
             </Title>
           </Container>
           <div className="w-full">
@@ -191,7 +150,7 @@ const DepartmentsAbout: React.FC<DepartmentsAboutProps> = ({
       ) : (
         <Container>
           <div className="mb-4 w-full md:mb-6">
-            <Title color="black">{dict.title}</Title>
+            <Title color="black">{t("title")}</Title>
           </div>
         </Container>
       )}
@@ -201,8 +160,7 @@ const DepartmentsAbout: React.FC<DepartmentsAboutProps> = ({
             <DepartmentElement
               key={department.name}
               department={department.name}
-              responsibilities={department.responsibilities}
-              departmentSubtitle={dict.sectionSubtitle}
+              departmentSubtitle={t("sectionSubtitle")}
               text={department.description}
               index={index}
               lightMode={lightMode}
@@ -212,6 +170,4 @@ const DepartmentsAbout: React.FC<DepartmentsAboutProps> = ({
       </div>
     </div>
   );
-};
-
-export default DepartmentsAbout;
+}

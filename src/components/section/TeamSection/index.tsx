@@ -4,9 +4,9 @@ import { useTranslations } from "next-intl";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 
-import Button from "../../Button";
 import Container from "../../Container";
 import Text from "../../Text";
+import Button from "../../button";
 import Title from "../../title";
 
 export function TeamSection() {
@@ -24,8 +24,9 @@ export function TeamSection() {
           sizes="100vw"
           style={{
             filter: "grayscale(100%)",
-            objectFit: "cover"
-          }} />
+            objectFit: "cover",
+          }}
+        />
         {/* Warstwa przyciemniająca */}
         <div className="absolute inset-0 bg-black bg-opacity-80"></div>
       </div>
@@ -56,8 +57,9 @@ export function TeamSection() {
                 fill
                 sizes="100vw"
                 style={{
-                  objectFit: "cover"
-                }} />
+                  objectFit: "cover",
+                }}
+              />
             </div>
             <div className="relative hidden h-[300px] w-[400px] sm:block md:h-[400px]">
               <Image
@@ -66,8 +68,9 @@ export function TeamSection() {
                 fill
                 sizes="100vw"
                 style={{
-                  objectFit: "cover"
-                }} />
+                  objectFit: "cover",
+                }}
+              />
             </div>
             <div className="relative hidden h-[400px] w-[200px] lg:block">
               <Image
@@ -76,8 +79,9 @@ export function TeamSection() {
                 fill
                 sizes="100vw"
                 style={{
-                  objectFit: "cover"
-                }} />
+                  objectFit: "cover",
+                }}
+              />
             </div>
           </div>
         </div>

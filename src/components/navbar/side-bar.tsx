@@ -5,7 +5,7 @@ import React, { useEffect, useState } from "react";
 import { FaCamera } from "react-icons/fa";
 import { MdPerson } from "react-icons/md";
 
-import Button from "../Button";
+import { Button } from "@/components/button";
 
 export function SideBar() {
   const [isScrolled, setIsScrolled] = useState(false);

@@ -1,4 +1,7 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { useTranslations } from "next-intl";
 import Image from "next/image";
+import { useMemo } from "react";
 
 import Container from "@/components/Container";
 import Text from "@/components/Text";
@@ -10,43 +13,50 @@ interface ResponsibilityItemProps {
   textColor: "black" | "white" | "red" | "gray";
 }
 
-const ResponsibilityItem: React.FC<ResponsibilityItemProps> = ({
+function ResponsibilityItem({
   iconPath,
   text,
   textColor,
-}) => (
-  <div className="flex gap-3">
-    <Image
-      src={iconPath}
-      alt="icon"
-      width="22"
-      height="22"
-      style={{
-        maxWidth: "100%",
-        height: "auto",
-      }}
-    />
-    <Text color={textColor}>{text}</Text>
-  </div>
-);
+}: ResponsibilityItemProps) {
+  return (
+    <div className="flex gap-3">
+      <Image
+        src={iconPath}
+        alt="icon"
+        width="22"
+        height="22"
+        style={{
+          maxWidth: "100%",
+          height: "auto",
+        }}
+      />
+      <Text color={textColor}>{text}</Text>
+    </div>
+  );
+}
 
 interface DepartmentElementProps {
-  department: string;
-  responsibilities: { text: string; icon: string }[];
+  department:
+    | "mechanical"
+    | "composites"
+    | "marketing"
+    | "software"
+    | "electrical"
+    | "business"
+    | "vehiclePerformance";
   departmentSubtitle: string;
   text: string;
   index: number;
   lightMode?: boolean;
 }
 
-const DepartmentElement: React.FC<DepartmentElementProps> = ({
+export function DepartmentElement({
   department,
-  responsibilities,
   departmentSubtitle,
   text,
   index,
   lightMode,
-}) => {
+}: DepartmentElementProps) {
   const bgColor = lightMode
     ? index % 2 === 0
       ? "bg-neutral-300"
@@ -56,6 +66,25 @@ const DepartmentElement: React.FC<DepartmentElementProps> = ({
       : "bg-neutral-700";
 
   const textColor = lightMode ? "black" : "white";
+  const t = useTranslations(`departmentsAbout.${department}`);
+
+  const responsibilitiesList = useMemo(() => {
+    let number = 1;
+    const responsibilities = [];
+    while (
+      t.has(`responsibilities.responsibility${number.toString()}.icon` as any)
+    ) {
+      const icon = t(
+        `responsibilities.responsibility${number.toString()}.icon` as any,
+      );
+      const responsibilitiesText = t(
+        `responsibilities.responsibility${number.toString()}.text` as any,
+      );
+      responsibilities.push({ icon, text: responsibilitiesText });
+      number++;
+    }
+    return responsibilities;
+  }, [t]);
 
   return (
     <div id={department} className={bgColor}>
@@ -77,7 +106,7 @@ const DepartmentElement: React.FC<DepartmentElementProps> = ({
                 {departmentSubtitle}
               </Text>
               <div className="flex flex-col gap-2">
-                {responsibilities.map((responsibility, index_) => (
+                {responsibilitiesList.map((responsibility, index_) => (
                   <ResponsibilityItem
                     key={index_}
                     iconPath={`/images/departments/${responsibility.icon}`}
@@ -104,6 +133,4 @@ const DepartmentElement: React.FC<DepartmentElementProps> = ({
       </Container>
     </div>
   );
-};
-
-export default DepartmentElement;
+}

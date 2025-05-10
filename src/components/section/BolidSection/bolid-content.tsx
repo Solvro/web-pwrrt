@@ -4,7 +4,8 @@ import { useTranslations } from "next-intl";
 import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
 
-import Button from "../../Button";
+import { Button } from "@/components/button";
+
 import Container from "../../Container";
 import Text from "../../Text";
 import Title from "../../title";
@@ -105,8 +106,9 @@ export function BolidContent({
               height={300}
               style={{
                 maxWidth: "100%",
-                height: "auto"
-              }} />
+                height: "auto",
+              }}
+            />
           </div>
           <div className="flex gap-2 md:gap-4 lg:hidden">
             <Button

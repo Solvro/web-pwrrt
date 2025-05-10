@@ -3,7 +3,7 @@
 import axios from "axios";
 import { signIn } from "next-auth/react";
 import { useCallback, useState } from "react";
-import type { FieldValues, SubmitHandler} from "react-hook-form";
+import type { FieldValues, SubmitHandler } from "react-hook-form";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import { AiFillGithub } from "react-icons/ai";
@@ -12,8 +12,8 @@ import { FcGoogle } from "react-icons/fc";
 import useLoginModal from "@/hooks/useLoginModal";
 
 import useRegisterModal from "../../hooks/useRegisterModal";
-import Button from "../Button";
 import Heading from "../Heading";
+import Button from "../button";
 import Input from "../inputs/Input";
 import Modal from "./Modal";
 

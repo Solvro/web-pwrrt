@@ -11,19 +11,20 @@ import {
   FaYoutube,
 } from "react-icons/fa";
 
-import Button from "../../Button";
+import { Button } from "@/components/button";
+
 import Container from "../../Container";
 import Text from "../../Text";
 import { Logo } from "../../navbar/logo";
 import SocialIcons from "../../navbar/usermenu/SocialIcons";
 import Title from "../../title";
-import FooterLink from "./FooterLink";
+import { FooterLink } from "./footer-link";
+
+const handleMapClick = () => {
+  window.open("https://maps.app.goo.gl/A3E2pEjZndstzrDT8", "_blank");
+};
 
 export function FooterSection() {
-  const handleMapClick = () => {
-    window.open("https://maps.app.goo.gl/A3E2pEjZndstzrDT8", "_blank");
-  };
-
   const router = useRouter();
   const t = useTranslations("footer");
 
@@ -105,7 +106,7 @@ export function FooterSection() {
                   racing.pwr@gmail.com
                 </Text>
               </Link>
-              <div
+              <button
                 className="group flex cursor-pointer flex-col items-center"
                 onClick={handleMapClick}
               >
@@ -129,7 +130,7 @@ export function FooterSection() {
                 <Text color="white" opacity1 hoverColor="red" small bold wide>
                   ul. Sopocka 16, Wrocław
                 </Text>
-              </div>
+              </button>
             </div>
           </div>
           <div className="mt-4 flex flex-col flex-wrap items-center justify-between gap-4 text-center text-white md:flex-row md:items-start md:gap-12 md:px-12 md:text-start">

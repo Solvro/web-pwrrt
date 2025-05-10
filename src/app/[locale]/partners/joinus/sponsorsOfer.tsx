@@ -4,9 +4,9 @@ import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
 import React from "react";
 
-import Button from "@/components/Button";
 import Container from "@/components/Container";
 import Text from "@/components/Text";
+import Button from "@/components/button";
 
 interface Props {
   dict: {
@@ -132,8 +132,9 @@ const SponsorsOfer: React.FC<Props> = ({ dict }) => {
             sizes="100vw"
             style={{
               width: "100%",
-              height: "auto"
-            }} />
+              height: "auto",
+            }}
+          />
         </div>
         <div className="flex flex-col justify-between gap-2">
           <Text center bold medium wide>
@@ -151,7 +152,12 @@ const SponsorsOfer: React.FC<Props> = ({ dict }) => {
                 </div>
               ))}
             </div>
-            <Button label={dict.buttonLabel} onClick={() => { teamRedirect(); }} />
+            <Button
+              label={dict.buttonLabel}
+              onClick={() => {
+                teamRedirect();
+              }}
+            />
           </div>
         </div>
       </div>

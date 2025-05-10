@@ -1,6 +1,6 @@
 "use client";
 
-function BackgroundVideo() {
+export function BackgroundVideo() {
   return (
     <div className="absolute inset-0 z-0">
       <video autoPlay muted loop className="h-full w-full object-cover">
@@ -11,5 +11,3 @@ function BackgroundVideo() {
     </div>
   );
 }
-
-export default BackgroundVideo;

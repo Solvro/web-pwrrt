@@ -7,8 +7,8 @@ import { useRouter } from "next/navigation";
 import useLoginModal from "@/hooks/useLoginModal";
 import useRentModal from "@/hooks/useRentModal";
 
-import Button from "../../Button";
 import Container from "../../Container";
+import Button from "../../button";
 import Title from "../../title";
 
 interface JoinusSectionProps {
@@ -42,8 +42,9 @@ export function JoinusSection({ sizeBig = false }: JoinusSectionProps) {
             sizes="100vw"
             style={{
               objectFit: "cover",
-              objectPosition: "left center"
-            }} />
+              objectPosition: "left center",
+            }}
+          />
         </div>
 
         {/* Druga kolumna, podzielona na dwa wiersze */}
@@ -57,8 +58,9 @@ export function JoinusSection({ sizeBig = false }: JoinusSectionProps) {
               sizes="100vw"
               style={{
                 objectFit: "cover",
-                objectPosition: "left 80%"
-              }} />
+                objectPosition: "left 80%",
+              }}
+            />
           </div>
 
           {/* Drugi wiersz w drugiej kolumnie, podzielony na dwie kolumny */}
@@ -72,8 +74,9 @@ export function JoinusSection({ sizeBig = false }: JoinusSectionProps) {
                 sizes="100vw"
                 style={{
                   objectFit: "cover",
-                  objectPosition: "center center"
-                }} />
+                  objectPosition: "center center",
+                }}
+              />
             </div>
             {/* Druga kolumna w drugim wierszu */}
             <div className="relative">
@@ -84,8 +87,9 @@ export function JoinusSection({ sizeBig = false }: JoinusSectionProps) {
                 sizes="100vw"
                 style={{
                   objectFit: "cover",
-                  objectPosition: "left center"
-                }} />
+                  objectPosition: "left center",
+                }}
+              />
             </div>
           </div>
         </div>
@@ -99,8 +103,9 @@ export function JoinusSection({ sizeBig = false }: JoinusSectionProps) {
             sizes="100vw"
             style={{
               objectFit: "cover",
-              objectPosition: "center center"
-            }} />
+              objectPosition: "center center",
+            }}
+          />
         </div>
       </div>
       <div className="absolute inset-0 z-10">

@@ -6,8 +6,8 @@ import { toast } from "react-hot-toast";
 import { FaEnvelope } from "react-icons/fa";
 import { FiPhone } from "react-icons/fi";
 
-import Button from "@/components/Button";
 import Text from "@/components/Text";
+import Button from "@/components/button";
 
 interface Member {
   name: string;
