@@ -1,6 +1,7 @@
 /* eslint-disable unicorn/prevent-abbreviations */
 import type { Metadata } from "next";
 import { NextIntlClientProvider, hasLocale } from "next-intl";
+import { setRequestLocale } from "next-intl/server";
 import { Open_Sans } from "next/font/google";
 import { notFound } from "next/navigation";
 
@@ -37,6 +38,8 @@ export default async function LocaleLayout({
   if (!hasLocale(routing.locales, locale)) {
     notFound();
   }
+  setRequestLocale(locale);
+
   return (
     <html lang={locale}>
       <body className={font.className}>
