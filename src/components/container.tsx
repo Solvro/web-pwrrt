@@ -2,8 +2,6 @@
 
 import { cn } from "@/lib/utils";
 
-/* eslint-disable @typescript-eslint/no-unsafe-assignment */
-
 interface ContainerProps {
   children: React.ReactNode;
   paddingType?: "r" | "l" | "x";

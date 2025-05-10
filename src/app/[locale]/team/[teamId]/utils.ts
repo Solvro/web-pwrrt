@@ -4,7 +4,7 @@ interface RoleHistoryItem {
   department: string;
 }
 
-export const parseBolidName = (bolidName: string) => {
+const parseBolidName = (bolidName: string) => {
   if (bolidName === "RTX") {
     return 10;
   }

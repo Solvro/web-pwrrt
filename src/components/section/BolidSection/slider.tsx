@@ -10,7 +10,7 @@ import { SliderElement } from "./slider-element";
 
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 
-export interface SliderProps {
+interface SliderProps {
   currentBolid: string;
   onChangeBolid?: (newBolid: string) => void;
   darkMode?: boolean;

@@ -2,7 +2,7 @@
 
 import { Title } from "../../title";
 
-export interface SliderElementProps {
+interface SliderElementProps {
   date: number;
   bolid: string;
   onClick: (bolidName: string) => void;
