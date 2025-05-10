@@ -2,9 +2,9 @@ import { getTranslations } from "next-intl/server";
 import React from "react";
 
 import { getTeamByFullName } from "@/actions/getTeamByName";
-import Container from "@/components/Container";
-import Text from "@/components/Text";
-import Title from "@/components/title";
+import { Container } from "@/components/container";
+import { Text } from "@/components/text";
+import { Title } from "@/components/title";
 
 import UserCard from "../../team/[teamId]/UserCard";
 import { SponsorsOfer } from "./sponsors-ofer";
@@ -281,7 +281,7 @@ export async function PartnersJoin() {
     <div className="flex flex-col bg-neutral-700 pt-[120px]">
       <div className="fixed z-0 w-full">
         <div className="absolute right-0 opacity-5">
-          <h1 className="text-[5rem] font-extrabold uppercase leading-none text-black">
+          <h1 className="text-[5rem] leading-none font-extrabold text-black uppercase">
             PARTNER
           </h1>
         </div>
@@ -322,7 +322,7 @@ export async function PartnersJoin() {
                 ))}
               </div>
             </div>
-            <div className="mb-12 mt-16 flex flex-col items-center gap-6 md:gap-12">
+            <div className="mt-16 mb-12 flex flex-col items-center gap-6 md:gap-12">
               <Text medium wide bold>
                 {t("sectionTitle2")}
               </Text>

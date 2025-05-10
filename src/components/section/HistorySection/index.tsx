@@ -3,10 +3,10 @@
 import { useTranslations } from "next-intl";
 import Image from "next/image";
 
-import Container from "../../Container";
 import SecondaryButton from "../../SecondaryButton";
-import Text from "../../Text";
-import Title from "../../title";
+import { Container } from "../../container";
+import { Text } from "../../text";
+import { Title } from "../../title";
 import { Counter } from "./counter";
 
 interface HistorySectionProps {
@@ -33,8 +33,9 @@ export function HistorySection({ aboutUs = false }: HistorySectionProps) {
                 sizes="100vw"
                 style={{
                   objectFit: "cover",
-                  objectPosition: "left center"
-                }} />
+                  objectPosition: "left center",
+                }}
+              />
             </div>
             <div
               className={`${

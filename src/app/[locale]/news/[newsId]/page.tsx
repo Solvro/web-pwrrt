@@ -2,8 +2,8 @@ import Image from "next/image";
 import { redirect } from "next/navigation";
 
 import getNewsById from "@/actions/getNewsById";
-import Container from "@/components/Container";
-import Text from "@/components/Text";
+import { Container } from "@/components/container";
+import { Text } from "@/components/text";
 
 interface Iparams {
   newsId?: string;

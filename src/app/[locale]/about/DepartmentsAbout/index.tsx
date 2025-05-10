@@ -11,9 +11,9 @@ import {
 } from "react-icons/fa";
 import { IoSettings } from "react-icons/io5";
 
-import Container from "@/components/Container";
 import { Button } from "@/components/button";
-import Title from "@/components/title";
+import { Container } from "@/components/container";
+import { Title } from "@/components/title";
 
 import { DepartmentElement } from "./department-element";
 
@@ -64,7 +64,7 @@ export function DepartmentsAbout({ lightMode }: DepartmentsAboutProps) {
   return (
     <div id="department-section" className="relative bg-white">
       {lightMode ? (
-        <div className="mb-6 mt-12 flex flex-col gap-6 text-center">
+        <div className="mt-12 mb-6 flex flex-col gap-6 text-center">
           <Container>
             <Title wrap color="black">
               {t("interestedIn")}

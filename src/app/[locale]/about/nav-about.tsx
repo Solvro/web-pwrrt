@@ -4,8 +4,8 @@ import { useTranslations } from "next-intl";
 import Image from "next/image";
 import Link from "next/link";
 
-import Container from "@/components/Container";
-import Text from "@/components/Text";
+import { Container } from "@/components/container";
+import { Text } from "@/components/text";
 
 interface NavAboutItemProps {
   children: React.ReactNode;

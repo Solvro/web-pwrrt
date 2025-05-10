@@ -3,9 +3,9 @@ import { useTranslations } from "next-intl";
 import Image from "next/image";
 import { useMemo } from "react";
 
-import Container from "@/components/Container";
-import Text from "@/components/Text";
-import Title from "@/components/title";
+import { Container } from "@/components/container";
+import { Text } from "@/components/text";
+import { Title } from "@/components/title";
 
 interface ResponsibilityItemProps {
   iconPath: string;

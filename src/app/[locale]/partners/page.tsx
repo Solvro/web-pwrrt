@@ -1,8 +1,8 @@
 import { useTranslations } from "next-intl";
 import Image from "next/image";
 
-import Container from "@/components/Container";
-import Title from "@/components/title";
+import { Container } from "@/components/container";
+import { Title } from "@/components/title";
 
 import { PartnersButton } from "./partners-button";
 

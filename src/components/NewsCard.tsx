@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 
-import Text from "./Text";
+import { Text } from "./text";
 
 interface NewsCardProps {
   id: string;
@@ -46,7 +46,7 @@ const NewsCard: React.FC<NewsCardProps> = ({
           <Text color="black" small wide bold opacity1 center>
             {title}
           </Text>
-          <div className="mb-3 mt-1 md:mb-4 md:mt-2">
+          <div className="mt-1 mb-3 md:mt-2 md:mb-4">
             <Text color="black">{short_description}</Text>
           </div>
           <div className="flex justify-between">

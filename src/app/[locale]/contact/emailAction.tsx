@@ -4,7 +4,7 @@ import toast from "react-hot-toast";
 import { FaEnvelope } from "react-icons/fa";
 
 import { useHandleLocaleRedirect } from "@/components/HandleLocaleRedirect";
-import Text from "@/components/Text";
+import { Text } from "@/components/text";
 
 // Import customowego hooka
 

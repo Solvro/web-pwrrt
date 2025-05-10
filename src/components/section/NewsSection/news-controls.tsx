@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import React from "react";
 
 import { Button } from "@/components/button";
-import Title from "@/components/title";
+import { Title } from "@/components/title";
 
 export function NewsControls() {
   const router = useRouter();

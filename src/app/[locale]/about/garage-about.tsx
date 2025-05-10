@@ -5,10 +5,10 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 
-import Container from "@/components/Container";
-import Text from "@/components/Text";
 import { Button } from "@/components/button";
-import Title from "@/components/title";
+import { Container } from "@/components/container";
+import { Text } from "@/components/text";
+import { Title } from "@/components/title";
 
 const handleMapClick = () => {
   window.open(

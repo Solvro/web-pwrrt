@@ -2,7 +2,7 @@
 
 import { useTranslations } from "next-intl";
 
-import Text from "../../Text";
+import { Text } from "../../text";
 
 interface BolidSpecsProps {
   animate: string;

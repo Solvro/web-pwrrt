@@ -6,9 +6,9 @@ import { usePathname, useRouter } from "next/navigation";
 
 import { Button } from "@/components/button";
 
-import Container from "../../Container";
-import Text from "../../Text";
-import Title from "../../title";
+import { Container } from "../../container";
+import { Text } from "../../text";
+import { Title } from "../../title";
 import { BolidSpecs } from "./bolid-specs";
 
 interface BolidData {

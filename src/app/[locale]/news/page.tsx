@@ -1,8 +1,8 @@
 // pages/about-us.jsx
 import { fetchNews } from "@/actions/getNews";
-import Container from "@/components/Container";
 import NewsCard from "@/components/NewsCard";
-import Title from "@/components/title";
+import { Container } from "@/components/container";
+import { Title } from "@/components/title";
 
 async function AboutUs() {
   const news = await fetchNews();

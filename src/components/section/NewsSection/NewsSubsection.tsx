@@ -1,6 +1,6 @@
 "use client";
 
-import Text from "../../Text";
+import { Text } from "../../text";
 
 function NewsSeubsection() {
   return (

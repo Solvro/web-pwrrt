@@ -3,8 +3,8 @@
 import { useTranslations } from "next-intl";
 import { useCallback, useEffect, useState } from "react";
 
-import Text from "@/components/Text";
-import Title from "@/components/title";
+import { Text } from "@/components/text";
+import { Title } from "@/components/title";
 
 interface TimerProps {
   targetDate: string;

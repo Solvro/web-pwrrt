@@ -3,7 +3,7 @@
 import React, { useEffect, useRef, useState } from "react";
 
 import type { TitleProps } from "../../title";
-import Title from "../../title";
+import { Title } from "../../title";
 
 interface CounterProps extends TitleProps {
   targetNumber: number;

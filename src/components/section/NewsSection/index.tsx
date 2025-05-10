@@ -1,7 +1,7 @@
 import { fetchFiveNews } from "@/actions/getFiveNews";
 import NewsCard from "@/components/NewsCard";
 
-import Container from "../../Container";
+import { Container } from "../../container";
 import { NewsControls } from "./news-controls";
 
 export async function NewsSection() {

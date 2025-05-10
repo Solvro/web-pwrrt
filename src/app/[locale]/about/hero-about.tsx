@@ -4,7 +4,7 @@ import { useTranslations } from "next-intl";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 
-import Title from "@/components/title";
+import { Title } from "@/components/title";
 
 export function HeroAbout() {
   const [offsetY, setOffsetY] = useState(0);

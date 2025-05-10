@@ -3,9 +3,9 @@ import { getTranslations } from "next-intl/server";
 import Image from "next/image";
 
 import { getTeamByBolid } from "@/actions/getTeamByBolid";
-import Container from "@/components/Container";
 import SecondaryButton from "@/components/SecondaryButton";
-import Title from "@/components/title";
+import { Container } from "@/components/container";
+import { Title } from "@/components/title";
 
 import ClientSlider from "./ClientSlider";
 import UserCard from "./UserCard";
@@ -121,7 +121,7 @@ async function TeamPage(props: { params: Promise<Iparams> }) {
   const t = await getTranslations("teamPage");
 
   return (
-    <div className="relative bg-neutral-950 pb-12 pt-32">
+    <div className="relative bg-neutral-950 pt-32 pb-12">
       <div className="relative overflow-hidden">
         <ClientSlider showRt15e teamId={teamId} />
 
@@ -133,7 +133,7 @@ async function TeamPage(props: { params: Promise<Iparams> }) {
                   depIndex % 2 === 0 ? "left-0" : "right-0"
                 }`}
               >
-                <h1 className="text-[15rem] font-extrabold uppercase leading-none text-white">
+                <h1 className="text-[15rem] leading-none font-extrabold text-white uppercase">
                   {department === "management" ? "Team" : department}
                 </h1>
               </div>

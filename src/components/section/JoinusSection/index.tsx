@@ -4,12 +4,11 @@ import { useTranslations } from "next-intl";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 
-import useLoginModal from "@/hooks/useLoginModal";
-import useRentModal from "@/hooks/useRentModal";
+import { useRentModal } from "@/hooks/use-rent-modal";
 
-import Container from "../../Container";
 import { Button } from "../../button";
-import Title from "../../title";
+import { Container } from "../../container";
+import { Title } from "../../title";
 
 interface JoinusSectionProps {
   sizeBig?: boolean;
@@ -17,7 +16,6 @@ interface JoinusSectionProps {
 
 export function JoinusSection({ sizeBig = false }: JoinusSectionProps) {
   const router = useRouter();
-  const loginModal = useLoginModal();
   const newModal = useRentModal();
   const t = useTranslations("joinusSection");
 
@@ -119,7 +117,7 @@ export function JoinusSection({ sizeBig = false }: JoinusSectionProps) {
                 label={t("buttonRecruitment")}
                 onClick={() => {
                   if (sizeBig) {
-                    loginModal.onOpen();
+                    //!TODO Open modal login
                   } else {
                     router.push(`/joinus`);
                   }

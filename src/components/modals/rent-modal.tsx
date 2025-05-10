@@ -7,7 +7,7 @@ import type { FieldValues, SubmitHandler } from "react-hook-form";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 
-import useRentModal from "@/hooks/useRentModal";
+import { useRentModal } from "@/hooks/use-rent-modal";
 
 import Heading from "../Heading";
 import Counter from "../inputs/Counter";

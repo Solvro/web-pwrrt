@@ -2,10 +2,10 @@ import { getTranslations } from "next-intl/server";
 import Image from "next/image";
 
 import { getBolidByBolidId } from "@/actions/bolid";
-import Container from "@/components/Container";
-import Text from "@/components/Text";
+import { Container } from "@/components/container";
 import { BolidSection } from "@/components/section/BolidSection";
-import Title from "@/components/title";
+import { Text } from "@/components/text";
+import { Title } from "@/components/title";
 
 interface Iparams {
   bolidId?: string;

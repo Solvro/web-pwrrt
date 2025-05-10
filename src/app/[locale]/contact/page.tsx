@@ -1,9 +1,9 @@
 import { getTranslations } from "next-intl/server";
 
 import { getTeamByFullName } from "@/actions/getTeamByName";
-import Container from "@/components/Container";
-import Text from "@/components/Text";
-import Title from "@/components/title";
+import { Container } from "@/components/container";
+import { Text } from "@/components/text";
+import { Title } from "@/components/title";
 
 import UserCard from "../team/[teamId]/UserCard";
 import { sortRoles } from "../team/[teamId]/utils";

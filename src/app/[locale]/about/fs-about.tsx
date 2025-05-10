@@ -1,9 +1,9 @@
 import { useTranslations } from "next-intl";
 import Image from "next/image";
 
-import Container from "@/components/Container";
-import Text from "@/components/Text";
-import Title from "@/components/title";
+import { Container } from "@/components/container";
+import { Text } from "@/components/text";
+import { Title } from "@/components/title";
 
 interface FlipCardProps {
   text: string;
@@ -23,8 +23,9 @@ function FlipCard({ text, src, title, height }: FlipCardProps) {
             fill
             sizes="100vw"
             style={{
-              objectFit: "fill"
-            }} />
+              objectFit: "fill",
+            }}
+          />
         </div>
         <div className="flip-card-back absolute inset-0 z-20 flex flex-col items-center justify-center gap-4 rounded-md bg-neutral-200 p-8 text-center">
           <Title wrap color="black" size="small">

@@ -5,9 +5,9 @@ import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
 import React from "react";
 
-import Container from "@/components/Container";
-import Text from "@/components/Text";
 import { Button } from "@/components/button";
+import { Container } from "@/components/container";
+import { Text } from "@/components/text";
 
 const getSVGIcon = (iconName: string) => {
   switch (iconName) {

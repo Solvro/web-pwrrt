@@ -4,10 +4,10 @@ import { useTranslations } from "next-intl";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 
-import Container from "../../Container";
-import Text from "../../Text";
 import { Button } from "../../button";
-import Title from "../../title";
+import { Container } from "../../container";
+import { Text } from "../../text";
+import { Title } from "../../title";
 
 export function TeamSection() {
   const router = useRouter();
@@ -28,7 +28,7 @@ export function TeamSection() {
           }}
         />
         {/* Warstwa przyciemniająca */}
-        <div className="absolute inset-0 bg-black bg-opacity-80"></div>
+        <div className="bg-opacity-80 absolute inset-0 bg-black"></div>
       </div>
       <Container paddingType="l">
         <div className="flex w-auto flex-col items-center gap-8 overflow-hidden py-8 md:gap-20 md:py-16 lg:flex-row">

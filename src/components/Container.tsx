@@ -5,10 +5,7 @@ interface ContainerProps {
   paddingType?: "r" | "l" | "x";
 }
 
-const Container: React.FC<ContainerProps> = ({
-  children,
-  paddingType = "x",
-}) => {
+export function Container({ children, paddingType = "x" }: ContainerProps) {
   const paddingClasses = {
     r: "mx-8 md:mx-0 md:mr-8 xl:mr-[calc((100vw-var(--container-width))/2)]",
     l: "mx-8 md:mx-0 md:ml-8 xl:ml-[calc((100vw-var(--container-width))/2)]",
@@ -24,9 +21,7 @@ const Container: React.FC<ContainerProps> = ({
       {children}
     </div>
   );
-};
-
-export default Container;
+}
 
 // 'use client';
 

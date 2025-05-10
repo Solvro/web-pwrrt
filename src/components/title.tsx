@@ -12,7 +12,7 @@ export interface TitleProps {
   lower?: boolean;
 }
 
-export default function Title({
+export function Title({
   children,
   size = "normal",
   color = "white",

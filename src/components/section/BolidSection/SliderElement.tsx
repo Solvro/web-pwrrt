@@ -1,6 +1,6 @@
 "use client";
 
-import Title from "../../title";
+import { Title } from "../../title";
 
 export interface SliderElementProps {
   date: number;

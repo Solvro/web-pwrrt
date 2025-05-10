@@ -13,11 +13,11 @@ import {
 
 import { Button } from "@/components/button";
 
-import Container from "../../Container";
-import Text from "../../Text";
+import { Container } from "../../container";
 import { Logo } from "../../navbar/logo";
 import SocialIcons from "../../navbar/usermenu/SocialIcons";
-import Title from "../../title";
+import { Text } from "../../text";
+import { Title } from "../../title";
 import { FooterLink } from "./footer-link";
 
 const handleMapClick = () => {
@@ -42,7 +42,7 @@ export function FooterSection() {
             maxWidth: "100%",
           }}
         />
-        <div className="absolute inset-0 bg-black bg-opacity-80"></div>
+        <div className="bg-opacity-80 absolute inset-0 bg-black"></div>
       </div>
       <Container>
         <div className="flex w-full flex-col">

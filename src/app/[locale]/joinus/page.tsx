@@ -1,7 +1,7 @@
 import { useTranslations } from "next-intl";
 
-import Container from "@/components/Container";
-import Title from "@/components/title";
+import { Container } from "@/components/container";
+import { Title } from "@/components/title";
 
 import { DepartmentsAbout } from "../about/DepartmentsAbout";
 import { Timer } from "./timer";
@@ -12,7 +12,7 @@ export function JoinUs() {
   return (
     <div className="pt-[120px]">
       <div className="absolute right-0 opacity-5">
-        <h1 className="text-[15rem] font-extrabold uppercase leading-none text-black">
+        <h1 className="text-[15rem] leading-none font-extrabold text-black uppercase">
           {t("pageTitle")}
         </h1>
       </div>

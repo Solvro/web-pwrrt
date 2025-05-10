@@ -18,7 +18,7 @@ interface TextProps {
   right?: boolean;
 }
 
-const Text: React.FC<TextProps> = ({
+export function Text({
   children,
   small,
   medium,
@@ -32,7 +32,7 @@ const Text: React.FC<TextProps> = ({
   hoverColor,
   alignCenter,
   right,
-}) => {
+}: TextProps) {
   const colorClass = () => {
     switch (color) {
       case "black": {
@@ -47,6 +47,7 @@ const Text: React.FC<TextProps> = ({
       case "white": {
         return "text-white";
       }
+      case undefined:
       default: {
         return "";
       }
@@ -84,6 +85,7 @@ const Text: React.FC<TextProps> = ({
       case "gray": {
         return "group-hover:text-gray-500";
       }
+      case "white":
       default: {
         return "group-hover:text-white";
       }
@@ -97,6 +99,4 @@ const Text: React.FC<TextProps> = ({
       {children}
     </p>
   );
-};
-// ??? leading-4 wide
-export default Text;
+}
