@@ -280,7 +280,7 @@ function SponsorGrid({
   );
 }
 
-export function Partners() {
+export default function Partners() {
   const t = useTranslations("partnersPage");
 
   return (

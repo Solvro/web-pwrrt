@@ -6,7 +6,7 @@ import { Title } from "@/components/title";
 import { DepartmentsAbout } from "../about/DepartmentsAbout";
 import { Timer } from "./timer";
 
-export function JoinUs() {
+export default function JoinUsPage() {
   const t = useTranslations("joinUs");
 
   return (
@@ -29,5 +29,3 @@ export function JoinUs() {
     </div>
   );
 }
-
-export default JoinUs;

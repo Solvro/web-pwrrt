@@ -267,7 +267,7 @@ const getSVGIcon = (iconName: string) => {
   }
 };
 
-export async function PartnersJoin() {
+export default async function PartnersJoinPage() {
   const t = await getTranslations("partnerJoinUsPage");
 
   const mainMembers = await getMembersData([
@@ -355,5 +355,3 @@ export async function PartnersJoin() {
     </div>
   );
 }
-
-export default PartnersJoin;
