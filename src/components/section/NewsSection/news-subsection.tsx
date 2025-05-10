@@ -2,7 +2,7 @@
 
 import { Text } from "../../text";
 
-function NewsSeubsection() {
+export function NewsSubsection() {
   return (
     <div className="relative hidden h-40 w-full justify-center gap-20 bg-neutral-200 md:flex">
       <div className="flex items-center justify-center gap-4">
@@ -204,5 +204,3 @@ function NewsSeubsection() {
     </div>
   );
 }
-
-export default NewsSeubsection;

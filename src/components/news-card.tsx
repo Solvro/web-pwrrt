@@ -13,16 +13,15 @@ interface NewsCardProps {
   main_image: string;
   whiteMode?: boolean;
 }
-const NewsCard: React.FC<NewsCardProps> = ({
+export function NewsCard({
   id,
   title,
   short_description,
-  long_description,
   length_time,
   logo,
   main_image,
   whiteMode,
-}) => {
+}: NewsCardProps) {
   return (
     <Link href={`/news/${id}`} passHref>
       <div className="group flex h-104 cursor-pointer flex-col overflow-hidden rounded-md md:h-136">
@@ -66,6 +65,4 @@ const NewsCard: React.FC<NewsCardProps> = ({
       </div>
     </Link>
   );
-};
-
-export default NewsCard;
+}

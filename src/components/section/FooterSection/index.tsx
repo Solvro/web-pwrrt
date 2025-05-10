@@ -15,7 +15,7 @@ import { Button } from "@/components/button";
 
 import { Container } from "../../container";
 import { Logo } from "../../navbar/logo";
-import SocialIcons from "../../navbar/usermenu/SocialIcons";
+import { SocialIcons } from "../../navbar/usermenu/social-icons";
 import { Text } from "../../text";
 import { Title } from "../../title";
 import { FooterLink } from "./footer-link";

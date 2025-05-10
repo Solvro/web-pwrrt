@@ -11,7 +11,7 @@ interface NewsProps {
   title: string;
 }
 
-const News: React.FC<NewsProps> = ({ article, category, title }) => {
+export function News({ article, category, title }: NewsProps) {
   const imagePath = `/images/news/news${article}.png`;
 
   return (
@@ -48,6 +48,4 @@ const News: React.FC<NewsProps> = ({ article, category, title }) => {
       </div>
     </div>
   );
-};
-
-export default News;
+}

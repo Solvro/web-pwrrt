@@ -8,11 +8,11 @@ interface IconLinkProps {
   to: string;
 }
 
-const SecondaryButton: React.FC<IconLinkProps> = ({
+export function SecondaryButton({
   buttonText,
   darkMode = false,
   to,
-}) => {
+}: IconLinkProps) {
   const router = useRouter();
   const handleNavigation = () => {
     router.push(to);
@@ -51,6 +51,4 @@ const SecondaryButton: React.FC<IconLinkProps> = ({
       </svg>
     </button>
   );
-};
-
-export default SecondaryButton;
+}

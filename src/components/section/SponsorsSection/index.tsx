@@ -3,6 +3,8 @@
 import Image from "next/image";
 import React, { useEffect, useRef, useState } from "react";
 
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+
 const sponsors = [
   "/images/sponsors/innowacje.png",
   "/images/sponsors/pwr.png",
@@ -85,10 +87,10 @@ export function SponsorsSection() {
     animateScroll();
   };
 
-  const onMouseDown = (e: React.MouseEvent<HTMLDivElement>) => {
+  const onMouseDown = (event: React.MouseEvent<HTMLDivElement>) => {
     if (containerRef.current) {
       setIsDragging(true);
-      setStartX(e.pageX - containerRef.current.offsetLeft);
+      setStartX(event.pageX - containerRef.current.offsetLeft);
       setScrollLeft(containerRef.current.scrollLeft);
     }
   };
@@ -97,12 +99,12 @@ export function SponsorsSection() {
     setIsDragging(false);
   };
 
-  const onMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+  const onMouseMove = (event: React.MouseEvent<HTMLDivElement>) => {
     if (!isDragging || !containerRef.current) {
       return;
     }
-    e.preventDefault();
-    const x = e.pageX - containerRef.current.offsetLeft;
+    event.preventDefault();
+    const x = event.pageX - containerRef.current.offsetLeft;
     const walk = x - startX; // Mnożnik prędkości przewijania
     containerRef.current.scrollLeft = scrollLeft - walk;
   };
@@ -120,12 +122,12 @@ export function SponsorsSection() {
     >
       {/* <div className="relative h-full"> */}
       <div className="relative h-full">
-        <div className="flex h-full select-none gap-20">
+        <div className="flex h-full gap-20 select-none">
           {sponsors.map((source, index) => (
-            <div key={index} className="relative h-full w-36 md:w-60">
+            <div key={source} className="relative h-full w-36 md:w-60">
               <Image
                 src={source}
-                alt={`Sponsor ${index + 1}`}
+                alt={`Sponsor ${(index + 1).toString()}`}
                 fill
                 className="object-contain"
                 style={{
@@ -135,16 +137,16 @@ export function SponsorsSection() {
             </div>
           ))}
         </div>
-        <div className="absolute left-0 top-0 z-20 h-full w-full"></div>
+        <div className="absolute top-0 left-0 z-20 h-full w-full"></div>
       </div>
       {/* Kopia w celu stworzenia iluzji braku przeskoku międzye końcem animacji */}
       <div className="relative h-full">
-        <div className="flex h-full select-none gap-8">
+        <div className="flex h-full gap-8 select-none">
           {sponsors.map((source, index) => (
-            <div key={index} className="relative h-full w-60">
+            <div key={source} className="relative h-full w-60">
               <Image
                 src={source}
-                alt={`Sponsor ${index + 1}`}
+                alt={`Sponsor ${(index + 1).toString()}`}
                 fill
                 className="object-contain"
                 style={{
@@ -154,7 +156,7 @@ export function SponsorsSection() {
             </div>
           ))}
         </div>
-        <div className="absolute left-0 top-0 z-20 h-full w-full"></div>
+        <div className="absolute top-0 left-0 z-20 h-full w-full"></div>
       </div>
     </div>
   );

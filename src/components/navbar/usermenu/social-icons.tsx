@@ -9,12 +9,12 @@ interface IconLinkProps {
   black?: boolean;
 }
 
-const SocialIcons: React.FC<IconLinkProps> = ({
+export function SocialIcons({
   href,
   icon: Icon,
   ariaLabel,
   black = false,
-}) => {
+}: IconLinkProps) {
   return (
     <a
       href={href}
@@ -29,6 +29,4 @@ const SocialIcons: React.FC<IconLinkProps> = ({
       </div>
     </a>
   );
-};
-
-export default SocialIcons;
+}

@@ -1,5 +1,5 @@
 import { fetchFiveNews } from "@/actions/getFiveNews";
-import NewsCard from "@/components/NewsCard";
+import { NewsCard } from "@/components/news-card";
 
 import { Container } from "../../container";
 import { NewsControls } from "./news-controls";

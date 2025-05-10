@@ -3,8 +3,8 @@
 import { useTranslations } from "next-intl";
 import Image from "next/image";
 
-import SecondaryButton from "../../SecondaryButton";
 import { Container } from "../../container";
+import { SecondaryButton } from "../../secondary-button";
 import { Text } from "../../text";
 import { Title } from "../../title";
 import { Counter } from "./counter";

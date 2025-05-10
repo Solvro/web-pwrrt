@@ -10,13 +10,13 @@ export interface SliderElementProps {
   darkMode: boolean;
 }
 
-const SliderElement: React.FC<SliderElementProps> = ({
+export function SliderElement({
   date,
   bolid,
   onClick,
   currentBolid,
   darkMode,
-}) => {
+}: SliderElementProps) {
   const isActive = currentBolid === bolid;
   const handleClick = () => {
     onClick(bolid);
@@ -29,7 +29,7 @@ const SliderElement: React.FC<SliderElementProps> = ({
   }
 
   return (
-    <div
+    <button
       className={`cursor-pointer" group relative flex flex-col items-center`}
       onClick={handleClick}
     >
@@ -50,8 +50,6 @@ const SliderElement: React.FC<SliderElementProps> = ({
           {bolid}
         </Title>
       </div>
-    </div>
+    </button>
   );
-};
-
-export default SliderElement;
+}

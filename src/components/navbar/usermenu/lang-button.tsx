@@ -7,7 +7,7 @@ interface LangButtonProps {
   black?: boolean;
 }
 
-const LangButton: React.FC<LangButtonProps> = ({ lang, black = false }) => {
+export function LangButton({ lang, black = false }: LangButtonProps) {
   const router = useRouter();
   const pathname = usePathname();
 
@@ -23,7 +23,7 @@ const LangButton: React.FC<LangButtonProps> = ({ lang, black = false }) => {
   const altText = lang === "pl" ? "US flag" : "Polish flag";
 
   return (
-    <div
+    <button
       onClick={handleLanguageChange}
       className={`relative flex h-8 w-8 items-center justify-center rounded-full border-2 ${black ? "border-black text-black" : "border-white text-white"} hover:border-custom-red hover:bg-custom-red cursor-pointer transition duration-300`}
     >
@@ -37,8 +37,6 @@ const LangButton: React.FC<LangButtonProps> = ({ lang, black = false }) => {
           height: "auto",
         }}
       />
-    </div>
+    </button>
   );
-};
-
-export default LangButton;
+}

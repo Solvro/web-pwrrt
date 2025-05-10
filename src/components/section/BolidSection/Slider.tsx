@@ -3,7 +3,12 @@
 import { usePathname, useRouter } from "next/navigation";
 import React, { useRef, useState } from "react";
 
-import SliderElement from "./SliderElement";
+import { SliderElement } from "./slider-element";
+
+/* eslint-disable @typescript-eslint/no-empty-function */
+/* eslint-disable unicorn/prevent-abbreviations */
+
+/* eslint-disable jsx-a11y/no-static-element-interactions */
 
 export interface SliderProps {
   currentBolid: string;
@@ -12,12 +17,12 @@ export interface SliderProps {
   showRt15e?: boolean;
 }
 
-const Slider: React.FC<SliderProps> = ({
+export function Slider({
   currentBolid = "RT13e",
   onChangeBolid = () => {},
   darkMode = false,
   showRt15e = false,
-}) => {
+}: SliderProps) {
   // Stan dla przeciągania
   const [isDragging, setIsDragging] = useState(false);
   const [startX, setStartX] = useState(0);
@@ -27,32 +32,38 @@ const Slider: React.FC<SliderProps> = ({
   const router = useRouter();
   const pathname = usePathname();
   const currentLocale = pathname.split("/")[1];
-  const teamRedirect = (bolid: string) =>
-    { router.push(`/${currentLocale}/team/${bolid}`); };
-  const bolidRedirect = (bolid: string) =>
-    { router.push(`/${currentLocale}/bolid/${bolid}`); };
+  const teamRedirect = (bolid: string) => {
+    router.push(`/${currentLocale}/team/${bolid}`);
+  };
+  const bolidRedirect = (bolid: string) => {
+    router.push(`/${currentLocale}/bolid/${bolid}`);
+  };
 
-  if (pathname && pathname.includes(`/team/`)) {
+  if (pathname.includes(`/team/`)) {
     onChangeBolid = teamRedirect;
-  } else if (pathname && pathname.includes(`/bolid/`)) {
+  } else if (pathname.includes(`/bolid/`)) {
     onChangeBolid = bolidRedirect;
   }
 
   // Rozpoczęcie przeciągania
-  const startDragging = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (!scrollContainerRef.current) {return;}
+  const startDragging = (event: React.MouseEvent<HTMLDivElement>) => {
+    if (!scrollContainerRef.current) {
+      return;
+    }
 
     setIsDragging(true);
-    setStartX(e.pageX - scrollContainerRef.current.offsetLeft);
+    setStartX(event.pageX - scrollContainerRef.current.offsetLeft);
     setScrollLeft(scrollContainerRef.current.scrollLeft);
   };
 
   // Przeciąganie
-  const onDrag = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (!isDragging || !scrollContainerRef.current) {return;}
+  const onDrag = (event: React.MouseEvent<HTMLDivElement>) => {
+    if (!isDragging || !scrollContainerRef.current) {
+      return;
+    }
 
-    e.preventDefault();
-    const x = e.pageX - scrollContainerRef.current.offsetLeft;
+    event.preventDefault();
+    const x = event.pageX - scrollContainerRef.current.offsetLeft;
     const walk = x - startX;
     scrollContainerRef.current.scrollLeft = scrollLeft - walk;
   };
@@ -80,13 +91,15 @@ const Slider: React.FC<SliderProps> = ({
         onMouseUp={stopDragging}
       >
         <div className="relative mx-8 flex gap-12 sm:gap-24 md:ml-[calc((100vw-var(--container-width))/2)]">
-          {showRt15e ? <SliderElement
+          {showRt15e ? (
+            <SliderElement
               darkMode={darkMode}
               date={2025}
               bolid="RT15e"
               onClick={onChangeBolid}
               currentBolid={currentBolid}
-            /> : null}
+            />
+          ) : null}
           <SliderElement
             darkMode={darkMode}
             date={2024}
@@ -197,6 +210,4 @@ const Slider: React.FC<SliderProps> = ({
       </div>
     </div>
   );
-};
-
-export default Slider;
+}

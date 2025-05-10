@@ -1,6 +1,6 @@
 "use client";
 
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { usePathname, useRouter } from "next/navigation";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { AiOutlineMenu } from "react-icons/ai";
@@ -12,8 +12,9 @@ import {
 } from "react-icons/fa";
 
 import Avatar from "../../Avatar";
-import MenuItem from "./MenuItem";
-import SocialIcons from "./SocialIcons";
+import { LangButton } from "./lang-button";
+import { MenuItem } from "./menu-item";
+import { SocialIcons } from "./social-icons";
 
 export function UserMenu() {
   const router = useRouter();
@@ -21,6 +22,7 @@ export function UserMenu() {
   const [isOpen, setIsOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
 
+  const lang = useLocale();
   const t = useTranslations("navigation");
 
   const handleClickOutside = useCallback((event: MouseEvent) => {
@@ -83,7 +85,7 @@ export function UserMenu() {
               icon={FaYoutube}
               ariaLabel="YouTube"
             />
-            {/* <LangButton lang={lang} /> */}
+            <LangButton lang={lang} />
             langBtnToDo
           </div>
         </div>
@@ -168,7 +170,7 @@ export function UserMenu() {
                 icon={FaYoutube}
                 ariaLabel="YouTube"
               />
-              {/* <LangButton lang={lang} /> */}
+              <LangButton lang={lang} />
               langBtnToDo
             </div>
           </div>

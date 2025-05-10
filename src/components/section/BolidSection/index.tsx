@@ -5,8 +5,8 @@ import { useEffect, useState } from "react";
 
 import { getBolidByName } from "@/actions/bolid";
 
-import Slider from "./Slider";
 import { BolidContent } from "./bolid-content";
+import { Slider } from "./slider";
 
 interface BolidData {
   name: string;

@@ -3,12 +3,12 @@ import { getTranslations } from "next-intl/server";
 import Image from "next/image";
 
 import { getTeamByBolid } from "@/actions/getTeamByBolid";
-import SecondaryButton from "@/components/SecondaryButton";
 import { Container } from "@/components/container";
+import { SecondaryButton } from "@/components/secondary-button";
 import { Title } from "@/components/title";
 
-import ClientSlider from "./ClientSlider";
 import UserCard from "./UserCard";
+import { ClientSlider } from "./client-slider";
 import { sortRoles } from "./utils";
 
 interface Iparams {

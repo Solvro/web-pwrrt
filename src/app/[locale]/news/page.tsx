@@ -1,7 +1,7 @@
 // pages/about-us.jsx
 import { fetchNews } from "@/actions/getNews";
-import NewsCard from "@/components/NewsCard";
 import { Container } from "@/components/container";
+import { NewsCard } from "@/components/news-card";
 import { Title } from "@/components/title";
 
 async function AboutUs() {
@@ -13,9 +13,9 @@ async function AboutUs() {
       </div>
       <Container>
         <div className="my-6 grid w-full grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {news.map((item, index) => (
+          {news.map((item) => (
             <NewsCard
-              key={index}
+              key={item.id}
               id={item.id}
               title={item.title}
               short_description={item.short_description}
