@@ -29,7 +29,7 @@ async function NewsPage(props: { params: Promise<Iparams> }) {
       <Container>
         <div className="relative my-12 flex w-full flex-col">
           <div className="relative flex items-center justify-end">
-            <div className="absolute inset-0 z-20 my-auto flex h-[26rem] w-[30rem] flex-col items-center justify-center gap-8 rounded-md bg-neutral-200 p-12">
+            <div className="absolute inset-0 z-20 my-auto flex h-104 w-120 flex-col items-center justify-center gap-8 rounded-md bg-neutral-200 p-12">
               <div className="border-b-2 border-black px-4 py-8">
                 <Text color="black" medium bold opacity1 alignCenter center>
                   {news.title}
@@ -39,7 +39,7 @@ async function NewsPage(props: { params: Promise<Iparams> }) {
                 {news.long_description}
               </Text>
             </div>
-            <div className="relative h-[32rem] w-2/3 overflow-hidden rounded-md bg-red-500">
+            <div className="relative h-128 w-2/3 overflow-hidden rounded-md bg-red-500">
               <Image
                 src={news.main_image}
                 alt={news.title}

@@ -45,7 +45,7 @@ export function FSSection({ aboutUs = false }: FSSectionProps) {
                 />
               )}
             </div>
-            <div className="relative h-[22rem] lg:h-auto">
+            <div className="relative h-88 lg:h-auto">
               <Image
                 className=""
                 src="/images/bolidFS.jpeg"

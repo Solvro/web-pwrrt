@@ -24,7 +24,7 @@ export function HistorySection({ aboutUs = false }: HistorySectionProps) {
             {aboutUs ? <Title color="black">{t("title")}</Title> : null}
           </div>
           <div className="grid grid-cols-1 gap-4 md:gap-20 lg:grid-cols-2">
-            <div className="relative order-3 flex h-[22rem] items-center justify-center lg:order-1 lg:h-full">
+            <div className="relative order-3 flex h-88 items-center justify-center lg:order-1 lg:h-full">
               <Image
                 className=""
                 src="/images/history.jpg"

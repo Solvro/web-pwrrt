@@ -23,7 +23,7 @@ export function HeroAbout() {
 
   return (
     <div
-      className="fixed grid h-[40rem] w-full grid-cols-1 md:grid-cols-2"
+      className="fixed grid h-160 w-full grid-cols-1 md:grid-cols-2"
       style={{ transform: `translateY(${(offsetY * -0.1).toString()}px)` }}
     >
       <div className="z-10 bg-neutral-900 pt-[100px] opacity-90 md:opacity-100">
@@ -68,7 +68,7 @@ export function HeroAbout() {
           </div>
         </div>
       </div>
-      <div className="absolute z-0 h-[40rem] w-screen md:relative md:w-full">
+      <div className="absolute z-0 h-160 w-screen md:relative md:w-full">
         <Image
           className=""
           src="/images/history.jpg"

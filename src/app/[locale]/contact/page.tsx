@@ -1,4 +1,4 @@
-import { useTranslations } from "next-intl";
+import { getTranslations } from "next-intl/server";
 
 import { getTeamByFullName } from "@/actions/getTeamByName";
 import Container from "@/components/Container";
@@ -37,13 +37,13 @@ const getMembersData = async (
     const surname = rest.join(" ");
     const memberData = await getTeamByFullName(name, surname);
     if (memberData.length > 0) {
-      const member = memberData[0];
+      const member2 = memberData[0];
       const currentRole =
-        member.roles.find((role: Role) => role.bolidName === bolidName)?.role ||
-        "No current role";
+        member2.roles.find((role: Role) => role.bolidName === bolidName)
+          ?.role ?? "No current role";
 
       teamMembers.push({
-        ...member,
+        ...member2,
         currentRole,
       });
     }
@@ -62,8 +62,8 @@ const formatPhoneNumber = (phoneNumber: string | null | undefined) => {
   return `${countryCode} ${formattedNumber}`;
 };
 
-export async function ContactUs() {
-  const t = useTranslations("contactUs");
+export default async function ContactUs() {
+  const t = await getTranslations("contactUs");
 
   const mainMembers = await getMembersData(
     ["paweł wójcik", "bartosz sobczak", "alicja jeżak", "joanna popielewska"],
@@ -103,12 +103,12 @@ export async function ContactUs() {
   return (
     <div className="pt-[100px] md:pt-[120px]">
       <div className="absolute right-0 opacity-5">
-        <h1 className="text-[15rem] font-extrabold uppercase leading-none text-black">
+        <h1 className="text-[15rem] leading-none font-extrabold text-black uppercase">
           {t("pageTitle")}
         </h1>
       </div>
       <Container>
-        <div className="mb-12 mt-16 flex w-full flex-col items-center">
+        <div className="mt-16 mb-12 flex w-full flex-col items-center">
           <div className="my-4 mb-24 w-3/5 border-b-2 border-black py-4 text-center">
             <Title color="black">{t("writeToUs")}</Title>
           </div>
@@ -126,7 +126,7 @@ export async function ContactUs() {
                   roleHistory={roleHistory}
                 />
                 <EmailAction
-                  email={member.email || "pawel.wojcik.pwrrt@gmail.com"}
+                  email={member.email ?? "pawel.wojcik.pwrrt@gmail.com"}
                 />
                 <EmailAction
                   email={formatPhoneNumber(member.phoneNumber) || "Brak numeru"}
@@ -136,7 +136,7 @@ export async function ContactUs() {
           </div>
         </div>
       </Container>
-      <div className="mb-6 mt-4 text-center md:mt-12">
+      <div className="mt-4 mb-6 text-center md:mt-12">
         <Title color="black" size="medium">
           {t("whereToFindUs")}
         </Title>

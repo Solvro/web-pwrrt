@@ -25,7 +25,7 @@ const NewsCard: React.FC<NewsCardProps> = ({
 }) => {
   return (
     <Link href={`/news/${id}`} passHref>
-      <div className="group flex h-[26rem] cursor-pointer flex-col overflow-hidden rounded-md md:h-[34rem]">
+      <div className="group flex h-104 cursor-pointer flex-col overflow-hidden rounded-md md:h-136">
         <div className="relative h-full overflow-hidden">
           <Image
             src={main_image}

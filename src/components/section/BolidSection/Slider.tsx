@@ -192,7 +192,7 @@ const Slider: React.FC<SliderProps> = ({
             onClick={onChangeBolid}
             currentBolid={currentBolid}
           />
-          <div className="w-1 flex-shrink-0 md:w-[calc((85vw-var(--container-width))/2)]"></div>
+          <div className="w-1 shrink-0 md:w-[calc((85vw-var(--container-width))/2)]"></div>
         </div>
       </div>
     </div>

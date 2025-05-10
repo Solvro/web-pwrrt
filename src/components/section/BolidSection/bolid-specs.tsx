@@ -20,9 +20,9 @@ export function BolidSpecs({
   return (
     <div className="">
       <div
-        className={`${animate} relative flex w-[100vw] justify-between bg-neutral-700 transition duration-200 ease-out`}
+        className={`${animate} relative flex w-screen justify-between bg-neutral-700 transition duration-200 ease-out`}
       >
-        <div className="z-10 hidden items-center justify-between bg-neutral-800 pl-[calc((100vw-var(--container-width))/3)] pr-8 lg:flex">
+        <div className="z-10 hidden items-center justify-between bg-neutral-800 pr-8 pl-[calc((100vw-var(--container-width))/3)] lg:flex">
           <div className="flex flex-col">
             <Text bold medium color="white" opacity1>
               {t("specyfikacja")}
@@ -66,12 +66,12 @@ export function BolidSpecs({
           </svg>
           <div className="flex max-w-52 flex-col justify-center">
             <h1
-              className={`font-akiraExpanded text-md font-extrabold leading-tight text-white md:text-3xl`}
+              className={`font-akiraExpanded text-md leading-tight font-extrabold text-white md:text-3xl`}
             >
               {acceleration}
             </h1>
             <h2
-              className={`font-akiraExpanded hidden text-2xl font-extrabold leading-tight text-customRed md:block`}
+              className={`font-akiraExpanded text-custom-red hidden text-2xl leading-tight font-extrabold md:block`}
             >
               {t("TXTacceleration")}
             </h2>
@@ -103,12 +103,12 @@ export function BolidSpecs({
           </svg>
           <div className="flex max-w-52 flex-col justify-center">
             <h1
-              className={`font-akiraExpanded text-md font-extrabold leading-tight text-white md:text-3xl`}
+              className={`font-akiraExpanded text-md leading-tight font-extrabold text-white md:text-3xl`}
             >
               {power}
             </h1>
             <h2
-              className={`font-akiraExpanded hidden min-w-fit text-2xl font-extrabold leading-tight text-customRed md:block`}
+              className={`font-akiraExpanded text-custom-red hidden min-w-fit text-2xl leading-tight font-extrabold md:block`}
             >
               {t("TXTpower")}
             </h2>
@@ -144,12 +144,12 @@ export function BolidSpecs({
           </svg>
           <div className="flex max-w-52 flex-col justify-center">
             <h1
-              className={`font-akiraExpanded text-md font-extrabold leading-tight text-white md:text-3xl`}
+              className={`font-akiraExpanded text-md leading-tight font-extrabold text-white md:text-3xl`}
             >
               {mass}
             </h1>
             <h2
-              className={`font-akiraExpanded hidden text-2xl font-extrabold leading-tight text-customRed md:block`}
+              className={`font-akiraExpanded text-custom-red hidden text-2xl leading-tight font-extrabold md:block`}
             >
               {t("TXTmass")}
             </h2>

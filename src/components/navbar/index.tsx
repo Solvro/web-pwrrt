@@ -37,7 +37,7 @@ export function Navbar() {
     <header
       className={`fixed z-50 w-full transition-all duration-500 ${
         !isHome || !atTop ? "bg-black" : "bg-transparent"
-      } ${hideNavbar ? "translate-y-[-100%]" : "translate-y-0"}`}
+      } ${hideNavbar ? "-translate-y-full" : "translate-y-0"}`}
     >
       <div className="mx-auto px-4 sm:px-2 md:px-10 xl:px-20">
         <div className="flex flex-row items-center justify-between gap-3 md:gap-0">

@@ -116,7 +116,7 @@ export function SponsorsOfer() {
 
   return (
     <Container>
-      <div className="z-10 grid w-full grid-cols-1 gap-8 rounded-sm bg-white p-6 shadow-xl md:grid-cols-2 md:p-12">
+      <div className="z-10 grid w-full grid-cols-1 gap-8 rounded-xs bg-white p-6 shadow-xl md:grid-cols-2 md:p-12">
         <div className="relative w-full">
           <Image
             src={`/images/partners.png`}

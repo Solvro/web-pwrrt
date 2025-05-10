@@ -108,10 +108,10 @@ export function HeroSection() {
                 onClick={() => {
                   router.push("#bolid");
                 }}
-                className="group hidden items-center rounded py-2 text-white transition-all duration-300 hover:pl-8 md:flex"
+                className="group hidden items-center rounded-sm py-2 text-white transition-all duration-300 hover:pl-8 md:flex"
               >
                 <span>{t("button")}</span>
-                <FaArrowRight className="ml-2 transition-all duration-300 group-hover:text-customRed" />
+                <FaArrowRight className="group-hover:text-custom-red ml-2 transition-all duration-300" />
               </motion.button>
             </div>
 

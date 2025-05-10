@@ -18,7 +18,7 @@ const Container: React.FC<ContainerProps> = ({
   return (
     <div
       className={`${paddingClasses[paddingType]} ${
-        paddingType === "x" ? "max-w-[var(--container-width)]" : ""
+        paddingType === "x" ? "max-w-(--container-width)" : ""
       }relative flex h-full justify-center lg:items-center`}
     >
       {children}

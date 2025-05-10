@@ -1,3 +1,4 @@
+/* eslint-disable unicorn/prevent-abbreviations */
 import type { Metadata } from "next";
 import { NextIntlClientProvider, hasLocale } from "next-intl";
 import { setRequestLocale } from "next-intl/server";
@@ -11,7 +12,7 @@ import { FooterSection } from "@/components/section/FooterSection";
 import { routing } from "@/i18n/routing";
 import { ToasterProvider } from "@/providers/toaster-provider";
 
-import "../globals.css";
+import "./globals.css";
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));

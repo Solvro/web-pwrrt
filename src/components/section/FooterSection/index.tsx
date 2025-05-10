@@ -223,7 +223,7 @@ export function FooterSection() {
               />
             </div>
           </div>
-          <div className="flex w-full flex-col items-center justify-between gap-2 border-t-[1px] border-white py-3 md:flex-row md:px-12 md:py-6">
+          <div className="flex w-full flex-col items-center justify-between gap-2 border-t border-white py-3 md:flex-row md:px-12 md:py-6">
             <Text color="white" center>
               {t("createdBy")}
             </Text>

@@ -23,7 +23,7 @@ const SocialIcons: React.FC<IconLinkProps> = ({
       rel="noopener noreferrer"
     >
       <div
-        className={`flex h-8 w-8 items-center justify-center rounded-full border-[1px] ${black ? "border-black text-black" : "border-white text-white"} transition duration-300 hover:border-customRed hover:bg-customRed`}
+        className={`flex h-8 w-8 items-center justify-center rounded-full border ${black ? "border-black text-black" : "border-white text-white"} hover:border-custom-red hover:bg-custom-red transition duration-300`}
       >
         <Icon size={16} />
       </div>

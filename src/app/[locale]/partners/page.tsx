@@ -259,7 +259,7 @@ function SponsorGrid({
 
   return (
     <div className="flex w-full flex-col items-center text-center">
-      <div className="my-4 border-y-2 border-customRed px-8 py-4 uppercase md:my-12 md:mt-14 md:w-fit">
+      <div className="border-custom-red my-4 border-y-2 px-8 py-4 uppercase md:my-12 md:mt-14 md:w-fit">
         <Title color="black">{t(sponsorRank)}</Title>
       </div>
       <div className={`flex ${gap ?? ""} w-full flex-col md:flex-row`}>
@@ -286,7 +286,7 @@ export function Partners() {
   return (
     <div className="mb-6 pt-[100px] md:mb-12 md:pt-[120px]">
       <div className="absolute right-0 opacity-5">
-        <h1 className="text-[15rem] font-extrabold uppercase leading-none text-black">
+        <h1 className="text-[15rem] leading-none font-extrabold text-black uppercase">
           {t("partners")}
         </h1>
       </div>

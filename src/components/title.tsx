@@ -27,7 +27,7 @@ export default function Title({
         return "text-black";
       }
       case "red": {
-        return "text-customRed";
+        return "text-custom-red";
       }
       case "gray": {
         return "text-gray-500";
@@ -47,7 +47,7 @@ export default function Title({
         return "group-hover:text-black";
       }
       case "red": {
-        return "group-hover:text-customRed";
+        return "group-hover:text-custom-red";
       }
       case "gray": {
         return "group-hover:text-gray-500";

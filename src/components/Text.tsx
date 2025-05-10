@@ -39,7 +39,7 @@ const Text: React.FC<TextProps> = ({
         return "text-black";
       }
       case "red": {
-        return "text-customRed";
+        return "text-custom-red";
       }
       case "gray": {
         return "text-gray-700";
@@ -55,21 +55,31 @@ const Text: React.FC<TextProps> = ({
 
   // Określanie klasy rozmiaru tekstu
   const sizeClass = () => {
-    if (small) {return "text-md md:text-xl";}
-    if (medium) {return "text-xl md:text-3xl";}
-    if (main) {return "text-[14px] md:text-[14px]";}
-    if (extrasmall) {return "text-xs";}
+    if (small) {
+      return "text-md md:text-xl";
+    }
+    if (medium) {
+      return "text-xl md:text-3xl";
+    }
+    if (main) {
+      return "text-[14px] md:text-[14px]";
+    }
+    if (extrasmall) {
+      return "text-xs";
+    }
     return "text-xs sm:text-base sm:leading-5";
   };
 
   const hoverColorClass = useMemo(() => {
-    if (!hoverColor) {return "";} // Jeśli hoverColor nie jest podany, nie dodajemy klasy
+    if (!hoverColor) {
+      return "";
+    } // Jeśli hoverColor nie jest podany, nie dodajemy klasy
     switch (hoverColor) {
       case "black": {
         return "group-hover:text-black";
       }
       case "red": {
-        return "group-hover:text-customRed";
+        return "group-hover:text-custom-red";
       }
       case "gray": {
         return "group-hover:text-gray-500";

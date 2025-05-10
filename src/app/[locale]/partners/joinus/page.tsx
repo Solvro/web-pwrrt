@@ -293,10 +293,10 @@ export async function PartnersJoin() {
           </div>
         </Container>
       </div>
-      <div className="pt-[12rem] md:pt-[16rem]">
+      <div className="pt-48 md:pt-64">
         <SponsorsOfer />
       </div>
-      <div className="relative mt-[-15rem] w-full bg-white pt-[20rem]">
+      <div className="relative -mt-60 w-full bg-white pt-80">
         <Container>
           <div className="flex w-full flex-col">
             <div className="flex w-full flex-col items-center gap-8">

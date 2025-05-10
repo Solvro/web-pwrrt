@@ -89,7 +89,7 @@ export function UserMenu() {
         </div>
         <button
           onClick={toggleOpen}
-          className="userMenu-responsive ml-8 hidden cursor-pointer flex-row items-center gap-3 rounded-full border-[1px] border-white p-2 text-white transition duration-300 hover:border-customRed hover:bg-customRed hover:shadow-md"
+          className="userMenu-responsive hover:border-custom-red hover:bg-custom-red ml-8 hidden cursor-pointer flex-row items-center gap-3 rounded-full border border-white p-2 text-white transition duration-300 hover:shadow-md"
         >
           <AiOutlineMenu />
           <div className="hidden">
@@ -98,7 +98,7 @@ export function UserMenu() {
         </button>
       </div>
       {isOpen ? (
-        <div className="absolute right-0 top-12 overflow-hidden rounded-xl bg-white text-sm shadow-md">
+        <div className="absolute top-12 right-0 overflow-hidden rounded-xl bg-white text-sm shadow-md">
           <div className="flex cursor-pointer flex-col">
             <MenuItem
               onClick={() => {
@@ -142,7 +142,7 @@ export function UserMenu() {
               }}
               label={t("contact")}
             />
-            <div className="h-[1px] w-full bg-black"></div>
+            <div className="h-px w-full bg-black"></div>
             <div className="social-responsive mx-3 my-2 flex items-center gap-4">
               <SocialIcons
                 black

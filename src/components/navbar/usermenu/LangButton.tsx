@@ -25,7 +25,7 @@ const LangButton: React.FC<LangButtonProps> = ({ lang, black = false }) => {
   return (
     <div
       onClick={handleLanguageChange}
-      className={`relative flex h-8 w-8 items-center justify-center rounded-full border-[2px] ${black ? "border-black text-black" : "border-white text-white"} cursor-pointer transition duration-300 hover:border-customRed hover:bg-customRed`}
+      className={`relative flex h-8 w-8 items-center justify-center rounded-full border-2 ${black ? "border-black text-black" : "border-white text-white"} hover:border-custom-red hover:bg-custom-red cursor-pointer transition duration-300`}
     >
       <Image
         src={`/images/Flaga${flag}.png`}
@@ -34,8 +34,9 @@ const LangButton: React.FC<LangButtonProps> = ({ lang, black = false }) => {
         className="rounded-full"
         style={{
           maxWidth: "100%",
-          height: "auto"
-        }} />
+          height: "auto",
+        }}
+      />
     </div>
   );
 };

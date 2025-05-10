@@ -35,7 +35,7 @@ const EmailAction: React.FC<EmailActionProps> = ({ email }) => {
   return (
     <span
       onClick={handleMail}
-      className="group flex cursor-pointer items-center pl-1 tracking-tighter text-customRed"
+      className="group text-custom-red flex cursor-pointer items-center pl-1 tracking-tighter"
     >
       <FaEnvelope className="mr-2" size="18px" />
       <Text color="black" hoverColor="red">

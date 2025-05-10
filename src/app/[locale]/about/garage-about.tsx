@@ -97,7 +97,7 @@ export function GarageAbout() {
                 </div>
               </div>
             </div>
-            <div className="relative col-span-3 h-[20rem] md:col-span-2 md:h-[36rem]">
+            <div className="relative col-span-3 h-80 md:col-span-2 md:h-144">
               <Image
                 className="scale-x-[-1]"
                 src="/images/garage/2.jpg"

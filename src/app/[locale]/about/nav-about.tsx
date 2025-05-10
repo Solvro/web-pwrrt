@@ -16,7 +16,7 @@ function NavAboutItem({ children, scrollToId }: NavAboutItemProps) {
   return (
     <li className="min-w-fit p-2 first:pl-0 md:p-8">
       <Link href={`#${scrollToId}`} passHref scroll>
-        <div className="w-full cursor-pointer text-left duration-300 ease-in-out hover:text-customRed">
+        <div className="hover:text-custom-red w-full cursor-pointer text-left duration-300 ease-in-out">
           <Text bold>{children}</Text>
         </div>
       </Link>
@@ -27,7 +27,7 @@ function NavAboutItem({ children, scrollToId }: NavAboutItemProps) {
 export function NavAbout() {
   const t = useTranslations("navAbout");
   return (
-    <div className="bg-black pt-[40rem]">
+    <div className="bg-black pt-160">
       <div className="relative bg-white">
         <Container>
           <div className="w-full">
@@ -46,7 +46,7 @@ export function NavAbout() {
               </NavAboutItem>
             </ul>
             <div className="mt-0 flex flex-col-reverse gap-8 md:mt-12 md:flex-row md:gap-20">
-              <div className="relative h-[20rem] md:h-auto md:w-2/5">
+              <div className="relative h-80 md:h-auto md:w-2/5">
                 <Image
                   className=""
                   src="/images/poznaj_nas.jpg"

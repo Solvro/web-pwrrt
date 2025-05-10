@@ -60,18 +60,18 @@ export function Button({
       onMouseLeave={() => {
         setIsHovered(false);
       }}
-      className={`relative w-full min-w-fit rounded-lg transition duration-300 ease-in-out hover:opacity-80 disabled:cursor-not-allowed disabled:opacity-70 ${black === true ? "bg-black" : outline === true ? "bg-white" : "bg-customRed"} ${black === true ? "px-12" : "px-2"} ${
+      className={`relative w-full min-w-fit rounded-lg transition duration-300 ease-in-out hover:opacity-80 disabled:cursor-not-allowed disabled:opacity-70 ${black === true ? "bg-black" : outline === true ? "bg-white" : "bg-custom-red"} ${black === true ? "px-12" : "px-2"} ${
         black === true
           ? "border-black"
           : outline === true
             ? "border-black"
-            : "border-customRed"
-      } ${outline === true ? "text-black" : "text-white"} ${small === true ? "py-1" : "py-2 md:py-3"} ${small === true ? "text-sm" : "md:text-md text-sm"} ${small === true ? "font-light" : "font-semibold"} ${small === true ? "border-[1px]" : "border-2"} `}
+            : "border-custom-red"
+      } ${outline === true ? "text-black" : "text-white"} ${small === true ? "py-1" : "py-2 md:py-3"} ${small === true ? "text-sm" : "md:text-md text-sm"} ${small === true ? "font-light" : "font-semibold"} ${small === true ? "border" : "border-2"} `}
     >
       {Icon ? (
         <Icon
           size={24}
-          className="absolute left-2 top-[6px] md:left-3 md:top-[10px]"
+          className="absolute top-[6px] left-2 md:top-[10px] md:left-3"
         />
       ) : null}
       <span

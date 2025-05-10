@@ -117,7 +117,7 @@ export function DepartmentElement({
               </div>
             </div>
           </div>
-          <div className="relative h-[15rem] w-auto flex-shrink-0 bg-red-900 sm:h-[25rem] md:h-auto md:w-[20rem] lg:w-[32rem] xl:w-[40rem]">
+          <div className="relative h-60 w-auto shrink-0 bg-red-900 sm:h-100 md:h-auto md:w-[20rem] lg:w-lg xl:w-160">
             <Image
               src={`/images/departments/${department}.png`}
               alt="department image"

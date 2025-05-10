@@ -24,7 +24,7 @@ export function FooterLink({ children, href, onClick }: FooterLinkProps) {
     <li>
       <button
         onClick={handleClick}
-        className="cursor-pointer whitespace-nowrap py-1 text-opacity-70 duration-300 hover:text-customRed"
+        className="text-opacity-70 hover:text-custom-red cursor-pointer py-1 whitespace-nowrap duration-300"
       >
         {children}
       </button>

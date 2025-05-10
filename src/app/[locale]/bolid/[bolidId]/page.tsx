@@ -36,7 +36,7 @@ async function BolidPage(props: { params: Promise<Iparams> }) {
 
             <div className="flex">
               <div className="grid w-full grid-cols-1 gap-8 pt-6 text-white md:grid-cols-3">
-                <div className="relative h-52 overflow-hidden rounded md:h-60">
+                <div className="relative h-52 overflow-hidden rounded-sm md:h-60">
                   <Image
                     src="/images/bolid/RT12e/images/zawody/1.jpg"
                     alt="Zdjęcie 2"
@@ -73,7 +73,7 @@ async function BolidPage(props: { params: Promise<Iparams> }) {
                     </div>
                   </div>
                 </div>
-                <div className="relative h-52 overflow-hidden rounded md:h-60">
+                <div className="relative h-52 overflow-hidden rounded-sm md:h-60">
                   <Image
                     src="/images/bolid/RT12e/images/zawody/2.jpg"
                     alt="Zdjęcie 2"
@@ -110,7 +110,7 @@ async function BolidPage(props: { params: Promise<Iparams> }) {
                     </div>
                   </div>
                 </div>
-                <div className="relative h-52 overflow-hidden rounded md:h-60">
+                <div className="relative h-52 overflow-hidden rounded-sm md:h-60">
                   <Image
                     src="/images/bolid/RT12e/images/zawody/3.jpg"
                     alt="Zdjęcie 2"
