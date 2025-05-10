@@ -11,7 +11,7 @@ import {
   FaYoutube,
 } from "react-icons/fa";
 
-import Avatar from "../../Avatar";
+import { Avatar } from "../../avatar";
 import { LangButton } from "./lang-button";
 import { MenuItem } from "./menu-item";
 import { SocialIcons } from "./social-icons";

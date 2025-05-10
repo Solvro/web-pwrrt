@@ -2,7 +2,7 @@
 
 import { useTranslations } from "next-intl";
 
-import NavItem from "./NavItem";
+import { NavItem } from "./nav-item";
 
 export function NavigationMenu() {
   const t = useTranslations("navigation");

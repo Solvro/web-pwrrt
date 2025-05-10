@@ -13,11 +13,11 @@ export async function NewsSection() {
         <div className="pt-12">
           <NewsControls />
           <div className="relative my-10 grid grid-cols-1 gap-8 border-none sm:grid-cols-2 lg:grid-cols-3">
-            {news.map((item, index) => (
+            {news.map((item) => (
               <NewsCard
                 id={item.id}
                 whiteMode
-                key={index}
+                key={item.id}
                 title={item.title}
                 short_description={item.short_description}
                 long_description={item.long_description}

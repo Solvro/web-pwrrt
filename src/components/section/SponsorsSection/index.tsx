@@ -80,6 +80,7 @@ export function SponsorsSection() {
         cancelAnimationFrame(animationFrameId);
       }
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const onMouseLeave = () => {

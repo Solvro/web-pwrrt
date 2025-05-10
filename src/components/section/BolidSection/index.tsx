@@ -89,6 +89,7 @@ export function BolidSection({ presetBolid = "RT14e" }: BolidSectionProps) {
 
   useEffect(() => {
     void fetchBolidData(currentBolidData.name);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleChangeBolid = (bolidName: string) => {

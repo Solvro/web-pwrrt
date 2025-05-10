@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 
-function Avatar() {
+export function Avatar() {
   return (
     <Image
       className="rounded-full"
@@ -12,9 +12,8 @@ function Avatar() {
       src="/images/placeholder.jpg"
       style={{
         maxWidth: "100%",
-        height: "auto"
-      }} />
+        height: "auto",
+      }}
+    />
   );
 }
-
-export default Avatar;

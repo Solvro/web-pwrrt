@@ -10,12 +10,7 @@ interface CounterProps {
   onChange: (value: number) => void;
 }
 
-const Counter: React.FC<CounterProps> = ({
-  title,
-  subtitle,
-  value,
-  onChange,
-}) => {
+export function Counter({ title, subtitle, value, onChange }: CounterProps) {
   const onAdd = useCallback(() => {
     onChange(value + 1);
   }, [onChange, value]);
@@ -35,22 +30,20 @@ const Counter: React.FC<CounterProps> = ({
         <div className="font-light text-gray-600">{subtitle}</div>
       </div>
       <div className="flex flex-row items-center gap-4">
-        <div
+        <button
           onClick={onReduce}
           className="flex h-10 w-10 cursor-pointer items-center justify-center rounded-full border border-neutral-400 text-neutral-600 transition hover:opacity-80"
         >
           <AiOutlineMinus />
-        </div>
+        </button>
         <div className="text-xl font-light text-neutral-600">{value}</div>
-        <div
+        <button
           onClick={onAdd}
           className="flex h-10 w-10 cursor-pointer items-center justify-center rounded-full border border-neutral-400 text-neutral-600 transition hover:opacity-80"
         >
           <AiOutlinePlus />
-        </div>
+        </button>
       </div>
     </div>
   );
-};
-
-export default Counter;
+}

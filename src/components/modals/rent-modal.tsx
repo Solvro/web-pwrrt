@@ -9,9 +9,9 @@ import toast from "react-hot-toast";
 
 import { useRentModal } from "@/hooks/use-rent-modal";
 
-import Heading from "../Heading";
-import Counter from "../inputs/Counter";
-import ImageUpload from "../inputs/ImageUpload";
+import { Heading } from "../heading";
+import { Counter } from "../inputs/counter";
+import { ImageUpload } from "../inputs/image-upload";
 import { Input } from "../inputs/input";
 import { Modal } from "./modal";
 
