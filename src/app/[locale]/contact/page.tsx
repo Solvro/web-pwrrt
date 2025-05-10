@@ -8,7 +8,7 @@ import Title from "@/components/title";
 import UserCard from "../team/[teamId]/UserCard";
 import { sortRoles } from "../team/[teamId]/utils";
 import { Admin, EmailAction } from "./emailAction";
-import GoogleMapComponent from "./map";
+import { GoogleMapComponent } from "./map";
 
 interface Role {
   department: string;

@@ -1,3 +1,4 @@
+import { getTranslations } from "next-intl/server";
 import React from "react";
 
 import { getTeamByFullName } from "@/actions/getTeamByName";
@@ -5,9 +6,8 @@ import Container from "@/components/Container";
 import Text from "@/components/Text";
 import Title from "@/components/title";
 
-import { getDictionary } from "../../../../dictionaries";
 import UserCard from "../../team/[teamId]/UserCard";
-import SponsorsOfer from "./sponsorsOfer";
+import { SponsorsOfer } from "./sponsors-ofer";
 
 interface Role {
   department: string;
@@ -37,7 +37,7 @@ const getMembersData = async (names: string[]): Promise<TeamMember[]> => {
     )?.role;
     return {
       ...member,
-      currentRole: currentRole || "No current role",
+      currentRole: currentRole ?? "No current role",
     };
   });
 };
@@ -267,24 +267,8 @@ const getSVGIcon = (iconName: string) => {
   }
 };
 
-interface Benefit {
-  icon: string; // lub inny typ odpowiadający ikonie
-  title: string;
-}
-
-interface Props {
-  params: {
-    lang: string;
-  };
-}
-const PartnersJoin: React.FC<Props> = async (props) => {
-  const parameters = await props.params;
-  // Pobieranie języka z dynamicznych parametrów
-  const { lang } = parameters;
-
-  // Pobranie słownika
-  const dictionaryCard = await getDictionary(lang, "teamPage");
-  const dict = await getDictionary(lang, "partnerJoinUsPage");
+export async function PartnersJoin() {
+  const t = await getTranslations("partnerJoinUsPage");
 
   const mainMembers = await getMembersData([
     "paweł wójcik",
@@ -304,25 +288,24 @@ const PartnersJoin: React.FC<Props> = async (props) => {
         <Container>
           <div className="mt-16 flex w-full flex-col items-center">
             <div className="my-4 mb-24 border-b-2 border-white py-4 text-center md:w-3/5">
-              <Title color="white">{dict.pageTitle}</Title>
+              <Title color="white">{t("pageTitle")}</Title>
             </div>
           </div>
         </Container>
       </div>
       <div className="pt-[12rem] md:pt-[16rem]">
-        <SponsorsOfer dict={dict.card} />
+        <SponsorsOfer />
       </div>
       <div className="relative mt-[-15rem] w-full bg-white pt-[20rem]">
         <Container>
           <div className="flex w-full flex-col">
             <div className="flex w-full flex-col items-center gap-8">
               <Text medium wide bold>
-                {dict.sectionTitle1}
+                {t("sectionTitle1")}
               </Text>
               <div className="grid w-full grid-cols-1 gap-6 md:grid-cols-4">
                 {mainMembers.map((member, index) => (
                   <UserCard
-                    dictionary={dictionaryCard}
                     key={index}
                     member={member}
                     teamId="RT14e"
@@ -341,18 +324,29 @@ const PartnersJoin: React.FC<Props> = async (props) => {
             </div>
             <div className="mb-12 mt-16 flex flex-col items-center gap-6 md:gap-12">
               <Text medium wide bold>
-                {dict.sectionTitle2}
+                {t("sectionTitle2")}
               </Text>
               <div className="grid grid-cols-1 items-start gap-10 md:grid-cols-5 md:gap-4">
-                {dict.benefits.map((benefit: Benefit, index: number) => (
-                  <div
-                    key={index}
-                    className="flex flex-col items-center gap-2 text-center"
-                  >
-                    {getSVGIcon(benefit.icon)}
-                    <Text center>{benefit.title}</Text>
-                  </div>
-                ))}
+                <div className="flex flex-col items-center gap-2 text-center">
+                  {getSVGIcon(t("benefits.benefit1.icon"))}
+                  <Text center>{t("benefits.benefit1.title")}</Text>
+                </div>
+                <div className="flex flex-col items-center gap-2 text-center">
+                  {getSVGIcon(t("benefits.benefit2.icon"))}
+                  <Text center>{t("benefits.benefit2.title")}</Text>
+                </div>
+                <div className="flex flex-col items-center gap-2 text-center">
+                  {getSVGIcon(t("benefits.benefit3.icon"))}
+                  <Text center>{t("benefits.benefit3.title")}</Text>
+                </div>
+                <div className="flex flex-col items-center gap-2 text-center">
+                  {getSVGIcon(t("benefits.benefit4.icon"))}
+                  <Text center>{t("benefits.benefit4.title")}</Text>
+                </div>
+                <div className="flex flex-col items-center gap-2 text-center">
+                  {getSVGIcon(t("benefits.benefit5.icon"))}
+                  <Text center>{t("benefits.benefit5.title")}</Text>
+                </div>
               </div>
             </div>
           </div>
@@ -360,6 +354,6 @@ const PartnersJoin: React.FC<Props> = async (props) => {
       </div>
     </div>
   );
-};
+}
 
 export default PartnersJoin;

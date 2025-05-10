@@ -4,18 +4,18 @@ import { useEffect } from "react";
 
 declare global {
   interface Window {
-    initMap: () => void;
+    initMap?: () => void;
   }
 }
 
-function GoogleMapComponent() {
+export function GoogleMapComponent() {
   useEffect(() => {
     const script = document.createElement("script");
-    script.src = `https://maps.googleapis.com/maps/api/js?key=${process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY}&callback=initMap&libraries=maps,marker&v=beta`;
+    script.src = `https://maps.googleapis.com/maps/api/js?key=${process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY ?? ""}&callback=initMap&libraries=maps,marker&v=beta`;
     script.async = true;
     document.head.append(script);
 
-    script.addEventListener('load', () => {
+    script.addEventListener("load", () => {
       if (window.initMap) {
         window.initMap();
       }
@@ -27,10 +27,10 @@ function GoogleMapComponent() {
   }, []);
 
   useEffect(() => {
-    window.initMap = function () {
+    window.initMap = async function () {
       const mapElement = document.querySelector("#map");
       if (mapElement) {
-        const map = new window.google.maps.Map(mapElement, {
+        const map = new window.google.maps.Map(mapElement as HTMLElement, {
           center: { lat: 51.117_279_052_734_375, lng: 17.064_872_741_699_22 },
           zoom: 14,
           mapId: "DEMO_MAP_ID",
@@ -43,16 +43,22 @@ function GoogleMapComponent() {
           fullscreenControl: true, // włącza kontrolkę pełnego ekranu
         });
 
-        new window.google.maps.Marker({
+        const { AdvancedMarkerElement } = (await google.maps.importLibrary(
+          "marker",
+        )) as google.maps.MarkerLibrary;
+
+        const _ = new AdvancedMarkerElement({
           position: { lat: 51.117_279_052_734_375, lng: 17.064_872_741_699_22 },
           map,
           title: "My location",
         });
       }
     };
+
+    return () => {
+      delete window.initMap;
+    };
   }, []);
 
   return <div id="map" style={{ height: "400px", width: "100%" }}></div>;
 }
-
-export default GoogleMapComponent;

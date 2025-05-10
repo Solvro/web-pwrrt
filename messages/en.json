@@ -313,54 +313,54 @@
     "pageTitle": "BECOME A PARTNER",
     "sectionTitle1": "Contact us:",
     "sectionTitle2": "Cooperation with us means:",
-    "benefits": [
-      {
+    "benefits": {
+      "benefit1": {
         "title": "An original way of international promotion",
         "icon": "internationalPromotion"
       },
-      {
+      "benefit2": {
         "title": "Effective employer branding",
         "icon": "employerBranding"
       },
-      {
+      "benefit3": {
         "title": "Regular presence in social media",
         "icon": "socialMediaPresence"
       },
-      {
+      "benefit4": {
         "title": "Increased company visibility",
         "icon": "companyVisibility"
       },
-      {
+      "benefit5": {
         "title": "Being part of an innovative project",
         "icon": "innovativeProject"
       }
-    ],
+    },
     "card": {
       "sectionTitle": "Discover our partnership offer!",
       "buttonLabel": "Contact us",
       "coZnajdziesz": "What will you find inside?",
-      "details": [
-        {
+      "details": {
+        "aboutUs": {
           "icon": "aboutUs",
           "title": "Who we are"
         },
-        {
+        "achievements": {
           "icon": "achievements",
           "title": "Our achievements"
         },
-        {
+        "cooperation": {
           "icon": "cooperation",
           "title": "Cooperation proposal with the team"
         },
-        {
+        "pakiet": {
           "icon": "pakiet",
           "title": "Branding activity packages"
         },
-        {
+        "contact": {
           "icon": "contact",
           "title": "Contact"
         }
-      ]
+      }
     }
   }
 }

@@ -1,5 +1,6 @@
 "use client";
 
+import { useTranslations } from "next-intl";
 import { useCallback, useEffect, useState } from "react";
 
 import Text from "@/components/Text";
@@ -7,10 +8,10 @@ import Title from "@/components/title";
 
 interface TimerProps {
   targetDate: string;
-  dict: any;
 }
 
-const Timer: React.FC<TimerProps> = ({ targetDate, dict }) => {
+export function Timer({ targetDate }: TimerProps) {
+  const t = useTranslations("joinUs");
   const calculateTimeLeft = useCallback(() => {
     const difference = +new Date(targetDate) - Date.now();
     let timeLeft = {
@@ -56,12 +57,12 @@ const Timer: React.FC<TimerProps> = ({ targetDate, dict }) => {
     <div className="flex flex-col items-center gap-4">
       <div className="mb-8">
         <Text bold medium color="black">
-          {dict.recruitmentClosed}
+          {t("recruitmentClosed")}
           {/* {dict.recruitmentOpen} */}
         </Text>
       </div>
       <Text wide small>
-        {dict.recruitmentNextIn}
+        {t("recruitmentNextIn")}
         {/* {dict.recruitmentOpenEndIn} */}
       </Text>
       <div className="flex gap-2 md:gap-4">
@@ -70,7 +71,7 @@ const Timer: React.FC<TimerProps> = ({ targetDate, dict }) => {
             {timeLeft.days}
           </Title>
           <Title lower size="subtitle" color="red">
-            {dict.days}
+            {t("days")}
           </Title>
         </div>
         <Title lower size="bigger" color="red">
@@ -81,7 +82,7 @@ const Timer: React.FC<TimerProps> = ({ targetDate, dict }) => {
             {timeLeft.hours}
           </Title>
           <Title lower size="subtitle" color="red">
-            {dict.hours}
+            {t("hours")}
           </Title>
         </div>
         <Title lower size="bigger" color="red">
@@ -92,7 +93,7 @@ const Timer: React.FC<TimerProps> = ({ targetDate, dict }) => {
             {timeLeft.minutes}
           </Title>
           <Title lower size="subtitle" color="red">
-            {dict.minutes}
+            {t("minutes")}
           </Title>
         </div>
         <Title lower size="bigger" color="red">
@@ -103,12 +104,10 @@ const Timer: React.FC<TimerProps> = ({ targetDate, dict }) => {
             {timeLeft.seconds}
           </Title>
           <Title lower size="subtitle" color="red">
-            {dict.seconds}
+            {t("seconds")}
           </Title>
         </div>
       </div>
     </div>
   );
-};
-
-export default Timer;
+}

@@ -6,7 +6,7 @@ import { useRouter } from "next/navigation";
 
 import Container from "../../Container";
 import Text from "../../Text";
-import Button from "../../button";
+import { Button } from "../../button";
 import Title from "../../title";
 
 export function TeamSection() {

@@ -84,7 +84,7 @@ export function BolidSection({ presetBolid = "RT14e" }: BolidSectionProps) {
     }
 
     setPreviousBolidData(currentBolidData);
-    setCurrentBolidData(response);
+    setCurrentBolidData(response as BolidData);
   };
 
   useEffect(() => {

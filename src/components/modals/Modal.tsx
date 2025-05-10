@@ -3,7 +3,9 @@
 import { useCallback, useEffect, useState } from "react";
 import { IoMdClose } from "react-icons/io";
 
-import Button from "../button";
+import { Button } from "../button";
+
+/* eslint-disable @typescript-eslint/no-explicit-any */
 
 interface ModalProps {
   isOpen?: boolean;
@@ -18,7 +20,7 @@ interface ModalProps {
   secondaryActionLabel?: string;
 }
 
-const Modal: React.FC<ModalProps> = ({
+export function Modal({
   isOpen,
   onClose,
   onSubmit,
@@ -29,7 +31,7 @@ const Modal: React.FC<ModalProps> = ({
   disabled,
   secondaryAction,
   secondaryActionLabel,
-}) => {
+}: ModalProps) {
   const [showModal, setShowModal] = useState(isOpen);
 
   useEffect(() => {
@@ -113,6 +115,4 @@ const Modal: React.FC<ModalProps> = ({
       </div>
     </div>
   );
-};
-
-export default Modal;
+}

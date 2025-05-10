@@ -1,20 +1,42 @@
 "use client";
 
-import type { FieldErrors, FieldValues, UseFormRegister } from "react-hook-form";
+import type { FieldErrors, UseFormRegister } from "react-hook-form";
 import { BiDollar } from "react-icons/bi";
 
 interface InputProps {
-  id: string;
+  id:
+    | "title"
+    | "category"
+    | "location"
+    | "guestCount"
+    | "roomCount"
+    | "bathroomCount"
+    | "imageSrc"
+    | "price"
+    | "description"
+    | "email"
+    | "password"
+    | "name";
   label: string;
   type?: string;
   disabled?: boolean;
   formatPrice?: boolean;
   required?: boolean;
-  register: UseFormRegister<FieldValues>;
+  register: UseFormRegister<{
+    category: string;
+    location: null;
+    guestCount: number;
+    roomCount: number;
+    bathroomCount: number;
+    imageSrc: string;
+    price: number;
+    title: string;
+    description: string;
+  }>;
   errors: FieldErrors;
 }
 
-const Input: React.FC<InputProps> = ({
+export function Input({
   id,
   label,
   type,
@@ -23,17 +45,19 @@ const Input: React.FC<InputProps> = ({
   required,
   register,
   errors,
-}) => {
+}: InputProps) {
   return (
     <div className="relative w-full">
-      {formatPrice ? <BiDollar
+      {formatPrice ? (
+        <BiDollar
           size={24}
           className="absolute left-2 top-5 text-neutral-700"
-        /> : null}
+        />
+      ) : null}
       <input
         id={id}
         disabled={disabled}
-        {...register(id, { required })}
+        {...register(id as unknown as "title", { required })}
         placeholder=" "
         type={type}
         className={`peer w-full rounded-md border-2 bg-white p-4 pt-6 font-light outline-none transition disabled:cursor-not-allowed disabled:opacity-70 ${formatPrice ? "pl-9" : "pl-4"} ${errors[id] ? "border-rose-500" : "border-neutral-300"} ${errors[id] ? "focus:border-rose-500" : "focus:border-black"} `}
@@ -45,6 +69,4 @@ const Input: React.FC<InputProps> = ({
       </label>
     </div>
   );
-};
-
-export default Input;
+}

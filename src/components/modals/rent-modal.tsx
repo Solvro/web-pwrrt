@@ -3,7 +3,7 @@
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import { useMemo, useState } from "react";
-import type { FieldValues, SubmitHandler} from "react-hook-form";
+import type { FieldValues, SubmitHandler } from "react-hook-form";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 
@@ -12,8 +12,10 @@ import useRentModal from "@/hooks/useRentModal";
 import Heading from "../Heading";
 import Counter from "../inputs/Counter";
 import ImageUpload from "../inputs/ImageUpload";
-import Input from "../inputs/Input";
-import Modal from "./Modal";
+import { Input } from "../inputs/input";
+import { Modal } from "./modal";
+
+/* eslint-disable @typescript-eslint/no-explicit-any */
 
 enum STEPS {
   CATEGORY = 0,
@@ -24,7 +26,7 @@ enum STEPS {
   PRICE = 5,
 }
 
-function RentModal() {
+export function RentModal() {
   const router = useRouter();
   const rentModal = useRentModal();
 
@@ -52,15 +54,25 @@ function RentModal() {
     },
   });
 
-  const category = watch("category");
-  const location = watch("location");
   const guestCount = watch("guestCount");
   const roomCount = watch("roomCount");
   const bathroomCount = watch("bathroomCount");
   const imageSource = watch("imageSrc");
 
-  const setCustomValue = (id: string, value: any) => {
-    setValue(id, value, {
+  const setCustomValue = (
+    id:
+      | "category"
+      | "location"
+      | "guestCount"
+      | "roomCount"
+      | "bathroomCount"
+      | "imageSrc"
+      | "price"
+      | "title"
+      | "description",
+    value: any,
+  ) => {
+    setValue(id, value as string | number, {
       shouldValidate: true,
       shouldDirty: true,
       shouldTouch: true,
@@ -77,7 +89,8 @@ function RentModal() {
 
   const onSubmit: SubmitHandler<FieldValues> = (data) => {
     if (step !== STEPS.PRICE) {
-      onNext(); return;
+      onNext();
+      return;
     }
 
     setIsLoading(true);
@@ -149,21 +162,27 @@ function RentModal() {
           title="Guests"
           subtitle="How many guests do you allow?"
           value={guestCount}
-          onChange={(value) => { setCustomValue("guestCount", value); }}
+          onChange={(value) => {
+            setCustomValue("guestCount", value);
+          }}
         />
         <hr />
         <Counter
           title="Rooms"
           subtitle="How many rooms do you have?"
           value={roomCount}
-          onChange={(value) => { setCustomValue("roomCount", value); }}
+          onChange={(value) => {
+            setCustomValue("roomCount", value);
+          }}
         />
         <hr />
         <Counter
           title="Bathrooms"
           subtitle="How many bathrooms do you have?"
           value={bathroomCount}
-          onChange={(value) => { setCustomValue("bathroomCount", value); }}
+          onChange={(value) => {
+            setCustomValue("bathroomCount", value);
+          }}
         />
       </div>
     );
@@ -178,7 +197,9 @@ function RentModal() {
         />
         <ImageUpload
           value={imageSource}
-          onChange={(value) => { setCustomValue("imageSrc", value); }}
+          onChange={(value) => {
+            setCustomValue("imageSrc", value);
+          }}
         />
       </div>
     );
@@ -246,5 +267,3 @@ function RentModal() {
     />
   );
 }
-
-export default RentModal;

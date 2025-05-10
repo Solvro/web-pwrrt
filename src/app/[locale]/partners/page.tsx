@@ -1,10 +1,10 @@
+import { useTranslations } from "next-intl";
 import Image from "next/image";
 
 import Container from "@/components/Container";
 import Title from "@/components/title";
 
-import { getDictionary } from "../../../dictionaries";
-import PartnersButton from "./partnersButtons";
+import { PartnersButton } from "./partners-button";
 
 // Tablica sponsorów strategicznych
 const strategicSponsors = [
@@ -213,60 +213,56 @@ const bronzeSponsors = [
 ];
 
 interface SponsorGridProps {
-  sponsorRank: string;
+  sponsorRank: "brązowi" | "srebrni" | "złoci" | "platynowi" | "strategiczni";
   gridCols: string;
   height: string;
   gap?: string;
   sponsors: { name: string; url: string }[];
-  dict?: any;
 }
 
-const SponsorList: React.FC<SponsorGridProps> = ({
-  sponsorRank,
-  gridCols,
-  height,
-  sponsors,
-}) => (
-  <div className={`grid ${gridCols} h-min gap-2 md:w-1/2`}>
-    {sponsors.map((sponsor) => (
-      <a
-        key={sponsor.name}
-        href={sponsor.url}
-        target="_blank"
-        rel="noopener noreferrer"
-        className={`${height} relative mx-6 overflow-hidden rounded-md duration-300 ease-in-out hover:scale-110`}
-      >
-        <Image
-          src={`/images/sponsors/${sponsor.name}`}
-          alt={sponsor.name}
-          fill
-          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
-          className="object-scale-down"
-        />
-      </a>
-    ))}
-  </div>
-);
+function SponsorList({ gridCols, height, sponsors }: SponsorGridProps) {
+  return (
+    <div className={`grid ${gridCols} h-min gap-2 md:w-1/2`}>
+      {sponsors.map((sponsor) => (
+        <a
+          key={sponsor.name}
+          href={sponsor.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          className={`${height} relative mx-6 overflow-hidden rounded-md duration-300 ease-in-out hover:scale-110`}
+        >
+          <Image
+            src={`/images/sponsors/${sponsor.name}`}
+            alt={sponsor.name}
+            fill
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
+            className="object-scale-down"
+          />
+        </a>
+      ))}
+    </div>
+  );
+}
 
-const SponsorGrid: React.FC<SponsorGridProps> = async ({
+function SponsorGrid({
   sponsorRank,
   gridCols,
   height,
   gap,
   sponsors,
-  dict,
-}) => {
+}: SponsorGridProps) {
   // Dynamically split the sponsors array into two halves inside the component
   const halfIndex = Math.ceil(sponsors.length / 2);
   const firstHalfSponsors = sponsors.slice(0, halfIndex);
   const secondHalfSponsors = sponsors.slice(halfIndex);
+  const t = useTranslations("partnersPage");
 
   return (
     <div className="flex w-full flex-col items-center text-center">
       <div className="my-4 border-y-2 border-customRed px-8 py-4 uppercase md:my-12 md:mt-14 md:w-fit">
-        <Title color="black">{dict[sponsorRank]}</Title>
+        <Title color="black">{t(sponsorRank)}</Title>
       </div>
-      <div className={`flex ${gap} w-full flex-col md:flex-row`}>
+      <div className={`flex ${gap ?? ""} w-full flex-col md:flex-row`}>
         <SponsorList
           sponsors={firstHalfSponsors}
           height={height}
@@ -282,32 +278,24 @@ const SponsorGrid: React.FC<SponsorGridProps> = async ({
       </div>
     </div>
   );
-};
+}
 
-function Partners(props: { params: Promise<{ lang: string }> }) {
-  const parameters = await props.params;
-  const lang = parameters.lang;
-
-  const dict = await getDictionary(lang, "partnersPage");
+export function Partners() {
+  const t = useTranslations("partnersPage");
 
   return (
     <div className="mb-6 pt-[100px] md:mb-12 md:pt-[120px]">
       <div className="absolute right-0 opacity-5">
         <h1 className="text-[15rem] font-extrabold uppercase leading-none text-black">
-          {dict.partners}
+          {t("partners")}
         </h1>
       </div>
       <Container>
         <div className="flex w-full flex-col items-center text-center">
           <div className="my-4 border-b-2 border-black py-4 md:w-3/5">
-            <Title color="black">{dict.partners}</Title>
+            <Title color="black">{t("partners")}</Title>
           </div>
-          <PartnersButton
-            dict={{
-              becomePartner: dict.zostanPartnerem,
-              contact: dict.kontakt,
-            }}
-          />
+          <PartnersButton />
 
           <SponsorGrid
             sponsorRank="strategiczni"
@@ -315,7 +303,6 @@ function Partners(props: { params: Promise<{ lang: string }> }) {
             height="h-20 md:h-40"
             gap="gap-0"
             gridCols="grid-cols-2"
-            dict={dict}
           />
 
           <SponsorGrid
@@ -324,7 +311,6 @@ function Partners(props: { params: Promise<{ lang: string }> }) {
             height="h-20 md:h-40"
             gap="md:gap-20"
             gridCols="grid-cols-2"
-            dict={dict}
           />
 
           <SponsorGrid
@@ -333,7 +319,6 @@ function Partners(props: { params: Promise<{ lang: string }> }) {
             height="h-16 md:h-36"
             gap="md:gap-20"
             gridCols="grid-cols-3"
-            dict={dict}
           />
 
           <SponsorGrid
@@ -342,7 +327,6 @@ function Partners(props: { params: Promise<{ lang: string }> }) {
             height="h-16 md:h-32"
             gap="md:gap-16"
             gridCols="grid-cols-3 md:grid-cols-4"
-            dict={dict}
           />
 
           <SponsorGrid
@@ -351,12 +335,9 @@ function Partners(props: { params: Promise<{ lang: string }> }) {
             height="h-16 md:h-32"
             gap="md:gap-16"
             gridCols="grid-cols-3 md:grid-cols-4"
-            dict={dict}
           />
         </div>
       </Container>
     </div>
   );
 }
-
-export default Partners;

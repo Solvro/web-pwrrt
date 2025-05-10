@@ -1,3 +1,4 @@
+import { getTranslations } from "next-intl/server";
 import Image from "next/image";
 
 import { getBolidByBolidId } from "@/actions/bolid";
@@ -21,18 +22,16 @@ async function BolidPage(props: { params: Promise<Iparams> }) {
     return <p>Bolid not found</p>;
   }
 
+  const t = await getTranslations("bolidSection");
+
   return (
     <div className="flex flex-col pt-[100px]">
-      <BolidSection
-        dict={dict.bolidSection}
-        language={currentLocale}
-        presetBolid={bolidIdValue}
-      />
+      <BolidSection presetBolid={bolidIdValue} />
       <div className="w-full" id="achievements">
         <Container>
           <div className="flex w-full flex-col py-8 md:py-16">
             <Title size="big" color="black">
-              {dict.bolidSection.achievements} {bolid.year}
+              {t("achievements")} {bolid.year}
             </Title>
 
             <div className="flex">

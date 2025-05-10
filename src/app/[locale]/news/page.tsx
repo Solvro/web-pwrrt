@@ -4,7 +4,7 @@ import Container from "@/components/Container";
 import NewsCard from "@/components/NewsCard";
 import Title from "@/components/title";
 
-function AboutUs() {
+async function AboutUs() {
   const news = await fetchNews();
   return (
     <div className="flex flex-col items-center bg-neutral-900 pt-[100px] md:pt-[120px]">

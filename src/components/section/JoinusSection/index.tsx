@@ -8,7 +8,7 @@ import useLoginModal from "@/hooks/useLoginModal";
 import useRentModal from "@/hooks/useRentModal";
 
 import Container from "../../Container";
-import Button from "../../button";
+import { Button } from "../../button";
 import Title from "../../title";
 
 interface JoinusSectionProps {

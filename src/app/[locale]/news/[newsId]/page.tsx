@@ -9,7 +9,7 @@ interface Iparams {
   newsId?: string;
 }
 
-function NewsPage(props: { params: Promise<Iparams> }) {
+async function NewsPage(props: { params: Promise<Iparams> }) {
   const parameters = await props.params;
   const newsId = parameters.newsId;
 

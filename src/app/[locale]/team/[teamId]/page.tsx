@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-unnecessary-condition */
+import { getTranslations } from "next-intl/server";
 import Image from "next/image";
 
 import { getTeamByBolid } from "@/actions/getTeamByBolid";
@@ -5,7 +7,6 @@ import Container from "@/components/Container";
 import SecondaryButton from "@/components/SecondaryButton";
 import Title from "@/components/title";
 
-import { getDictionary } from "../../../../dictionaries";
 import ClientSlider from "./ClientSlider";
 import UserCard from "./UserCard";
 import { sortRoles } from "./utils";
@@ -15,7 +16,7 @@ interface Iparams {
   teamId?: string;
 }
 
-function TeamPage(props: { params: Promise<Iparams> }) {
+async function TeamPage(props: { params: Promise<Iparams> }) {
   const parameters = await props.params;
   const teamId = parameters.teamId ?? "RT13e";
   const team = await getTeamByBolid(teamId);
@@ -97,19 +98,27 @@ function TeamPage(props: { params: Promise<Iparams> }) {
     const aIndex = departmentOrder.indexOf(a);
     const bIndex = departmentOrder.indexOf(b);
 
-    if (a === "opiekun naukowy") {return 1;}
-    if (b === "opiekun naukowy") {return -1;}
+    if (a === "opiekun naukowy") {
+      return 1;
+    }
+    if (b === "opiekun naukowy") {
+      return -1;
+    }
 
-    if (aIndex === -1 && bIndex === -1) {return a.localeCompare(b);}
-    if (aIndex === -1) {return 1;}
-    if (bIndex === -1) {return -1;}
+    if (aIndex === -1 && bIndex === -1) {
+      return a.localeCompare(b);
+    }
+    if (aIndex === -1) {
+      return 1;
+    }
+    if (bIndex === -1) {
+      return -1;
+    }
 
     return aIndex - bIndex;
   });
 
-  const lang = parameters.lang;
-
-  const dict = await getDictionary(lang, "teamPage");
+  const t = await getTranslations("teamPage");
 
   return (
     <div className="relative bg-neutral-950 pb-12 pt-32">
@@ -160,14 +169,19 @@ function TeamPage(props: { params: Promise<Iparams> }) {
                           const isLeaderB =
                             b.currentRole.toLowerCase().includes("leader") ||
                             b.currentRole.toLowerCase().includes("lider");
-                          if (isLeaderA && !isLeaderB) {return -1;}
-                          if (!isLeaderA && isLeaderB) {return 1;}
-                          if (isLeaderA && isLeaderB) {return 0;}
+                          if (isLeaderA && !isLeaderB) {
+                            return -1;
+                          }
+                          if (!isLeaderA && isLeaderB) {
+                            return 1;
+                          }
+                          if (isLeaderA && isLeaderB) {
+                            return 0;
+                          }
                           return a.name.localeCompare(b.name);
                         })
                         .map((member, index) => (
                           <UserCard
-                            dictionary={dict}
                             key={index}
                             member={member}
                             teamId={teamId}
@@ -182,13 +196,13 @@ function TeamPage(props: { params: Promise<Iparams> }) {
                         <div className="absolute">
                           <SecondaryButton
                             darkMode
-                            to={`/bolid/${parameters.teamId}`}
-                            buttonText={`${dict.doBolidu} ${parameters.teamId}`}
+                            to={`/bolid/${teamId}`}
+                            buttonText={`${t("doBolidu")} ${teamId}`}
                           />
                         </div>
 
                         <Image
-                          src={`/images/bolid/${parameters.teamId}/${parameters.teamId}.png`}
+                          src={`/images/bolid/${teamId}/${teamId}.png`}
                           alt="bolid"
                           width={700}
                           height={551}
