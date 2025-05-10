@@ -51,7 +51,7 @@ export function Input({
       {formatPrice ? (
         <BiDollar
           size={24}
-          className="absolute left-2 top-5 text-neutral-700"
+          className="absolute top-5 left-2 text-neutral-700"
         />
       ) : null}
       <input

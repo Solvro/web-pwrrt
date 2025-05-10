@@ -18,8 +18,9 @@ export function Logo({ width, height }: LogoProps) {
         src="/images/logo.png"
         style={{
           maxWidth: "100%",
-          height: "auto"
-        }} />
+          height: "auto",
+        }}
+      />
     </Link>
   );
 }

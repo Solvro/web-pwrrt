@@ -70,7 +70,7 @@ export function Modal({
   }
 
   return (
-    <div className="jusify-center fixed inset-0 z-50 flex items-center overflow-y-auto overflow-x-hidden bg-neutral-800/70 outline-hidden focus:outline-hidden">
+    <div className="jusify-center fixed inset-0 z-50 flex items-center overflow-x-hidden overflow-y-auto bg-neutral-800/70 outline-hidden focus:outline-hidden">
       <div className="realtive mx-auto my-6 h-full w-full md:h-auto md:w-4/6 lg:h-auto lg:w-3/6 xl:w-2/5">
         {/* {CONTENT} */}
         <div

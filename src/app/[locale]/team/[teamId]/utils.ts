@@ -5,7 +5,9 @@ interface RoleHistoryItem {
 }
 
 export const parseBolidName = (bolidName: string) => {
-  if (bolidName === "RTX") {return 10;}
+  if (bolidName === "RTX") {
+    return 10;
+  }
   const match = /RT(\d+)/.exec(bolidName);
   return match ? Number.parseInt(match[1], 10) : 0;
 };
