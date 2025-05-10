@@ -1,5 +1,5 @@
 // pages/about-us.jsx
-import { fetchNews } from "@/actions/getNews";
+import { fetchNews } from "@/actions/news";
 import { Container } from "@/components/container";
 import { NewsCard } from "@/components/news-card";
 import { Title } from "@/components/title";

@@ -3,7 +3,7 @@
 import toast from "react-hot-toast";
 import { FaEnvelope } from "react-icons/fa";
 
-import { useHandleLocaleRedirect } from "@/components/HandleLocaleRedirect";
+import { useHandleLocaleRedirect } from "@/components/handle-locale-redirect";
 import { Text } from "@/components/text";
 
 // Import customowego hooka
@@ -12,7 +12,7 @@ interface EmailActionProps {
   email: string;
 }
 
-const EmailAction: React.FC<EmailActionProps> = ({ email }) => {
+function EmailAction({ email }: EmailActionProps) {
   const handleMail = () => {
     if (
       /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
@@ -26,14 +26,14 @@ const EmailAction: React.FC<EmailActionProps> = ({ email }) => {
         .then(() => {
           toast.success(`E-mail skopiowany do schowka! ${email}`);
         })
-        .catch((error) => {
+        .catch(() => {
           toast.error("Nie udało się skopiować maila.");
         });
     }
   };
 
   return (
-    <span
+    <button
       onClick={handleMail}
       className="group text-custom-red flex cursor-pointer items-center pl-1 tracking-tighter"
     >
@@ -41,14 +41,14 @@ const EmailAction: React.FC<EmailActionProps> = ({ email }) => {
       <Text color="black" hoverColor="red">
         {email}
       </Text>
-    </span>
+    </button>
   );
-};
+}
 
 interface AdminProps {
   text: string;
 }
-const Admin: React.FC<AdminProps> = ({ text }) => {
+function Admin({ text }: AdminProps) {
   const handleLocaleRedirect = useHandleLocaleRedirect(); // Użycie customowego hooka
 
   const handleNavigation = () => {
@@ -56,12 +56,12 @@ const Admin: React.FC<AdminProps> = ({ text }) => {
   };
 
   return (
-    <div onClick={handleNavigation} className="cursor-pointer">
+    <button onClick={handleNavigation} className="cursor-pointer">
       <Text bold medium>
         {text}
       </Text>
-    </div>
+    </button>
   );
-};
+}
 
 export { EmailAction, Admin };

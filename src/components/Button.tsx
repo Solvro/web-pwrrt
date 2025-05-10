@@ -3,11 +3,11 @@
 import { useState } from "react";
 import type { IconType } from "react-icons";
 
-import { useHandleLocaleRedirect } from "./HandleLocaleRedirect";
+import { useHandleLocaleRedirect } from "./handle-locale-redirect";
 
 interface ButtonProps {
   label: string;
-  onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
+  onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
   disabled?: boolean;
   outline?: boolean;
   small?: boolean;

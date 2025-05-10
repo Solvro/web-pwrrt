@@ -1,12 +1,12 @@
 import { getTranslations } from "next-intl/server";
 import React from "react";
 
-import { getTeamByFullName } from "@/actions/getTeamByName";
+import { getTeamByFullName } from "@/actions/team";
 import { Container } from "@/components/container";
 import { Text } from "@/components/text";
 import { Title } from "@/components/title";
 
-import UserCard from "../../team/[teamId]/UserCard";
+import { UserCard } from "../../team/[teamId]/user-card";
 import { SponsorsOfer } from "./sponsors-ofer";
 
 interface Role {
@@ -304,9 +304,9 @@ export async function PartnersJoin() {
                 {t("sectionTitle1")}
               </Text>
               <div className="grid w-full grid-cols-1 gap-6 md:grid-cols-4">
-                {mainMembers.map((member, index) => (
+                {mainMembers.map((member) => (
                   <UserCard
-                    key={index}
+                    key={member.name + member.surname}
                     member={member}
                     teamId="RT14e"
                     roleHistory={{

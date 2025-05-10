@@ -51,20 +51,20 @@ const handleMail = (email: string) => {
         .then(() => {
           toast.success(`E-mail skopiowany do schowka! ${email}`);
         })
-        .catch((error) => {
+        .catch(() => {
           toast.error("Nie udało się skopiować maila.");
         });
     }
   };
 };
 
-const TileHeading: React.FC<ParametersTileHeading> = ({
+export function TileHeading({
   opiekun,
   member,
   roleHistory,
   phoneNumber,
   email,
-}) => {
+}: ParametersTileHeading) {
   const [isHovered, setIsHovered] = useState(false);
   const t = useTranslations("teamPage");
   // Sprawdzamy długość imienia i nazwiska
@@ -126,18 +126,16 @@ const TileHeading: React.FC<ParametersTileHeading> = ({
         >
           <div className="absolute ml-[3px] h-full w-[2px] rounded-lg bg-neutral-400"></div>
           <div className="custom-scrollbar z-30 flex max-h-28 w-full flex-col gap-2 overflow-scroll overflow-x-hidden text-white">
-            {roleHistory[`${member.name} ${member.surname}`]?.map(
-              (role, roleIndex) => (
-                <div key={roleIndex} className="relative">
-                  <div className="absolute mt-2 h-2 w-2 rounded-full bg-white"></div>
-                  <div className="ml-5">
-                    <Text center>
-                      {role.bolidName} - {role.role}
-                    </Text>
-                  </div>
+            {roleHistory[`${member.name} ${member.surname}`].map((role) => (
+              <div key={`${role.bolidName}-${role.role}`} className="relative">
+                <div className="absolute mt-2 h-2 w-2 rounded-full bg-white"></div>
+                <div className="ml-5">
+                  <Text center>
+                    {role.bolidName} - {role.role}
+                  </Text>
                 </div>
-              ),
-            )}
+              </div>
+            ))}
           </div>
         </div>
 
@@ -162,6 +160,4 @@ const TileHeading: React.FC<ParametersTileHeading> = ({
       </div>
     </div>
   );
-};
-
-export default TileHeading;
+}

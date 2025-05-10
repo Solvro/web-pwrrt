@@ -1,13 +1,13 @@
 import { getTranslations } from "next-intl/server";
 
-import { getTeamByFullName } from "@/actions/getTeamByName";
+import { getTeamByFullName } from "@/actions/team";
 import { Container } from "@/components/container";
 import { Text } from "@/components/text";
 import { Title } from "@/components/title";
 
-import UserCard from "../team/[teamId]/UserCard";
+import { UserCard } from "../team/[teamId]/user-card";
 import { sortRoles } from "../team/[teamId]/utils";
-import { Admin, EmailAction } from "./emailAction";
+import { Admin, EmailAction } from "./email-action";
 import { GoogleMapComponent } from "./map";
 
 interface Role {
@@ -118,8 +118,11 @@ export default async function ContactUs() {
             </Text>
           </div>
           <div className="grid w-full grid-cols-1 gap-6 sm:grid-cols-2 xl:grid-cols-4">
-            {mainMembers.map((member, index) => (
-              <div key={index} className="flex flex-col gap-6">
+            {mainMembers.map((member) => (
+              <div
+                key={member.name + member.surname}
+                className="flex flex-col gap-6"
+              >
                 <UserCard
                   member={member}
                   teamId="RT15e"
@@ -149,9 +152,9 @@ export default async function ContactUs() {
               {t("projectSupervisors")}
             </Text>
             <div className="grid w-full grid-cols-1 gap-6 md:w-3/4 md:grid-cols-3">
-              {projectSupervisors.map((member, index) => (
+              {projectSupervisors.map((member) => (
                 <UserCard
-                  key={index}
+                  key={`${member.name}${member.surname}supervisor`}
                   member={member}
                   teamId="RT14e"
                   roleHistory={roleHistory}
@@ -162,9 +165,9 @@ export default async function ContactUs() {
           <div className="flex flex-col items-start gap-4 md:items-center md:gap-6">
             <Admin text={t("siteAdministration")} />
             <div className="grid w-full grid-cols-1 gap-6 md:w-1/2 md:grid-cols-2">
-              {siteAdministration.map((member, index) => (
+              {siteAdministration.map((member) => (
                 <UserCard
-                  key={index}
+                  key={`${member.name}${member.surname}admin`}
                   member={member}
                   teamId="RT14e"
                   roleHistory={roleHistory}

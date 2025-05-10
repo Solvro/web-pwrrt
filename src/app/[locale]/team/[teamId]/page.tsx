@@ -2,13 +2,13 @@
 import { getTranslations } from "next-intl/server";
 import Image from "next/image";
 
-import { getTeamByBolid } from "@/actions/getTeamByBolid";
+import { getTeamByBolid } from "@/actions/team";
 import { Container } from "@/components/container";
 import { SecondaryButton } from "@/components/secondary-button";
 import { Title } from "@/components/title";
 
-import UserCard from "./UserCard";
 import { ClientSlider } from "./client-slider";
+import { UserCard } from "./user-card";
 import { sortRoles } from "./utils";
 
 interface Iparams {
@@ -180,9 +180,9 @@ async function TeamPage(props: { params: Promise<Iparams> }) {
                           }
                           return a.name.localeCompare(b.name);
                         })
-                        .map((member, index) => (
+                        .map((member) => (
                           <UserCard
-                            key={index}
+                            key={member.name + member.surname}
                             member={member}
                             teamId={teamId}
                             roleHistory={roleHistory}

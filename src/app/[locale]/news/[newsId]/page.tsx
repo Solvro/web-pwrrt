@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { redirect } from "next/navigation";
 
-import getNewsById from "@/actions/getNewsById";
+import { getNewsById } from "@/actions/news";
 import { Container } from "@/components/container";
 import { Text } from "@/components/text";
 
@@ -52,7 +52,7 @@ async function NewsPage(props: { params: Promise<Iparams> }) {
 
           <div className="mx-auto mt-12 flex w-2/3 flex-col gap-6">
             {news.content.map((paragraph: { text: string }, index: number) => (
-              <Text color="gray" key={index}>
+              <Text color="gray" key={paragraph.text + index.toString()}>
                 {paragraph.text}
               </Text>
             ))}

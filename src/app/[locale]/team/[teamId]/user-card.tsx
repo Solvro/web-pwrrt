@@ -3,7 +3,7 @@
 import Image from "next/image";
 import React, { useState } from "react";
 
-import TileHeading from "./TileHeading";
+import { TileHeading } from "./tile-heading";
 
 interface UserCardProps {
   opiekun?: boolean;
@@ -25,12 +25,12 @@ interface UserCardProps {
   >;
 }
 
-const UserCard: React.FC<UserCardProps> = ({
+export function UserCard({
   opiekun,
   member,
   teamId,
   roleHistory,
-}) => {
+}: UserCardProps) {
   const placeholderImage = "/images/TeamPlaceholder.jpg";
 
   // Generowanie ścieżki do obrazka członka zespołu
@@ -97,6 +97,4 @@ const UserCard: React.FC<UserCardProps> = ({
       </div>
     </div>
   );
-};
-
-export default UserCard;
+}

@@ -9,7 +9,7 @@ import { GarageAbout } from "./garage-about";
 import { HeroAbout } from "./hero-about";
 import { NavAbout } from "./nav-about";
 
-export async function AboutUs() {
+export function AboutUs() {
   return (
     <div className="">
       <HeroAbout />

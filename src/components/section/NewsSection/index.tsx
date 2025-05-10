@@ -1,4 +1,4 @@
-import { fetchFiveNews } from "@/actions/getFiveNews";
+import { fetchFiveNews } from "@/actions/news";
 import { NewsCard } from "@/components/news-card";
 
 import { Container } from "../../container";
