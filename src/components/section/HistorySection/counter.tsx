@@ -1,0 +1,64 @@
+"use client";
+
+import React, { useEffect, useRef, useState } from "react";
+
+import type { TitleProps } from "../../title";
+import { Title } from "../../title";
+
+interface CounterProps extends TitleProps {
+  targetNumber: number;
+}
+
+export function Counter({ targetNumber, ...props }: CounterProps) {
+  const [count, setCount] = useState(0);
+  const counterRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    let observer: IntersectionObserver | null = null;
+    let didCancel = false;
+    const currentRef = counterRef.current;
+
+    if (currentRef != null) {
+      observer = new IntersectionObserver(
+        (entries) => {
+          for (const entry of entries) {
+            if (!didCancel && entry.isIntersecting) {
+              const duration = 2000; // Całkowity czas trwania animacji w ms
+              const intervalTime = duration / targetNumber; // Czas między aktualizacjami
+
+              let start = 0;
+              const interval = setInterval(() => {
+                start += 1;
+                setCount(start);
+                if (start === targetNumber) {
+                  clearInterval(interval);
+                }
+              }, intervalTime);
+
+              if (observer != null) {
+                observer.unobserve(currentRef);
+              }
+            }
+          }
+        },
+        {
+          threshold: 0.1,
+        },
+      );
+      observer.observe(currentRef);
+    }
+
+    return () => {
+      didCancel = true;
+      if (observer != null && currentRef != null) {
+        observer.unobserve(currentRef);
+      }
+    };
+  }, [targetNumber]);
+
+  return (
+    <div ref={counterRef}>
+      <Title {...props}>{count}</Title>
+    </div>
+  );
+}

@@ -11,7 +11,7 @@ db.TeamMember.find({
     if (role.role.toLowerCase().includes(searchWord)) {
       role.role = role.role.replace(
         new RegExp(searchWord, "gi"),
-        replacementWord
+        replacementWord,
       );
     }
     return role;
