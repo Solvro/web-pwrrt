@@ -108,7 +108,7 @@ export function DepartmentElement({
               <div className="flex flex-col gap-2">
                 {responsibilitiesList.map((responsibility, index_) => (
                   <ResponsibilityItem
-                    key={index_}
+                    key={responsibility.text + index_.toString()}
                     iconPath={`/images/departments/${responsibility.icon}`}
                     text={responsibility.text}
                     textColor={textColor}
