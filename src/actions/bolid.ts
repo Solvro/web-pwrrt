@@ -1,6 +1,6 @@
 "use server";
 
-import { prisma } from "@/libs/prismadb";
+import { prisma } from "@/lib/prismadb";
 
 export async function getBolidByBolidId(bolidId: string) {
   const bolid = await prisma.bolid.findUnique({

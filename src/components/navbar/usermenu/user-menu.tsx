@@ -86,7 +86,6 @@ export function UserMenu() {
               ariaLabel="YouTube"
             />
             <LangButton lang={lang} />
-            langBtnToDo
           </div>
         </div>
         <button
@@ -171,7 +170,6 @@ export function UserMenu() {
                 ariaLabel="YouTube"
               />
               <LangButton lang={lang} />
-              langBtnToDo
             </div>
           </div>
         </div>

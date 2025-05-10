@@ -34,7 +34,6 @@ export function LangButton({ lang, black = false }: LangButtonProps) {
         className="rounded-full"
         style={{
           maxWidth: "100%",
-          height: "auto",
         }}
       />
     </button>

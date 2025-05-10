@@ -1,22 +1,40 @@
 "use client";
 
+import { cn } from "@/lib/utils";
+
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
+
 interface ContainerProps {
   children: React.ReactNode;
   paddingType?: "r" | "l" | "x";
 }
 
 export function Container({ children, paddingType = "x" }: ContainerProps) {
-  const paddingClasses = {
-    r: "mx-8 md:mx-0 md:mr-8 xl:mr-[calc((100vw-var(--container-width))/2)]",
-    l: "mx-8 md:mx-0 md:ml-8 xl:ml-[calc((100vw-var(--container-width))/2)]",
-    x: "mx-8 xl:mx-auto",
-  };
+  // const paddingClasses = {
+  //   r: "mx-8 md:mx-0 md:mr-8 xl:mr-[calc((100vw-var(--container-width))/2)]",
+  //   l: "mx-8 md:mx-0 md:ml-8 xl:ml-[calc((100vw-var(--container-width))/2)]",
+  //   x: "mx-8 xl:mx-auto",
+  // };
 
+  // return (
+  //   <div
+  //     className={`${paddingClasses[paddingType]} ${
+  //       paddingType === "x" ? "max-w-(--container-width)" : ""
+  //     }relative flex h-full justify-center lg:items-center`}
+  //   >
+  //     {children}
+  //   </div>
+  // );
   return (
     <div
-      className={`${paddingClasses[paddingType]} ${
-        paddingType === "x" ? "max-w-(--container-width)" : ""
-      }relative flex h-full justify-center lg:items-center`}
+      className={cn(
+        "relative container flex h-full justify-center lg:items-center",
+        {
+          "xl:mx-auto": paddingType === "x",
+          "xl:mr-[calc((100vw-var(--container-width))/2)]": paddingType === "r",
+          "xl:ml-[calc((100vw-var(--container-width))/2)]": paddingType === "l",
+        },
+      )}
     >
       {children}
     </div>
