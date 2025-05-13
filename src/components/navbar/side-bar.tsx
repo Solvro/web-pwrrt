@@ -62,7 +62,7 @@ export function SideBar() {
         >
           <Button
             icon={MdPerson}
-            outline
+            variant={"outline"}
             label={t("recruitment")}
             redirectPath="/joinus"
           />

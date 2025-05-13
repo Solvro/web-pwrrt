@@ -1,57 +1,124 @@
 "use client";
 
-import { useState } from "react";
+import { cva } from "class-variance-authority";
+import type { VariantProps } from "class-variance-authority";
+import { cloneElement, isValidElement, useState } from "react";
 import type { IconType } from "react-icons";
+
+import { cn, formatPhoneNumber } from "@/lib/utils";
 
 import { useHandleLocaleRedirect } from "./handle-locale-redirect";
 
-interface ButtonProps {
-  label: string;
-  onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
-  disabled?: boolean;
-  outline?: boolean;
-  small?: boolean;
-  black?: boolean;
-  icon?: IconType;
-  hoverText?: string; // Opcjonalny prop dla tekstu wyświetlanego podczas hovera
-  redirectPath?: string; // Ścieżka do przekierowania
-}
+export const buttonVariants = cva(
+  "relative inline-flex items-center justify-center gap-2 whitespace-nowrap w-full min-w-fit rounded-lg transition duration-300 ease-in-out hover:opacity-80 disabled:cursor-not-allowed disabled:opacity-70",
+  {
+    variants: {
+      variant: {
+        default: "bg-custom-red border-custom-red text-white border-2",
+        outline: "bg-white border-black text-black border-2",
+        black: "bg-black border-black text-white border-2",
+      },
+      size: {
+        default: "py-2 md:py-3 px-2 md:text-md text-sm font-semibold",
+        small: "py-1 px-2 text-sm font-light border",
+      },
+    },
+    defaultVariants: {
+      variant: "default",
+      size: "default",
+    },
+  },
+);
 
-const formatPhoneNumber = (phoneNumber: string) => {
-  if (!phoneNumber) {
-    return "";
-  }
-  const countryCode = phoneNumber.slice(0, 3);
-  const restOfNumber = phoneNumber.slice(3);
-  const formattedNumber = restOfNumber.replaceAll(/(\d{3})(?=\d)/g, "$1 ");
-  return `${countryCode} ${formattedNumber}`;
-};
+interface ButtonProps
+  extends React.ButtonHTMLAttributes<HTMLButtonElement>,
+    VariantProps<typeof buttonVariants> {
+  label?: string;
+  icon?: IconType;
+  hoverText?: string;
+  redirectPath?: string;
+  asChild?: boolean;
+  children?: React.ReactElement<React.ButtonHTMLAttributes<HTMLButtonElement>>;
+}
 
 export function Button({
   label,
   onClick,
   disabled,
-  outline,
-  small,
-  black,
+  variant,
+  size,
   icon: Icon,
   hoverText,
   redirectPath,
+  asChild,
+  children,
+  className,
+  ...props
 }: ButtonProps) {
   const [isHovered, setIsHovered] = useState(false);
-  const handleLocaleRedirect = useHandleLocaleRedirect(); // Wywołanie customowego hooka
+  const handleLocaleRedirect = useHandleLocaleRedirect();
 
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
-    if (redirectPath != null) {
-      event.preventDefault(); // Zapobiega domyślnemu zachowaniu
-      handleLocaleRedirect(redirectPath); // Wywołanie funkcji przekierowania
-    } else if (onClick != null) {
+    if (redirectPath) {
+      event.preventDefault();
+      handleLocaleRedirect(redirectPath);
+    } else if (onClick) {
       onClick(event);
     }
   };
 
+  const defaultContent = (
+    <div className="relative mx-2 flex items-center justify-start gap-2">
+      {Icon ? <Icon size={24} className="size-5" /> : null}
+      <span
+        className={cn(
+          "flex w-full items-center justify-center transition-opacity duration-300 ease-in-out",
+          {
+            "opacity-0": isHovered && hoverText,
+            "opacity-100": !isHovered || !hoverText,
+          },
+        )}
+      >
+        {label}
+      </span>
+      {hoverText ? (
+        <span
+          className={cn("transition-opacity duration-300 ease-in-out", {
+            "opacity-100": isHovered,
+            "opacity-0": !isHovered,
+          })}
+        >
+          {hoverText.includes("+") ? formatPhoneNumber(hoverText) : hoverText}
+        </span>
+      ) : null}
+    </div>
+  );
+
+  const classes = buttonVariants({ variant, size, className });
+
+  if (asChild && children && isValidElement(children)) {
+    const childContent = children.props.children ?? defaultContent;
+    return cloneElement(
+      children,
+      {
+        className: classes,
+        onClick: handleClick,
+        disabled,
+        onMouseEnter: () => {
+          setIsHovered(true);
+        },
+        onMouseLeave: () => {
+          setIsHovered(false);
+        },
+        ...props,
+      },
+      childContent,
+    );
+  }
+
   return (
     <button
+      className={classes}
       onClick={handleClick}
       disabled={disabled}
       onMouseEnter={() => {
@@ -60,36 +127,9 @@ export function Button({
       onMouseLeave={() => {
         setIsHovered(false);
       }}
-      className={`relative w-full min-w-fit rounded-lg transition duration-300 ease-in-out hover:opacity-80 disabled:cursor-not-allowed disabled:opacity-70 ${black === true ? "bg-black" : outline === true ? "bg-white" : "bg-custom-red"} ${black === true ? "px-12" : "px-2"} ${
-        black === true
-          ? "border-black"
-          : outline === true
-            ? "border-black"
-            : "border-custom-red"
-      } ${outline === true ? "text-black" : "text-white"} ${small === true ? "py-1" : "py-2 md:py-3"} ${small === true ? "text-sm" : "md:text-md text-sm"} ${small === true ? "font-light" : "font-semibold"} ${small === true ? "border" : "border-2"} `}
+      {...props}
     >
-      {Icon ? (
-        <Icon
-          size={24}
-          className="absolute top-[6px] left-2 md:top-[10px] md:left-3"
-        />
-      ) : null}
-      <span
-        className={`transition-opacity duration-300 ease-in-out ${
-          isHovered && hoverText != null ? "opacity-0" : "opacity-100"
-        }`}
-      >
-        {label}
-      </span>
-      {hoverText ? (
-        <span
-          className={`absolute inset-0 flex items-center justify-center transition-opacity duration-300 ease-in-out ${
-            isHovered ? "opacity-100" : "opacity-0"
-          }`}
-        >
-          {hoverText.includes("+") ? formatPhoneNumber(hoverText) : hoverText}
-        </span>
-      ) : null}
+      {defaultContent}
     </button>
   );
 }

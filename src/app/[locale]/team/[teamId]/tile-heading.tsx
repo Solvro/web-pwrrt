@@ -144,7 +144,7 @@ export function TileHeading({
             <Button
               label={t("zadzwon")}
               onClick={handlePhone(phoneNumber)}
-              outline
+              variant={"outline"}
               icon={FiPhone}
               hoverText={phoneNumber}
             />

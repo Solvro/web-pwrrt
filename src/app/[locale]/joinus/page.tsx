@@ -4,6 +4,7 @@ import { Container } from "@/components/container";
 import { Title } from "@/components/title";
 
 import { DepartmentsAbout } from "../about/DepartmentsAbout";
+import { ButtonsSection } from "./button-join-us";
 import { Timer } from "./timer";
 
 export default function JoinUsPage() {
@@ -22,7 +23,7 @@ export default function JoinUsPage() {
             <Title color="black">{t("becomeMember")}</Title>
           </div>
           <Timer targetDate="2025-10-15T00:00:00" />
-          {/* <ButtonsSection dict={dict.joinUs} /> */}
+          <ButtonsSection />
         </div>
       </Container>
       <DepartmentsAbout lightMode />

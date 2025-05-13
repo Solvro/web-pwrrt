@@ -96,7 +96,7 @@ export function Modal({
               <div className="flex w-full flex-row items-center gap-4">
                 {secondaryAction && secondaryActionLabel ? (
                   <Button
-                    outline
+                    variant={"outline"}
                     disabled={disabled}
                     label={secondaryActionLabel}
                     onClick={handleSecondaryAction}

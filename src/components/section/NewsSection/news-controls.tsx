@@ -22,7 +22,7 @@ export function NewsControls() {
           }}
         />
         <Button
-          outline
+          variant={"outline"}
           label={t("contact")}
           onClick={() => {
             router.push(`/contact`);

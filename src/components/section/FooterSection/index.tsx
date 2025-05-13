@@ -20,10 +20,6 @@ import { Text } from "../../text";
 import { Title } from "../../title";
 import { FooterLink } from "./footer-link";
 
-const handleMapClick = () => {
-  window.open("https://maps.app.goo.gl/A3E2pEjZndstzrDT8", "_blank");
-};
-
 export function FooterSection() {
   const router = useRouter();
   const t = useTranslations("footer");
@@ -106,9 +102,10 @@ export function FooterSection() {
                   racing.pwr@gmail.com
                 </Text>
               </Link>
-              <button
+              <Link
                 className="group flex cursor-pointer flex-col items-center"
-                onClick={handleMapClick}
+                href={"https://maps.app.goo.gl/A3E2pEjZndstzrDT8"}
+                target="_blank"
               >
                 <div className="flex items-center gap-3 pb-1 uppercase">
                   <svg
@@ -130,7 +127,7 @@ export function FooterSection() {
                 <Text color="white" opacity1 hoverColor="red" small bold wide>
                   ul. Sopocka 16, Wrocław
                 </Text>
-              </button>
+              </Link>
             </div>
           </div>
           <div className="mt-4 flex flex-col flex-wrap items-center justify-between gap-4 text-center text-white md:flex-row md:items-start md:gap-12 md:px-12 md:text-start">
@@ -154,8 +151,15 @@ export function FooterSection() {
                 {t("headquarters")}
               </Text>
               <ul className="mt-1 md:mt-2">
-                <FooterLink onClick={handleMapClick}>{t("address")}</FooterLink>
-                <FooterLink onClick={handleMapClick}>50-344 Wrocław</FooterLink>
+                <FooterLink href={"https://maps.app.goo.gl/A3E2pEjZndstzrDT8"}>
+                  {t("address")}
+                </FooterLink>
+                <FooterLink
+                  href={"https://maps.app.goo.gl/A3E2pEjZndstzrDT8"}
+                  blank
+                >
+                  50-344 Wrocław
+                </FooterLink>
                 <FooterLink href={"tel:+48517350915"}>{t("phone")}</FooterLink>
                 <FooterLink href={"mailto:racing@gmail.com"}>
                   {t("email")}
@@ -215,7 +219,7 @@ export function FooterSection() {
                 }}
               />
               <Button
-                outline
+                variant={"outline"}
                 label={t("becomePartner")}
                 onClick={() => {
                   router.push(`/partners/joinus`);
