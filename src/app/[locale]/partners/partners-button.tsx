@@ -9,7 +9,11 @@ export function PartnersButton() {
   return (
     <div className="my-8 flex gap-4 md:w-1/3">
       <Button label={t("becomePartner")} redirectPath="/partners/joinus" />
-      <Button outline label={t("contact")} redirectPath="/contact" />
+      <Button
+        variant={"outline"}
+        label={t("contact")}
+        redirectPath="/contact"
+      />
     </div>
   );
 }
