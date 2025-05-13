@@ -10,6 +10,7 @@ import { ClosestSectionProvider } from "@/components/navbar/closest-section-cont
 import { SideBar } from "@/components/navbar/side-bar";
 import { FooterSection } from "@/components/section/FooterSection";
 import { routing } from "@/i18n/routing";
+import { cn } from "@/lib/utils";
 import { ToasterProvider } from "@/providers/toaster-provider";
 
 import "./globals.css";
@@ -42,7 +43,7 @@ export default async function LocaleLayout({
 
   return (
     <html lang={locale}>
-      <body className={font.className}>
+      <body className={cn(font.className, "overflow-x-hidden")}>
         <NextIntlClientProvider>
           <ClosestSectionProvider>
             <Navbar />

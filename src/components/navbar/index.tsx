@@ -35,8 +35,10 @@ export function Navbar() {
 
   return (
     <header
-      className={`fixed z-50 w-full transition-all duration-500 ${
-        !isHome || !atTop ? "bg-black" : "bg-transparent"
+      className={`fixed z-50 w-full py-4 transition-all duration-500 ${
+        !isHome || !atTop
+          ? "bg-black/70 backdrop-blur-[18px]"
+          : "bg-transparent"
       } ${hideNavbar ? "-translate-y-full" : "translate-y-0"}`}
     >
       <div className="mx-auto px-4 sm:px-2 md:px-10 xl:px-20">
