@@ -10,7 +10,7 @@ import { cn, formatPhoneNumber } from "@/lib/utils";
 import { useHandleLocaleRedirect } from "./handle-locale-redirect";
 
 export const buttonVariants = cva(
-  "relative inline-flex items-center justify-center gap-2 whitespace-nowrap w-full min-w-fit rounded-lg transition duration-300 ease-in-out hover:opacity-80 disabled:cursor-not-allowed disabled:opacity-70",
+  "relative inline-flex items-center justify-center gap-2 whitespace-nowrap w-full min-w-fit rounded-lg transition duration-300 ease-in-out hover:opacity-80 disabled:cursor-not-allowed cursor-pointer disabled:opacity-70",
   {
     variants: {
       variant: {
