@@ -88,7 +88,7 @@ export function GarageAbout() {
                 </button>
                 <div className="w-full md:w-1/3">
                   <Button
-                    outline
+                    variant={"outline"}
                     label={t("contact")}
                     onClick={() => {
                       router.push("/contact");

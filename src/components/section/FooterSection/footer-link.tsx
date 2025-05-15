@@ -1,33 +1,23 @@
 "use client";
 
-import { useRouter } from "next/navigation";
-import type { MouseEventHandler } from "react";
+import Link from "next/link";
 
 interface FooterLinkProps {
   children: string;
-  href?: string; // Optional href prop for navigation
-  onClick?: MouseEventHandler<HTMLButtonElement>; // Optional onClick prop for custom functions
+  href: string; // Optional href prop for navigation
+  blank?: boolean; // Optional prop to indicate if the link should open in a new tab
 }
 
-export function FooterLink({ children, href, onClick }: FooterLinkProps) {
-  const router = useRouter();
-
-  const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
-    if (onClick) {
-      onClick(event); // Execute the custom function if provided
-    } else if (href) {
-      router.push(href); // Navigate to the provided href if no custom function
-    }
-  };
-
+export function FooterLink({ children, href, blank = false }: FooterLinkProps) {
   return (
     <li>
-      <button
-        onClick={handleClick}
+      <Link
+        href={href}
+        target={blank ? "_blank" : undefined}
         className="text-opacity-70 hover:text-custom-red cursor-pointer py-1 whitespace-nowrap duration-300"
       >
         {children}
-      </button>
+      </Link>
     </li>
   );
 }

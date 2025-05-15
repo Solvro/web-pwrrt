@@ -87,7 +87,7 @@ export function BolidContent({
                   }}
                 />
                 <Button
-                  outline
+                  variant={"outline"}
                   label={`${t("meetTeam")} ${name}`}
                   onClick={() => {
                     teamRedirect(name);
@@ -118,7 +118,7 @@ export function BolidContent({
               }}
             />
             <Button
-              outline
+              variant={"outline"}
               label={`${t("meetTeam")} ${name}`}
               onClick={() => {
                 teamRedirect(name);

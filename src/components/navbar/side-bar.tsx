@@ -1,6 +1,7 @@
 "use client";
 
 import { useTranslations } from "next-intl";
+import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import { FaCamera } from "react-icons/fa";
 import { MdPerson } from "react-icons/md";
@@ -41,11 +42,17 @@ export function SideBar() {
               : "-translate-y-1/3"
           }`}
         >
-          <Button
-            icon={FaCamera}
-            label={t("media")}
-            redirectPath="/partners/joinus"
-          />
+          <Button asChild>
+            <Link
+              href="/partners/joinus"
+              className="relative flex items-center justify-center gap-2"
+            >
+              <FaCamera className="absolute inset-x-0 left-4 size-5" />
+              <div className="w-full text-center font-semibold">
+                <span>{t("media")}</span>
+              </div>
+            </Link>
+          </Button>
         </div>
       </div>
       <div
@@ -60,12 +67,17 @@ export function SideBar() {
               : "-translate-y-1/3"
           }`}
         >
-          <Button
-            icon={MdPerson}
-            outline
-            label={t("recruitment")}
-            redirectPath="/joinus"
-          />
+          <Button asChild variant={"outline"}>
+            <Link
+              href="/joinus"
+              className="relative flex items-center justify-center gap-2"
+            >
+              <MdPerson className="absolute inset-x-0 left-4 size-5" />
+              <div className="w-full text-center font-semibold">
+                <span>{t("recruitment")}</span>
+              </div>
+            </Link>
+          </Button>
         </div>
       </div>
     </div>

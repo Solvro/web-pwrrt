@@ -1,26 +1,27 @@
 "use client";
 
-import { Button } from "@/components/button";
+import Link from "next/link";
+import { SiGoogleforms } from "react-icons/si";
 
-const handleFormsClick = () => {
-  window.open(
-    "https://docs.google.com/forms/d/1EGLPpMqqDQ15weFgiAibdRCAght7lzGOT00tMSNVsBA/edit",
-    "_blank",
-  ); // Otwiera Facebooka w nowej karcie
-};
-const handleFacebookClick = () => {
-  window.open("https://www.facebook.com/PWRRacingTeam", "_blank"); // Otwiera Facebooka w nowej karcie
-};
+import { Button } from "@/components/button";
 
 export function ButtonsSection() {
   return (
     <div className="my-16 flex gap-4 md:w-1/3">
-      <Button label="Dołącz do nas" onClick={handleFormsClick} />
-      <Button
-        outline
-        label="Dowiedz się więcej"
-        onClick={handleFacebookClick}
-      />
+      <Button asChild>
+        <Link
+          href="https://docs.google.com/forms/d/1EGLPpMqqDQ15weFgiAibdRCAght7lzGOT00tMSNVsBA/edit"
+          target="_blank"
+        >
+          <SiGoogleforms className="size-5" />
+          <p>Dołącz do nas</p>
+        </Link>
+      </Button>
+      <Button variant={"outline"} asChild>
+        <Link href="https://www.facebook.com/PWRRacingTeam" target="_blank">
+          <p>Facebook</p>
+        </Link>
+      </Button>
     </div>
   );
 }

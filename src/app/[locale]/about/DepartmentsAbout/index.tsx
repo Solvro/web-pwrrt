@@ -75,7 +75,7 @@ export function DepartmentsAbout({ lightMode }: DepartmentsAboutProps) {
               <div className="flex flex-wrap items-center justify-center gap-4 md:w-3/4">
                 <div className="flex-1 sm:max-w-72">
                   <Button
-                    black
+                    variant={"black"}
                     icon={IoSettings}
                     label="MECHANICAL"
                     onClick={() => {
@@ -85,7 +85,7 @@ export function DepartmentsAbout({ lightMode }: DepartmentsAboutProps) {
                 </div>
                 <div className="flex-1 sm:max-w-72">
                   <Button
-                    black
+                    variant={"black"}
                     icon={FaCube}
                     label="COMPOSITES"
                     onClick={() => {
@@ -95,7 +95,7 @@ export function DepartmentsAbout({ lightMode }: DepartmentsAboutProps) {
                 </div>
                 <div className="flex-1 sm:max-w-72">
                   <Button
-                    black
+                    variant={"black"}
                     icon={FaBullhorn}
                     label="MARKETING"
                     onClick={() => {
@@ -105,7 +105,7 @@ export function DepartmentsAbout({ lightMode }: DepartmentsAboutProps) {
                 </div>
                 <div className="flex-1 sm:max-w-72">
                   <Button
-                    black
+                    variant={"black"}
                     icon={FaLaptopCode}
                     label="SOFTWARE"
                     onClick={() => {
@@ -115,7 +115,7 @@ export function DepartmentsAbout({ lightMode }: DepartmentsAboutProps) {
                 </div>
                 <div className="flex-1 sm:max-w-72">
                   <Button
-                    black
+                    variant={"black"}
                     icon={FaBolt}
                     label="ELECTRICAL"
                     onClick={() => {
@@ -125,7 +125,7 @@ export function DepartmentsAbout({ lightMode }: DepartmentsAboutProps) {
                 </div>
                 <div className="flex-1 whitespace-nowrap sm:max-w-72">
                   <Button
-                    black
+                    variant={"black"}
                     icon={FaChartBar}
                     label="VEHICLE PERFORMANCE"
                     onClick={() => {
@@ -135,7 +135,7 @@ export function DepartmentsAbout({ lightMode }: DepartmentsAboutProps) {
                 </div>
                 <div className="flex-1 sm:max-w-72">
                   <Button
-                    black
+                    variant={"black"}
                     icon={FaDollarSign}
                     label="BUSINESS"
                     onClick={() => {

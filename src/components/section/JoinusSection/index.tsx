@@ -124,7 +124,7 @@ export function JoinusSection({ sizeBig = false }: JoinusSectionProps) {
                 }}
               />
               <Button
-                outline
+                variant={"outline"}
                 label={t("buttonPartner")}
                 onClick={() => {
                   if (sizeBig) {
