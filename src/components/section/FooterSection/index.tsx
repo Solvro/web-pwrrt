@@ -26,7 +26,7 @@ export function FooterSection() {
 
   return (
     <div id="section-contact" className="relative md:pt-6">
-      <div className="absolute inset-0 z-0">
+      <div className="absolute inset-0 z-0 overflow-hidden">
         <Image
           src="/images/joinus/photo5.jpeg"
           alt="Tło sekcji"
@@ -37,10 +37,11 @@ export function FooterSection() {
             objectPosition: "left 70%",
             maxWidth: "100%",
           }}
+          className="blur-[5px]"
         />
-        <div className="bg-opacity-80 absolute inset-0 bg-black"></div>
+        <div className="absolute inset-0 bg-black opacity-80"></div>
       </div>
-      <Container>
+      <Container className="z-10">
         <div className="flex w-full flex-col">
           <div className="flex w-full flex-col flex-wrap items-center justify-center gap-x-12 md:flex-row md:px-12 xl:gap-12">
             <div className="lg:w-80">

@@ -1,3 +1,6 @@
+import config from "@payload-config";
+import { getPayload } from "payload";
+
 import { BolidSection } from "@/components/section/BolidSection";
 import { DepartmentsSubsection } from "@/components/section/DepartmentsSubsection/departments-subsection";
 import { FSSection } from "@/components/section/FSSection";
@@ -8,7 +11,15 @@ import { NewsSection } from "@/components/section/NewsSection";
 import { SponsorsSection } from "@/components/section/SponsorsSection";
 import { TeamSection } from "@/components/section/TeamSection";
 
-export default function Home() {
+export default async function Home() {
+  const payload = await getPayload({ config });
+  const mainPage = await payload.findGlobal({
+    slug: "main-page",
+  });
+
+  // eslint-disable-next-line no-console
+  console.log(mainPage.title);
+
   return (
     <div className="">
       <HeroSection />

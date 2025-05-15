@@ -5,9 +5,14 @@ import { cn } from "@/lib/utils";
 interface ContainerProps {
   children: React.ReactNode;
   paddingType?: "r" | "l" | "x";
+  className?: string;
 }
 
-export function Container({ children, paddingType = "x" }: ContainerProps) {
+export function Container({
+  children,
+  paddingType = "x",
+  className,
+}: ContainerProps) {
   // const paddingClasses = {
   //   r: "mx-8 md:mx-0 md:mr-8 xl:mr-[calc((100vw-var(--container-width))/2)]",
   //   l: "mx-8 md:mx-0 md:ml-8 xl:ml-[calc((100vw-var(--container-width))/2)]",
@@ -27,6 +32,7 @@ export function Container({ children, paddingType = "x" }: ContainerProps) {
     <div
       className={cn(
         "relative container flex h-full justify-center lg:items-center",
+        className,
         {
           "xl:mx-auto": paddingType === "x",
           "xl:mr-[calc((100vw-var(--container-width))/2)]": paddingType === "r",

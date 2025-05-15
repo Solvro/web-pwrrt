@@ -1,10 +1,20 @@
 import { solvro } from "@solvro/config/eslint";
+import { globalIgnores } from "eslint/config";
 
-export default solvro({
-  rules: {
-    "@typescript-eslint/strict-boolean-expressions": "off",
+export default solvro([
+  {
+    rules: {
+      "@typescript-eslint/strict-boolean-expressions": "off",
+    },
+    // rules: {
+    //   "import/prefer-default-export": "true",
+    // },
   },
-  // rules: {
-  //   "import/prefer-default-export": "true",
-  // },
-});
+  globalIgnores([
+    "src/app/(payload)/**/*",
+    "src/payload-types.ts",
+    "src/payload.config.ts",
+    "src/collections/*",
+    "src/globals/*",
+  ]),
+]);
