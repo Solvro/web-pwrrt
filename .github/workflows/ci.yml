@@ -44,4 +44,5 @@ jobs:
         if: always()
         env:
           DATABASE_URL: ${{ secrets.DATABASE_URL }}
+          DATABASE_URI: ${{ secrets.DATABASE_URL }}
           PAYLOAD_SECRET: "very_secret_key"
