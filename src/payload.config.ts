@@ -1,11 +1,14 @@
 import { mongooseAdapter } from "@payloadcms/db-mongodb";
 import { lexicalEditor } from "@payloadcms/richtext-lexical";
 import { s3Storage } from "@payloadcms/storage-s3";
+import { en } from "@payloadcms/translations/languages/en";
+import { pl } from "@payloadcms/translations/languages/pl";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { buildConfig } from "payload";
 import sharp from "sharp";
 
+import { Bolids } from "./collections/bolids";
 import { Media } from "./collections/media";
 import { Users } from "./collections/users";
 import MainPage from "./globals/main-page";
@@ -20,7 +23,7 @@ export default buildConfig({
       baseDir: path.resolve(dirname),
     },
   },
-  collections: [Users, Media],
+  collections: [Users, Media, Bolids],
   globals: [MainPage],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET ?? "",
@@ -30,6 +33,14 @@ export default buildConfig({
   db: mongooseAdapter({
     url: process.env.DATABASE_URI ?? "",
   }),
+  i18n: {
+    supportedLanguages: { en, pl },
+    fallbackLanguage: "en",
+  },
+  localization: {
+    locales: ["en", "pl"],
+    defaultLocale: "en",
+  },
   sharp,
   plugins: [
     s3Storage({

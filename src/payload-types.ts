@@ -69,6 +69,7 @@ export interface Config {
   collections: {
     users: User;
     media: Media;
+    bolids: Bolid;
     "payload-locked-documents": PayloadLockedDocument;
     "payload-preferences": PayloadPreference;
     "payload-migrations": PayloadMigration;
@@ -77,6 +78,7 @@ export interface Config {
   collectionsSelect: {
     users: UsersSelect<false> | UsersSelect<true>;
     media: MediaSelect<false> | MediaSelect<true>;
+    bolids: BolidsSelect<false> | BolidsSelect<true>;
     "payload-locked-documents":
       | PayloadLockedDocumentsSelect<false>
       | PayloadLockedDocumentsSelect<true>;
@@ -96,7 +98,7 @@ export interface Config {
   globalsSelect: {
     "main-page": MainPageSelect<false> | MainPageSelect<true>;
   };
-  locale: null;
+  locale: "en" | "pl";
   user: User & {
     collection: "users";
   };
@@ -162,6 +164,28 @@ export interface Media {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "bolids".
+ */
+export interface Bolid {
+  id: string;
+  name: string;
+  year: string;
+  short_description: string;
+  acceleration: string;
+  mass: number;
+  power: string;
+  parts?:
+    | {
+        partName: string;
+        description: string;
+        id?: string | null;
+      }[]
+    | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-locked-documents".
  */
 export interface PayloadLockedDocument {
@@ -174,6 +198,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: "media";
         value: string | Media;
+      } | null)
+    | ({
+        relationTo: "bolids";
+        value: string | Bolid;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -250,6 +278,27 @@ export interface MediaSelect<T extends boolean = true> {
   height?: T;
   focalX?: T;
   focalY?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "bolids_select".
+ */
+export interface BolidsSelect<T extends boolean = true> {
+  name?: T;
+  year?: T;
+  short_description?: T;
+  acceleration?: T;
+  mass?: T;
+  power?: T;
+  parts?:
+    | T
+    | {
+        partName?: T;
+        description?: T;
+        id?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema

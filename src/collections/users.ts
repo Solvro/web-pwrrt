@@ -1,4 +1,3 @@
-/* eslint-disable unicorn/filename-case */
 import type { CollectionConfig } from "payload";
 
 export const Users: CollectionConfig = {
