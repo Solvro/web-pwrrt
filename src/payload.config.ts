@@ -35,11 +35,11 @@ export default buildConfig({
   }),
   i18n: {
     supportedLanguages: { en, pl },
-    fallbackLanguage: "en",
+    fallbackLanguage: "pl",
   },
   localization: {
     locales: ["en", "pl"],
-    defaultLocale: "en",
+    defaultLocale: "pl",
   },
   sharp,
   plugins: [
