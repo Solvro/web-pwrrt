@@ -1,4 +1,4 @@
-import { CollectionConfig } from "payload/types";
+import { CollectionConfig } from "payload";
 
 const Partners: CollectionConfig = {
   slug: "partners",
@@ -28,7 +28,7 @@ const Partners: CollectionConfig = {
       name: "type",
       type: "select",
       label: "Typ partnera",
-      requred: true,
+      required: true,
       options: [
         { label: "Strategiczny", value: "strategic" },
         { label: "Platynowy", value: "platinum" },
