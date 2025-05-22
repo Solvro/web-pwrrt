@@ -1,11 +1,24 @@
+"use client";
+
+import toast from "react-hot-toast";
+
 import { Button } from "@/components/button";
 import { Text } from "@/components/text";
+
+const handleSubmit = (event: React.FormEvent) => {
+  event.preventDefault();
+  // const form = event.target as HTMLFormElement;
+  toast.success(`Thank you for submiting a bug!`);
+
+  // form.submit();
+};
 
 export function ErrorReportForm() {
   return (
     <form
       action="https://formsubmit.co/YOUR_EMAIL@example.com"
       method="POST"
+      onSubmit={handleSubmit}
       className="mx-auto mt-8 space-y-4 rounded border p-4 shadow xl:w-[35vw]"
     >
       <label htmlFor="bugReportFormName">
