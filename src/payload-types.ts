@@ -71,6 +71,7 @@ export interface Config {
     media: Media;
     bolids: Bolid;
     teamMembers: TeamMember;
+    partners: Partner;
     "payload-locked-documents": PayloadLockedDocument;
     "payload-preferences": PayloadPreference;
     "payload-migrations": PayloadMigration;
@@ -81,6 +82,7 @@ export interface Config {
     media: MediaSelect<false> | MediaSelect<true>;
     bolids: BolidsSelect<false> | BolidsSelect<true>;
     teamMembers: TeamMembersSelect<false> | TeamMembersSelect<true>;
+    partners: PartnersSelect<false> | PartnersSelect<true>;
     "payload-locked-documents":
       | PayloadLockedDocumentsSelect<false>
       | PayloadLockedDocumentsSelect<true>;
@@ -207,6 +209,19 @@ export interface TeamMember {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "partners".
+ */
+export interface Partner {
+  id: string;
+  name: string;
+  logo: string | Media;
+  website?: string | null;
+  type: "strategic" | "platinum" | "gold" | "silver" | "bronze";
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-locked-documents".
  */
 export interface PayloadLockedDocument {
@@ -227,6 +242,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: "teamMembers";
         value: string | TeamMember;
+      } | null)
+    | ({
+        relationTo: "partners";
+        value: string | Partner;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -342,6 +361,18 @@ export interface TeamMembersSelect<T extends boolean = true> {
         id?: T;
       };
   phoneNumber?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "partners_select".
+ */
+export interface PartnersSelect<T extends boolean = true> {
+  name?: T;
+  logo?: T;
+  website?: T;
+  type?: T;
   updatedAt?: T;
   createdAt?: T;
 }
