@@ -5,6 +5,7 @@
  * DO NOT MODIFY IT BY HAND. Instead, modify your source Payload config,
  * and re-run `payload generate:types` to regenerate this file.
  */
+import { TeamMember } from "@prisma/client";
 
 /**
  * Supported timezones in IANA format.
@@ -70,6 +71,7 @@ export interface Config {
     users: User;
     media: Media;
     bolids: Bolid;
+    teamMembers: TeamMember;
     "payload-locked-documents": PayloadLockedDocument;
     "payload-preferences": PayloadPreference;
     "payload-migrations": PayloadMigration;
@@ -79,6 +81,7 @@ export interface Config {
     users: UsersSelect<false> | UsersSelect<true>;
     media: MediaSelect<false> | MediaSelect<true>;
     bolids: BolidsSelect<false> | BolidsSelect<true>;
+    teamMebers: TeamMembersSelect<false> | TeamMembersSelect<true>;
     "payload-locked-documents":
       | PayloadLockedDocumentsSelect<false>
       | PayloadLockedDocumentsSelect<true>;
@@ -202,6 +205,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: "bolids";
         value: string | Bolid;
+      } | null)
+    | ({
+        relationTo: "teamMembers";
+        value: string | TeamMember;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -297,6 +304,26 @@ export interface BolidsSelect<T extends boolean = true> {
         description?: T;
         id?: T;
       };
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "teamMembers_select".
+ */
+export interface TeamMembersSelect<T extends boolean = true> {
+  name?: T;
+  surname?: T;
+  email?: T;
+  roles?:
+    | T
+    | {
+        role?: T;
+        department?: T;
+        bolidName?: T;
+        id?: T;
+      };
+  phoneNumber?: T;
   updatedAt?: T;
   createdAt?: T;
 }
