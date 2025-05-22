@@ -194,13 +194,14 @@ export interface TeamMember {
   id: string;
   name: string;
   surname: string;
-  email?: string | null;
+  profile?: (string | null) | Media;
   roles: {
     role: string;
     department: string;
     bolidName: string;
     id?: string | null;
   }[];
+  email?: string | null;
   phoneNumber?: string | null;
   updatedAt: string;
   createdAt: string;
@@ -332,7 +333,7 @@ export interface BolidsSelect<T extends boolean = true> {
 export interface TeamMembersSelect<T extends boolean = true> {
   name?: T;
   surname?: T;
-  email?: T;
+  profile?: T;
   roles?:
     | T
     | {
@@ -341,6 +342,7 @@ export interface TeamMembersSelect<T extends boolean = true> {
         bolidName?: T;
         id?: T;
       };
+  email?: T;
   phoneNumber?: T;
   updatedAt?: T;
   createdAt?: T;

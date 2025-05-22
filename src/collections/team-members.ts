@@ -21,11 +21,11 @@ export const TeamMembers: CollectionConfig = {
       admin: { placeholder: "Kowalski" },
     },
     {
-      name: "email",
-      label: "E-mail",
-      type: "email",
+      name: "profile",
+      label: "Zdjęcie profilowe",
+      type: "upload",
       required: false,
-      admin: { placeholder: "jan.kowalski@example.com" },
+      relationTo: "media",
     },
     {
       name: "roles",
@@ -55,6 +55,13 @@ export const TeamMembers: CollectionConfig = {
           admin: { placeholder: "RT14e" },
         },
       ],
+    },
+    {
+      name: "email",
+      label: "E-mail",
+      type: "email",
+      required: false,
+      admin: { placeholder: "jan.kowalski@example.com" },
     },
     {
       name: "phoneNumber",
