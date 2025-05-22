@@ -70,6 +70,7 @@ export interface Config {
     users: User;
     media: Media;
     bolids: Bolid;
+    teamMembers: TeamMember;
     "payload-locked-documents": PayloadLockedDocument;
     "payload-preferences": PayloadPreference;
     "payload-migrations": PayloadMigration;
@@ -79,6 +80,7 @@ export interface Config {
     users: UsersSelect<false> | UsersSelect<true>;
     media: MediaSelect<false> | MediaSelect<true>;
     bolids: BolidsSelect<false> | BolidsSelect<true>;
+    teamMembers: TeamMembersSelect<false> | TeamMembersSelect<true>;
     "payload-locked-documents":
       | PayloadLockedDocumentsSelect<false>
       | PayloadLockedDocumentsSelect<true>;
@@ -186,6 +188,25 @@ export interface Bolid {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "teamMembers".
+ */
+export interface TeamMember {
+  id: string;
+  name: string;
+  surname: string;
+  email?: string | null;
+  roles: {
+    role: string;
+    department: string;
+    bolidName: string;
+    id?: string | null;
+  }[];
+  phoneNumber?: string | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-locked-documents".
  */
 export interface PayloadLockedDocument {
@@ -202,6 +223,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: "bolids";
         value: string | Bolid;
+      } | null)
+    | ({
+        relationTo: "teamMembers";
+        value: string | TeamMember;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -297,6 +322,26 @@ export interface BolidsSelect<T extends boolean = true> {
         description?: T;
         id?: T;
       };
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "teamMembers_select".
+ */
+export interface TeamMembersSelect<T extends boolean = true> {
+  name?: T;
+  surname?: T;
+  email?: T;
+  roles?:
+    | T
+    | {
+        role?: T;
+        department?: T;
+        bolidName?: T;
+        id?: T;
+      };
+  phoneNumber?: T;
   updatedAt?: T;
   createdAt?: T;
 }
