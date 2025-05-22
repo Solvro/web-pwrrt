@@ -10,7 +10,7 @@ import sharp from "sharp";
 
 import { Bolids } from "./collections/bolids";
 import { Media } from "./collections/media";
-import { TeamMembers } from "./collections/team_members";
+import { TeamMembers } from "./collections/team-members";
 import { Users } from "./collections/users";
 import MainPage from "./globals/main-page";
 
