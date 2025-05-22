@@ -5,7 +5,6 @@
  * DO NOT MODIFY IT BY HAND. Instead, modify your source Payload config,
  * and re-run `payload generate:types` to regenerate this file.
  */
-import { TeamMember } from "@prisma/client";
 
 /**
  * Supported timezones in IANA format.
@@ -81,7 +80,7 @@ export interface Config {
     users: UsersSelect<false> | UsersSelect<true>;
     media: MediaSelect<false> | MediaSelect<true>;
     bolids: BolidsSelect<false> | BolidsSelect<true>;
-    teamMebers: TeamMembersSelect<false> | TeamMembersSelect<true>;
+    teamMembers: TeamMembersSelect<false> | TeamMembersSelect<true>;
     "payload-locked-documents":
       | PayloadLockedDocumentsSelect<false>
       | PayloadLockedDocumentsSelect<true>;
@@ -184,6 +183,25 @@ export interface Bolid {
         id?: string | null;
       }[]
     | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "teamMembers".
+ */
+export interface TeamMember {
+  id: string;
+  name: string;
+  surname: string;
+  email?: string | null;
+  roles: {
+    role: string;
+    department: string;
+    bolidName: string;
+    id?: string | null;
+  }[];
+  phoneNumber?: string | null;
   updatedAt: string;
   createdAt: string;
 }
