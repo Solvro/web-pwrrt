@@ -4,7 +4,7 @@ import { useQuery } from "@tanstack/react-query";
 import { useLocale } from "next-intl";
 import { useState } from "react";
 
-import { getAllBolids, getBolidByName } from "@/actions/bolid";
+import { getAllBolids } from "@/actions/bolid";
 import type { Bolid } from "@/payload-types";
 
 import { BolidContent } from "./bolid-content";
@@ -18,10 +18,18 @@ export function BolidSection({ presetBolid }: BolidSectionProps) {
   const [currentBolidData, setCurrentBolidData] = useState<Bolid>(presetBolid);
   const locale = useLocale();
 
+  const { data: selectBolids } = useQuery({
+    queryKey: ["selectBolids", locale],
+    queryFn: async () => {
+      const response = await getAllBolids(locale, true);
+      return response;
+    },
+  });
+
   const { data: allBolids } = useQuery({
     queryKey: ["allBolids", locale],
     queryFn: async () => {
-      const response = await getAllBolids(locale, true);
+      const response = await getAllBolids(locale);
       return response;
     },
   });
@@ -33,8 +41,9 @@ export function BolidSection({ presetBolid }: BolidSectionProps) {
   const [sameDirection, setSameDirection] = useState("");
   const [sameDirectionShift, setSameDirectionShift] = useState("duration-500");
 
-  const fetchBolidData = async (bolidName: string) => {
-    const response = await getBolidByName(bolidName, locale);
+  const fetchBolidData = (bolidName: string) => {
+    // const response = await getBolidByName(bolidName, locale);
+    const response = allBolids?.find((bolid) => bolid.name === bolidName);
     if (response == null) {
       console.error("Failed to fetch bolid data:", response);
       return;
@@ -79,7 +88,7 @@ export function BolidSection({ presetBolid }: BolidSectionProps) {
   };
 
   const handleChangeBolid = (bolidName: string) => {
-    void fetchBolidData(bolidName);
+    fetchBolidData(bolidName);
   };
 
   return (
@@ -87,7 +96,7 @@ export function BolidSection({ presetBolid }: BolidSectionProps) {
       <div className="relative flex w-[200vw] flex-col">
         <Slider
           currentBolid={currentBolidData.name}
-          allBolids={allBolids ?? [{ ...presetBolid }]}
+          allBolids={selectBolids ?? [{ ...presetBolid }]}
           onChangeBolid={handleChangeBolid}
         />
         <div

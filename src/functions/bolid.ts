@@ -48,12 +48,24 @@ export async function getAllBolidsFunction(
     locale,
     sort: "-_order",
     limit: 100,
-    ...(onlyEssential && {
-      select: {
-        name: true,
-        year: true,
-      },
-    }),
+    ...(onlyEssential
+      ? {
+          select: {
+            name: true,
+            year: true,
+          },
+        }
+      : {
+          select: {
+            name: true,
+            year: true,
+            image: true,
+            shortDescription: true,
+            acceleration: true,
+            power: true,
+            mass: true,
+          },
+        }),
   });
 
   return result.docs;
