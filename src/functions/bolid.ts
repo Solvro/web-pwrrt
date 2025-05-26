@@ -60,7 +60,7 @@ export async function getAllBolidsFunction(
             name: true,
             year: true,
             image: true,
-            shortDescription: true,
+            short_description: true,
             acceleration: true,
             power: true,
             mass: true,
@@ -68,5 +68,5 @@ export async function getAllBolidsFunction(
         }),
   });
 
-  return result.docs;
+  return result.docs as Bolid[];
 }
