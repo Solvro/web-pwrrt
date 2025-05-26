@@ -30,7 +30,7 @@ export function SliderElement({
 
   return (
     <button
-      className={`cursor-pointer" group relative flex flex-col items-center`}
+      className={`group relative flex cursor-pointer flex-col items-center`}
       onClick={handleClick}
     >
       <div

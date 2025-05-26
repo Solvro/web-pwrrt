@@ -5,7 +5,10 @@ import { Container } from "@/components/container";
 import { BolidSection } from "@/components/section/BolidSection";
 import { Text } from "@/components/text";
 import { Title } from "@/components/title";
-import { getBolidByName, getFirstBolid } from "@/functions/bolid";
+import {
+  getBolidByNameFunction,
+  getFirstBolidFunction,
+} from "@/functions/bolid";
 import type { Bolid } from "@/payload-types";
 
 interface Iparams {
@@ -20,8 +23,8 @@ async function BolidPage(props: { params: Promise<Iparams> }) {
 
   bolid =
     bolidId === undefined || bolidId === ""
-      ? await getFirstBolid(locale)
-      : await getBolidByName(bolidId, locale);
+      ? await getFirstBolidFunction(locale)
+      : await getBolidByNameFunction(bolidId, locale);
 
   if (!bolid) {
     return <p>Bolid not found</p>;

@@ -9,11 +9,11 @@ import { JoinusSection } from "@/components/section/JoinusSection";
 import { NewsSection } from "@/components/section/NewsSection";
 import { SponsorsSection } from "@/components/section/SponsorsSection";
 import { TeamSection } from "@/components/section/TeamSection";
-import { getFirstBolid } from "@/functions/bolid";
+import { getFirstBolidFunction } from "@/functions/bolid";
 
 export default async function Home() {
   const locale = await getLocale();
-  const bolid = await getFirstBolid(locale);
+  const bolid = await getFirstBolidFunction(locale);
 
   return (
     <div className="">

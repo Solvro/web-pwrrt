@@ -1,11 +1,12 @@
 "use server";
 
-import config from "@payload-config";
 import type { Locale } from "next-intl";
-import { getPayload } from "payload";
 
+import {
+  getBolidByNameFunction,
+  getFirstBolidFunction,
+} from "@/functions/bolid";
 import { prisma } from "@/lib/prismadb";
-import type { Bolid } from "@/payload-types";
 
 export async function getBolidByBolidId(bolidId: string) {
   const bolid = await prisma.bolid.findUnique({
@@ -21,34 +22,13 @@ export async function getBolidByBolidId(bolidId: string) {
 }
 
 export async function getBolidByName(name: string, locale: Locale) {
-  const payload = await getPayload({ config });
-  let bolid = null;
-  const result = await payload.find({
-    collection: "bolids",
-    locale,
-    where: {
-      name: {
-        equals: name,
-      },
-    },
-  });
-  if (result.docs.length > 0) {
-    bolid = result.docs[0];
-  }
+  const bolid = await getBolidByNameFunction(name, locale);
 
   return bolid;
 }
 
 export async function getFirstBolid(locale: Locale) {
-  const payload = await getPayload({ config });
-  let bolid: Bolid | null = null;
-  const result = await payload.find({
-    collection: "bolids",
-    locale,
-    limit: 1,
-    sort: "-_order",
-  });
-  bolid = result.docs[0];
+  const bolid = await getFirstBolidFunction(locale);
 
   return bolid;
 }

@@ -5,7 +5,7 @@ import "server-only";
 
 import type { Bolid } from "@/payload-types";
 
-export async function getBolidByName(name: string, locale: Locale) {
+export async function getBolidByNameFunction(name: string, locale: Locale) {
   const payload = await getPayload({ config });
   let bolid = null;
   const result = await payload.find({
@@ -24,7 +24,7 @@ export async function getBolidByName(name: string, locale: Locale) {
   return bolid;
 }
 
-export async function getFirstBolid(locale: Locale) {
+export async function getFirstBolidFunction(locale: Locale) {
   const payload = await getPayload({ config });
   let bolid: Bolid | null = null;
   const result = await payload.find({
@@ -35,13 +35,16 @@ export async function getFirstBolid(locale: Locale) {
   });
   bolid = result.docs[0];
 
-  // const result = await payload.find({
-  //     collection: "bolids",
-  //     locale,
-  //     limit: 1,
-  //     sort: "-_order",
-  //   });
-  //   bolid = result.docs[0];
-
   return bolid;
+}
+
+export async function getAllBolidsFunction(locale: Locale) {
+  const payload = await getPayload({ config });
+  const result = await payload.find({
+    collection: "bolids",
+    locale,
+    sort: "-_order",
+  });
+
+  return result.docs;
 }
