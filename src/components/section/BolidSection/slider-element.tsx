@@ -3,7 +3,7 @@
 import { Title } from "../../title";
 
 interface SliderElementProps {
-  date: number;
+  date: string | number;
   bolid: string;
   onClick: (bolidName: string) => void;
   currentBolid: string;

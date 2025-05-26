@@ -6,22 +6,23 @@ import React, { useRef, useState } from "react";
 import { SliderElement } from "./slider-element";
 
 /* eslint-disable @typescript-eslint/no-empty-function */
-/* eslint-disable unicorn/prevent-abbreviations */
 
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 
 interface SliderProps {
   currentBolid: string;
   onChangeBolid?: (newBolid: string) => void;
+  allBolids: { id: string; name: string; year: string }[];
   darkMode?: boolean;
-  showRt15e?: boolean;
+  showThisYear?: boolean;
 }
 
 export function Slider({
   currentBolid = "RT13e",
   onChangeBolid = () => {},
+  allBolids,
   darkMode = false,
-  showRt15e = false,
+  showThisYear = false,
 }: SliderProps) {
   // Stan dla przeciągania
   const [isDragging, setIsDragging] = useState(false);
@@ -73,6 +74,10 @@ export function Slider({
     setIsDragging(false);
   };
 
+  const howManyBolidsThisYear = allBolids.filter(
+    (bolid) => Number.parseInt(bolid.year) === new Date().getFullYear(),
+  ).length;
+
   return (
     <div className="">
       <div
@@ -91,120 +96,28 @@ export function Slider({
         onMouseUp={stopDragging}
       >
         <div className="relative mx-8 flex gap-12 sm:gap-24 md:ml-[calc((100vw-var(--container-width))/2)]">
-          {showRt15e ? (
+          {showThisYear && howManyBolidsThisYear > 0
+            ? Array.from({ length: howManyBolidsThisYear }).map((_, index) => (
+                <SliderElement
+                  key={allBolids[index].name}
+                  darkMode={darkMode}
+                  date={allBolids[index].year}
+                  bolid={allBolids[index].name}
+                  onClick={onChangeBolid}
+                  currentBolid={currentBolid}
+                />
+              ))
+            : null}
+          {allBolids.slice(howManyBolidsThisYear).map((bolid) => (
             <SliderElement
+              key={bolid.name}
               darkMode={darkMode}
-              date={2025}
-              bolid="RT15e"
+              date={bolid.year}
+              bolid={bolid.name}
               onClick={onChangeBolid}
               currentBolid={currentBolid}
             />
-          ) : null}
-          <SliderElement
-            darkMode={darkMode}
-            date={2024}
-            bolid="RT14e"
-            onClick={onChangeBolid}
-            currentBolid={currentBolid}
-          />
-          <SliderElement
-            darkMode={darkMode}
-            date={2023}
-            bolid="RT13e"
-            onClick={onChangeBolid}
-            currentBolid={currentBolid}
-          />
-          <SliderElement
-            darkMode={darkMode}
-            date={2023}
-            bolid="RT11b"
-            onClick={onChangeBolid}
-            currentBolid={currentBolid}
-          />
-          <SliderElement
-            darkMode={darkMode}
-            date={2022}
-            bolid="RT12e"
-            onClick={onChangeBolid}
-            currentBolid={currentBolid}
-          />
-          <SliderElement
-            darkMode={darkMode}
-            date={2021}
-            bolid="RT11"
-            onClick={onChangeBolid}
-            currentBolid={currentBolid}
-          />
-          <SliderElement
-            darkMode={darkMode}
-            date={2020}
-            bolid="RTX"
-            onClick={onChangeBolid}
-            currentBolid={currentBolid}
-          />
-          <SliderElement
-            darkMode={darkMode}
-            date={2019}
-            bolid="RT09"
-            onClick={onChangeBolid}
-            currentBolid={currentBolid}
-          />
-          <SliderElement
-            darkMode={darkMode}
-            date={2018}
-            bolid="RT08"
-            onClick={onChangeBolid}
-            currentBolid={currentBolid}
-          />
-          <SliderElement
-            darkMode={darkMode}
-            date={2017}
-            bolid="RT07"
-            onClick={onChangeBolid}
-            currentBolid={currentBolid}
-          />
-          <SliderElement
-            darkMode={darkMode}
-            date={2016}
-            bolid="RT06"
-            onClick={onChangeBolid}
-            currentBolid={currentBolid}
-          />
-          <SliderElement
-            darkMode={darkMode}
-            date={2015}
-            bolid="RT05"
-            onClick={onChangeBolid}
-            currentBolid={currentBolid}
-          />
-          <SliderElement
-            darkMode={darkMode}
-            date={2014}
-            bolid="RT04"
-            onClick={onChangeBolid}
-            currentBolid={currentBolid}
-          />
-          <SliderElement
-            darkMode={darkMode}
-            date={2013}
-            bolid="RT03"
-            onClick={onChangeBolid}
-            currentBolid={currentBolid}
-          />
-          <SliderElement
-            darkMode={darkMode}
-            date={2012}
-            bolid="RT02"
-            onClick={onChangeBolid}
-            currentBolid={currentBolid}
-          />
-          <SliderElement
-            darkMode={darkMode}
-            date={2011}
-            bolid="RT01"
-            onClick={onChangeBolid}
-            currentBolid={currentBolid}
-          />
+          ))}
           <div className="w-1 shrink-0 md:w-[calc((85vw-var(--container-width))/2)]"></div>
         </div>
       </div>

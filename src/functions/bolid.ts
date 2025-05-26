@@ -38,12 +38,22 @@ export async function getFirstBolidFunction(locale: Locale) {
   return bolid;
 }
 
-export async function getAllBolidsFunction(locale: Locale) {
+export async function getAllBolidsFunction(
+  locale: Locale,
+  onlyEssential = false,
+) {
   const payload = await getPayload({ config });
   const result = await payload.find({
     collection: "bolids",
     locale,
     sort: "-_order",
+    limit: 100,
+    ...(onlyEssential && {
+      select: {
+        name: true,
+        year: true,
+      },
+    }),
   });
 
   return result.docs;

@@ -1,9 +1,10 @@
 "use client";
 
+import { useQuery } from "@tanstack/react-query";
 import { useLocale } from "next-intl";
 import { useState } from "react";
 
-import { getBolidByName } from "@/actions/bolid";
+import { getAllBolids, getBolidByName } from "@/actions/bolid";
 import type { Bolid } from "@/payload-types";
 
 import { BolidContent } from "./bolid-content";
@@ -16,6 +17,14 @@ interface BolidSectionProps {
 export function BolidSection({ presetBolid }: BolidSectionProps) {
   const [currentBolidData, setCurrentBolidData] = useState<Bolid>(presetBolid);
   const locale = useLocale();
+
+  const { data: allBolids } = useQuery({
+    queryKey: ["allBolids", locale],
+    queryFn: async () => {
+      const response = await getAllBolids(locale, true);
+      return response;
+    },
+  });
 
   const [previousBolidData, setPreviousBolidData] =
     useState<Bolid>(currentBolidData);
@@ -78,6 +87,7 @@ export function BolidSection({ presetBolid }: BolidSectionProps) {
       <div className="relative flex w-[200vw] flex-col">
         <Slider
           currentBolid={currentBolidData.name}
+          allBolids={allBolids ?? [{ ...presetBolid }]}
           onChangeBolid={handleChangeBolid}
         />
         <div
