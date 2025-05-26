@@ -5,8 +5,8 @@ import { setRequestLocale } from "next-intl/server";
 import { Open_Sans } from "next/font/google";
 import { notFound } from "next/navigation";
 
+import { ClientProviders } from "@/components/client-providers";
 import { Navbar } from "@/components/navbar";
-import { ClosestSectionProvider } from "@/components/navbar/closest-section-context";
 import { SideBar } from "@/components/navbar/side-bar";
 import { FooterSection } from "@/components/section/FooterSection";
 import { routing } from "@/i18n/routing";
@@ -34,7 +34,6 @@ export default async function LocaleLayout({
   children: React.ReactNode;
   params: Promise<{ locale: string }>;
 }) {
-  // Ensure that the incoming `locale` is valid
   const { locale } = await params;
   if (!hasLocale(routing.locales, locale)) {
     notFound();
@@ -45,13 +44,13 @@ export default async function LocaleLayout({
     <html lang={locale}>
       <body className={cn(font.className, "overflow-x-hidden")}>
         <NextIntlClientProvider>
-          <ClosestSectionProvider>
+          <ClientProviders>
             <Navbar />
             <SideBar />
             {children}
             <FooterSection />
             <ToasterProvider />
-          </ClosestSectionProvider>
+          </ClientProviders>
         </NextIntlClientProvider>
       </body>
     </html>

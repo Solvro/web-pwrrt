@@ -1,49 +1,31 @@
 "use client";
 
 import { useLocale } from "next-intl";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 import { getBolidByName } from "@/actions/bolid";
+import type { Bolid } from "@/payload-types";
 
 import { BolidContent } from "./bolid-content";
 import { Slider } from "./slider";
 
-interface BolidData {
-  name: string;
-  year: string;
-  short_description: string;
-  EN_short_description: string;
-  acceleration: string;
-  mass: string;
-  power: string;
-}
-
 interface BolidSectionProps {
-  presetBolid?: string;
+  presetBolid: Bolid;
 }
 
-export function BolidSection({ presetBolid = "RT14e" }: BolidSectionProps) {
-  const [currentBolidData, setCurrentBolidData] = useState<BolidData>({
-    name: presetBolid,
-    year: "2023",
-    short_description:
-      "Najnowszy projekt jest odpowiedzią zespołu na wyzwania i trendy branży automotive. Chcemy projektować rozwiązania i być częścią odbywającej się zmiany. Elektryfikacja i stworzenie systemów autonomicznych w bolidzie jest krokiem milowym w rozwoju zespołu. Pojazd wyposażony został w innowacyjne rozwiązania ze świata motorsportu. Wyróżniają go pełny monocoque, ważący zaledwie 24 kilogramy, autorskie silniki oraz wiązki elektryczne wysokiego i niskiego napięcia. System jazdy autonomicznej pozwala nam na startowanie nie tylko w kategorii elektrycznej, lecz także w kategorii driverless.",
-    EN_short_description: "",
-    acceleration: "3s",
-    mass: "230 KG",
-    power: "2 x 48 KW",
-  });
+export function BolidSection({ presetBolid }: BolidSectionProps) {
+  const [currentBolidData, setCurrentBolidData] = useState<Bolid>(presetBolid);
   const locale = useLocale();
 
   const [previousBolidData, setPreviousBolidData] =
-    useState<BolidData>(currentBolidData);
+    useState<Bolid>(currentBolidData);
   const [isAnimating, setIsAnimating] = useState("");
   const [displayRight, setDisplayRight] = useState(false);
   const [sameDirection, setSameDirection] = useState("");
   const [sameDirectionShift, setSameDirectionShift] = useState("duration-500");
 
   const fetchBolidData = async (bolidName: string) => {
-    const response = await getBolidByName(bolidName);
+    const response = await getBolidByName(bolidName, locale);
     if (response == null) {
       console.error("Failed to fetch bolid data:", response);
       return;
@@ -84,13 +66,8 @@ export function BolidSection({ presetBolid = "RT14e" }: BolidSectionProps) {
     }
 
     setPreviousBolidData(currentBolidData);
-    setCurrentBolidData(response as BolidData);
+    setCurrentBolidData(response);
   };
-
-  useEffect(() => {
-    void fetchBolidData(currentBolidData.name);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
 
   const handleChangeBolid = (bolidName: string) => {
     void fetchBolidData(bolidName);
@@ -108,8 +85,8 @@ export function BolidSection({ presetBolid = "RT14e" }: BolidSectionProps) {
             displayRight ? "flex-row-reverse" : "flex-row"
           }`}
         >
-          <BolidContent {...currentBolidData} language={locale} />
-          <BolidContent {...previousBolidData} language={locale} />
+          <BolidContent {...currentBolidData} />
+          <BolidContent {...previousBolidData} />
         </div>
       </div>
     </div>
