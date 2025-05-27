@@ -8,7 +8,7 @@ interface BolidSpecsProps {
   animate: string;
   acceleration: string;
   power: string;
-  mass: string;
+  mass: number;
 }
 export function BolidSpecs({
   animate,
@@ -68,7 +68,7 @@ export function BolidSpecs({
             <h1
               className={`font-akiraExpanded text-md leading-tight font-extrabold text-white md:text-3xl`}
             >
-              {acceleration}
+              {acceleration}s
             </h1>
             <h2
               className={`font-akiraExpanded text-custom-red hidden text-2xl leading-tight font-extrabold md:block`}
@@ -146,7 +146,7 @@ export function BolidSpecs({
             <h1
               className={`font-akiraExpanded text-md leading-tight font-extrabold text-white md:text-3xl`}
             >
-              {mass}
+              {mass} kg
             </h1>
             <h2
               className={`font-akiraExpanded text-custom-red hidden text-2xl leading-tight font-extrabold md:block`}

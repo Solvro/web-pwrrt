@@ -1,11 +1,15 @@
-import { getTranslations } from "next-intl/server";
+import { getLocale, getTranslations } from "next-intl/server";
 import Image from "next/image";
 
-import { getBolidByBolidId } from "@/actions/bolid";
 import { Container } from "@/components/container";
 import { BolidSection } from "@/components/section/BolidSection";
 import { Text } from "@/components/text";
 import { Title } from "@/components/title";
+import {
+  getBolidByNameFunction,
+  getFirstBolidFunction,
+} from "@/functions/bolid";
+import type { Bolid } from "@/payload-types";
 
 interface Iparams {
   bolidId?: string;
@@ -13,10 +17,14 @@ interface Iparams {
 
 async function BolidPage(props: { params: Promise<Iparams> }) {
   const parameters = await props.params;
+  const locale = await getLocale();
   const { bolidId } = parameters;
+  let bolid: Bolid | null = null;
 
-  const bolidIdValue = bolidId ?? "RT13e";
-  const bolid = await getBolidByBolidId(bolidIdValue);
+  bolid =
+    bolidId === undefined || bolidId === ""
+      ? await getFirstBolidFunction(locale)
+      : await getBolidByNameFunction(bolidId, locale);
 
   if (!bolid) {
     return <p>Bolid not found</p>;
@@ -26,7 +34,7 @@ async function BolidPage(props: { params: Promise<Iparams> }) {
 
   return (
     <div className="flex flex-col pt-[100px]">
-      <BolidSection presetBolid={bolidIdValue} />
+      <BolidSection presetBolid={bolid} />
       <div className="w-full" id="achievements">
         <Container>
           <div className="flex w-full flex-col py-8 md:py-16">
@@ -153,7 +161,7 @@ async function BolidPage(props: { params: Promise<Iparams> }) {
         </Container>
       </div>
       <div className="w-full">
-        {bolid.parts.map((part, depIndex) => (
+        {bolid.parts?.map((part, depIndex) => (
           <div
             key={part.partName}
             className={depIndex % 2 === 0 ? "bg-neutral-200" : "bg-white"}

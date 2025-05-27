@@ -5,33 +5,21 @@ import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
 
 import { Button } from "@/components/button";
+import type { Bolid } from "@/payload-types";
 
 import { Container } from "../../container";
 import { Text } from "../../text";
 import { Title } from "../../title";
 import { BolidSpecs } from "./bolid-specs";
 
-interface BolidData {
-  name: string;
-  year: string;
-  short_description: string;
-  EN_short_description: string;
-  acceleration: string;
-  mass: string;
-  power: string;
-  language: "pl" | "en";
-}
-
 export function BolidContent({
   name,
   year,
   short_description,
-  EN_short_description,
   acceleration,
   mass,
   power,
-  language,
-}: BolidData) {
+}: Bolid) {
   const router = useRouter();
   const path = usePathname();
   const t = useTranslations("bolidSection");
@@ -61,8 +49,7 @@ export function BolidContent({
     );
   };
 
-  const description =
-    language === "en" ? EN_short_description : short_description;
+  const description = short_description;
 
   return (
     <div className="relative flex flex-col">

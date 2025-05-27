@@ -1,5 +1,4 @@
-import config from "@payload-config";
-import { getPayload } from "payload";
+import { getLocale } from "next-intl/server";
 
 import { BolidSection } from "@/components/section/BolidSection";
 import { DepartmentsSubsection } from "@/components/section/DepartmentsSubsection/departments-subsection";
@@ -10,21 +9,17 @@ import { JoinusSection } from "@/components/section/JoinusSection";
 import { NewsSection } from "@/components/section/NewsSection";
 import { SponsorsSection } from "@/components/section/SponsorsSection";
 import { TeamSection } from "@/components/section/TeamSection";
+import { getFirstBolidFunction } from "@/functions/bolid";
 
 export default async function Home() {
-  const payload = await getPayload({ config });
-  const mainPage = await payload.findGlobal({
-    slug: "main-page",
-  });
-
-  // eslint-disable-next-line no-console
-  console.log(mainPage.title);
+  const locale = await getLocale();
+  const bolid = await getFirstBolidFunction(locale);
 
   return (
     <div className="">
       <HeroSection />
       <DepartmentsSubsection />
-      <BolidSection />
+      <BolidSection presetBolid={bolid} />
       <FSSection />
       <TeamSection />
       <HistorySection />

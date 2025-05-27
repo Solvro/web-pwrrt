@@ -229,12 +229,23 @@ export function FooterSection() {
             </div>
           </div>
           <div className="flex w-full flex-col items-center justify-between gap-2 border-t border-white py-3 md:flex-row md:px-12 md:py-6">
-            <Text color="white" center>
-              {t("createdBy")}
-            </Text>
-            <Text color="white" center>
-              © {new Date().getFullYear()} {t("allRightsReserved")}
-            </Text>
+            <div className="text-xs font-medium text-gray-200">
+              <p>
+                Original Project & Execution: Maria Kanczewska & Dawid Chmal
+              </p>
+              <p>
+                Developed and maintained with ❤️ by{" "}
+                <Link
+                  href="https://solvro.pwr.edu.pl"
+                  className="font-semibold text-blue-600"
+                >
+                  KN Solvro
+                </Link>
+              </p>
+            </div>
+            <p className="text-sm font-semibold text-white">
+              © {new Date().getFullYear()} All rights reserved.
+            </p>
           </div>
         </div>
       </Container>

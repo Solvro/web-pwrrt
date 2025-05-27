@@ -1,13 +1,14 @@
 /* eslint-disable @typescript-eslint/no-unnecessary-condition */
-import { getTranslations } from "next-intl/server";
+import { getLocale, getTranslations } from "next-intl/server";
 import Image from "next/image";
 
 import { getTeamByBolid } from "@/actions/team";
 import { Container } from "@/components/container";
 import { SecondaryButton } from "@/components/secondary-button";
+import { Slider } from "@/components/section/BolidSection/slider";
 import { Title } from "@/components/title";
+import { getAllBolidsFunction } from "@/functions/bolid";
 
-import { ClientSlider } from "./client-slider";
 import { UserCard } from "./user-card";
 import { sortRoles } from "./utils";
 
@@ -16,24 +17,26 @@ interface Iparams {
   teamId?: string;
 }
 
+interface Member {
+  name: string;
+  surname: string;
+  currentRole: string;
+  phoneNumber?: string;
+  email?: string;
+}
+
+interface RoleHistoryItem {
+  role: string;
+  bolidName: string;
+  department: string;
+}
+
 async function TeamPage(props: { params: Promise<Iparams> }) {
+  const locale = await getLocale();
+  const allBolids = await getAllBolidsFunction(locale, true);
   const parameters = await props.params;
   const teamId = parameters.teamId ?? "RT13e";
   const team = await getTeamByBolid(teamId);
-
-  interface Member {
-    name: string;
-    surname: string;
-    currentRole: string;
-    phoneNumber?: string;
-    email?: string;
-  }
-
-  interface RoleHistoryItem {
-    role: string;
-    bolidName: string;
-    department: string;
-  }
 
   type MembersByDepartment = Record<string, Member[]>;
 
@@ -123,7 +126,12 @@ async function TeamPage(props: { params: Promise<Iparams> }) {
   return (
     <div className="relative bg-neutral-950 pt-32 pb-12">
       <div className="relative overflow-hidden">
-        <ClientSlider showRt15e teamId={teamId} />
+        <Slider
+          showThisYear
+          currentBolid={teamId}
+          darkMode
+          allBolids={allBolids}
+        />
 
         <div className="pt-10">
           {sortedDepartments.map((department, depIndex) => (
