@@ -4,6 +4,7 @@ import { NextIntlClientProvider, hasLocale } from "next-intl";
 import { setRequestLocale } from "next-intl/server";
 import { Open_Sans } from "next/font/google";
 import { notFound } from "next/navigation";
+import Script from "next/script";
 
 import { Navbar } from "@/components/navbar";
 import { ClosestSectionProvider } from "@/components/navbar/closest-section-context";
@@ -41,9 +42,19 @@ export default async function LocaleLayout({
   }
   setRequestLocale(locale);
 
+  if (!process.env.NEXT_PUBLIC_CAPTCHA_SITE_KEY) {
+    throw new Error(
+      "Missing required environment variables - captcha_site_key",
+    );
+  }
+
   return (
     <html lang={locale}>
       <body className={cn(font.className, "overflow-x-hidden")}>
+        <Script
+          strategy="beforeInteractive"
+          src={`https://www.google.com/recaptcha/api.js?render=${process.env.NEXT_PUBLIC_CAPTCHA_SITE_KEY}`}
+        />
         <NextIntlClientProvider>
           <ClosestSectionProvider>
             <Navbar />

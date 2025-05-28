@@ -174,8 +174,10 @@ export default async function ContactUs() {
       </Container>
       <Container>
         <div className="mt-16 mb-12 flex w-full flex-col items-center">
-          <div className="my-4 mb-24 w-3/5 border-b-2 border-black py-4 text-center">
-            <Title color="black">Report bugs</Title>
+          <div className="my-4 mb-2 flex w-3/5 flex-col items-center border-b-2 border-black py-4 text-center">
+            <Text bold medium>
+              {t("reportBugs")}
+            </Text>
           </div>
           <ErrorReportForm />
         </div>

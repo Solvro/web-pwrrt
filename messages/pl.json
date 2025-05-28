@@ -264,7 +264,10 @@
     "theyWillAnswer": "Oni odpowiedzą na Twoje pytania:",
     "whereToFindUs": "GDZIE NAS ZNAJDZIESZ?",
     "projectSupervisors": "Opiekunowie zespołu:",
-    "siteAdministration": "Administracja strony:"
+    "siteAdministration": "Administracja strony:",
+    "reportBugs": "Zgłoś Błędy",
+    "formEmail": "Adres Email:",
+    "formDescription": "Opis Błędu:"
   },
   "joinUs": {
     "pageTitle": "REKRUTACJA",
