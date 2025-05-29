@@ -2,10 +2,12 @@
 import { getTranslations } from "next-intl/server";
 import Image from "next/image";
 
+import { getAllBolids } from "@/actions/bolid";
 import { getTeamByBolid } from "@/actions/team";
 import type { ProcessedTeamMember } from "@/actions/team";
 import { Container } from "@/components/container";
 import { SecondaryButton } from "@/components/secondary-button";
+import { Slider } from "@/components/section/BolidSection/slider";
 import { Title } from "@/components/title";
 import type { Media } from "@/payload-types";
 
@@ -14,6 +16,7 @@ import { sortRoles } from "./utils";
 
 interface Iparams {
   teamId?: string;
+  locale?: "en" | "pl";
 }
 
 interface PageSpecificMember {
@@ -132,6 +135,10 @@ async function TeamPage(props: { params: Promise<Iparams> }) {
     <div className="relative bg-neutral-950 pt-32 pb-12">
       <div className="relative overflow-hidden">
         <div className="pt-10">
+          <Slider
+            currentBolid="RT14e"
+            allBolids={await getAllBolids(parameters.locale ?? "pl")}
+          />
           {sortedDepartments.map((department, depIndex) => (
             <div key={department} className="">
               <div
