@@ -42,18 +42,14 @@ export default async function LocaleLayout({
   }
   setRequestLocale(locale);
 
-  if (!process.env.NEXT_PUBLIC_CAPTCHA_SITE_KEY) {
-    throw new Error(
-      "Missing required environment variables - captcha_site_key",
-    );
-  }
+  const captchaKey = process.env.NEXT_PUBLIC_CAPTCHA_SITE_KEY ?? "";
 
   return (
     <html lang={locale}>
       <body className={cn(font.className, "overflow-x-hidden")}>
         <Script
           strategy="beforeInteractive"
-          src={`https://www.google.com/recaptcha/api.js?render=${process.env.NEXT_PUBLIC_CAPTCHA_SITE_KEY}`}
+          src={`https://www.google.com/recaptcha/api.js?render=${captchaKey}`}
         />
         <NextIntlClientProvider>
           <ClosestSectionProvider>
