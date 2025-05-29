@@ -136,7 +136,7 @@ async function TeamPage(props: { params: Promise<Iparams> }) {
       <div className="relative overflow-hidden">
         <div className="pt-10">
           <Slider
-            currentBolid="RT14e"
+            currentBolid={parameters.teamId ?? "RT14e"}
             allBolids={await getAllBolids(parameters.locale ?? "pl")}
           />
           {sortedDepartments.map((department, depIndex) => (

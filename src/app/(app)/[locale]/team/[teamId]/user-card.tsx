@@ -41,10 +41,9 @@ export function UserCard({ opiekun, member, roleHistory }: UserCardProps) {
     }
   }, [member.profile]);
 
-  const handleError = () => {
-    if (imageSource !== placeholderImage) {
-      setImageSource(placeholderImage);
-    }
+  const handleError = (event: React.SyntheticEvent<HTMLImageElement>) => {
+    event.currentTarget.src = placeholderImage;
+    setImageSource(placeholderImage);
   };
 
   return (

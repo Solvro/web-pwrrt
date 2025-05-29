@@ -13,15 +13,9 @@ const parseBolidName = (bolidName: string) => {
 };
 
 export const sortRoles = (roles: RoleHistoryItem[]): RoleHistoryItem[] => {
-  return roles.sort((a, b) => {
+  return [...roles].sort((a, b) => {
     const aValue = parseBolidName(a.bolidName);
     const bValue = parseBolidName(b.bolidName);
     return bValue - aValue;
   });
 };
-
-interface RoleHistoryItem {
-  role: string;
-  bolidName: string;
-  department: string;
-}
