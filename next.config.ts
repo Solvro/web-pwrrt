@@ -26,6 +26,7 @@ const nextConfig: NextConfig = {
       },
     ]);
   },
+  transpilePackages: ["three"],
 };
 
 const withNextIntl = createNextIntlPlugin();

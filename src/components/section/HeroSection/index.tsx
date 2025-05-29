@@ -2,7 +2,7 @@
 
 import { motion } from "motion/react";
 import { useTranslations } from "next-intl";
-import Image from "next/image";
+import dynamic from "next/dynamic";
 import { useRouter } from "next/navigation";
 import { FaArrowRight } from "react-icons/fa";
 
@@ -10,6 +10,17 @@ import { Container } from "../../container";
 import { Text } from "../../text";
 import { Title } from "../../title";
 import { BackgroundVideo } from "./background-video";
+
+const BolidModel = dynamic(
+  async () => {
+    const bolidModule = await import("./bolid-model");
+    return bolidModule.BolidModel;
+  },
+  {
+    ssr: false,
+    loading: () => <p>Loading...</p>,
+  },
+);
 
 const textVariants = {
   hidden: { x: -100, opacity: 0 },
@@ -24,22 +35,22 @@ const textVariants = {
   }),
 };
 
-const imageVariants = {
-  hidden: {
-    scale: 0,
-    y: -100,
-    opacity: 1,
-  },
-  visible: {
-    scale: 1,
-    y: 0,
-    opacity: 1,
-    transition: {
-      duration: 1,
-      ease: "easeOut",
-    },
-  },
-};
+// const imageVariants = {
+//   hidden: {
+//     scale: 0,
+//     y: -100,
+//     opacity: 1,
+//   },
+//   visible: {
+//     scale: 1,
+//     y: 0,
+//     opacity: 1,
+//     transition: {
+//       duration: 1,
+//       ease: "easeOut",
+//     },
+//   },
+// };
 
 export function HeroSection() {
   const router = useRouter();
@@ -114,13 +125,13 @@ export function HeroSection() {
           </div>
 
           {/* Animated Image */}
-          <motion.div
+          <div
             className="mb-8 flex items-center justify-center sm:mb-0"
-            initial="hidden"
-            animate="visible"
-            variants={imageVariants}
+            // initial="hidden"
+            // animate="visible"
+            // variants={imageVariants}
           >
-            <Image
+            {/* <Image
               src="/images/2bolid_main.png"
               alt="bolid"
               width={700}
@@ -129,8 +140,9 @@ export function HeroSection() {
                 maxWidth: "100%",
                 height: "auto",
               }}
-            />
-          </motion.div>
+            /> */}
+            <BolidModel />
+          </div>
         </div>
       </Container>
     </div>
