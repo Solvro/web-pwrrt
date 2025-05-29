@@ -5,7 +5,7 @@ import type { Object3D } from "three";
 useGLTF.preload("/bolid-opt.glb");
 
 export function Model({ path = "/bolid-opt.glb" }: { path?: string }) {
-  const model = useGLTF(path);
+  const model = useGLTF(path, true);
 
   return (
     // <PresentationControls
