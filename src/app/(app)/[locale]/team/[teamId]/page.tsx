@@ -138,6 +138,7 @@ async function TeamPage(props: { params: Promise<Iparams> }) {
           <Slider
             currentBolid={parameters.teamId ?? "RT14e"}
             allBolids={await getAllBolids(parameters.locale ?? "pl")}
+            darkMode={true}
           />
           {sortedDepartments.map((department, depIndex) => (
             <div key={department} className="">
