@@ -18,6 +18,7 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 
+import { getCaptchaToken } from "./captcha";
 import { ErrorReportFormSchema } from "./form-schemas";
 
 export function ErrorReportForm() {
@@ -33,7 +34,14 @@ export function ErrorReportForm() {
 
   async function onSubmit(values: z.infer<typeof ErrorReportFormSchema>) {
     try {
-      await sendErrorReportForm(values);
+      const token = await getCaptchaToken();
+      const response = await sendErrorReportForm(values, token);
+      if (!response.success) {
+        toast.error(
+          `Failed to submit the bug report. Please try again. ${response.reason}`,
+        );
+        return;
+      }
       toast.success("Thank you for submitting a bug!");
     } catch (error) {
       console.error("Bug report failed:", error);
