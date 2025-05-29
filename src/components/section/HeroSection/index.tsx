@@ -5,10 +5,12 @@ import { useTranslations } from "next-intl";
 import dynamic from "next/dynamic";
 import Image from "next/image";
 import Link from "next/link";
+import { useRef } from "react";
 import { FaArrowRight } from "react-icons/fa";
 
 import { Button } from "@/components/button";
 import { useMobile } from "@/hooks/use-mobile";
+import { useOnScreen } from "@/hooks/use-on-screen";
 
 import { Container } from "../../container";
 import { Title } from "../../title";
@@ -58,9 +60,11 @@ const textVariants = {
 export function HeroSection() {
   const t = useTranslations("heroSection");
   const isMobile = useMobile();
+  const heroDivRef = useRef<HTMLDivElement>(null);
+  const isVisible = useOnScreen(heroDivRef);
 
   return (
-    <div className="relative md:h-screen">
+    <div className="relative md:h-screen" ref={heroDivRef}>
       <BackgroundVideo />
       <Container>
         <div className="relative z-10 grid items-center gap-8 pt-[100px] lg:grid-cols-2 lg:gap-24 lg:pt-0">
@@ -139,7 +143,7 @@ export function HeroSection() {
             // animate="visible"
             // variants={imageVariants}
           >
-            {isMobile ? (
+            {isMobile || !isVisible ? (
               <Image
                 src="/images/2bolid_main.png"
                 alt="bolid"
