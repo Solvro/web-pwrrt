@@ -12,10 +12,16 @@ const parseBolidName = (bolidName: string) => {
   return match ? Number.parseInt(match[1], 10) : 0;
 };
 
-export const sortRoles = (roles: RoleHistoryItem[]) => {
+export const sortRoles = (roles: RoleHistoryItem[]): RoleHistoryItem[] => {
   return roles.sort((a, b) => {
     const aValue = parseBolidName(a.bolidName);
     const bValue = parseBolidName(b.bolidName);
     return bValue - aValue;
   });
 };
+
+interface RoleHistoryItem {
+  role: string;
+  bolidName: string;
+  department: string;
+}
