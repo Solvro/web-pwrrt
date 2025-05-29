@@ -3,11 +3,14 @@
 import { motion } from "motion/react";
 import { useTranslations } from "next-intl";
 import dynamic from "next/dynamic";
-import { useRouter } from "next/navigation";
+import Image from "next/image";
+import Link from "next/link";
 import { FaArrowRight } from "react-icons/fa";
 
+import { Button } from "@/components/button";
+import { useMobile } from "@/hooks/use-mobile";
+
 import { Container } from "../../container";
-import { Text } from "../../text";
 import { Title } from "../../title";
 import { BackgroundVideo } from "./background-video";
 
@@ -53,8 +56,8 @@ const textVariants = {
 // };
 
 export function HeroSection() {
-  const router = useRouter();
   const t = useTranslations("heroSection");
+  const isMobile = useMobile();
 
   return (
     <div className="relative md:h-screen">
@@ -80,7 +83,9 @@ export function HeroSection() {
               custom={0.2}
               variants={textVariants}
             >
-              <Title>{t("title2")}</Title>
+              <h1 className="font-syncopate text-6xl font-extrabold text-white">
+                {t("title2")}
+              </h1>
             </motion.div>
 
             {/* Animated Description */}
@@ -89,11 +94,11 @@ export function HeroSection() {
               animate="visible"
               custom={0.6}
               variants={textVariants}
-              className="my-2 md:my-6"
+              className="my-2 md:my-4"
             >
-              <Text color="white" main>
+              <p className="font-openSans tracking-tighter text-white/80">
                 {t("description")}
-              </Text>
+              </p>
             </motion.div>
 
             {/* Animated Subtitle */}
@@ -109,19 +114,22 @@ export function HeroSection() {
             </motion.div>
 
             {/* Animated Button */}
-            <motion.button
+            <motion.div
               initial="hidden"
               animate="visible"
               custom={1}
               variants={textVariants}
-              onClick={() => {
-                router.push("#bolid");
-              }}
               className="group hidden items-center rounded-sm py-2 text-white transition-all duration-300 hover:pl-8 md:flex"
             >
-              <span>{t("button")}</span>
-              <FaArrowRight className="group-hover:text-custom-red ml-2 transition-all duration-300" />
-            </motion.button>
+              {/* <span>{t("button")}</span>
+              <FaArrowRight className="group-hover:text-custom-red ml-2 transition-all duration-300" /> */}
+              <Button asChild className="max-w-sm">
+                <Link href="#bolid">
+                  {t("button")}{" "}
+                  <FaArrowRight className="ml-2 transition-all duration-300 group-hover:text-white" />
+                </Link>
+              </Button>
+            </motion.div>
           </div>
 
           {/* Animated Image */}
@@ -131,17 +139,20 @@ export function HeroSection() {
             // animate="visible"
             // variants={imageVariants}
           >
-            {/* <Image
-              src="/images/2bolid_main.png"
-              alt="bolid"
-              width={700}
-              height={551}
-              style={{
-                maxWidth: "100%",
-                height: "auto",
-              }}
-            /> */}
-            <BolidModel />
+            {isMobile ? (
+              <Image
+                src="/images/2bolid_main.png"
+                alt="bolid"
+                width={700}
+                height={551}
+                style={{
+                  maxWidth: "100%",
+                  height: "auto",
+                }}
+              />
+            ) : (
+              <BolidModel />
+            )}
           </div>
         </div>
       </Container>
