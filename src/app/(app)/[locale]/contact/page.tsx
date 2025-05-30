@@ -123,11 +123,7 @@ export default async function ContactUs() {
                 key={member.name + member.surname}
                 className="flex flex-col gap-6"
               >
-                <UserCard
-                  member={member}
-                  teamId="RT15e"
-                  roleHistory={roleHistory}
-                />
+                <UserCard member={member} roleHistory={roleHistory} />
                 <EmailAction
                   email={member.email ?? "pawel.wojcik.pwrrt@gmail.com"}
                 />
