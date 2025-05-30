@@ -1,8 +1,8 @@
 /* eslint-disable @typescript-eslint/no-unnecessary-condition */
-import { getTranslations } from "next-intl/server";
+import { getLocale, getTranslations } from "next-intl/server";
 import Image from "next/image";
 
-import { getAllBolids } from "@/actions/bolid";
+import { getAllBolids, getFirstBolid } from "@/actions/bolid";
 import { getTeamByBolid } from "@/actions/team";
 import type { ProcessedTeamMember } from "@/actions/team";
 import { Container } from "@/components/container";
@@ -35,8 +35,12 @@ interface RoleHistoryItem {
 }
 
 async function TeamPage(props: { params: Promise<Iparams> }) {
+  const locale = await getLocale();
+  const allBolids = await getAllBolids(locale, true);
+
   const parameters = await props.params;
-  const teamId = parameters.teamId ?? "RT13e";
+  const firstBolid = await getFirstBolid(locale);
+  const teamId = parameters.teamId ?? firstBolid.id;
   const teamMembersFromPayload: ProcessedTeamMember[] =
     await getTeamByBolid(teamId);
 
@@ -136,9 +140,10 @@ async function TeamPage(props: { params: Promise<Iparams> }) {
       <div className="relative overflow-hidden">
         <div className="pt-10">
           <Slider
-            currentBolid={parameters.teamId ?? "RT14e"}
-            allBolids={await getAllBolids(parameters.locale ?? "pl")}
+            currentBolid={teamId}
+            allBolids={allBolids}
             darkMode={true}
+            showThisYear
           />
           {sortedDepartments.map((department, depIndex) => (
             <div key={department} className="">
