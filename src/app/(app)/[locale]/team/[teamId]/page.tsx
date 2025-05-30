@@ -203,7 +203,6 @@ async function TeamPage(props: { params: Promise<Iparams> }) {
                           <UserCard
                             key={`${member.name}-${member.surname}`}
                             member={member}
-                            teamId={teamId}
                             roleHistory={roleHistory}
                           />
                         ))}

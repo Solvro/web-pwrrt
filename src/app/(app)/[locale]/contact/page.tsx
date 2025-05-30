@@ -152,7 +152,6 @@ export default async function ContactUs() {
                 <UserCard
                   key={`${member.name}${member.surname}supervisor`}
                   member={member}
-                  teamId="RT14e"
                   roleHistory={roleHistory}
                 />
               ))}
@@ -165,7 +164,6 @@ export default async function ContactUs() {
                 <UserCard
                   key={`${member.name}${member.surname}admin`}
                   member={member}
-                  teamId="RT14e"
                   roleHistory={roleHistory}
                 />
               ))}
