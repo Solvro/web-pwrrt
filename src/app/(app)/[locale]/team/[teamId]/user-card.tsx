@@ -8,7 +8,7 @@ import type { Media } from "@/payload-types";
 import { TileHeading } from "./tile-heading";
 
 interface UserCardProps {
-  opiekun?: boolean;
+  guardian?: boolean;
   member: {
     name: string;
     surname: string;
@@ -17,7 +17,6 @@ interface UserCardProps {
     email?: string | null;
     profile?: Media | null;
   };
-  teamId: string;
   roleHistory: Record<
     string,
     {
@@ -28,7 +27,7 @@ interface UserCardProps {
   >;
 }
 
-export function UserCard({ opiekun, member, roleHistory }: UserCardProps) {
+export function UserCard({ guardian, member, roleHistory }: UserCardProps) {
   const placeholderImage = "/images/TeamPlaceholder.jpg";
   const [imageSource, setImageSource] = useState(placeholderImage);
 
@@ -65,7 +64,7 @@ export function UserCard({ opiekun, member, roleHistory }: UserCardProps) {
           />
         </div>
         <TileHeading
-          opiekun={opiekun}
+          opiekun={guardian}
           member={member}
           roleHistory={roleHistory}
           phoneNumber={member.phoneNumber}
