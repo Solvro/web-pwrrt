@@ -15,13 +15,14 @@ function useOnScreen(ref: RefObject<HTMLElement | null>): boolean {
   }, []);
 
   useEffect(() => {
-    if (observer && ref.current) {
-      observer.observe(ref.current);
+    const element = ref.current;
+    if (observer && element) {
+      observer.observe(element);
     }
 
     return () => {
-      if (observer && ref.current) {
-        observer.unobserve(ref.current);
+      if (observer && element) {
+        observer.unobserve(element);
       }
     };
   }, [ref, observer]);
