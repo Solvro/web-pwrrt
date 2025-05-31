@@ -142,20 +142,22 @@ export function HeroSection() {
             custom={1}
             variants={imageVariants}
           >
-            {isMobile || !isVisible ? (
-              <Image
-                src="/images/2bolid_main.png"
-                alt="bolid"
-                width={700}
-                height={551}
-                style={{
-                  maxWidth: "100%",
-                  height: "auto",
-                }}
-              />
-            ) : (
-              <BolidModel />
-            )}
+            {isVisible ? (
+              isMobile ? (
+                <Image
+                  src="/images/2bolid_main.png"
+                  alt="bolid"
+                  width={700}
+                  height={551}
+                  style={{
+                    maxWidth: "100%",
+                    height: "auto",
+                  }}
+                />
+              ) : (
+                <BolidModel />
+              )
+            ) : null}
           </motion.div>
         </div>
       </Container>
