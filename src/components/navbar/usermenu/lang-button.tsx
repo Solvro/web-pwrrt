@@ -29,7 +29,7 @@ export function LangButton({ lang, black = false }: LangButtonProps) {
       className={`relative flex h-8 w-8 items-center justify-center rounded-full border-2 ${black ? "border-black text-black" : "border-white text-white"} hover:border-custom-red hover:bg-custom-red cursor-pointer transition duration-300`}
     >
       <Image
-        src={lang === "pl" ? PLFlag : ENFlag}
+        src={lang === "en" ? PLFlag : ENFlag}
         alt={altText}
         className="rounded-full"
         fill
