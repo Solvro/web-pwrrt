@@ -43,7 +43,6 @@ async function NewsPage(props: { params: Promise<Iparams> }) {
               <Image
                 src={news.main_image}
                 alt={news.title}
-                fill
                 style={{ objectFit: "cover" }}
                 className="duration-500 ease-in-out group-hover:scale-105"
               />

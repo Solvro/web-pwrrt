@@ -1,5 +1,6 @@
 "use client";
 
+import HistoryImage from "@public/images/history.jpg";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
 import { useEffect, useState } from "react";
@@ -71,10 +72,8 @@ export function HeroAbout() {
       <div className="absolute z-0 h-160 w-screen md:relative md:w-full">
         <Image
           className=""
-          src="/images/history.jpg"
+          src={HistoryImage}
           alt="bolid"
-          fill
-          sizes="100vw"
           style={{
             objectFit: "cover",
             objectPosition: "center 20%",

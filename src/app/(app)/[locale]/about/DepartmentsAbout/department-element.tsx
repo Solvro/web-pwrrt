@@ -121,8 +121,9 @@ export function DepartmentElement({
             <Image
               src={`/images/departments/${department}.png`}
               alt="department image"
-              fill
               className="object-cover"
+              fill
+              sizes="100%"
               style={{
                 maxWidth: "100%",
                 objectPosition: "center 20%",

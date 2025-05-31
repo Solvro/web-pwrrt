@@ -1,5 +1,9 @@
 "use client";
 
+import TeamBg from "@public/images/team/Bg.jpeg";
+import Team1 from "@public/images/team/team1.jpeg";
+import Team2 from "@public/images/team/team2.jpeg";
+import Team3 from "@public/images/team/team3.jpeg";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
@@ -17,11 +21,11 @@ export function TeamSection() {
     <div id="section-team" className="relative">
       <div className="absolute inset-0 z-0">
         <Image
-          src="/images/team/Bg.jpeg"
+          src={TeamBg}
           alt="Tło sekcji"
           quality={50}
           fill
-          sizes="100vw"
+          sizes="100%"
           style={{
             filter: "grayscale(100%)",
             objectFit: "cover",
@@ -52,10 +56,10 @@ export function TeamSection() {
           <div className="flex gap-4">
             <div className="relative h-[300px] w-[400px] md:h-[400px]">
               <Image
-                src="/images/team/team1.jpeg"
+                src={Team1}
                 alt="bolid"
                 fill
-                sizes="100vw"
+                sizes="100%"
                 style={{
                   objectFit: "cover",
                 }}
@@ -63,10 +67,10 @@ export function TeamSection() {
             </div>
             <div className="relative hidden h-[300px] w-[400px] sm:block md:h-[400px]">
               <Image
-                src="/images/team/team2.jpeg"
+                src={Team2}
                 alt="bolid"
                 fill
-                sizes="100vw"
+                sizes="100%"
                 style={{
                   objectFit: "cover",
                 }}
@@ -74,10 +78,10 @@ export function TeamSection() {
             </div>
             <div className="relative hidden h-[400px] w-[200px] lg:block">
               <Image
-                src="/images/team/team3.jpeg"
+                src={Team3}
                 alt="bolid"
                 fill
-                sizes="100vw"
+                sizes="100%"
                 style={{
                   objectFit: "cover",
                 }}

@@ -2,10 +2,11 @@
 import { useGLTF } from "@react-three/drei";
 import type { Object3D } from "three";
 
-useGLTF.preload("/bolid-opt.glb");
+useGLTF.preload("/bolid-transformed.glb");
 
-export function Model({ path = "/bolid-opt.glb" }: { path?: string }) {
-  const model = useGLTF(path, true);
+export function Model({ path = "/bolid-transformed.glb" }: { path?: string }) {
+  // const loadedStatus = useThree((state) => state.gl);
+  const model = useGLTF(path);
 
   return (
     // <PresentationControls

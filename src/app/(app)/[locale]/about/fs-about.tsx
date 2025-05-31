@@ -20,8 +20,6 @@ function FlipCard({ text, src, title, height }: FlipCardProps) {
           <Image
             src={src}
             alt={title}
-            fill
-            sizes="100vw"
             style={{
               objectFit: "fill",
             }}

@@ -49,7 +49,7 @@ export function Navbar() {
                 atTop ? "w-[180px] md:w-[230px]" : "w-[160px] md:w-[200px]"
               } duration-300`}
             >
-              <Logo width={230} height={180} />
+              <Logo />
             </div>
             <NavigationMenu />
           </div>

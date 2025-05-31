@@ -1,5 +1,6 @@
 "use client";
 
+import JoinUsImage from "@public/images/joinus/photo5.jpeg";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
 import Link from "next/link";
@@ -28,10 +29,11 @@ export function FooterSection() {
     <div id="section-contact" className="relative md:pt-6">
       <div className="absolute inset-0 z-0 overflow-hidden">
         <Image
-          src="/images/joinus/photo5.jpeg"
+          src={JoinUsImage}
           alt="Tło sekcji"
           quality={50}
           fill
+          sizes="100%"
           style={{
             objectFit: "cover",
             objectPosition: "left 70%",
@@ -45,7 +47,7 @@ export function FooterSection() {
         <div className="flex w-full flex-col">
           <div className="flex w-full flex-col flex-wrap items-center justify-center gap-x-12 md:flex-row md:px-12 xl:gap-12">
             <div className="lg:w-80">
-              <Logo width={200} height={180} />
+              <Logo />
             </div>
             <div className="flex flex-wrap items-center justify-end gap-4 md:flex-row md:gap-12">
               <Link

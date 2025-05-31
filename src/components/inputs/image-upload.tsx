@@ -42,6 +42,7 @@ export function ImageUpload({ onChange, value }: ImageUploadProps) {
                 <Image
                   alt="Upload"
                   fill
+                  sizes="100%"
                   src={value}
                   style={{
                     objectFit: "cover",

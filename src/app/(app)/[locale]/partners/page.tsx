@@ -234,7 +234,6 @@ function SponsorList({ gridCols, height, sponsors }: SponsorGridProps) {
           <Image
             src={`/images/sponsors/${sponsor.name}`}
             alt={sponsor.name}
-            fill
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
             className="object-scale-down"
           />

@@ -29,8 +29,9 @@ export function NewsCard({
           <Image
             src={main_image}
             alt={"test"}
-            fill
             className="duration-500 ease-in-out group-hover:scale-105"
+            fill
+            sizes="100%"
             style={{
               objectFit: "cover",
               maxWidth: "100%",

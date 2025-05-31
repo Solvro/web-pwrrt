@@ -1,21 +1,15 @@
 "use client";
 
+import LogoImage from "@public/images/logo.png";
 import Image from "next/image";
 import Link from "next/link";
 
-interface LogoProps {
-  width: number;
-  height: number;
-}
-
-export function Logo({ width, height }: LogoProps) {
+export function Logo() {
   return (
     <Link href="/" className="relative cursor-pointer py-7">
       <Image
         alt="Logo"
-        height={height}
-        width={width}
-        src="/images/logo.png"
+        src={LogoImage}
         style={{
           maxWidth: "100%",
           height: "auto",

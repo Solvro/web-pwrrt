@@ -40,22 +40,20 @@ const textVariants = {
   }),
 };
 
-// const imageVariants = {
-//   hidden: {
-//     scale: 0,
-//     y: -100,
-//     opacity: 1,
-//   },
-//   visible: {
-//     scale: 1,
-//     y: 0,
-//     opacity: 1,
-//     transition: {
-//       duration: 1,
-//       ease: "easeOut",
-//     },
-//   },
-// };
+const imageVariants = {
+  hidden: {
+    // scale: 0,
+    opacity: 0,
+  },
+  visible: {
+    // scale: 1,
+    opacity: 1,
+    transition: {
+      duration: 1,
+      ease: "easeOut",
+    },
+  },
+};
 
 export function HeroSection() {
   const t = useTranslations("heroSection");
@@ -100,7 +98,7 @@ export function HeroSection() {
               variants={textVariants}
               className="my-2 md:my-4"
             >
-              <p className="font-openSans tracking-tighter text-white/80">
+              <p className="font-openSans tracking-tighter text-balance text-white/80">
                 {t("description")}
               </p>
             </motion.div>
@@ -137,11 +135,12 @@ export function HeroSection() {
           </div>
 
           {/* Animated Image */}
-          <div
+          <motion.div
             className="mb-8 flex items-center justify-center sm:mb-0"
-            // initial="hidden"
-            // animate="visible"
-            // variants={imageVariants}
+            initial="hidden"
+            animate="visible"
+            custom={1}
+            variants={imageVariants}
           >
             {isMobile || !isVisible ? (
               <Image
@@ -157,7 +156,7 @@ export function HeroSection() {
             ) : (
               <BolidModel />
             )}
-          </div>
+          </motion.div>
         </div>
       </Container>
     </div>

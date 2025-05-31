@@ -61,9 +61,10 @@ export function UserCard({
           <Image
             src="/images/TeamPlaceholder.jpg"
             alt={`Zdjęcie ${member.name} ${member.surname}`}
-            fill
             loading="lazy"
             placeholder="blur"
+            fill
+            sizes="100%"
             blurDataURL={placeholderImage}
             onError={handleImgError}
             style={{
@@ -76,9 +77,10 @@ export function UserCard({
           <Image
             src={memberImageSource}
             alt={`Zdjęcie ${member.name} ${member.surname}`}
-            fill
             loading="lazy"
             placeholder="blur"
+            fill
+            sizes="100%"
             blurDataURL={placeholderImage}
             onError={handleImgError}
             style={{
