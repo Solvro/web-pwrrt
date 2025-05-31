@@ -19,6 +19,7 @@ export function BolidContent({
   acceleration,
   mass,
   power,
+  image,
 }: Bolid) {
   const router = useRouter();
   const path = usePathname();
@@ -87,10 +88,11 @@ export function BolidContent({
             className={`flex h-full w-full flex-col items-center justify-end transition-all duration-500 ease-out`}
           >
             <Image
-              src={`/images/bolid/${name}/${name}.png`}
+              src={typeof image === "string" ? image : (image.url ?? "")}
               alt="bolid"
               width={700}
               height={300}
+              // placeholder="blur"
               style={{
                 maxWidth: "100%",
                 height: "auto",
