@@ -1,17 +1,8 @@
-import { getLocale } from "next-intl/server";
 import { redirect } from "next/navigation";
 
 import { getFirstBolidFunction } from "@/functions/bolid";
 
-interface Iparams {
-  locale?: "en" | "pl";
-}
-
-export default async function TeamRedirectPage(_props: {
-  params: Promise<Iparams>;
-}) {
-  const locale = await getLocale();
-
-  const current = await getFirstBolidFunction(locale);
+export default async function TeamRedirectPage() {
+  const current = await getFirstBolidFunction("pl");
   redirect(`/team/${current.name}`);
 }

@@ -12,20 +12,6 @@ const nextConfig: NextConfig = {
       },
     ],
   },
-  async redirects() {
-    return Promise.resolve([
-      {
-        source: "/team",
-        destination: "/team/RT14e",
-        permanent: true,
-      },
-      {
-        source: "/bolid",
-        destination: "/bolid/RT12e",
-        permanent: true,
-      },
-    ]);
-  },
 };
 
 const withNextIntl = createNextIntlPlugin();
