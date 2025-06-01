@@ -39,9 +39,8 @@ export function FooterSection() {
             objectPosition: "left 70%",
             maxWidth: "100%",
           }}
-          className="blur-[5px]"
         />
-        <div className="absolute inset-0 bg-black opacity-80"></div>
+        <div className="absolute inset-0 bg-black/80 backdrop-blur-[5px]"></div>
       </div>
       <Container className="z-10">
         <div className="flex w-full flex-col">

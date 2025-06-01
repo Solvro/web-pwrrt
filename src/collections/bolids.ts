@@ -5,7 +5,10 @@ export const Bolids: CollectionConfig = {
   orderable: true,
   admin: {
     useAsTitle: "name",
-    defaultColumns: ["image", "name", "year", "mass", "power"],
+    defaultColumns: ["name", "year", "mass", "power"],
+  },
+  versions: {
+    drafts: true,
   },
   fields: [
     {

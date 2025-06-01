@@ -24,7 +24,10 @@ export async function getBolidByNameFunction(name: string, locale: Locale) {
   return bolid;
 }
 
-export async function getFirstBolidFunction(locale: Locale) {
+export async function getFirstBolidFunction(
+  locale: Locale,
+  includeDrafts = false,
+) {
   const payload = await getPayload({ config });
   let bolid: Bolid | null = null;
   const result = await payload.find({
@@ -32,6 +35,15 @@ export async function getFirstBolidFunction(locale: Locale) {
     locale,
     limit: 1,
     sort: "-_order",
+    ...(includeDrafts
+      ? {}
+      : {
+          where: {
+            _status: {
+              equals: "published",
+            },
+          },
+        }),
   });
   bolid = result.docs[0];
 
@@ -41,6 +53,7 @@ export async function getFirstBolidFunction(locale: Locale) {
 export async function getAllBolidsFunction(
   locale: Locale,
   onlyEssential = false,
+  includeDrafts = false,
 ) {
   const payload = await getPayload({ config });
   const result = await payload.find({
@@ -48,6 +61,15 @@ export async function getAllBolidsFunction(
     locale,
     sort: "-_order",
     limit: 100,
+    ...(includeDrafts
+      ? {}
+      : {
+          where: {
+            _status: {
+              equals: "published",
+            },
+          },
+        }),
     ...(onlyEssential
       ? {
           select: {

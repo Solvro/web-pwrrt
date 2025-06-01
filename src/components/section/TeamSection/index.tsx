@@ -32,9 +32,9 @@ export function TeamSection() {
           }}
         />
         {/* Warstwa przyciemniająca */}
-        <div className="bg-opacity-80 absolute inset-0 bg-black"></div>
+        <div className="absolute inset-0 bg-black/80 backdrop-blur-[5px]"></div>
       </div>
-      <Container paddingType="l">
+      <Container paddingType="l" className="z-10">
         <div className="flex w-auto flex-col items-center gap-8 overflow-hidden py-8 md:gap-20 md:py-16 lg:flex-row">
           <div className="">
             <Title size="subtitle" color="gray">

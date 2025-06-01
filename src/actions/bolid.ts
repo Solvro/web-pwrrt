@@ -34,7 +34,15 @@ export async function getFirstBolid(locale: Locale) {
   return bolid;
 }
 
-export async function getAllBolids(locale: Locale, onlyEssential = false) {
-  const bolids = await getAllBolidsFunction(locale, onlyEssential);
+export async function getAllBolids(
+  locale: Locale,
+  onlyEssential = false,
+  includeDrafts = false,
+) {
+  const bolids = await getAllBolidsFunction(
+    locale,
+    onlyEssential,
+    includeDrafts,
+  );
   return bolids;
 }

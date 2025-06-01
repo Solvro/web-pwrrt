@@ -30,7 +30,7 @@ export function JoinusSection({ sizeBig = false }: JoinusSectionProps) {
       className={`${sizeBig ? "h-screen" : "h-[633px]"} relative`}
     >
       <div
-        className="absolute inset-0 z-10"
+        className="absolute inset-0 z-10 backdrop-blur-[5px]"
         style={{
           background: `linear-gradient(0deg, rgba(0, 0, 0, 0.16), rgba(0, 0, 0, 0.16)), radial-gradient(75% 75% at 50% 50%, #000000 0%, rgba(0, 0, 0, 0) 100%)`,
         }}
