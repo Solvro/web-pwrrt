@@ -7,7 +7,7 @@ import { HeroSection } from "@/components/section/HeroSection";
 import { HistorySection } from "@/components/section/HistorySection";
 import { JoinusSection } from "@/components/section/JoinusSection";
 import { NewsSection } from "@/components/section/NewsSection";
-import { SponsorsSection } from "@/components/section/SponsorsSection";
+// import { SponsorsSection } from "@/components/section/SponsorsSection";
 import { TeamSection } from "@/components/section/TeamSection";
 import { getFirstBolidFunction } from "@/functions/bolid";
 
@@ -24,7 +24,7 @@ export default async function Home() {
       <TeamSection />
       <HistorySection />
       <JoinusSection />
-      <SponsorsSection />
+      {/* <SponsorsSection /> what tf is this piece of shit (slowing down model loading about 15 seconds) */}
       <NewsSection />
     </div>
   );

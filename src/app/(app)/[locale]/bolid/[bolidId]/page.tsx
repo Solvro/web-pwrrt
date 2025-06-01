@@ -1,3 +1,9 @@
+import Image1 from "@public/images/bolid/RT12e/images/zawody/1.jpg";
+import Image2 from "@public/images/bolid/RT12e/images/zawody/2.jpg";
+import Image3 from "@public/images/bolid/RT12e/images/zawody/3.jpg";
+import Logo1 from "@public/images/bolid/RT12e/images/zawody/logo1.png";
+import Logo2 from "@public/images/bolid/RT12e/images/zawody/logo2.png";
+import Logo3 from "@public/images/bolid/RT12e/images/zawody/logo3.png";
 import { getLocale, getTranslations } from "next-intl/server";
 import Image from "next/image";
 
@@ -46,10 +52,8 @@ async function BolidPage(props: { params: Promise<Iparams> }) {
               <div className="grid w-full grid-cols-1 gap-8 pt-6 text-white md:grid-cols-3">
                 <div className="relative h-52 overflow-hidden rounded-sm md:h-60">
                   <Image
-                    src="/images/bolid/RT12e/images/zawody/1.jpg"
+                    src={Image1}
                     alt="Zdjęcie 2"
-                    fill
-                    sizes="100vw"
                     style={{
                       objectFit: "cover",
                     }}
@@ -68,10 +72,8 @@ async function BolidPage(props: { params: Promise<Iparams> }) {
                       </div>
                       <div className="">
                         <Image
-                          src="/images/bolid/RT12e/images/zawody/logo1.png"
+                          src={Logo1}
                           alt="Zdjęcie 1"
-                          width={100}
-                          height={100}
                           style={{
                             maxWidth: "100%",
                             height: "auto",
@@ -83,10 +85,8 @@ async function BolidPage(props: { params: Promise<Iparams> }) {
                 </div>
                 <div className="relative h-52 overflow-hidden rounded-sm md:h-60">
                   <Image
-                    src="/images/bolid/RT12e/images/zawody/2.jpg"
+                    src={Image2}
                     alt="Zdjęcie 2"
-                    fill
-                    sizes="100vw"
                     style={{
                       objectFit: "cover",
                     }}
@@ -105,10 +105,8 @@ async function BolidPage(props: { params: Promise<Iparams> }) {
                       </div>
                       <div className="">
                         <Image
-                          src="/images/bolid/RT12e/images/zawody/logo2.png"
+                          src={Logo2}
                           alt="Zdjęcie 1"
-                          width={100}
-                          height={100}
                           style={{
                             maxWidth: "100%",
                             height: "auto",
@@ -120,10 +118,8 @@ async function BolidPage(props: { params: Promise<Iparams> }) {
                 </div>
                 <div className="relative h-52 overflow-hidden rounded-sm md:h-60">
                   <Image
-                    src="/images/bolid/RT12e/images/zawody/3.jpg"
+                    src={Image3}
                     alt="Zdjęcie 2"
-                    fill
-                    sizes="100vw"
                     style={{
                       objectFit: "cover",
                     }}
@@ -142,10 +138,8 @@ async function BolidPage(props: { params: Promise<Iparams> }) {
                       </div>
                       <div className="">
                         <Image
-                          src="/images/bolid/RT12e/images/zawody/logo3.png"
+                          src={Logo3}
                           alt="Zdjęcie 1"
-                          width={100}
-                          height={100}
                           style={{
                             maxWidth: "100%",
                             height: "auto",

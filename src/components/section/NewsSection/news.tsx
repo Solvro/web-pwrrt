@@ -20,7 +20,7 @@ export function News({ article, category, title }: NewsProps) {
         src={imagePath}
         alt={article}
         fill
-        sizes="100vw"
+        sizes="100%"
         style={{
           objectFit: "cover",
           objectPosition: "center center",

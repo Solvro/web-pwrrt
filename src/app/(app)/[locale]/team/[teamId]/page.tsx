@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unnecessary-condition */
-import { getLocale, getTranslations } from "next-intl/server";
+import { getTranslations } from "next-intl/server";
 import Image from "next/image";
 
 import { getAllBolids, getFirstBolid } from "@/actions/bolid";
@@ -15,8 +15,8 @@ import { UserCard } from "./user-card";
 import { sortRoles } from "./utils";
 
 interface Iparams {
-  teamId?: string;
-  locale?: "en" | "pl";
+  teamId: string;
+  locale: "en" | "pl";
 }
 
 interface PageSpecificMember {
@@ -35,11 +35,10 @@ interface RoleHistoryItem {
 }
 
 async function TeamPage(props: { params: Promise<Iparams> }) {
-  const locale = await getLocale();
-  const allBolids = await getAllBolids(locale, true);
-
   const parameters = await props.params;
-  const firstBolid = await getFirstBolid(locale);
+  const allBolids = await getAllBolids(parameters.locale, true, true);
+
+  const firstBolid = await getFirstBolid(parameters.locale);
   const teamId = parameters.teamId ?? firstBolid.id;
   const teamMembersFromPayload: ProcessedTeamMember[] =
     await getTeamByBolid(teamId);
@@ -138,101 +137,99 @@ async function TeamPage(props: { params: Promise<Iparams> }) {
   return (
     <div className="relative bg-neutral-950 pt-32 pb-12">
       <div className="relative overflow-hidden">
-        <div className="pt-10">
-          <Slider
-            currentBolid={teamId}
-            allBolids={allBolids}
-            darkMode={true}
-            showThisYear
-          />
-          {sortedDepartments.map((department, depIndex) => (
-            <div key={department} className="">
+        <Slider
+          currentBolid={teamId}
+          allBolids={allBolids}
+          darkMode={true}
+          showThisYear
+        />
+        {sortedDepartments.map((department, depIndex) => (
+          <div key={department} className="">
+            <div
+              className={`absolute opacity-5 ${
+                depIndex % 2 === 0 ? "left-0" : "right-0"
+              }`}
+            >
+              <h1 className="text-[15rem] leading-none font-extrabold text-white uppercase">
+                {department === "management" ? "Team" : department}
+              </h1>
+            </div>
+            <Container>
               <div
-                className={`absolute opacity-5 ${
-                  depIndex % 2 === 0 ? "left-0" : "right-0"
-                }`}
+                className={`${
+                  department === "management"
+                    ? "grid-cols-1 lg:grid-cols-2"
+                    : "grid-cols-1"
+                } my-8 grid w-full justify-center gap-8 align-middle lg:gap-16`}
               >
-                <h1 className="text-[15rem] leading-none font-extrabold text-white uppercase">
-                  {department === "management" ? "Team" : department}
-                </h1>
-              </div>
-              <Container>
-                <div
-                  className={`${
-                    department === "management"
-                      ? "grid-cols-1 lg:grid-cols-2"
-                      : "grid-cols-1"
-                  } my-8 grid w-full justify-center gap-8 align-middle lg:gap-16`}
-                >
-                  <div className="order-2 lg:order-1">
-                    <div className="flex flex-col items-center">
-                      <div className="my-6 border-b-2 border-white p-2 px-20 text-center uppercase">
-                        <Title color="white">
-                          {department === "management" ? teamId : department}
-                        </Title>
-                      </div>
-                    </div>
-                    <div
-                      key={department}
-                      className={`${
-                        department === "management"
-                          ? "grid-cols-1 sm:grid-cols-2"
-                          : "grid-cols-1 sm:grid-cols-2 lg:grid-cols-4"
-                      } my-4 grid gap-6`}
-                    >
-                      {membersByDepartment[department]
-                        .sort((a, b) => {
-                          const roleA = a.currentRole || "";
-                          const roleB = b.currentRole || "";
-                          const isLeaderA =
-                            roleA.toLowerCase().includes("leader") ||
-                            roleA.toLowerCase().includes("lider");
-                          const isLeaderB =
-                            roleB.toLowerCase().includes("leader") ||
-                            roleB.toLowerCase().includes("lider");
-
-                          if (isLeaderA && !isLeaderB) {
-                            return -1;
-                          }
-                          if (!isLeaderA && isLeaderB) {
-                            return 1;
-                          }
-                          return (a.name || "").localeCompare(b.name || "");
-                        })
-                        .map((member) => (
-                          <UserCard
-                            key={`${member.name}-${member.surname}`}
-                            member={member}
-                            roleHistory={roleHistory}
-                          />
-                        ))}
+                <div className="order-2 lg:order-1">
+                  <div className="flex flex-col items-center">
+                    <div className="my-6 border-b-2 border-white p-2 px-20 text-center uppercase">
+                      <Title color="white">
+                        {department === "management" ? teamId : department}
+                      </Title>
                     </div>
                   </div>
-                  {department === "management" && (
-                    <div className="order-1 flex flex-col justify-center">
-                      <div className="relative">
-                        <div className="absolute">
-                          <SecondaryButton
-                            darkMode
-                            to={`/bolid/${teamId}`}
-                            buttonText={`${t("doBolidu")} ${teamId}`}
-                          />
-                        </div>
-                        <Image
-                          src={`/images/bolid/${teamId}/${teamId}.png`}
-                          alt="bolid"
-                          width={700}
-                          height={551}
-                          style={{ objectFit: "cover" }}
+                  <div
+                    key={department}
+                    className={`${
+                      department === "management"
+                        ? "grid-cols-1 sm:grid-cols-2"
+                        : "grid-cols-1 sm:grid-cols-2 lg:grid-cols-4"
+                    } my-4 grid gap-6`}
+                  >
+                    {membersByDepartment[department]
+                      .sort((a, b) => {
+                        const roleA = a.currentRole || "";
+                        const roleB = b.currentRole || "";
+                        const isLeaderA =
+                          roleA.toLowerCase().includes("leader") ||
+                          roleA.toLowerCase().includes("lider");
+                        const isLeaderB =
+                          roleB.toLowerCase().includes("leader") ||
+                          roleB.toLowerCase().includes("lider");
+
+                        if (isLeaderA && !isLeaderB) {
+                          return -1;
+                        }
+                        if (!isLeaderA && isLeaderB) {
+                          return 1;
+                        }
+                        return (a.name || "").localeCompare(b.name || "");
+                      })
+                      .map((member) => (
+                        <UserCard
+                          key={`${member.name}-${member.surname}`}
+                          member={member}
+                          roleHistory={roleHistory}
+                        />
+                      ))}
+                  </div>
+                </div>
+                {department === "management" && (
+                  <div className="order-1 flex flex-col justify-center">
+                    <div className="relative">
+                      <div className="absolute">
+                        <SecondaryButton
+                          darkMode
+                          to={`/bolid/${teamId}`}
+                          buttonText={`${t("doBolidu")} ${teamId}`}
                         />
                       </div>
+                      <Image
+                        src={`/images/bolid/${teamId}/${teamId}.png`}
+                        alt="bolid"
+                        width={700}
+                        height={551}
+                        style={{ objectFit: "cover" }}
+                      />
                     </div>
-                  )}
-                </div>
-              </Container>
-            </div>
-          ))}
-        </div>
+                  </div>
+                )}
+              </div>
+            </Container>
+          </div>
+        ))}
       </div>
     </div>
   );

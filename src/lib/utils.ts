@@ -15,3 +15,7 @@ export const formatPhoneNumber = (phoneNumber: string) => {
   const formattedNumber = restOfNumber.replaceAll(/(\d{3})(?=\d)/g, "$1 ");
   return `${countryCode} ${formattedNumber}`;
 };
+
+export const camelCaseToSpaceWord = (string_: string) => {
+  return string_.replaceAll(/([A-Z])/g, " $1").toLowerCase();
+};

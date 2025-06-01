@@ -3,6 +3,8 @@
 import { usePathname, useRouter } from "next/navigation";
 import React, { useRef, useState } from "react";
 
+import { cn } from "@/lib/utils";
+
 import { SliderElement } from "./slider-element";
 
 /* eslint-disable @typescript-eslint/no-empty-function */
@@ -81,9 +83,13 @@ export function Slider({
   return (
     <div className="">
       <div
-        className={`${
-          darkMode ? "bg-neutral-500" : "bg-neutral-300"
-        } absolute inset-0 mt-5 h-2 w-full opacity-50 md:mt-9 md:h-3`}
+        className={cn(
+          "absolute inset-0 mt-5 h-2 w-full opacity-50 md:mt-9 md:h-3",
+          {
+            "bg-neutral-500": darkMode,
+            "bg-neutral-300": !darkMode,
+          },
+        )}
       ></div>
       <div
         className={`animation-container relative h-full w-[99vw] overflow-x-scroll pt-4 md:pt-8 ${

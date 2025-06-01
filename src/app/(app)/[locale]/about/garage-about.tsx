@@ -1,5 +1,7 @@
 "use client";
 
+import Image1 from "@public/images/garage/1.jpg";
+import Image2 from "@public/images/garage/2.jpg";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
@@ -32,10 +34,10 @@ export function GarageAbout() {
             <div className="col-span-3 flex flex-col gap-6 md:gap-8">
               <div className="relative hidden h-2/3 md:block">
                 <Image
-                  src="/images/garage/1.jpg"
+                  src={Image1}
                   alt="bolid"
                   fill
-                  sizes="100vw"
+                  sizes="100%"
                   style={{
                     objectFit: "cover",
                     objectPosition: "center 20%",
@@ -100,10 +102,10 @@ export function GarageAbout() {
             <div className="relative col-span-3 h-80 md:col-span-2 md:h-144">
               <Image
                 className="scale-x-[-1]"
-                src="/images/garage/2.jpg"
-                alt="bolid"
+                src={Image2}
                 fill
-                sizes="100vw"
+                sizes="100%"
+                alt="bolid"
                 style={{
                   objectFit: "cover",
                   objectPosition: "center 20%",

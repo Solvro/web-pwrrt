@@ -1,3 +1,5 @@
+import ENFlag from "@public/images/Flagaen.png";
+import PLFlag from "@public/images/Flagapl.png";
 import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
 import React from "react";
@@ -19,7 +21,6 @@ export function LangButton({ lang, black = false }: LangButtonProps) {
     }
   };
 
-  const flag = lang === "pl" ? "en" : "pl";
   const altText = lang === "pl" ? "US flag" : "Polish flag";
 
   return (
@@ -28,10 +29,11 @@ export function LangButton({ lang, black = false }: LangButtonProps) {
       className={`relative flex h-8 w-8 items-center justify-center rounded-full border-2 ${black ? "border-black text-black" : "border-white text-white"} hover:border-custom-red hover:bg-custom-red cursor-pointer transition duration-300`}
     >
       <Image
-        src={`/images/Flaga${flag}.png`}
+        src={lang === "en" ? PLFlag : ENFlag}
         alt={altText}
-        fill
         className="rounded-full"
+        fill
+        sizes="100%"
         style={{
           maxWidth: "100%",
         }}

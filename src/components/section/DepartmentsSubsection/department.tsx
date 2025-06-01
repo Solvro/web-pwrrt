@@ -17,11 +17,14 @@ export function Department({
   return (
     <Link href={`/about#${department}`} passHref scroll>
       <div className="group relative m-0 cursor-pointer overflow-hidden border-0">
-        <div className="h-24 transition-transform duration-700 ease-in-out group-hover:scale-110 md:h-64">
+        <div className="relative h-24 transition-transform duration-700 ease-in-out group-hover:scale-110 md:h-64">
           <Image
             src={imagePath}
             alt={department}
             fill
+            quality={60}
+            className="blur-[1px]"
+            sizes="100%"
             style={{
               objectFit: "cover",
               objectPosition: `0 ${objectPositionY}`,

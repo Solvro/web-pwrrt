@@ -53,9 +53,10 @@ export function UserCard({ guardian, member, roleHistory }: UserCardProps) {
           <Image
             src={imageSource}
             alt={`Zdjęcie ${member.name} ${member.surname}`}
-            fill
             loading="lazy"
             placeholder="blur"
+            fill
+            sizes="100%"
             blurDataURL={placeholderImage}
             onError={handleError}
             style={{

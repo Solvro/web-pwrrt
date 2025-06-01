@@ -1,5 +1,4 @@
 import { withPayload } from "@payloadcms/next/withPayload";
-/* eslint-disable unicorn/no-useless-promise-resolve-reject */
 import type { NextConfig } from "next";
 import createNextIntlPlugin from "next-intl/plugin";
 
@@ -12,6 +11,7 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+  transpilePackages: ["three"],
 };
 
 const withNextIntl = createNextIntlPlugin();

@@ -1,5 +1,6 @@
 "use client";
 
+import PartnersImage from "@public/images/partners.png";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
@@ -119,11 +120,8 @@ export function SponsorsOfer() {
       <div className="z-10 grid w-full grid-cols-1 gap-8 rounded-xs bg-white p-6 shadow-xl md:grid-cols-2 md:p-12">
         <div className="relative w-full">
           <Image
-            src={`/images/partners.png`}
+            src={PartnersImage}
             alt="partners foto"
-            width={100}
-            height={100}
-            sizes="100vw"
             style={{
               width: "100%",
               height: "auto",
