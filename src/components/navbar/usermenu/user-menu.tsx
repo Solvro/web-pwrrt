@@ -109,13 +109,13 @@ export function UserMenu() {
             />
             <MenuItem
               onClick={() => {
-                handleMenuItemClick(`/bolid/RT14e`);
+                handleMenuItemClick(`/bolid`);
               }}
               label={t("bolid")}
             />
             <MenuItem
               onClick={() => {
-                handleMenuItemClick(`/team/RT14e`);
+                handleMenuItemClick(`/team`);
               }}
               label={t("team")}
             />
