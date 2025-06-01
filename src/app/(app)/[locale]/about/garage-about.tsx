@@ -36,6 +36,8 @@ export function GarageAbout() {
                 <Image
                   src={Image1}
                   alt="bolid"
+                  fill
+                  sizes="100%"
                   style={{
                     objectFit: "cover",
                     objectPosition: "center 20%",
@@ -101,6 +103,8 @@ export function GarageAbout() {
               <Image
                 className="scale-x-[-1]"
                 src={Image2}
+                fill
+                sizes="100%"
                 alt="bolid"
                 style={{
                   objectFit: "cover",

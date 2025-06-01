@@ -6,6 +6,7 @@ import { useMemo } from "react";
 import { Container } from "@/components/container";
 import { Text } from "@/components/text";
 import { Title } from "@/components/title";
+import { camelCaseToSpaceWord } from "@/lib/utils";
 
 interface ResponsibilityItemProps {
   iconPath: string;
@@ -97,7 +98,7 @@ export function DepartmentElement({
           <div className="md:py-20">
             <div className="mb-4 uppercase">
               <Title wrap color={textColor} size="big">
-                {department}
+                {camelCaseToSpaceWord(department)}
               </Title>
             </div>
             <Text color={textColor}>{text}</Text>

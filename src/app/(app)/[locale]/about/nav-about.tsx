@@ -52,6 +52,8 @@ export function NavAbout() {
                   className=""
                   src={Image1}
                   alt="bolid"
+                  fill
+                  sizes="100%"
                   style={{
                     objectFit: "cover",
                     objectPosition: "center 10%",
