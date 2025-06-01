@@ -2,27 +2,30 @@
 import { getLocale, getTranslations } from "next-intl/server";
 import Image from "next/image";
 
+import { getAllBolids, getFirstBolid } from "@/actions/bolid";
 import { getTeamByBolid } from "@/actions/team";
+import type { ProcessedTeamMember } from "@/actions/team";
 import { Container } from "@/components/container";
 import { SecondaryButton } from "@/components/secondary-button";
 import { Slider } from "@/components/section/BolidSection/slider";
 import { Title } from "@/components/title";
-import { getAllBolidsFunction } from "@/functions/bolid";
+import type { Media } from "@/payload-types";
 
 import { UserCard } from "./user-card";
 import { sortRoles } from "./utils";
 
 interface Iparams {
-  lang: string;
   teamId?: string;
+  locale?: "en" | "pl";
 }
 
-interface Member {
+interface PageSpecificMember {
   name: string;
   surname: string;
   currentRole: string;
   phoneNumber?: string;
   email?: string;
+  profile?: Media | null;
 }
 
 interface RoleHistoryItem {
@@ -33,54 +36,65 @@ interface RoleHistoryItem {
 
 async function TeamPage(props: { params: Promise<Iparams> }) {
   const locale = await getLocale();
-  const allBolids = await getAllBolidsFunction(locale, true);
+  const allBolids = await getAllBolids(locale, true);
+
   const parameters = await props.params;
-  const teamId = parameters.teamId ?? "RT13e";
-  const team = await getTeamByBolid(teamId);
+  const firstBolid = await getFirstBolid(locale);
+  const teamId = parameters.teamId ?? firstBolid.id;
+  const teamMembersFromPayload: ProcessedTeamMember[] =
+    await getTeamByBolid(teamId);
 
-  type MembersByDepartment = Record<string, Member[]>;
-
+  type MembersByDepartment = Record<string, PageSpecificMember[]>;
   type RoleHistory = Record<string, RoleHistoryItem[]>;
 
   const membersByDepartment: MembersByDepartment = {};
   const roleHistory: RoleHistory = {};
 
-  for (const member of team) {
-    const memberFullName = `${member.name} ${member.surname}`;
+  for (const member of teamMembersFromPayload) {
+    const memberName: string = member.name || "Unknown";
+    const memberSurname: string = member.surname || "Member";
+    const memberFullName = `${memberName} ${memberSurname}`;
+    const roles = Array.isArray(member.roles) ? member.roles : [];
 
-    for (const role of member.roles) {
+    for (const role of roles) {
       if (!roleHistory[memberFullName]) {
         roleHistory[memberFullName] = [];
       }
       roleHistory[memberFullName].push({
-        role: role.role,
-        bolidName: role.bolidName,
-        department: role.department,
+        role: role.role || "N/A",
+        bolidName: role.bolidName || "N/A",
+        department: role.department || "N/A",
       });
 
       if (role.bolidName === teamId) {
-        if (!membersByDepartment[role.department]) {
-          membersByDepartment[role.department] = [];
+        const department = role.department || "Uncategorized";
+        if (!membersByDepartment[department]) {
+          membersByDepartment[department] = [];
         }
-        let departmentMember = membersByDepartment[role.department].find(
+        let departmentMember = membersByDepartment[department].find(
           (m) => `${m.name} ${m.surname}` === memberFullName,
         );
         if (!departmentMember) {
           departmentMember = {
-            name: member.name,
-            surname: member.surname,
-            phoneNumber: member.phoneNumber ?? "", // Default value for phoneNumber
-            email: member.email ?? "", // Default value for email
-            currentRole: role.role,
-          } as Member;
-          membersByDepartment[role.department].push(departmentMember);
+            name: memberName,
+            surname: memberSurname,
+            phoneNumber: member.phoneNumber ?? "",
+            email: member.email ?? "",
+            profile: member.profile,
+            currentRole: role.role || "N/A",
+          } as PageSpecificMember;
+          membersByDepartment[department].push(departmentMember);
         }
       }
     }
   }
 
   for (const memberFullName in roleHistory) {
-    roleHistory[memberFullName] = sortRoles(roleHistory[memberFullName]);
+    if (Object.hasOwn(roleHistory, memberFullName)) {
+      roleHistory[memberFullName] = sortRoles(
+        roleHistory[memberFullName],
+      ) as RoleHistoryItem[];
+    }
   }
 
   const departmentOrder = [
@@ -107,7 +121,6 @@ async function TeamPage(props: { params: Promise<Iparams> }) {
     if (b === "opiekun naukowy") {
       return -1;
     }
-
     if (aIndex === -1 && bIndex === -1) {
       return a.localeCompare(b);
     }
@@ -117,7 +130,6 @@ async function TeamPage(props: { params: Promise<Iparams> }) {
     if (bIndex === -1) {
       return -1;
     }
-
     return aIndex - bIndex;
   });
 
@@ -126,14 +138,13 @@ async function TeamPage(props: { params: Promise<Iparams> }) {
   return (
     <div className="relative bg-neutral-950 pt-32 pb-12">
       <div className="relative overflow-hidden">
-        <Slider
-          showThisYear
-          currentBolid={teamId}
-          darkMode
-          allBolids={allBolids}
-        />
-
         <div className="pt-10">
+          <Slider
+            currentBolid={teamId}
+            allBolids={allBolids}
+            darkMode={true}
+            showThisYear
+          />
           {sortedDepartments.map((department, depIndex) => (
             <div key={department} className="">
               <div
@@ -171,28 +182,27 @@ async function TeamPage(props: { params: Promise<Iparams> }) {
                     >
                       {membersByDepartment[department]
                         .sort((a, b) => {
+                          const roleA = a.currentRole || "";
+                          const roleB = b.currentRole || "";
                           const isLeaderA =
-                            a.currentRole.toLowerCase().includes("leader") ||
-                            a.currentRole.toLowerCase().includes("lider");
+                            roleA.toLowerCase().includes("leader") ||
+                            roleA.toLowerCase().includes("lider");
                           const isLeaderB =
-                            b.currentRole.toLowerCase().includes("leader") ||
-                            b.currentRole.toLowerCase().includes("lider");
+                            roleB.toLowerCase().includes("leader") ||
+                            roleB.toLowerCase().includes("lider");
+
                           if (isLeaderA && !isLeaderB) {
                             return -1;
                           }
                           if (!isLeaderA && isLeaderB) {
                             return 1;
                           }
-                          if (isLeaderA && isLeaderB) {
-                            return 0;
-                          }
-                          return a.name.localeCompare(b.name);
+                          return (a.name || "").localeCompare(b.name || "");
                         })
                         .map((member) => (
                           <UserCard
-                            key={member.name + member.surname}
+                            key={`${member.name}-${member.surname}`}
                             member={member}
-                            teamId={teamId}
                             roleHistory={roleHistory}
                           />
                         ))}
@@ -208,13 +218,12 @@ async function TeamPage(props: { params: Promise<Iparams> }) {
                             buttonText={`${t("doBolidu")} ${teamId}`}
                           />
                         </div>
-
                         <Image
                           src={`/images/bolid/${teamId}/${teamId}.png`}
                           alt="bolid"
                           width={700}
                           height={551}
-                          objectFit="cover"
+                          style={{ objectFit: "cover" }}
                         />
                       </div>
                     </div>

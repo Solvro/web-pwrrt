@@ -308,7 +308,6 @@ export default async function PartnersJoinPage() {
                   <UserCard
                     key={member.name + member.surname}
                     member={member}
-                    teamId="RT14e"
                     roleHistory={{
                       [`${member.name} ${member.surname}`]: member.roles.map(
                         (role) => ({

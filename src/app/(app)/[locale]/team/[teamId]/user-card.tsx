@@ -1,20 +1,22 @@
 "use client";
 
 import Image from "next/image";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+
+import type { Media } from "@/payload-types";
 
 import { TileHeading } from "./tile-heading";
 
 interface UserCardProps {
-  opiekun?: boolean;
+  guardian?: boolean;
   member: {
     name: string;
     surname: string;
     currentRole: string;
     phoneNumber?: string | null;
     email?: string | null;
+    profile?: Media | null;
   };
-  teamId: string;
   roleHistory: Record<
     string,
     {
@@ -25,72 +27,45 @@ interface UserCardProps {
   >;
 }
 
-export function UserCard({
-  opiekun,
-  member,
-  teamId,
-  roleHistory,
-}: UserCardProps) {
+export function UserCard({ guardian, member, roleHistory }: UserCardProps) {
   const placeholderImage = "/images/TeamPlaceholder.jpg";
+  const [imageSource, setImageSource] = useState(placeholderImage);
 
-  // Generowanie ścieżki do obrazka członka zespołu
-  const generatedMemberImageSource = `https://storage.googleapis.com/pwr-rt/${
-    teamId === "RT11b" ? "RT11" : teamId
-  }/${encodeURIComponent(
-    member.name[0].toUpperCase() + member.name.slice(1),
-  )}%20${encodeURIComponent(
-    member.surname[0].toUpperCase() + member.surname.slice(1),
-  )}.jpg`;
+  useEffect(() => {
+    const profileUrl = member.profile?.url;
+    if (profileUrl) {
+      setImageSource(profileUrl);
+    } else {
+      setImageSource(placeholderImage);
+    }
+  }, [member.profile]);
 
-  // Użycie stanu do dynamicznej zmiany obrazka w razie błędu
-  const [memberImageSource, setMemberImageSource] = useState(
-    generatedMemberImageSource,
-  );
-
-  const handleImgError = () => {
-    // Po błędzie ustawiamy ścieżkę do obrazka zastępczego
-    setMemberImageSource(placeholderImage);
+  const handleError = (event: React.SyntheticEvent<HTMLImageElement>) => {
+    event.currentTarget.src = placeholderImage;
+    setImageSource(placeholderImage);
   };
 
   return (
     <div className="group relative w-full">
       <div className="absolute inset-0 z-0 h-full w-full rounded-full bg-white opacity-10 blur-3xl"></div>
       <div className="relative overflow-hidden rounded-md bg-black pb-14">
-        <div className="absolute h-[350px] w-full">
-          {/* Możesz wykorzystać obrazek zastępczy jako tło */}
-          <Image
-            src="/images/TeamPlaceholder.jpg"
-            alt={`Zdjęcie ${member.name} ${member.surname}`}
-            loading="lazy"
-            placeholder="blur"
-            fill
-            sizes="100%"
-            blurDataURL={placeholderImage}
-            onError={handleImgError}
-            style={{
-              objectFit: "cover",
-              maxWidth: "100%",
-            }}
-          />
-        </div>
         <div className="relative h-[350px]">
           <Image
-            src={memberImageSource}
+            src={imageSource}
             alt={`Zdjęcie ${member.name} ${member.surname}`}
             loading="lazy"
             placeholder="blur"
             fill
             sizes="100%"
             blurDataURL={placeholderImage}
-            onError={handleImgError}
+            onError={handleError}
             style={{
               objectFit: "cover",
-              maxWidth: "100%",
             }}
           />
         </div>
         <TileHeading
-          opiekun={opiekun}
+          opiekun={guardian}
           member={member}
           roleHistory={roleHistory}
           phoneNumber={member.phoneNumber}
