@@ -70,14 +70,6 @@ export const headingConverter: JSXConverters<SerializedHeadingNode> = {
           .join("");
         return <h6 className="py-2 text-sm font-bold">{textContent}</h6>;
       }
-      default: {
-        const text = nodesToJSX({ nodes: node.children });
-        const textContent = text
-          .map((item) => (typeof item === "string" ? item : ""))
-          .join("");
-        const Tag = node.tag;
-        return <Tag>{textContent}</Tag>;
-      }
     }
   },
 };
