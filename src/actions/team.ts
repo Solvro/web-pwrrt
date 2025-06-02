@@ -1,13 +1,8 @@
 import configPromise from "@payload-config";
 import { getPayload } from "payload";
 
+import { isPopulatedMedia } from "@/lib/utils";
 import type { Media, TeamMember as PayloadTeamMember } from "@/payload-types";
-
-function isPopulatedMedia(
-  profile: string | Media | null | undefined,
-): profile is Media {
-  return typeof profile === "object" && profile !== null && "url" in profile;
-}
 
 export interface ProcessedTeamMember
   extends Omit<PayloadTeamMember, "profile" | "doc"> {

@@ -1,9 +1,16 @@
+// import { DefaultNodeTypes, editorConfigFactory } from "@payloadcms/richtext-lexical";
+// import { JSXConvertersFunction } from "@payloadcms/richtext-lexical/react";
+import { getLocale } from "next-intl/server";
 import Image from "next/image";
 import { redirect } from "next/navigation";
 
-import { getNewsById } from "@/actions/news";
+// import type { SanitizedConfig } from "payload";
+
 import { Container } from "@/components/container";
+import { RichText } from "@/components/payload/rich-text";
 import { Text } from "@/components/text";
+import { getNewsBySlug } from "@/functions/news";
+import { getUrlFromMedia } from "@/lib/utils";
 
 interface Iparams {
   newsId?: string;
@@ -12,17 +19,21 @@ interface Iparams {
 async function NewsPage(props: { params: Promise<Iparams> }) {
   const parameters = await props.params;
   const newsId = parameters.newsId;
+  const locale = await getLocale();
 
   if (!newsId) {
     // Przekierowanie, gdy newsId jest undefined
     redirect("/news");
   }
 
-  const news = await getNewsById(newsId);
+  const news = await getNewsBySlug(newsId, locale);
 
   if (!news) {
     redirect("/news");
   }
+
+  // const config: SanitizedConfig = {} as SanitizedConfig;
+  // const defaultEditorConfig = await editorConfigFactory.default({ config });
 
   return (
     <div className="pt-[100px] md:pt-[120px]">
@@ -36,25 +47,30 @@ async function NewsPage(props: { params: Promise<Iparams> }) {
                 </Text>
               </div>
               <Text color="black" center alignCenter>
-                {news.long_description}
+                {news.longDescription}
               </Text>
             </div>
             <div className="relative h-128 w-2/3 overflow-hidden rounded-md bg-red-500">
               <Image
-                src={news.main_image}
+                src={getUrlFromMedia(news.heroImage)}
                 alt={news.title}
                 style={{ objectFit: "cover" }}
+                fill
+                sizes="100%"
                 className="duration-500 ease-in-out group-hover:scale-105"
               />
             </div>
           </div>
 
-          <div className="mx-auto mt-12 flex w-2/3 flex-col gap-6">
+          {/* <div className="mx-auto mt-12 flex w-2/3 flex-col gap-6">
             {news.content.map((paragraph: { text: string }, index: number) => (
               <Text color="gray" key={paragraph.text + index.toString()}>
                 {paragraph.text}
               </Text>
             ))}
+          </div> */}
+          <div className="mx-auto mt-12 flex w-2/3 flex-col gap-6">
+            <RichText data={news.content} />
           </div>
         </div>
       </Container>

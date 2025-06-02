@@ -1,11 +1,15 @@
 // pages/about-us.jsx
-import { fetchNews } from "@/actions/news";
+import { getLocale } from "next-intl/server";
+
 import { Container } from "@/components/container";
 import { NewsCard } from "@/components/news-card";
 import { Title } from "@/components/title";
+import { getAllNews } from "@/functions/news";
+import { getUrlFromMedia } from "@/lib/utils";
 
 async function AboutUs() {
-  const news = await fetchNews();
+  const locale = await getLocale();
+  const news = await getAllNews(locale);
   return (
     <div className="flex flex-col items-center bg-neutral-900 pt-[100px] md:pt-[120px]">
       <div className="my-4 border-b-2 border-white px-8 py-4 uppercase md:my-12 md:w-fit">
@@ -16,12 +20,12 @@ async function AboutUs() {
           {news.map((item) => (
             <NewsCard
               key={item.id}
-              id={item.id}
+              slug={item.slug ?? item.id}
               title={item.title}
-              short_description={item.short_description}
-              length_time={item.length_time}
-              logo={item.logo || "/images/logo-czarne.svg"}
-              main_image={item.main_image}
+              short_description={item.shortDescription}
+              length_time={5}
+              logo={"/images/logo-czarne.svg"}
+              main_image={getUrlFromMedia(item.heroImage)}
             />
           ))}
         </div>

@@ -4,7 +4,6 @@ import Link from "next/link";
 import { Text } from "./text";
 
 interface NewsCardProps {
-  id: string;
   title: string;
   short_description: string;
   long_description?: string;
@@ -12,18 +11,19 @@ interface NewsCardProps {
   logo: string;
   main_image: string;
   whiteMode?: boolean;
+  slug: string;
 }
 export function NewsCard({
-  id,
   title,
   short_description,
   length_time,
   logo,
   main_image,
   whiteMode,
+  slug,
 }: NewsCardProps) {
   return (
-    <Link href={`/news/${id}`} passHref>
+    <Link href={`/news/${slug}`} passHref>
       <div className="group flex h-104 cursor-pointer flex-col overflow-hidden rounded-md md:h-136">
         <div className="relative h-full overflow-hidden">
           <Image
