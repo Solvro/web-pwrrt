@@ -47,7 +47,9 @@ export function NewsCard({
             {title}
           </Text>
           <div className="mt-1 mb-3 md:mt-2 md:mb-4">
-            <Text color="black">{short_description}</Text>
+            <p className="font-openSans text-opacity-70 line-clamp-2 text-justify text-xs font-normal tracking-tighter text-black duration-300 ease-in-out sm:text-base sm:leading-5">
+              {short_description}
+            </p>
           </div>
           <div className="flex justify-between">
             <Image

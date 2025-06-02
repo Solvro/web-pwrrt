@@ -34,12 +34,6 @@ export const News: CollectionConfig = {
       localized: true,
     },
     {
-      type: "textarea",
-      name: "longDescription",
-      required: true,
-      localized: true,
-    },
-    {
       type: "text",
       name: "tags",
       required: true,

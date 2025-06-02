@@ -229,7 +229,6 @@ export interface News {
   heroImage: string | Media;
   title: string;
   shortDescription: string;
-  longDescription: string;
   tags: string[];
   authors?: (string | User)[] | null;
   content: {
@@ -425,7 +424,6 @@ export interface NewsSelect<T extends boolean = true> {
   heroImage?: T;
   title?: T;
   shortDescription?: T;
-  longDescription?: T;
   tags?: T;
   authors?: T;
   content?: T;

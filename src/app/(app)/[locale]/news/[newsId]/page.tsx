@@ -47,7 +47,7 @@ async function NewsPage(props: { params: Promise<Iparams> }) {
                 </Text>
               </div>
               <Text color="black" center alignCenter>
-                {news.longDescription}
+                {news.shortDescription}
               </Text>
             </div>
             <div className="relative h-128 w-2/3 overflow-hidden rounded-md bg-red-500">
