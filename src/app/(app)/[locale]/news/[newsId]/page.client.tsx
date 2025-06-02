@@ -6,8 +6,11 @@ import { format } from "date-fns";
 import { pl } from "date-fns/locale/pl";
 import type { Locale } from "next-intl";
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
+import { FaArrowLeft } from "react-icons/fa";
 
+import { Button } from "@/components/button";
 // import type { SanitizedConfig } from "payload";
 
 import { Container } from "@/components/container";
@@ -43,17 +46,26 @@ export function NewsPageClient({
     <div className="relative pt-[100px] md:pt-[120px]">
       {/* <div className="from-custom-red/60 absolute inset-0 z-0 max-h-screen bg-gradient-to-b to-transparent" /> */}
       <div
-        className={cn("absolute inset-0 z-0 max-h-screen bg-cover bg-center")}
+        className={cn("absolute inset-0 z-0 h-[700px] bg-cover bg-center")}
         style={{
           backgroundImage: `url(${getUrlFromMedia(data.heroImage)})`,
         }}
       >
-        <div className="from-custom-red/40 absolute inset-0 z-0 max-h-screen bg-gradient-to-b from-40% to-transparent to-90% backdrop-blur-sm" />
+        <div className="from-custom-red/40 absolute inset-0 z-0 max-h-screen bg-gradient-to-b from-40% to-white to-90% backdrop-blur-sm" />
       </div>
       <Container>
         <div className="relative my-12 flex w-full flex-col">
           <div className="relative flex items-center justify-end">
-            <div className="absolute inset-0 z-20 my-auto flex h-104 w-120 flex-col items-center justify-center gap-8 rounded-md bg-white/80 p-12 backdrop-blur-sm">
+            <div className="border-custom-red absolute inset-0 z-20 my-auto flex h-104 w-120 flex-col items-center justify-center gap-8 rounded-md border-2 bg-neutral-100 p-12">
+              <Button
+                className="!absolute top-2 left-2 max-w-0 px-4"
+                asChild
+                variant={"default"}
+              >
+                <Link href="/news">
+                  <FaArrowLeft className="h-4 w-4" />
+                </Link>
+              </Button>
               <div className="border-b-2 border-black px-4 py-8">
                 <Text
                   color="black"
