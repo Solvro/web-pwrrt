@@ -72,6 +72,20 @@ export const News: CollectionConfig = {
       },
     },
     {
+      type: "date",
+      admin: {
+        date: {
+          pickerAppearance: "dayOnly",
+          displayFormat: "dd MMM yyyy",
+        },
+        position: "sidebar",
+      },
+      name: "publishedAt",
+      label: "Data publikacji",
+      required: true,
+      defaultValue: new Date(),
+    },
+    {
       type: "number",
       name: "howLong",
       label: "Czas czytania (minuty)",
@@ -79,16 +93,6 @@ export const News: CollectionConfig = {
       admin: {
         position: "sidebar",
         placeholder: "10",
-      },
-    },
-    {
-      type: "relationship",
-      relationTo: "users",
-      name: "authors",
-      label: "Autorzy",
-      hasMany: true,
-      admin: {
-        position: "sidebar",
       },
     },
     {

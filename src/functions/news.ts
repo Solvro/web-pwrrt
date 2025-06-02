@@ -14,6 +14,7 @@ export const getAllNews = async (locale: Locale) => {
         equals: "published",
       },
     },
+    sort: "-publishedAt",
   });
   return news.docs;
 };
@@ -31,4 +32,22 @@ export const getNewsBySlug = async (slug: string, locale: Locale) => {
     },
   });
   return news.docs.length > 0 ? news.docs[0] : null;
+};
+
+export const getLast3News = async (locale: Locale) => {
+  const payload = await getPayload({ config });
+
+  const news = await payload.find({
+    collection: "news",
+    locale,
+    limit: 3,
+    sort: "-publishedAt",
+    where: {
+      _status: {
+        equals: "published",
+      },
+    },
+  });
+
+  return news.docs;
 };
