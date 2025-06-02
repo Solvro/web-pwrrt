@@ -24,6 +24,14 @@ export default buildConfig({
     importMap: {
       baseDir: path.resolve(dirname),
     },
+    components: {
+      graphics: {
+        Logo: {
+          path: "/components/payload/logo.tsx",
+          exportName: "Logo",
+        },
+      },
+    },
   },
   collections: [Users, Media, Bolids, Partners, TeamMembers],
   globals: [MainPage],
