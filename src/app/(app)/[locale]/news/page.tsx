@@ -23,7 +23,7 @@ async function AboutUs() {
               slug={item.slug ?? item.id}
               title={item.title}
               short_description={item.shortDescription}
-              length_time={5}
+              length_time={item.howLong}
               logo={"/images/logo-czarne.svg"}
               main_image={getUrlFromMedia(item.heroImage)}
             />

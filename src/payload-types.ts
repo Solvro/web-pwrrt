@@ -230,6 +230,7 @@ export interface News {
   title: string;
   shortDescription: string;
   tags: string[];
+  howLong: number;
   authors?: (string | User)[] | null;
   content: {
     root: {
@@ -425,6 +426,7 @@ export interface NewsSelect<T extends boolean = true> {
   title?: T;
   shortDescription?: T;
   tags?: T;
+  howLong?: T;
   authors?: T;
   content?: T;
   images?: T;
