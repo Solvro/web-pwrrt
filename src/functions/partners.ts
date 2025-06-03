@@ -3,7 +3,10 @@ import type { Locale } from "next-intl";
 import { getPayload } from "payload";
 import "server-only";
 
-async function getPartnersByType(type: string, locale: Locale) {
+async function getPartnersByType(
+  type: "strategic" | "platinum" | "gold" | "silver" | "bronze",
+  locale: Locale,
+) {
   const payload = await getPayload({ config });
   const result = await payload.find({
     collection: "partners",
