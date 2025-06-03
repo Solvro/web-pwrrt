@@ -104,7 +104,7 @@ const getSVGIcon = (iconName: string) => {
   }
 };
 
-export function SponsorsOfer() {
+export function SponsorsOffer() {
   const router = useRouter();
   const path = usePathname();
 

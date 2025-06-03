@@ -7,7 +7,7 @@ import { Text } from "@/components/text";
 import { Title } from "@/components/title";
 
 import { UserCard } from "../../team/[teamId]/user-card";
-import { SponsorsOfer } from "./sponsors-ofer";
+import { SponsorsOffer } from "./sponsors-offer";
 
 interface Role {
   department: string;
@@ -294,7 +294,7 @@ export default async function PartnersJoinPage() {
         </Container>
       </div>
       <div className="pt-48 md:pt-64">
-        <SponsorsOfer />
+        <SponsorsOffer />
       </div>
       <div className="relative -mt-60 w-full bg-white pt-80">
         <Container>
@@ -327,24 +327,26 @@ export default async function PartnersJoinPage() {
               </Text>
               <div className="grid grid-cols-1 items-start gap-10 md:grid-cols-5 md:gap-4">
                 <div className="flex flex-col items-center gap-2 text-center">
-                  {getSVGIcon(t("benefits.benefit1.icon"))}
-                  <Text center>{t("benefits.benefit1.title")}</Text>
+                  {getSVGIcon(t("benefits.internationalPromotion.icon"))}
+                  <Text center>
+                    {t("benefits.internationalPromotion.title")}
+                  </Text>
                 </div>
                 <div className="flex flex-col items-center gap-2 text-center">
-                  {getSVGIcon(t("benefits.benefit2.icon"))}
-                  <Text center>{t("benefits.benefit2.title")}</Text>
+                  {getSVGIcon(t("benefits.employerBranding.icon"))}
+                  <Text center>{t("benefits.employerBranding.title")}</Text>
                 </div>
                 <div className="flex flex-col items-center gap-2 text-center">
-                  {getSVGIcon(t("benefits.benefit3.icon"))}
-                  <Text center>{t("benefits.benefit3.title")}</Text>
+                  {getSVGIcon(t("benefits.socialMediaPresence.icon"))}
+                  <Text center>{t("benefits.socialMediaPresence.title")}</Text>
                 </div>
                 <div className="flex flex-col items-center gap-2 text-center">
-                  {getSVGIcon(t("benefits.benefit4.icon"))}
-                  <Text center>{t("benefits.benefit4.title")}</Text>
+                  {getSVGIcon(t("benefits.companyVisibility.icon"))}
+                  <Text center>{t("benefits.companyVisibility.title")}</Text>
                 </div>
                 <div className="flex flex-col items-center gap-2 text-center">
-                  {getSVGIcon(t("benefits.benefit5.icon"))}
-                  <Text center>{t("benefits.benefit5.title")}</Text>
+                  {getSVGIcon(t("benefits.innovativeProject.icon"))}
+                  <Text center>{t("benefits.innovativeProject.title")}</Text>
                 </div>
               </div>
             </div>
