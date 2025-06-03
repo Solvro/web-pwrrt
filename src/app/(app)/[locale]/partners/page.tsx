@@ -11,6 +11,7 @@ import {
   getSilverSponsors,
   getStrategicSponsors,
 } from "@/functions/partners";
+import { Media } from "@/payload-types";
 
 import { PartnersButton } from "./partners-button";
 
@@ -19,7 +20,7 @@ interface SponsorGridProps {
   gridCols: string;
   height: string;
   gap?: string;
-  sponsors: { name: string; website: string }[];
+  sponsors: { name: string; website: string; logo: string | Media }[];
 }
 
 function SponsorList({ gridCols, height, sponsors }: SponsorGridProps) {
@@ -34,7 +35,11 @@ function SponsorList({ gridCols, height, sponsors }: SponsorGridProps) {
           className={`${height} relative mx-6 overflow-hidden rounded-md duration-300 ease-in-out hover:scale-110`}
         >
           <Image
-            src={`/images/sponsors/${sponsor.name}`}
+            src={
+              typeof sponsor.logo === "string"
+                ? sponsor.logo
+                : (sponsor.logo.url ?? "")
+            }
             alt={sponsor.name}
             fill
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
