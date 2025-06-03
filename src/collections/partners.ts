@@ -22,6 +22,7 @@ const Partners: CollectionConfig = {
     {
       name: "website",
       type: "text",
+      required: true,
       label: "Strona partnera",
     },
     {
