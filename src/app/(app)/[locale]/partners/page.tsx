@@ -1,5 +1,5 @@
 import { useTranslations } from "next-intl";
-import { getLocale, getTranslations } from "next-intl/server";
+import { getTranslations } from "next-intl/server";
 import Image from "next/image";
 
 import { Container } from "@/components/container";
@@ -88,14 +88,13 @@ function SponsorGrid({
 }
 
 export default async function Partners() {
-  const locale = await getLocale();
   const t = await getTranslations("partnersPage");
 
-  const strategicSponsors = await getStrategicSponsors(locale);
-  const platinumSponsors = await getPlatinumSponsors(locale);
-  const goldSponsors = await getGoldSponsors(locale);
-  const silverSponsors = await getSilverSponsors(locale);
-  const bronzeSponsors = await getBronzeSponsors(locale);
+  const strategicSponsors = await getStrategicSponsors();
+  const platinumSponsors = await getPlatinumSponsors();
+  const goldSponsors = await getGoldSponsors();
+  const silverSponsors = await getSilverSponsors();
+  const bronzeSponsors = await getBronzeSponsors();
 
   return (
     <div className="mb-6 pt-[100px] md:mb-12 md:pt-[120px]">
