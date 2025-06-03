@@ -193,7 +193,7 @@ export interface Partner {
   id: string;
   name: string;
   logo: string | Media;
-  website?: string | null;
+  website: string;
   type: 'strategic' | 'platinum' | 'gold' | 'silver' | 'bronze';
   updatedAt: string;
   createdAt: string;
