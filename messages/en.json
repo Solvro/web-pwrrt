@@ -312,23 +312,23 @@
     "sectionTitle1": "Contact us:",
     "sectionTitle2": "Cooperation with us means:",
     "benefits": {
-      "benefit1": {
+      "internationalPromotion": {
         "title": "An original way of international promotion",
         "icon": "internationalPromotion"
       },
-      "benefit2": {
+      "employerBranding": {
         "title": "Effective employer branding",
         "icon": "employerBranding"
       },
-      "benefit3": {
+      "socialMediaPresence": {
         "title": "Regular presence in social media",
         "icon": "socialMediaPresence"
       },
-      "benefit4": {
+      "companyVisibility": {
         "title": "Increased company visibility",
         "icon": "companyVisibility"
       },
-      "benefit5": {
+      "innovativeProject": {
         "title": "Being part of an innovative project",
         "icon": "innovativeProject"
       }

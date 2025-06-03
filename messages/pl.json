@@ -324,55 +324,56 @@
   },
   "partnerJoinUsPage": {
     "pageTitle": "ZOSTAŃ PARTNEREM",
+    "sectionTitle1": "Skontaktuj się z naszymi członkami:",
     "sectionTitle2": "Współpraca z nami to:",
-    "benefits": [
-      {
+    "benefits": {
+      "internationalPromotion": {
         "title": "Oryginalny sposób na międzynarodową promocję",
         "icon": "internationalPromotion"
       },
-      {
+      "employerBranding": {
         "title": "Skuteczny employer branding",
         "icon": "employerBranding"
       },
-      {
+      "socialMediaPresence": {
         "title": "Regularna obecność w mediach społecznościowych",
         "icon": "socialMediaPresence"
       },
-      {
+      "companyVisibility": {
         "title": "Zwiększona widoczność firmy",
         "icon": "companyVisibility"
       },
-      {
+      "innovativeProject": {
         "title": "Bycie częścią innowacyjnego projektu",
         "icon": "innovativeProject"
       }
-    ],
+    },
     "card": {
       "sectionTitle": "Poznaj naszą ofertę wspołpracy!",
       "buttonLabel": "Skontaktuj się z nami",
       "coZnajdziesz": "Co w niej znajdziesz?",
-      "details": [
-        {
+      "details": {
+        "aboutUs": {
           "icon": "aboutUs",
           "title": "Kim jesteśmy"
         },
-        {
+        "achievements": {
           "icon": "achievements",
           "title": "Nasze sukcesy"
         },
-        {
+        "cooperation": {
           "icon": "cooperation",
           "title": "Propozycja współpracy z Zespołem"
         },
-        {
+        "pakiet": {
           "icon": "pakiet",
           "title": "Pakiety działań wizerunkowych "
         },
-        {
+        "contact": {
           "icon": "contact",
           "title": "Kontakt"
         }
-      ]
+      }
     }
   }
 }
