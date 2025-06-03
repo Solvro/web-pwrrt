@@ -11,7 +11,7 @@ import {
   getSilverSponsors,
   getStrategicSponsors,
 } from "@/functions/partners";
-import { Media } from "@/payload-types";
+import type { Media } from "@/payload-types";
 
 import { PartnersButton } from "./partners-button";
 
