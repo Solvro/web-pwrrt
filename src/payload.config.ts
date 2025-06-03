@@ -10,6 +10,7 @@ import sharp from "sharp";
 
 import { Bolids } from "./collections/bolids";
 import { Media } from "./collections/media";
+import { News } from "./collections/news";
 import Partners from "./collections/partners";
 import { TeamMembers } from "./collections/team-members";
 import { Users } from "./collections/users";
@@ -25,7 +26,7 @@ export default buildConfig({
       baseDir: path.resolve(dirname),
     },
   },
-  collections: [Users, Media, Bolids, Partners, TeamMembers],
+  collections: [Users, Media, Bolids, Partners, TeamMembers, News],
   globals: [MainPage],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET ?? "",

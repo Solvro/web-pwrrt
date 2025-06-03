@@ -4,16 +4,14 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "prisma generate && next build",
-    "dev": "next dev",
+    "build": "next build --turbopack",
+    "dev": "next dev --turbopack",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
-    "postinstall": "prisma generate",
     "knip": "knip",
     "lint": "next lint --max-warnings=0",
     "lint:fix": "next lint --fix",
     "prepare": "husky || true",
-    "seed": "node prisma/seed-team-member.js",
     "start": "next start",
     "typecheck": "tsc"
   },
@@ -27,10 +25,10 @@
   },
   "dependencies": {
     "@payloadcms/db-mongodb": "^3.38.0",
+    "@payloadcms/live-preview-react": "^3.38.0",
     "@payloadcms/next": "^3.38.0",
     "@payloadcms/richtext-lexical": "^3.38.0",
     "@payloadcms/storage-s3": "^3.38.0",
-    "@prisma/client": "^5.10.2",
     "@radix-ui/react-slot": "^1.2.2",
     "@react-google-maps/api": "^2.20.6",
     "@react-three/drei": "^10.0.8",
@@ -40,6 +38,7 @@
     "bcrypt": "^5.1.1",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
+    "date-fns": "^4.1.0",
     "dotenv": "^16.4.7",
     "graphql": "^16.11.0",
     "knip": "^5.55.1",
@@ -73,11 +72,7 @@
     "lint-staged": "^15.5.2",
     "postcss": "^8.4.35",
     "prettier": "3.5.3",
-    "prisma": "^5.10.2",
     "tailwindcss": "^4.1.6",
     "typescript": "^5.0.0"
-  },
-  "prisma": {
-    "seed": "node prisma/seedTeamMember.js"
   }
 }
