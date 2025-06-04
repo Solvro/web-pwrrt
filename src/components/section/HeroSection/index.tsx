@@ -85,7 +85,7 @@ export function HeroSection() {
               custom={0.2}
               variants={textVariants}
             >
-              <h1 className="font-syncopate text-6xl font-extrabold text-white">
+              <h1 className="font-syncopate text-4xl font-extrabold text-white md:text-6xl">
                 {t("title2")}
               </h1>
             </motion.div>
