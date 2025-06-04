@@ -4,6 +4,7 @@ export const TeamMembers: CollectionConfig = {
   slug: "teamMembers",
   admin: {
     useAsTitle: "name",
+    defaultColumns: ["name", "surname", "email", "roles"],
   },
   fields: [
     {
