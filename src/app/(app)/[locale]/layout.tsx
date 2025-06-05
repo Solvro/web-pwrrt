@@ -1,4 +1,5 @@
 /* eslint-disable unicorn/prevent-abbreviations */
+import { GoogleAnalytics } from "@next/third-parties/google";
 import type { Metadata } from "next";
 import { NextIntlClientProvider, hasLocale } from "next-intl";
 import { setRequestLocale } from "next-intl/server";
@@ -53,6 +54,9 @@ export default async function LocaleLayout({
           </ClientProviders>
         </NextIntlClientProvider>
       </body>
+      <GoogleAnalytics
+        gaId={process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID ?? ""}
+      />
     </html>
   );
 }
