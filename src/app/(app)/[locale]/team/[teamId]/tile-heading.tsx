@@ -8,6 +8,7 @@ import { FiPhone } from "react-icons/fi";
 
 import { Button } from "@/components/button";
 import { Text } from "@/components/text";
+import { cn } from "@/lib/utils";
 
 interface Member {
   name: string;
@@ -93,21 +94,24 @@ export function TileHeading({
         <div
           className={` ${
             opiekun ? "" : "group-hover:my-1"
-          }flex z-30 flex-col transition-all duration-300 ease-in-out`}
+          } z-30 flex flex-col transition-all duration-300 ease-in-out`}
         >
           <div
-            className={` ${
-              opiekun ? "" : "group-hover:text-center"
-            } w-full duration-300 ease-in-out`}
+            className={cn("w-full duration-300 ease-in-out", {
+              "group-hover:text-center": !opiekun,
+            })}
           >
             <Text color="white" opacity1 small wide bold center>
               {member.name} {member.surname}
             </Text>
           </div>
           <div
-            className={`${
-              opiekun ? "" : "group-hover:text-center"
-            }w-full capitalize transition-all duration-300 ease-in-out`}
+            className={cn(
+              "w-full capitalize transition-all duration-300 ease-in-out",
+              {
+                "group-hover:text-center": !opiekun,
+              },
+            )}
           >
             <Text color="red" opacity1 bold center>
               {isHovered

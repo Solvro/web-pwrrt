@@ -1,16 +1,13 @@
 /* eslint-disable @typescript-eslint/no-unnecessary-condition */
-import { getTranslations } from "next-intl/server";
-import Image from "next/image";
-
 import { getAllBolids, getFirstBolid } from "@/actions/bolid";
 import { getTeamByBolid } from "@/actions/team";
 import type { ProcessedTeamMember } from "@/actions/team";
 import { Container } from "@/components/container";
-import { SecondaryButton } from "@/components/secondary-button";
 import { Slider } from "@/components/section/BolidSection/slider";
 import { Title } from "@/components/title";
 import type { Media } from "@/payload-types";
 
+import { BolidImage } from "./bolid-image";
 import { UserCard } from "./user-card";
 import { sortRoles } from "./utils";
 
@@ -132,8 +129,6 @@ async function TeamPage(props: { params: Promise<Iparams> }) {
     return aIndex - bIndex;
   });
 
-  const t = await getTranslations("teamPage");
-
   return (
     <div className="relative bg-neutral-950 pt-32 pb-12">
       <div className="relative overflow-hidden">
@@ -206,26 +201,7 @@ async function TeamPage(props: { params: Promise<Iparams> }) {
                       ))}
                   </div>
                 </div>
-                {department === "management" && (
-                  <div className="order-1 flex flex-col justify-center">
-                    <div className="relative">
-                      <div className="absolute">
-                        <SecondaryButton
-                          darkMode
-                          to={`/bolid/${teamId}`}
-                          buttonText={`${t("doBolidu")} ${teamId}`}
-                        />
-                      </div>
-                      <Image
-                        src={`/images/bolid/${teamId}/${teamId}.png`}
-                        alt="bolid"
-                        width={700}
-                        height={551}
-                        style={{ objectFit: "cover" }}
-                      />
-                    </div>
-                  </div>
-                )}
+                <BolidImage department={department} teamId={teamId} />
               </div>
             </Container>
           </div>
