@@ -4,6 +4,7 @@ const Partners: CollectionConfig = {
   slug: "partners",
   admin: {
     useAsTitle: "name",
+    defaultColumns: ["name", "website", "type"],
   },
   fields: [
     {
