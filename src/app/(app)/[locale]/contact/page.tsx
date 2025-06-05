@@ -1,3 +1,4 @@
+import knSolvro from "@public/images/SolvroPlaceholder.png";
 import { getTranslations } from "next-intl/server";
 
 import { getTeamByFullName } from "@/actions/team";
@@ -159,7 +160,25 @@ export default async function ContactUs() {
           </div>
           <div className="flex flex-col items-start gap-4 md:items-center md:gap-6">
             <Admin text={t("siteAdministration")} />
-            <div className="grid w-full grid-cols-1 gap-6 md:w-1/2 md:grid-cols-2">
+            <div className="grid w-full grid-cols-1 gap-6 md:w-3/4 md:grid-cols-3">
+              <UserCard
+                member={{
+                  name: "KN",
+                  surname: "Solvro",
+                  currentRole: "Developing & Maintaining website",
+                  email: "kn.solvro@gmail.com",
+                  profilePlaceholder: knSolvro,
+                }}
+                roleHistory={{
+                  "KN Solvro": [
+                    {
+                      bolidName: "RT15e",
+                      role: "Developing & Maintaining website",
+                      department: "KN",
+                    },
+                  ],
+                }}
+              />
               {siteAdministration.map((member) => (
                 <UserCard
                   key={`${member.name}${member.surname}admin`}

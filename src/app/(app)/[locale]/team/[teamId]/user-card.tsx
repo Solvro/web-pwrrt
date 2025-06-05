@@ -1,5 +1,6 @@
 "use client";
 
+import type { StaticImageData } from "next/image";
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
 
@@ -16,6 +17,7 @@ interface UserCardProps {
     phoneNumber?: string | null;
     email?: string | null;
     profile?: Media | null;
+    profilePlaceholder?: StaticImageData;
   };
   roleHistory: Record<
     string,
@@ -50,19 +52,33 @@ export function UserCard({ guardian, member, roleHistory }: UserCardProps) {
       <div className="absolute inset-0 z-0 h-full w-full rounded-full bg-white opacity-10 blur-3xl"></div>
       <div className="relative overflow-hidden rounded-md bg-black pb-14">
         <div className="relative h-[350px]">
-          <Image
-            src={imageSource}
-            alt={`Zdjęcie ${member.name} ${member.surname}`}
-            loading="lazy"
-            placeholder="blur"
-            fill
-            sizes="100%"
-            blurDataURL={placeholderImage}
-            onError={handleError}
-            style={{
-              objectFit: "cover",
-            }}
-          />
+          {member.profilePlaceholder ? (
+            <Image
+              src={member.profilePlaceholder}
+              alt={`Zdjęcie ${member.name} ${member.surname}`}
+              loading="lazy"
+              placeholder="blur"
+              fill
+              sizes="100%"
+              style={{
+                objectFit: "cover",
+              }}
+            />
+          ) : (
+            <Image
+              src={imageSource}
+              alt={`Zdjęcie ${member.name} ${member.surname}`}
+              loading="lazy"
+              placeholder="blur"
+              fill
+              sizes="100%"
+              blurDataURL={placeholderImage}
+              onError={handleError}
+              style={{
+                objectFit: "cover",
+              }}
+            />
+          )}
         </div>
         <TileHeading
           opiekun={guardian}
