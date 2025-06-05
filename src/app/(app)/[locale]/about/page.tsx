@@ -1,7 +1,8 @@
 import { FSSection } from "@/components/section/FSSection";
 import { HistorySection } from "@/components/section/HistorySection";
 import { JoinusSection } from "@/components/section/JoinusSection";
-import { SponsorsSection } from "@/components/section/SponsorsSection";
+
+// import { SponsorsSection } from "@/components/section/SponsorsSection";
 
 import { DepartmentsAbout } from "./DepartmentsAbout";
 import { FSAbout } from "./fs-about";
@@ -19,7 +20,7 @@ export default function AboutUs() {
       <DepartmentsAbout />
       <FSSection aboutUs />
       <FSAbout />
-      <SponsorsSection />
+      {/* <SponsorsSection /> */}
       <JoinusSection />
     </div>
   );
