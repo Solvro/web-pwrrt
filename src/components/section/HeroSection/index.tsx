@@ -157,6 +157,8 @@ export function HeroSection() {
             <Image
               src={BolidImage}
               alt="bolid"
+              placeholder="blur"
+              priority
               style={{
                 maxWidth: "100%",
                 height: "auto",
