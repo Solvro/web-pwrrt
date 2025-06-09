@@ -1,31 +1,29 @@
 "use client";
 
+import BolidImage from "@public/images/2bolid_main.png";
 import { motion } from "motion/react";
 import { useTranslations } from "next-intl";
-import dynamic from "next/dynamic";
 import Image from "next/image";
 import Link from "next/link";
 import { useRef } from "react";
 import { FaArrowRight } from "react-icons/fa";
 
 import { Button } from "@/components/button";
-import { useMobile } from "@/hooks/use-mobile";
-import { useOnScreen } from "@/hooks/use-on-screen";
 
 import { Container } from "../../container";
 import { Title } from "../../title";
 import { BackgroundVideo } from "./background-video";
 
-const BolidModel = dynamic(
-  async () => {
-    const bolidModule = await import("./bolid-model");
-    return bolidModule.BolidModel;
-  },
-  {
-    ssr: false,
-    loading: () => <p>Loading...</p>,
-  },
-);
+// const BolidModel = dynamic(
+//   async () => {
+//     const bolidModule = await import("./bolid-model");
+//     return bolidModule.BolidModel;
+//   },
+//   {
+//     ssr: false,
+//     loading: () => <p>Loading...</p>,
+//   },
+// );
 
 const textVariants = {
   hidden: { x: -100, opacity: 0 },
@@ -57,9 +55,9 @@ const imageVariants = {
 
 export function HeroSection() {
   const t = useTranslations("heroSection");
-  const isMobile = useMobile();
+  // const isMobile = useMobile();
   const heroDivRef = useRef<HTMLDivElement>(null);
-  const isVisible = useOnScreen(heroDivRef);
+  // const isVisible = useOnScreen(heroDivRef);
 
   return (
     <div className="relative md:h-screen" ref={heroDivRef}>
@@ -123,8 +121,6 @@ export function HeroSection() {
               variants={textVariants}
               className="group hidden items-center rounded-sm py-2 text-white transition-all duration-300 hover:pl-8 md:flex"
             >
-              {/* <span>{t("button")}</span>
-              <FaArrowRight className="group-hover:text-custom-red ml-2 transition-all duration-300" /> */}
               <Button asChild className="max-w-sm">
                 <Link href="#bolid">
                   {t("button")}{" "}
@@ -142,7 +138,7 @@ export function HeroSection() {
             custom={1}
             variants={imageVariants}
           >
-            {isVisible ? (
+            {/* {isVisible ? (
               isMobile ? (
                 <Image
                   src="/images/2bolid_main.png"
@@ -157,7 +153,15 @@ export function HeroSection() {
               ) : (
                 <BolidModel />
               )
-            ) : null}
+            ) : null} */}
+            <Image
+              src={BolidImage}
+              alt="bolid"
+              style={{
+                maxWidth: "100%",
+                height: "auto",
+              }}
+            />
           </motion.div>
         </div>
       </Container>
