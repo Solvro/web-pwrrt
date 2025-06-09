@@ -23,9 +23,31 @@ export function generateStaticParams() {
 const font = Open_Sans({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "PWR Racing",
+  title: {
+    default: "PWR Racing Team",
+    template: "%s | PWR Racing",
+  },
   description:
     "PWR Racing Team to Strategiczne Koło Naukowe, a zarazem najstarszy i najbardziej utytułowany Zespół wyścigowy Formula Student w Polsce, działający przy Politechnice Wrocławskiej.",
+  keywords: [
+    "PWR Racing Team",
+    "PWR Racing",
+    "PWR",
+    "Formula Student",
+    "Formula Student Wrocław",
+    "Formula Student Poland",
+    "Formula Student Europe",
+    "pwrrt",
+    "pwr",
+    "wrocław",
+    "politechnika wrocławska",
+    "politechnika wrocławska",
+    "pwrracing",
+    "wroclaw racing",
+    "wrocław racing",
+    "wrocław racing team",
+    "wrocław racing team",
+  ],
 };
 
 export default async function LocaleLayout({

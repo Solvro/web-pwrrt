@@ -21,6 +21,17 @@ interface Iparams {
   bolidId?: string;
 }
 
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<Iparams>;
+}) {
+  const { bolidId } = await params;
+  return {
+    title: bolidId,
+  };
+}
+
 async function BolidPage(props: { params: Promise<Iparams> }) {
   const parameters = await props.params;
   const locale = await getLocale();

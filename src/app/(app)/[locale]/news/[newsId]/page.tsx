@@ -1,3 +1,4 @@
+import type { Locale } from "next-intl";
 import { getLocale } from "next-intl/server";
 import { redirect } from "next/navigation";
 
@@ -6,7 +7,26 @@ import { getNewsBySlug } from "@/functions/news";
 import { NewsPageClient } from "./page.client";
 
 interface Iparams {
-  newsId?: string;
+  newsId: string;
+  locale: Locale;
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<Iparams>;
+}) {
+  const { newsId, locale } = await params;
+  const news = await getNewsBySlug(newsId, locale);
+  if (!news) {
+    return {
+      title: "Not found",
+    };
+  }
+  return {
+    title: news.title,
+    description: news.shortDescription,
+  };
 }
 
 async function NewsPage(props: { params: Promise<Iparams> }) {

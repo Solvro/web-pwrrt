@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { useTranslations } from "next-intl";
 import { getTranslations } from "next-intl/server";
 import Image from "next/image";
@@ -23,6 +24,10 @@ interface SponsorGridProps {
   gap?: string;
   sponsors: { name: string; website: string; logo: string | Media }[];
 }
+
+export const metadata: Metadata = {
+  title: "Partners",
+};
 
 function SponsorList({ gridCols, height, sponsors }: SponsorGridProps) {
   return (

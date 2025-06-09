@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 import React from "react";
 
@@ -265,6 +266,10 @@ const getSVGIcon = (iconName: string) => {
       );
     }
   }
+};
+
+export const metadata: Metadata = {
+  title: "Partners Join Us",
 };
 
 export default async function PartnersJoinPage() {

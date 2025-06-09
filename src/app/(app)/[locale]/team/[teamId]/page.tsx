@@ -31,6 +31,17 @@ interface RoleHistoryItem {
   department: string;
 }
 
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<Iparams>;
+}) {
+  const { teamId } = await params;
+  return {
+    title: `${teamId} Team`,
+  };
+}
+
 async function TeamPage(props: { params: Promise<Iparams> }) {
   const parameters = await props.params;
   const allBolids = await getAllBolids(parameters.locale, true, true);

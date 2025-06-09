@@ -1,4 +1,5 @@
 import knSolvro from "@public/images/SolvroPlaceholder.png";
+import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 
 import { getTeamByFullName } from "@/actions/team";
@@ -26,6 +27,10 @@ interface TeamMember {
 }
 
 type RoleHistory = Record<string, Role[]>;
+
+export const metadata: Metadata = {
+  title: "Contact Us",
+};
 
 const getMembersData = async (
   names: string[],

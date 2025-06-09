@@ -1,4 +1,5 @@
 // pages/about-us.jsx
+import type { Metadata } from "next";
 import { getLocale } from "next-intl/server";
 
 import { Container } from "@/components/container";
@@ -6,6 +7,10 @@ import { NewsCard } from "@/components/news-card";
 import { Title } from "@/components/title";
 import { getAllNews } from "@/functions/news";
 import { getUrlFromMedia } from "@/lib/utils";
+
+export const metadata: Metadata = {
+  title: "News",
+};
 
 async function AboutUs() {
   const locale = await getLocale();
