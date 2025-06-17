@@ -3,6 +3,7 @@ import { getLocale } from "next-intl/server";
 import { redirect } from "next/navigation";
 
 import { getNewsBySlug } from "@/functions/news";
+import { getUrlFromMedia } from "@/lib/utils";
 
 import { NewsPageClient } from "./page.client";
 
@@ -26,6 +27,24 @@ export async function generateMetadata({
   return {
     title: news.title,
     description: news.shortDescription,
+    openGraph: {
+      title: news.title,
+      description: news.shortDescription,
+      images: news.images?.[0]
+        ? [
+            {
+              url: getUrlFromMedia(news.images[0]),
+            },
+          ]
+        : [],
+    },
+    alternates: {
+      canonical: `https://racing-pwr.pl/${locale}/news/${newsId}`,
+      languages: {
+        en: `https://racing-pwr.pl/en/news/${newsId}`,
+        pl: `https://racing-pwr.pl/pl/news/${newsId}`,
+      },
+    },
   };
 }
 

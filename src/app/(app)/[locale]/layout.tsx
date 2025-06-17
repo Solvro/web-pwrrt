@@ -1,9 +1,11 @@
 /* eslint-disable unicorn/prevent-abbreviations */
 import { GoogleAnalytics } from "@next/third-parties/google";
 import type { Metadata } from "next";
+import type { Locale } from "next-intl";
 import { NextIntlClientProvider, hasLocale } from "next-intl";
-import { setRequestLocale } from "next-intl/server";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Open_Sans } from "next/font/google";
+import Head from "next/head";
 import { notFound } from "next/navigation";
 
 import { ClientProviders } from "@/components/client-providers";
@@ -22,33 +24,37 @@ export function generateStaticParams() {
 
 const font = Open_Sans({ subsets: ["latin"] });
 
-export const metadata: Metadata = {
-  title: {
-    default: "PWR Racing Team",
-    template: "%s | PWR Racing",
-  },
-  description:
-    "PWR Racing Team to Strategiczne Koło Naukowe, a zarazem najstarszy i najbardziej utytułowany Zespół wyścigowy Formula Student w Polsce, działający przy Politechnice Wrocławskiej.",
-  keywords: [
-    "PWR Racing Team",
-    "PWR Racing",
-    "PWR",
-    "Formula Student",
-    "Formula Student Wrocław",
-    "Formula Student Poland",
-    "Formula Student Europe",
-    "pwrrt",
-    "pwr",
-    "wrocław",
-    "politechnika wrocławska",
-    "politechnika wrocławska",
-    "pwrracing",
-    "wroclaw racing",
-    "wrocław racing",
-    "wrocław racing team",
-    "wrocław racing team",
-  ],
-};
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: Locale }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "metadata" });
+
+  return {
+    title: {
+      template: t("titleTemplate"),
+      default: t("titleDefault"),
+    },
+    description: t("description"),
+    authors: [
+      {
+        name: "Solvro Team",
+        url: "https://solvro.pwr.edu.pl",
+      },
+    ],
+    robots: "index, follow",
+    keywords: t("keywords").split(", "),
+    alternates: {
+      canonical: `https://racing-pwr.pl/${locale}`,
+      languages: {
+        en: "https://racing-pwr.pl/en",
+        pl: "https://racing-pwr.pl/pl",
+      },
+    },
+  };
+}
 
 export default async function LocaleLayout({
   children,
@@ -65,6 +71,15 @@ export default async function LocaleLayout({
 
   return (
     <html lang={locale}>
+      <Head>
+        <link rel="alternate" hrefLang="en" href="https://racing-pwr.pl/en" />
+        <link rel="alternate" hrefLang="pl" href="https://racing-pwr.pl/pl" />
+        <link
+          rel="alternate"
+          hrefLang="x-default"
+          href="https://racing-pwr.pl/"
+        />
+      </Head>
       <body className={cn(font.className, "overflow-x-hidden")}>
         <NextIntlClientProvider>
           <ClientProviders>
