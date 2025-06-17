@@ -7,6 +7,7 @@ import { Title } from "@/components/title";
 
 import { UserCard } from "../team/[teamId]/user-card";
 import { sortRoles } from "../team/[teamId]/utils";
+import { ContactReportForm } from "./contact-report";
 import { Admin, EmailAction } from "./email-action";
 import { ErrorReportForm } from "./error-report";
 import { GoogleMapComponent } from "./map";
@@ -174,12 +175,10 @@ export default async function ContactUs() {
       </Container>
       <Container>
         <div className="mt-16 mb-12 flex w-full flex-col items-center">
-          <div className="my-4 mb-2 flex w-3/5 flex-col items-center border-b-2 border-black py-4 text-center">
-            <Text bold medium>
-              {t("reportBugs")}
-            </Text>
+          <div className="flex w-[100vw] flex-wrap justify-center gap-20">
+            <ErrorReportForm />
+            <ContactReportForm />
           </div>
-          <ErrorReportForm />
         </div>
       </Container>
       <div className="mt-4 mb-6 text-center md:mt-12">

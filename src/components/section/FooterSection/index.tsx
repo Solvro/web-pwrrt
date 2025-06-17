@@ -232,9 +232,14 @@ export function FooterSection() {
             <Text color="white" center>
               {t("createdBy")}
             </Text>
-            <Text color="white" center>
-              © {new Date().getFullYear()} {t("allRightsReserved")}
-            </Text>
+            <div className="flex flex-col">
+              <Text color="white" center>
+                © {new Date().getFullYear()} {t("allRightsReserved")}
+              </Text>
+              <div className="text-[10px] text-white">
+                This site is protected by reCAPTCHA and the Google
+              </div>
+            </div>
           </div>
         </div>
       </Container>

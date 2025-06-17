@@ -8,7 +8,9 @@ layer(utilities);
 /*
   ---break---
 */
-
+.grecaptcha-badge {
+  visibility: hidden;
+}
 @custom-variant dark (&:is(.dark *));
 
 @theme {

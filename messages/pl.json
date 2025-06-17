@@ -266,8 +266,12 @@
     "projectSupervisors": "Opiekunowie zespołu:",
     "siteAdministration": "Administracja strony:",
     "reportBugs": "Zgłoś Błędy",
+    "contactUsForm": "Kontakt",
     "formEmail": "Adres Email:",
-    "formDescription": "Opis Błędu:"
+    "formBugDescription": "Opis Błędu:",
+    "formContactDescription": "Treść:",
+    "formSubmitBugReport": "Zgłoś Błąd",
+    "formSubmitContactReport": "Skontaktuj się"
   },
   "joinUs": {
     "pageTitle": "REKRUTACJA",
