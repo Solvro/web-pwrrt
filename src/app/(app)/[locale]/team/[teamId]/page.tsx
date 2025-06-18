@@ -143,12 +143,7 @@ async function TeamPage(props: { params: Promise<Iparams> }) {
   return (
     <div className="relative bg-neutral-950 pt-32 pb-12">
       <div className="relative overflow-hidden">
-        <Slider
-          currentBolid={teamId}
-          allBolids={allBolids}
-          darkMode={true}
-          showThisYear
-        />
+        <Slider currentBolid={teamId} allBolids={allBolids} darkMode={true} />
         {sortedDepartments.map((department, depIndex) => (
           <div key={department} className="">
             <div

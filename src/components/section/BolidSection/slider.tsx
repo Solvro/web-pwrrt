@@ -16,15 +16,13 @@ interface SliderProps {
   onChangeBolid?: (newBolid: string) => void;
   allBolids: { id: string; name: string; year: string }[];
   darkMode?: boolean;
-  showThisYear?: boolean;
 }
 
 export function Slider({
-  currentBolid = "RT13e",
+  currentBolid,
   onChangeBolid = () => {},
   allBolids,
   darkMode = false,
-  showThisYear = false,
 }: SliderProps) {
   // Stan dla przeciągania
   const [isDragging, setIsDragging] = useState(false);
@@ -76,10 +74,6 @@ export function Slider({
     setIsDragging(false);
   };
 
-  const howManyBolidsThisYear = allBolids.filter(
-    (bolid) => Number.parseInt(bolid.year) === new Date().getFullYear(),
-  ).length;
-
   return (
     <div className="">
       <div
@@ -102,19 +96,7 @@ export function Slider({
         onMouseUp={stopDragging}
       >
         <div className="relative mx-8 flex gap-12 sm:gap-24 md:ml-[calc((100vw-var(--container-width))/2)]">
-          {showThisYear && howManyBolidsThisYear > 0
-            ? Array.from({ length: howManyBolidsThisYear }).map((_, index) => (
-                <SliderElement
-                  key={allBolids[index].name}
-                  darkMode={darkMode}
-                  date={allBolids[index].year}
-                  bolid={allBolids[index].name}
-                  onClick={onChangeBolid}
-                  currentBolid={currentBolid}
-                />
-              ))
-            : null}
-          {allBolids.slice(howManyBolidsThisYear).map((bolid) => (
+          {allBolids.map((bolid) => (
             <SliderElement
               key={bolid.name}
               darkMode={darkMode}
