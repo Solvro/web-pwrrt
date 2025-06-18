@@ -45,7 +45,7 @@ export async function generateMetadata({
 
 async function TeamPage(props: { params: Promise<Iparams> }) {
   const parameters = await props.params;
-  const allBolids = await getAllBolids(parameters.locale, true, true);
+  const allBolids = await getAllBolids(parameters.locale, false, true);
 
   const firstBolid = await getFirstBolid(parameters.locale);
   const teamId = parameters.teamId ?? firstBolid.id;
