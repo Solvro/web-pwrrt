@@ -211,7 +211,12 @@ async function TeamPage(props: { params: Promise<Iparams> }) {
                 <BolidImage
                   department={department}
                   teamId={teamId}
-                  image={getUrlFromMedia(firstBolid.image)}
+                  image={
+                    getUrlFromMedia(
+                      allBolids.find((b) => b.name === teamId)?.image ??
+                        ("" as Media | string),
+                    ) || null
+                  }
                 />
               </div>
             </Container>
