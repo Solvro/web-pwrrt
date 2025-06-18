@@ -5,6 +5,7 @@ import type { ProcessedTeamMember } from "@/actions/team";
 import { Container } from "@/components/container";
 import { Slider } from "@/components/section/BolidSection/slider";
 import { Title } from "@/components/title";
+import { getUrlFromMedia } from "@/lib/utils";
 import type { Media } from "@/payload-types";
 
 import { BolidImage } from "./bolid-image";
@@ -207,7 +208,11 @@ async function TeamPage(props: { params: Promise<Iparams> }) {
                       ))}
                   </div>
                 </div>
-                <BolidImage department={department} teamId={teamId} />
+                <BolidImage
+                  department={department}
+                  teamId={teamId}
+                  image={getUrlFromMedia(firstBolid.image)}
+                />
               </div>
             </Container>
           </div>

@@ -9,9 +9,11 @@ import { SecondaryButton } from "@/components/secondary-button";
 export function BolidImage({
   department,
   teamId,
+  image,
 }: {
   department: string;
   teamId: string;
+  image: string | null;
 }) {
   const t = useTranslations("teamPage");
   const [showBolid, setShowBolid] = useState(false);
@@ -19,7 +21,7 @@ export function BolidImage({
   return department === "management" ? (
     <div className="order-1 flex flex-col justify-center">
       <Image
-        src={`/images/bolid/${teamId}/${teamId}.png`}
+        src={image ?? ""}
         alt="bolid"
         width={1}
         height={1}
@@ -41,7 +43,7 @@ export function BolidImage({
             />
           </div>
           <Image
-            src={`/images/bolid/${teamId}/${teamId}.png`}
+            src={image ?? ""}
             alt="bolid"
             width={700}
             height={551}
