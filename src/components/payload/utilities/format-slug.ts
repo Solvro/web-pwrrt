@@ -20,7 +20,6 @@ const formatSlug =
     if (typeof value === "string") {
       return format(value);
     }
-    console.warn(format("Zażółć gęślą jaźń!"));
     const fallbackData =
       (data as Record<string, unknown>)[fallback] ??
       (originalDoc as Record<string, unknown>)[fallback];
