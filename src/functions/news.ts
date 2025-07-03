@@ -63,7 +63,6 @@ export const getAllUniqueTags = async (locale: Locale) => {
         equals: "published",
       },
     },
-    fields: ["tags"],
   });
   const allTags = news.docs.flatMap((item: any) => item.tags || []);
   return Array.from(new Set(allTags));

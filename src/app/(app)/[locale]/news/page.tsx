@@ -5,7 +5,7 @@ import { getLocale } from "next-intl/server";
 import { Container } from "@/components/container";
 import { NewsCard } from "@/components/news-card";
 import { Title } from "@/components/title";
-import { getAllNews } from "@/functions/news";
+import { getAllNews, getAllUniqueTags } from "@/functions/news";
 import { getUrlFromMedia } from "@/lib/utils";
 
 export const metadata: Metadata = {
@@ -15,10 +15,21 @@ export const metadata: Metadata = {
 async function AboutUs() {
   const locale = await getLocale();
   const news = await getAllNews(locale);
+  const tags = await getAllUniqueTags(locale);
   return (
     <div className="flex flex-col items-center bg-neutral-900 pt-[100px] md:pt-[120px]">
       <div className="my-4 border-b-2 border-white px-8 py-4 uppercase md:my-12 md:w-fit">
         <Title>AKTUALNOŚCI</Title>
+      </div>
+      <div className="mb-6 flex flex-wrap gap-2">
+        {tags.map((tag: string) => (
+          <button
+            key={tag}
+            className="rounded bg-gray-200 px-3 py-1 text-sm text-black"
+          >
+            {tag}
+          </button>
+        ))}
       </div>
       <Container>
         <div className="my-6 grid w-full grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
