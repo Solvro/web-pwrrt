@@ -1,8 +1,13 @@
 {
+  "metadata": {
+    "titleTemplate": "%s | PWR Racing",
+    "titleDefault": "PWR Racing Team",
+    "description": "PWR Racing Team is a Strategic Science Club of Wrocław University of Science and Technology, as well as the oldest and most titled Formula Student racing team in Poland since 2009."
+  },
   "heroSection": {
     "title1": "WROCŁAW UNIVERSITY OF SCIENCE AND TECHNOLOGY",
     "title2": "PWR RACING TEAM",
-    "description": "PWR Racing Team is a Strategic Science Club of Wrocław University of Science and Technology, as well as the oldest and most titled Formula Student racing team in Poland. Since 2009, a group of about 80 students from Wrocław universities has been building race cars and competing in prestigious engineering competitions around the world each year.",
+    "description": "PWR Racing Team is a Strategic Science Club of Wrocław University of Science and Technology, as well as the oldest and most titled Formula Student racing team in Poland since 2009.",
     "subtitle": "WE TAKE IT TO THE NEXT LEVEL",
     "button": "Learn more"
   },
@@ -69,8 +74,6 @@
     "cookiesPolicy": "Cookies Policy",
     "rodo": "RODO",
     "recruitment": "Recruitment",
-    "createdBy": "Project & Execution: Maria Kanczewska & Dawid Chmal",
-    "allRightsReserved": " All rights reserved",
     "seasonDescription": "In each season, we create a new racing car. We have as many as twelve unique models of combustion cars, each of which can easily outperform the previous one. Last season, the first electric car with autonomous driving systems in the history of the Team – RT12e – was created. We are currently working on our fourteenth construction."
   },
   "sidebar": {
@@ -321,23 +324,23 @@
     "sectionTitle1": "Contact us:",
     "sectionTitle2": "Cooperation with us means:",
     "benefits": {
-      "benefit1": {
+      "internationalPromotion": {
         "title": "An original way of international promotion",
         "icon": "internationalPromotion"
       },
-      "benefit2": {
+      "employerBranding": {
         "title": "Effective employer branding",
         "icon": "employerBranding"
       },
-      "benefit3": {
+      "socialMediaPresence": {
         "title": "Regular presence in social media",
         "icon": "socialMediaPresence"
       },
-      "benefit4": {
+      "companyVisibility": {
         "title": "Increased company visibility",
         "icon": "companyVisibility"
       },
-      "benefit5": {
+      "innovativeProject": {
         "title": "Being part of an innovative project",
         "icon": "innovativeProject"
       }

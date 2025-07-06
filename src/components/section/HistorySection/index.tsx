@@ -1,5 +1,6 @@
 "use client";
 
+import HistoryImage from "@public/images/history.jpg";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
 
@@ -27,10 +28,10 @@ export function HistorySection({ aboutUs = false }: HistorySectionProps) {
             <div className="relative order-3 flex h-88 items-center justify-center lg:order-1 lg:h-full">
               <Image
                 className=""
-                src="/images/history.jpg"
-                alt="bolid"
+                src={HistoryImage}
                 fill
-                sizes="100vw"
+                sizes="100%"
+                alt="bolid"
                 style={{
                   objectFit: "cover",
                   objectPosition: "left center",

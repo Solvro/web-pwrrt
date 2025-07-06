@@ -1,5 +1,10 @@
 "use client";
 
+import Photo1 from "@public/images/joinus/photo1.png";
+import Photo2 from "@public/images/joinus/photo2.jpeg";
+import Photo3 from "@public/images/joinus/photo3.jpeg";
+import Photo4 from "@public/images/joinus/photo4.jpeg";
+import Photo5 from "@public/images/joinus/photo5.jpeg";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
@@ -25,7 +30,7 @@ export function JoinusSection({ sizeBig = false }: JoinusSectionProps) {
       className={`${sizeBig ? "h-screen" : "h-[633px]"} relative`}
     >
       <div
-        className="absolute inset-0 z-10"
+        className="absolute inset-0 z-10 backdrop-blur-[5px]"
         style={{
           background: `linear-gradient(0deg, rgba(0, 0, 0, 0.16), rgba(0, 0, 0, 0.16)), radial-gradient(75% 75% at 50% 50%, #000000 0%, rgba(0, 0, 0, 0) 100%)`,
         }}
@@ -34,10 +39,10 @@ export function JoinusSection({ sizeBig = false }: JoinusSectionProps) {
         {/* Pierwsza kolumna */}
         <div className="relative col-span-3 h-full md:col-span-1">
           <Image
-            src="/images/joinus/photo1.png"
+            src={Photo1}
             alt="Photo 1"
             fill
-            sizes="100vw"
+            sizes="100%"
             style={{
               objectFit: "cover",
               objectPosition: "left center",
@@ -50,10 +55,10 @@ export function JoinusSection({ sizeBig = false }: JoinusSectionProps) {
           {/* Pierwszy wiersz w drugiej kolumnie */}
           <div className="relative flex-1">
             <Image
-              src="/images/joinus/photo2.jpeg"
+              src={Photo2}
               alt="Photo 2"
               fill
-              sizes="100vw"
+              sizes="100%"
               style={{
                 objectFit: "cover",
                 objectPosition: "left 80%",
@@ -66,10 +71,10 @@ export function JoinusSection({ sizeBig = false }: JoinusSectionProps) {
             {/* Pierwsza kolumna w drugim wierszu */}
             <div className="relative">
               <Image
-                src="/images/joinus/photo3.jpeg"
+                src={Photo3}
                 alt="Photo 3"
                 fill
-                sizes="100vw"
+                sizes="100%"
                 style={{
                   objectFit: "cover",
                   objectPosition: "center center",
@@ -79,10 +84,10 @@ export function JoinusSection({ sizeBig = false }: JoinusSectionProps) {
             {/* Druga kolumna w drugim wierszu */}
             <div className="relative">
               <Image
-                src="/images/joinus/photo4.jpeg"
+                src={Photo4}
                 alt="Photo 4"
                 fill
-                sizes="100vw"
+                sizes="100%"
                 style={{
                   objectFit: "cover",
                   objectPosition: "left center",
@@ -95,10 +100,10 @@ export function JoinusSection({ sizeBig = false }: JoinusSectionProps) {
         {/* Trzecia kolumna */}
         <div className="relative hidden h-full md:block">
           <Image
-            src="/images/joinus/photo5.jpeg"
+            src={Photo5}
             alt="Photo 5"
             fill
-            sizes="100vw"
+            sizes="100%"
             style={{
               objectFit: "cover",
               objectPosition: "center center",

@@ -16,6 +16,7 @@ interface TextProps {
   hoverColor?: "white" | "black" | "red" | "gray";
   alignCenter?: boolean;
   right?: boolean;
+  balance?: boolean;
 }
 
 export function Text({
@@ -32,6 +33,7 @@ export function Text({
   hoverColor,
   alignCenter,
   right,
+  balance,
 }: TextProps) {
   const colorClass = () => {
     switch (color) {
@@ -94,7 +96,7 @@ export function Text({
 
   return (
     <p
-      className={`font-openSans duration-300 ease-in-out ${hoverColorClass} ${colorClass()} ${sizeClass()} ${opacity1 ? "text-opacity-100" : "text-opacity-70"} ${center ? "justify-center" : "text-justify"} ${right ? "text-right" : ""} ${wide ? "" : "tracking-tighter"} ${bold ? "font-bold" : "font-normal"} ${alignCenter ? "text-center" : ""} `}
+      className={`font-openSans duration-300 ease-in-out ${hoverColorClass} ${colorClass()} ${sizeClass()} ${opacity1 ? "text-opacity-100" : "text-opacity-70"} ${center ? "justify-center" : "text-justify"} ${right ? "text-right" : ""} ${wide ? "" : "tracking-tighter"} ${bold ? "font-bold" : "font-normal"} ${alignCenter ? "text-center" : ""} ${balance ? "text-balance" : ""}`}
     >
       {children}
     </p>

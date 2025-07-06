@@ -1,4 +1,12 @@
+import Acceleration from "@public/images/FS/acceleration.png";
+import Autocross from "@public/images/FS/autocross.png";
+import Business from "@public/images/FS/business.png";
+import Cost from "@public/images/FS/cost.png";
+import Endurance from "@public/images/FS/endurance.png";
+import Engineering from "@public/images/FS/engineering.png";
+import SkidPad from "@public/images/FS/skipad.png";
 import { useTranslations } from "next-intl";
+import type { StaticImageData } from "next/image";
 import Image from "next/image";
 
 import { Container } from "@/components/container";
@@ -7,7 +15,7 @@ import { Title } from "@/components/title";
 
 interface FlipCardProps {
   text: string;
-  src: string;
+  src: StaticImageData;
   title: string;
   height: string;
 }
@@ -20,8 +28,6 @@ function FlipCard({ text, src, title, height }: FlipCardProps) {
           <Image
             src={src}
             alt={title}
-            fill
-            sizes="100vw"
             style={{
               objectFit: "fill",
             }}
@@ -52,25 +58,25 @@ export function FSAbout() {
             <div className="my-6 grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-4">
               <FlipCard
                 height={"h-60"}
-                src="/images/FS/acceleration.png"
+                src={Acceleration}
                 title={t("competitions.acceleration.title")}
                 text={t("competitions.acceleration.text")}
               />
               <FlipCard
                 height={"h-60"}
-                src="/images/FS/skipad.png"
+                src={SkidPad}
                 title={t("competitions.skidPad.title")}
                 text={t("competitions.skidPad.text")}
               />
               <FlipCard
                 height={"h-60"}
-                src="/images/FS/autocross.png"
+                src={Autocross}
                 title={t("competitions.autocross.title")}
                 text={t("competitions.autocross.text")}
               />
               <FlipCard
                 height={"h-60"}
-                src="/images/FS/endurance.png"
+                src={Endurance}
                 title={t("competitions.endurance.title")}
                 text={t("competitions.endurance.text")}
               />
@@ -83,19 +89,19 @@ export function FSAbout() {
             <div className="my-6 grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3">
               <FlipCard
                 height={"h-56 md:h-80"}
-                src="/images/FS/cost.png"
+                src={Cost}
                 title={t("competitions.cost.title")}
                 text={t("competitions.cost.text")}
               />
               <FlipCard
                 height={"h-56 md:h-80"}
-                src="/images/FS/engineering.png"
+                src={Engineering}
                 title={t("competitions.engineering.title")}
                 text={t("competitions.engineering.text")}
               />
               <FlipCard
                 height={"h-56 md:h-80"}
-                src="/images/FS/business.png"
+                src={Business}
                 title={t("competitions.business.title")}
                 text={t("competitions.business.text")}
               />

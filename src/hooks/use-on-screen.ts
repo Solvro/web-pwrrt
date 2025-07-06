@@ -1,0 +1,33 @@
+import type { RefObject } from "react";
+import { useEffect, useMemo, useState } from "react";
+
+function useOnScreen(ref: RefObject<HTMLElement | null>): boolean {
+  const [intersecting, setIntersecting] = useState(false);
+
+  const observer = useMemo(() => {
+    // Sprawdź, czy `IntersectionObserver` jest dostępny
+    if (typeof IntersectionObserver !== "undefined") {
+      return new IntersectionObserver(([entry]) => {
+        setIntersecting(entry.isIntersecting);
+      });
+    }
+    return null;
+  }, []);
+
+  useEffect(() => {
+    const element = ref.current;
+    if (observer && element) {
+      observer.observe(element);
+    }
+
+    return () => {
+      if (observer && element) {
+        observer.unobserve(element);
+      }
+    };
+  }, [ref, observer]);
+
+  return intersecting;
+}
+
+export { useOnScreen };

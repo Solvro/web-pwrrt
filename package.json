@@ -4,16 +4,14 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "prisma generate && next build",
-    "dev": "next dev",
+    "build": "next build --turbopack",
+    "dev": "next dev --turbopack",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
-    "postinstall": "prisma generate",
     "knip": "knip",
     "lint": "next lint --max-warnings=0",
     "lint:fix": "next lint --fix",
     "prepare": "husky || true",
-    "seed": "node prisma/seed-team-member.js",
     "start": "next start",
     "typecheck": "tsc"
   },
@@ -26,27 +24,31 @@
     "@types/react-dom": "19.1.3"
   },
   "dependencies": {
+
     "@hookform/resolvers": "^5.0.1",
-    "@next-auth/prisma-adapter": "^1.0.7",
+    "@next/third-parties": "^15.3.3",
     "@payloadcms/db-mongodb": "^3.38.0",
+    "@payloadcms/live-preview-react": "^3.38.0",
     "@payloadcms/next": "^3.38.0",
     "@payloadcms/richtext-lexical": "^3.38.0",
     "@payloadcms/storage-s3": "^3.38.0",
-    "@prisma/client": "^5.10.2",
     "@radix-ui/react-label": "^2.1.7",
     "@radix-ui/react-slot": "^1.2.3",
     "@react-google-maps/api": "^2.20.6",
+    "@react-three/drei": "^10.0.8",
+    "@react-three/fiber": "^9.1.2",
+    "@tanstack/react-query": "^5.77.1",
     "axios": "^1.6.7",
     "bcrypt": "^5.1.1",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
+    "date-fns": "^4.1.0",
     "dotenv": "^16.4.7",
     "graphql": "^16.11.0",
     "knip": "^5.55.1",
     "lucide-react": "^0.511.0",
     "motion": "^12.10.4",
     "next": "15.3.2",
-    "next-auth": "^4.24.11",
     "next-cloudinary": "^6.16.0",
     "next-intl": "^4.1.0",
     "payload": "^3.38.0",
@@ -58,6 +60,7 @@
     "sharp": "^0.34.1",
     "tailwind-merge": "^3.3.0",
     "zod": "^3.25.32",
+    "three": "^0.176.0",
     "zustand": "^5.0.4"
   },
   "devDependencies": {
@@ -70,17 +73,17 @@
     "@types/node": "^20.0.0",
     "@types/react": "19.1.3",
     "@types/react-dom": "19.1.3",
+    "@types/three": "^0.176.0",
     "eslint": "^9.26.0",
     "husky": "^9.1.7",
     "lint-staged": "^15.5.2",
     "postcss": "^8.4.35",
     "prettier": "3.5.3",
-    "prisma": "^5.10.2",
     "tailwindcss": "^4.1.6",
     "tw-animate-css": "^1.3.0",
     "typescript": "^5.0.0"
   },
-  "prisma": {
-    "seed": "node prisma/seedTeamMember.js"
+  "engines": {
+    "node": ">= 20.0.0"
   }
 }

@@ -1,5 +1,6 @@
 "use client";
 
+import BolidFSImage from "@public/images/bolidFS.jpeg";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
 
@@ -48,10 +49,10 @@ export function FSSection({ aboutUs = false }: FSSectionProps) {
             <div className="relative h-88 lg:h-auto">
               <Image
                 className=""
-                src="/images/bolidFS.jpeg"
-                alt="bolid"
+                src={BolidFSImage}
                 fill
-                sizes="100vw"
+                sizes="100%"
+                alt="bolid"
                 style={{
                   objectFit: "cover",
                   objectPosition: "70% center",

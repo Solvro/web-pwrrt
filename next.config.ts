@@ -1,5 +1,4 @@
 import { withPayload } from "@payloadcms/next/withPayload";
-/* eslint-disable unicorn/no-useless-promise-resolve-reject */
 import type { NextConfig } from "next";
 import createNextIntlPlugin from "next-intl/plugin";
 
@@ -12,20 +11,7 @@ const nextConfig: NextConfig = {
       },
     ],
   },
-  async redirects() {
-    return Promise.resolve([
-      {
-        source: "/team",
-        destination: "/team/RT14e",
-        permanent: true,
-      },
-      {
-        source: "/bolid",
-        destination: "/bolid/RT12e",
-        permanent: true,
-      },
-    ]);
-  },
+  transpilePackages: ["three"],
 };
 
 const withNextIntl = createNextIntlPlugin();

@@ -83,10 +83,13 @@ export function Button({
       </span>
       {hoverText ? (
         <span
-          className={cn("transition-opacity duration-300 ease-in-out", {
-            "opacity-100": isHovered,
-            "opacity-0": !isHovered,
-          })}
+          className={cn(
+            "absolute inset-0 transition-opacity duration-300 ease-in-out",
+            {
+              "opacity-100": isHovered,
+              "opacity-0": !isHovered,
+            },
+          )}
         >
           {hoverText.includes("+") ? formatPhoneNumber(hoverText) : hoverText}
         </span>

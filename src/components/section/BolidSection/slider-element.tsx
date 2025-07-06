@@ -3,7 +3,7 @@
 import { Title } from "../../title";
 
 interface SliderElementProps {
-  date: number;
+  date: string | number;
   bolid: string;
   onClick: (bolidName: string) => void;
   currentBolid: string;
@@ -30,7 +30,7 @@ export function SliderElement({
 
   return (
     <button
-      className={`cursor-pointer" group relative flex flex-col items-center`}
+      className={`group relative flex cursor-pointer flex-col items-center`}
       onClick={handleClick}
     >
       <div

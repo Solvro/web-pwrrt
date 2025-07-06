@@ -1,11 +1,15 @@
-import { fetchFiveNews } from "@/actions/news";
+import { getLocale } from "next-intl/server";
+
 import { NewsCard } from "@/components/news-card";
+import { getLast3News } from "@/functions/news";
+import { getUrlFromMedia } from "@/lib/utils";
 
 import { Container } from "../../container";
 import { NewsControls } from "./news-controls";
 
 export async function NewsSection() {
-  const news = await fetchFiveNews();
+  const locale = await getLocale();
+  const news = await getLast3News(locale);
 
   return (
     <div id="section-news" className="flex flex-col">
@@ -15,15 +19,14 @@ export async function NewsSection() {
           <div className="relative my-10 grid grid-cols-1 gap-8 border-none sm:grid-cols-2 lg:grid-cols-3">
             {news.map((item) => (
               <NewsCard
-                id={item.id}
+                slug={item.slug ?? ""}
                 whiteMode
                 key={item.id}
                 title={item.title}
-                short_description={item.short_description}
-                long_description={item.long_description}
-                length_time={item.length_time}
-                logo={item.logo || "/images/logo-czarne.svg"}
-                main_image={item.main_image}
+                short_description={item.shortDescription}
+                length_time={item.howLong}
+                logo={"/images/logo-czarne.svg"}
+                main_image={getUrlFromMedia(item.heroImage)}
               />
             ))}
           </div>

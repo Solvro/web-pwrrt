@@ -1,5 +1,6 @@
 "use client";
 
+import JoinUsImage from "@public/images/joinus/photo5.jpeg";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
 import Link from "next/link";
@@ -28,24 +29,24 @@ export function FooterSection() {
     <div id="section-contact" className="relative md:pt-6">
       <div className="absolute inset-0 z-0 overflow-hidden">
         <Image
-          src="/images/joinus/photo5.jpeg"
+          src={JoinUsImage}
           alt="Tło sekcji"
           quality={50}
           fill
+          sizes="100%"
           style={{
             objectFit: "cover",
             objectPosition: "left 70%",
             maxWidth: "100%",
           }}
-          className="blur-[5px]"
         />
-        <div className="absolute inset-0 bg-black opacity-80"></div>
+        <div className="absolute inset-0 bg-black/80 backdrop-blur-[5px]"></div>
       </div>
       <Container className="z-10">
         <div className="flex w-full flex-col">
           <div className="flex w-full flex-col flex-wrap items-center justify-center gap-x-12 md:flex-row md:px-12 xl:gap-12">
             <div className="lg:w-80">
-              <Logo width={200} height={180} />
+              <Logo />
             </div>
             <div className="flex flex-wrap items-center justify-end gap-4 md:flex-row md:gap-12">
               <Link
@@ -229,13 +230,25 @@ export function FooterSection() {
             </div>
           </div>
           <div className="flex w-full flex-col items-center justify-between gap-2 border-t border-white py-3 md:flex-row md:px-12 md:py-6">
-            <Text color="white" center>
-              {t("createdBy")}
-            </Text>
+
+            <div className="text-xs font-medium text-gray-200">
+              <p>
+                Original Project & Execution: Maria Kanczewska & Dawid Chmal
+              </p>
+              <p>
+                Developed and maintained with ❤️ by{" "}
+                <Link
+                  href="https://solvro.pwr.edu.pl"
+                  className="font-semibold text-blue-600"
+                >
+                  KN Solvro
+                </Link>
+              </p>
+            </div>
             <div className="flex flex-col">
-              <Text color="white" center>
-                © {new Date().getFullYear()} {t("allRightsReserved")}
-              </Text>
+              <p className="text-sm font-semibold text-white">
+                © {new Date().getFullYear()} All rights reserved.
+              </p>
               <div className="text-[10px] text-white">
                 This site is protected by reCAPTCHA and the Google
               </div>

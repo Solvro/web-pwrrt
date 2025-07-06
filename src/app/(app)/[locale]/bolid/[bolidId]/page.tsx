@@ -1,22 +1,47 @@
-import { getTranslations } from "next-intl/server";
+import Image1 from "@public/images/bolid/RT12e/images/zawody/1.jpg";
+import Image2 from "@public/images/bolid/RT12e/images/zawody/2.jpg";
+import Image3 from "@public/images/bolid/RT12e/images/zawody/3.jpg";
+import Logo1 from "@public/images/bolid/RT12e/images/zawody/logo1.png";
+import Logo2 from "@public/images/bolid/RT12e/images/zawody/logo2.png";
+import Logo3 from "@public/images/bolid/RT12e/images/zawody/logo3.png";
+import { getLocale, getTranslations } from "next-intl/server";
 import Image from "next/image";
 
-import { getBolidByBolidId } from "@/actions/bolid";
 import { Container } from "@/components/container";
 import { BolidSection } from "@/components/section/BolidSection";
 import { Text } from "@/components/text";
 import { Title } from "@/components/title";
+import {
+  getBolidByNameFunction,
+  getFirstBolidFunction,
+} from "@/functions/bolid";
+import type { Bolid } from "@/payload-types";
 
 interface Iparams {
   bolidId?: string;
 }
 
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<Iparams>;
+}) {
+  const { bolidId } = await params;
+  return {
+    title: bolidId,
+  };
+}
+
 async function BolidPage(props: { params: Promise<Iparams> }) {
   const parameters = await props.params;
+  const locale = await getLocale();
   const { bolidId } = parameters;
+  let bolid: Bolid | null = null;
 
-  const bolidIdValue = bolidId ?? "RT13e";
-  const bolid = await getBolidByBolidId(bolidIdValue);
+  bolid =
+    bolidId === undefined || bolidId === ""
+      ? await getFirstBolidFunction(locale)
+      : await getBolidByNameFunction(bolidId, locale);
 
   if (!bolid) {
     return <p>Bolid not found</p>;
@@ -26,7 +51,7 @@ async function BolidPage(props: { params: Promise<Iparams> }) {
 
   return (
     <div className="flex flex-col pt-[100px]">
-      <BolidSection presetBolid={bolidIdValue} />
+      <BolidSection presetBolid={bolid} />
       <div className="w-full" id="achievements">
         <Container>
           <div className="flex w-full flex-col py-8 md:py-16">
@@ -38,10 +63,8 @@ async function BolidPage(props: { params: Promise<Iparams> }) {
               <div className="grid w-full grid-cols-1 gap-8 pt-6 text-white md:grid-cols-3">
                 <div className="relative h-52 overflow-hidden rounded-sm md:h-60">
                   <Image
-                    src="/images/bolid/RT12e/images/zawody/1.jpg"
+                    src={Image1}
                     alt="Zdjęcie 2"
-                    fill
-                    sizes="100vw"
                     style={{
                       objectFit: "cover",
                     }}
@@ -60,10 +83,8 @@ async function BolidPage(props: { params: Promise<Iparams> }) {
                       </div>
                       <div className="">
                         <Image
-                          src="/images/bolid/RT12e/images/zawody/logo1.png"
+                          src={Logo1}
                           alt="Zdjęcie 1"
-                          width={100}
-                          height={100}
                           style={{
                             maxWidth: "100%",
                             height: "auto",
@@ -75,10 +96,8 @@ async function BolidPage(props: { params: Promise<Iparams> }) {
                 </div>
                 <div className="relative h-52 overflow-hidden rounded-sm md:h-60">
                   <Image
-                    src="/images/bolid/RT12e/images/zawody/2.jpg"
+                    src={Image2}
                     alt="Zdjęcie 2"
-                    fill
-                    sizes="100vw"
                     style={{
                       objectFit: "cover",
                     }}
@@ -97,10 +116,8 @@ async function BolidPage(props: { params: Promise<Iparams> }) {
                       </div>
                       <div className="">
                         <Image
-                          src="/images/bolid/RT12e/images/zawody/logo2.png"
+                          src={Logo2}
                           alt="Zdjęcie 1"
-                          width={100}
-                          height={100}
                           style={{
                             maxWidth: "100%",
                             height: "auto",
@@ -112,10 +129,8 @@ async function BolidPage(props: { params: Promise<Iparams> }) {
                 </div>
                 <div className="relative h-52 overflow-hidden rounded-sm md:h-60">
                   <Image
-                    src="/images/bolid/RT12e/images/zawody/3.jpg"
+                    src={Image3}
                     alt="Zdjęcie 2"
-                    fill
-                    sizes="100vw"
                     style={{
                       objectFit: "cover",
                     }}
@@ -134,10 +149,8 @@ async function BolidPage(props: { params: Promise<Iparams> }) {
                       </div>
                       <div className="">
                         <Image
-                          src="/images/bolid/RT12e/images/zawody/logo3.png"
+                          src={Logo3}
                           alt="Zdjęcie 1"
-                          width={100}
-                          height={100}
                           style={{
                             maxWidth: "100%",
                             height: "auto",
@@ -153,7 +166,7 @@ async function BolidPage(props: { params: Promise<Iparams> }) {
         </Container>
       </div>
       <div className="w-full">
-        {bolid.parts.map((part, depIndex) => (
+        {bolid.parts?.map((part, depIndex) => (
           <div
             key={part.partName}
             className={depIndex % 2 === 0 ? "bg-neutral-200" : "bg-white"}

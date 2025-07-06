@@ -4,7 +4,6 @@ import Link from "next/link";
 import { Text } from "./text";
 
 interface NewsCardProps {
-  id: string;
   title: string;
   short_description: string;
   long_description?: string;
@@ -12,25 +11,27 @@ interface NewsCardProps {
   logo: string;
   main_image: string;
   whiteMode?: boolean;
+  slug: string;
 }
 export function NewsCard({
-  id,
   title,
   short_description,
   length_time,
   logo,
   main_image,
   whiteMode,
+  slug,
 }: NewsCardProps) {
   return (
-    <Link href={`/news/${id}`} passHref>
+    <Link href={`/news/${slug}`} passHref>
       <div className="group flex h-104 cursor-pointer flex-col overflow-hidden rounded-md md:h-136">
         <div className="relative h-full overflow-hidden">
           <Image
             src={main_image}
             alt={"test"}
-            fill
             className="duration-500 ease-in-out group-hover:scale-105"
+            fill
+            sizes="100%"
             style={{
               objectFit: "cover",
               maxWidth: "100%",
@@ -46,7 +47,9 @@ export function NewsCard({
             {title}
           </Text>
           <div className="mt-1 mb-3 md:mt-2 md:mb-4">
-            <Text color="black">{short_description}</Text>
+            <p className="font-openSans text-opacity-70 line-clamp-2 text-justify text-xs font-normal tracking-tighter text-gray-700 duration-300 ease-in-out sm:text-base sm:leading-5">
+              {short_description}
+            </p>
           </div>
           <div className="flex justify-between">
             <Image

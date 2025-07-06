@@ -1,26 +1,34 @@
 "use server";
 
-import { prisma } from "@/lib/prismadb";
+import type { Locale } from "next-intl";
 
-export async function getBolidByBolidId(bolidId: string) {
-  const bolid = await prisma.bolid.findUnique({
-    where: {
-      name: bolidId,
-    },
-    include: {
-      achievements: true,
-    },
-  });
+import {
+  getAllBolidsFunction,
+  getBolidByNameFunction,
+  getFirstBolidFunction,
+} from "@/functions/bolid";
+
+export async function getBolidByName(name: string, locale: Locale) {
+  const bolid = await getBolidByNameFunction(name, locale);
 
   return bolid;
 }
 
-export async function getBolidByName(name: string) {
-  const bolid = await prisma.bolid.findFirst({
-    where: {
-      name,
-    },
-  });
+export async function getFirstBolid(locale: Locale) {
+  const bolid = await getFirstBolidFunction(locale);
 
   return bolid;
+}
+
+export async function getAllBolids(
+  locale: Locale,
+  onlyEssential = false,
+  includeDrafts = false,
+) {
+  const bolids = await getAllBolidsFunction(
+    locale,
+    onlyEssential,
+    includeDrafts,
+  );
+  return bolids;
 }

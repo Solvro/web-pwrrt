@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { useTranslations } from "next-intl";
 
 import { Container } from "@/components/container";
@@ -6,6 +7,10 @@ import { Title } from "@/components/title";
 import { DepartmentsAbout } from "../about/DepartmentsAbout";
 import { ButtonsSection } from "./button-join-us";
 import { Timer } from "./timer";
+
+export const metadata: Metadata = {
+  title: "Join Us",
+};
 
 export default function JoinUsPage() {
   const t = useTranslations("joinUs");

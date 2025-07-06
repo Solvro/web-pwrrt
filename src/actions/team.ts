@@ -1,52 +1,55 @@
-import { prisma } from "@/lib/prismadb";
+import configPromise from "@payload-config";
+import { getPayload } from "payload";
 
-export async function getTeamByFullName(name: string, surname: string) {
-  const teamMembers = await prisma.teamMember.findMany({
-    where: {
-      name,
-      surname,
-    },
-    select: {
-      name: true,
-      surname: true,
-      email: true,
-      phoneNumber: true,
-      roles: {
-        select: {
-          department: true,
-          role: true,
-          bolidName: true,
-        },
-      },
-    },
-  });
+import { isPopulatedMedia } from "@/lib/utils";
+import type { Media, TeamMember as PayloadTeamMember } from "@/payload-types";
 
-  return teamMembers;
+export interface ProcessedTeamMember
+  extends Omit<PayloadTeamMember, "profile" | "doc"> {
+  profile?: Media | null;
 }
 
-export async function getTeamByBolid(bolidName: string) {
-  const teamMembers = await prisma.teamMember.findMany({
+async function getPayloadClient() {
+  return getPayload({ config: configPromise });
+}
+
+export async function getTeamByFullName(
+  name: string,
+  surname: string,
+): Promise<ProcessedTeamMember[]> {
+  const payload = await getPayloadClient();
+  const { docs } = await payload.find({
+    collection: "teamMembers",
     where: {
-      roles: {
-        some: {
-          bolidName,
-        },
-      },
+      and: [{ name: { equals: name } }, { surname: { equals: surname } }],
     },
-    select: {
-      name: true,
-      surname: true,
-      email: true,
-      phoneNumber: true,
-      roles: {
-        select: {
-          department: true,
-          role: true,
-          bolidName: true,
-        },
-      },
-    },
+    depth: 1,
+    limit: 1000,
   });
 
-  return teamMembers;
+  return docs.map((document_) => ({
+    ...document_,
+    profile: isPopulatedMedia(document_.profile) ? document_.profile : null,
+  }));
+}
+
+export async function getTeamByBolid(
+  bolidName: string,
+): Promise<ProcessedTeamMember[]> {
+  const payload = await getPayloadClient();
+  const { docs } = await payload.find({
+    collection: "teamMembers",
+    where: {
+      "roles.bolidName": {
+        equals: bolidName,
+      },
+    },
+    depth: 1,
+    limit: 1000,
+  });
+
+  return docs.map((document_) => ({
+    ...document_,
+    profile: isPopulatedMedia(document_.profile) ? document_.profile : null,
+  }));
 }

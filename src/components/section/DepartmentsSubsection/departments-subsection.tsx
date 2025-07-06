@@ -15,7 +15,7 @@ export function DepartmentsSubsection() {
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4">
           <Department department="software" objectPositionY="60%" />
           <Department department="electrical" objectPositionY="60%" />
-          <Department department="vehicle performance" objectPositionY="50%" />
+          <Department department="vehiclePerformance" objectPositionY="50%" />
           <Department department="business" objectPositionY="20%" />
         </div>
       </div>

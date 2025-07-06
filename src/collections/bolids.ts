@@ -2,8 +2,13 @@ import type { CollectionConfig } from "payload";
 
 export const Bolids: CollectionConfig = {
   slug: "bolids",
+  orderable: true,
   admin: {
     useAsTitle: "name",
+    defaultColumns: ["name", "year", "mass", "power"],
+  },
+  versions: {
+    drafts: true,
   },
   fields: [
     {
@@ -32,6 +37,7 @@ export const Bolids: CollectionConfig = {
         placeholder: "RT14e to nasz trzeci bolid elektryczny...",
       },
       required: true,
+      localized: true,
     },
     {
       name: "acceleration",
@@ -59,6 +65,16 @@ export const Bolids: CollectionConfig = {
       },
       required: true,
       label: "Moc",
+    },
+    {
+      name: "image",
+      label: "Zdjęcie bolidu",
+      type: "upload",
+      required: true,
+      relationTo: "media",
+      admin: {
+        position: "sidebar",
+      },
     },
     {
       name: "parts",

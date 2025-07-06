@@ -1,3 +1,5 @@
+import knSolvro from "@public/images/SolvroPlaceholder.png";
+import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 
 import { getTeamByFullName } from "@/actions/team";
@@ -27,6 +29,10 @@ interface TeamMember {
 }
 
 type RoleHistory = Record<string, Role[]>;
+
+export const metadata: Metadata = {
+  title: "Contact Us",
+};
 
 const getMembersData = async (
   names: string[],
@@ -125,11 +131,7 @@ export default async function ContactUs() {
                 key={member.name + member.surname}
                 className="flex flex-col gap-6"
               >
-                <UserCard
-                  member={member}
-                  teamId="RT15e"
-                  roleHistory={roleHistory}
-                />
+                <UserCard member={member} roleHistory={roleHistory} />
                 <EmailAction
                   email={member.email ?? "pawel.wojcik.pwrrt@gmail.com"}
                 />
@@ -152,7 +154,6 @@ export default async function ContactUs() {
                 <UserCard
                   key={`${member.name}${member.surname}supervisor`}
                   member={member}
-                  teamId="RT14e"
                   roleHistory={roleHistory}
                 />
               ))}
@@ -160,12 +161,29 @@ export default async function ContactUs() {
           </div>
           <div className="flex flex-col items-start gap-4 md:items-center md:gap-6">
             <Admin text={t("siteAdministration")} />
-            <div className="grid w-full grid-cols-1 gap-6 md:w-1/2 md:grid-cols-2">
+            <div className="grid w-full grid-cols-1 gap-6 md:w-3/4 md:grid-cols-3">
+              <UserCard
+                member={{
+                  name: "KN",
+                  surname: "Solvro",
+                  currentRole: "Developing & Maintaining website",
+                  email: "kn.solvro@gmail.com",
+                  profilePlaceholder: knSolvro,
+                }}
+                roleHistory={{
+                  "KN Solvro": [
+                    {
+                      bolidName: "RT15e",
+                      role: "Developing & Maintaining website",
+                      department: "KN",
+                    },
+                  ],
+                }}
+              />
               {siteAdministration.map((member) => (
                 <UserCard
                   key={`${member.name}${member.surname}admin`}
                   member={member}
-                  teamId="RT14e"
                   roleHistory={roleHistory}
                 />
               ))}

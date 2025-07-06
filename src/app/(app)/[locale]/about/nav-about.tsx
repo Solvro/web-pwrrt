@@ -1,5 +1,6 @@
 "use client";
 
+import Image1 from "@public/images/poznaj_nas.jpg";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
 import Link from "next/link";
@@ -49,10 +50,10 @@ export function NavAbout() {
               <div className="relative h-80 md:h-auto md:w-2/5">
                 <Image
                   className=""
-                  src="/images/poznaj_nas.jpg"
+                  src={Image1}
                   alt="bolid"
                   fill
-                  sizes="100vw"
+                  sizes="100%"
                   style={{
                     objectFit: "cover",
                     objectPosition: "center 10%",
