@@ -2,17 +2,14 @@ import type { FieldHook, FieldHookArgs } from "payload";
 
 const format = (value: string): string =>
   value
+    .toLowerCase()
     .normalize("NFD") // rozklada znaki na elementy (literka + akcent)
     .replaceAll(/[\u0300-\u036F]/g, "") // usuwa akcenty
-    .replaceAll("ł", "l") // te konkretne polskie znaki
-    .replaceAll("Ł", "L") // nie rodzielaja sie na akcenty
-    .replaceAll("ź", "z") // trzeba manualnie
-    .replaceAll("Ź", "Z")
+    .replaceAll("ł", "l") // te konkretne polskie znaki nie rodzielaja sie na akcenty
+    .replaceAll("ź", "z") // i trzeba manualnie zamienic
     .replaceAll("ż", "z")
-    .replaceAll("Ż", "Z")
     .replaceAll(" ", "-")
-    .replaceAll(/[^\w-]+/g, "") // usuwa wszystkie specjalne znaki (czyli zostaja literki podstawowe i liczby) poza "-"
-    .toLowerCase(); // ciekawe co to robi
+    .replaceAll(/[^\w-]+/g, ""); // usuwa wszystkie specjalne znaki (czyli zostaja literki podstawowe i liczby) poza "-" // ciekawe co to robi
 
 const formatSlug =
   (fallback: string): FieldHook =>
