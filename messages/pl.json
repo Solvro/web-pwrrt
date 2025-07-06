@@ -291,7 +291,14 @@
     "theyWillAnswer": "Oni odpowiedzą na Twoje pytania:",
     "whereToFindUs": "GDZIE NAS ZNAJDZIESZ?",
     "projectSupervisors": "Opiekunowie zespołu:",
-    "siteAdministration": "Administracja strony:"
+    "siteAdministration": "Administracja strony:",
+    "reportBugs": "Zgłoś Błędy",
+    "contactUsForm": "Kontakt",
+    "formEmail": "Adres Email:",
+    "formBugDescription": "Opis Błędu:",
+    "formContactDescription": "Treść:",
+    "formSubmitBugReport": "Zgłoś Błąd",
+    "formSubmitContactReport": "Skontaktuj się"
   },
   "joinUs": {
     "pageTitle": "REKRUTACJA",

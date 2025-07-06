@@ -230,6 +230,7 @@ export function FooterSection() {
             </div>
           </div>
           <div className="flex w-full flex-col items-center justify-between gap-2 border-t border-white py-3 md:flex-row md:px-12 md:py-6">
+
             <div className="text-xs font-medium text-gray-200">
               <p>
                 Original Project & Execution: Maria Kanczewska & Dawid Chmal
@@ -244,9 +245,14 @@ export function FooterSection() {
                 </Link>
               </p>
             </div>
-            <p className="text-sm font-semibold text-white">
-              © {new Date().getFullYear()} All rights reserved.
-            </p>
+            <div className="flex flex-col">
+              <p className="text-sm font-semibold text-white">
+                © {new Date().getFullYear()} All rights reserved.
+              </p>
+              <div className="text-[10px] text-white">
+                This site is protected by reCAPTCHA and the Google
+              </div>
+            </div>
           </div>
         </div>
       </Container>

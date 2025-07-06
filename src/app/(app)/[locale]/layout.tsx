@@ -7,6 +7,7 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Open_Sans } from "next/font/google";
 import Head from "next/head";
 import { notFound } from "next/navigation";
+import Script from "next/script";
 
 import { ClientProviders } from "@/components/client-providers";
 import { Navbar } from "@/components/navbar";
@@ -87,6 +88,8 @@ export default async function LocaleLayout({
   }
   setRequestLocale(locale);
 
+  const captchaKey = process.env.NEXT_PUBLIC_CAPTCHA_SITE_KEY ?? "";
+
   return (
     <html lang={locale}>
       <Head>
@@ -99,6 +102,10 @@ export default async function LocaleLayout({
         />
       </Head>
       <body className={cn(font.className, "overflow-x-hidden")}>
+        <Script
+          strategy="beforeInteractive"
+          src={`https://www.google.com/recaptcha/api.js?render=${captchaKey}`}
+        />
         <NextIntlClientProvider>
           <ClientProviders>
             <Navbar />

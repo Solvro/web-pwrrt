@@ -9,7 +9,9 @@ import { Title } from "@/components/title";
 
 import { UserCard } from "../team/[teamId]/user-card";
 import { sortRoles } from "../team/[teamId]/utils";
+import { ContactReportForm } from "./contact-report";
 import { Admin, EmailAction } from "./email-action";
+import { ErrorReportForm } from "./error-report";
 import { GoogleMapComponent } from "./map";
 
 interface Role {
@@ -141,12 +143,6 @@ export default async function ContactUs() {
           </div>
         </div>
       </Container>
-      <div className="mt-4 mb-6 text-center md:mt-12">
-        <Title color="black" size="medium">
-          {t("whereToFindUs")}
-        </Title>
-      </div>
-      <GoogleMapComponent />
       <Container>
         <div className="my-8 grid w-full grid-cols-1 gap-12 md:my-12 md:gap-20">
           <div className="flex flex-col items-start gap-4 md:items-center md:gap-6">
@@ -195,6 +191,20 @@ export default async function ContactUs() {
           </div>
         </div>
       </Container>
+      <Container>
+        <div className="mt-16 mb-12 flex w-full flex-col items-center">
+          <div className="flex w-[100vw] flex-wrap justify-center gap-20">
+            <ErrorReportForm />
+            <ContactReportForm />
+          </div>
+        </div>
+      </Container>
+      <div className="mt-4 mb-6 text-center md:mt-12">
+        <Title color="black" size="medium">
+          {t("whereToFindUs")}
+        </Title>
+      </div>
+      <GoogleMapComponent />
     </div>
   );
 }
