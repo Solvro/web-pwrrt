@@ -230,7 +230,6 @@ export function FooterSection() {
             </div>
           </div>
           <div className="flex w-full flex-col items-center justify-between gap-2 border-t border-white py-3 md:flex-row md:px-12 md:py-6">
-
             <div className="text-xs font-medium text-gray-200">
               <p>
                 Original Project & Execution: Maria Kanczewska & Dawid Chmal
