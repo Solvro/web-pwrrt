@@ -26,7 +26,7 @@ type NewsPageClientProps = {
   heroImage: string | Media;
   content: SerializedEditorState;
   publishedAt: string;
-  tags: string[];
+  tags?: string[];
 };
 
 export function NewsPageClient({
@@ -90,7 +90,7 @@ export function NewsPageClient({
                   })}
                   {" | "}
                 </p>
-                {data.tags.map((tag) => (
+                {data.tags?.map((tag) => (
                   <div
                     key={tag}
                     className="bg-custom-red rounded-full px-2 py-1 text-xs text-white"
