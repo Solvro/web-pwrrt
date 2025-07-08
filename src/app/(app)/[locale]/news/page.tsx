@@ -4,6 +4,7 @@ import { getLocale } from "next-intl/server";
 
 import { Container } from "@/components/container";
 import { NewsCard } from "@/components/news-card";
+import { NewsList } from "@/components/news/NewsList";
 import { Title } from "@/components/title";
 import { getAllNews, getAllUniqueTags } from "@/functions/news";
 import { getUrlFromMedia } from "@/lib/utils";
@@ -21,16 +22,7 @@ async function AboutUs() {
       <div className="my-4 border-b-2 border-white px-8 py-4 uppercase md:my-12 md:w-fit">
         <Title>AKTUALNOŚCI</Title>
       </div>
-      <div className="mb-6 flex flex-wrap gap-2">
-        {tags.map((tag: string) => (
-          <button
-            key={tag}
-            className="rounded bg-gray-200 px-3 py-1 text-sm text-black"
-          >
-            {tag}
-          </button>
-        ))}
-      </div>
+      <NewsList news={news} tags={tags} />
       <Container>
         <div className="my-6 grid w-full grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {news.map((item) => (
