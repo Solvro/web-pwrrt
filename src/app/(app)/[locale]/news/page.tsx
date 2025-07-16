@@ -23,21 +23,6 @@ async function AboutUs() {
         <Title>AKTUALNOŚCI</Title>
       </div>
       <NewsList news={news} tags={tags} />
-      <Container>
-        <div className="my-6 grid w-full grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {news.map((item) => (
-            <NewsCard
-              key={item.id}
-              slug={item.slug ?? item.id}
-              title={item.title}
-              short_description={item.shortDescription}
-              length_time={item.howLong}
-              logo={"/images/logo-czarne.svg"}
-              main_image={getUrlFromMedia(item.heroImage)}
-            />
-          ))}
-        </div>
-      </Container>
     </div>
   );
 }
