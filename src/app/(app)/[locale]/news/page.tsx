@@ -10,14 +10,34 @@ export const metadata: Metadata = {
   title: "News",
 };
 
+type Media = { url?: string };
+
+type News = {
+  id: string;
+  slug: string;
+  title: string;
+  shortDescription: string;
+  howLong: number;
+  mainImageUrl: string;
+  tags?: string[];
+};
+
 async function AboutUs() {
   const locale = await getLocale();
-  const news = await getAllNews(locale);
+  const newsRaw = await getAllNews(locale);
   const tags = await getAllUniqueTags(locale);
 
-  const newsWithImages = news.map((item) => ({
-    ...item,
-    mainImageUrl: item.heroImage?.url ?? "",
+  const newsWithImages: News[] = newsRaw.map((item) => ({
+    id: item.id,
+    slug: item.slug ?? "",
+    title: item.title,
+    shortDescription: item.shortDescription,
+    howLong: item.howLong,
+    mainImageUrl:
+      typeof item.heroImage === "object" && item.heroImage !== null
+        ? ((item.heroImage as Media).url ?? "")
+        : "",
+    tags: item.tags ?? [],
   }));
 
   return (

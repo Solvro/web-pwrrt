@@ -1,7 +1,7 @@
 import { getLocale } from "next-intl/server";
 
 import { NewsCard } from "@/components/news-card";
-import { getAllUniqueTags, getLast3News } from "@/functions/news";
+import { getLast3News } from "@/functions/news";
 import { getUrlFromMedia } from "@/lib/utils";
 
 import { Container } from "../../container";

@@ -64,6 +64,6 @@ export const getAllUniqueTags = async (locale: Locale): Promise<string[]> => {
       },
     },
   });
-  const allTags: string[] = news.docs.flatMap((item) => item.tags ?? []);
+  const allTags: string[] = news.docs.flatMap((item) => item.tags || []);
   return [...new Set(allTags)];
 };
