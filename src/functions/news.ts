@@ -52,7 +52,7 @@ export const getLast3News = async (locale: Locale) => {
   return news.docs;
 };
 
-export const getAllUniqueTags = async (locale: Locale) => {
+export const getAllUniqueTags = async (locale: Locale): Promise<string[]> => {
   const payload = await getPayload({ config });
   const news = await payload.find({
     collection: "news",
@@ -64,6 +64,6 @@ export const getAllUniqueTags = async (locale: Locale) => {
       },
     },
   });
-  const allTags = news.docs.flatMap((item: any) => item.tags || []);
-  return Array.from(new Set(allTags));
+  const allTags: string[] = news.docs.flatMap((item) => item.tags ?? []);
+  return [...new Set(allTags)];
 };

@@ -5,7 +5,7 @@ import { useState } from "react";
 import { Container } from "@/components/container";
 import { NewsCard } from "@/components/news-card";
 
-type News = {
+interface News {
   id: string;
   slug: string;
   title: string;
@@ -13,19 +13,20 @@ type News = {
   howLong: number;
   mainImageUrl: string;
   tags?: string[];
-};
+}
 
-type NewsListProps = {
+interface NewsListProps {
   news: News[];
   tags: string[];
-};
+}
 
 export function NewsList({ news, tags }: NewsListProps) {
   const [selectedTag, setSelectedTag] = useState<string | null>(null);
 
-  const filteredNews = !selectedTag
-    ? news
-    : news.filter((item) => (item.tags || []).includes(selectedTag));
+  const filteredNews =
+    selectedTag === null
+      ? news
+      : news.filter((item) => (item.tags ?? []).includes(selectedTag));
 
   return (
     <>
@@ -33,7 +34,7 @@ export function NewsList({ news, tags }: NewsListProps) {
         <button
           type="button"
           className={`focus:ring-custom-red rounded border px-3 py-1 text-sm transition-colors duration-150 focus:ring-2 focus:outline-none ${
-            !selectedTag
+            selectedTag === null
               ? "bg-custom-red border-custom-red text-white"
               : "border-gray-400 bg-gray-300 text-gray-600 hover:bg-gray-400 hover:text-black"
           }`}
@@ -52,7 +53,9 @@ export function NewsList({ news, tags }: NewsListProps) {
                   ? "bg-custom-red border-custom-red text-white"
                   : "border-gray-400 bg-gray-300 text-gray-600 hover:bg-gray-400 hover:text-black"
               }`}
-              onClick={() => setSelectedTag(isSelected ? null : tag)}
+              onClick={() => {
+                setSelectedTag(isSelected ? null : tag);
+              }}
             >
               {tag}
             </button>
