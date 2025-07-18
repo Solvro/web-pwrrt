@@ -66,7 +66,7 @@
   "devDependencies": {
     "@commitlint/cli": "^19.8.1",
     "@next/eslint-plugin-next": "^15.3.2",
-    "@solvro/config": "^1.13.5",
+    "@solvro/config": "^2.0.1",
     "@tailwindcss/postcss": "^4.1.6",
     "@types/bcrypt": "^5.0.2",
     "@types/grecaptcha": "^3.0.9",
