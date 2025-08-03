@@ -58,6 +58,8 @@ export default buildConfig({
           secretAccessKey: process.env.S3_SECRET_ACCESS_KEY ?? "",
         },
         region: process.env.S3_REGION ?? "",
+        tls: process.env.NODE_ENV === "production",
+        forcePathStyle: true,
         // ... Other S3 configuration
       },
     }),
