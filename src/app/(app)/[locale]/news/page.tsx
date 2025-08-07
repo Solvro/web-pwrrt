@@ -18,7 +18,7 @@ export default async function AboutUs() {
       title: item.title,
       shortDescription: item.shortDescription,
       howLong: Number(item.howLong) || 0,
-      heroImage: getUrlFromMedia(item.heroImage), // 👈 Upewniamy się, że to string
+      heroImage: getUrlFromMedia(item.heroImage),
       tags: Array.isArray(item.tags) ? item.tags : [],
     }));
 
