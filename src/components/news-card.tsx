@@ -12,6 +12,7 @@ interface NewsCardProps {
   main_image: string;
   whiteMode?: boolean;
   slug: string;
+  tags?: string[];
 }
 export function NewsCard({
   title,
@@ -21,6 +22,7 @@ export function NewsCard({
   main_image,
   whiteMode,
   slug,
+  tags,
 }: NewsCardProps) {
   return (
     <Link href={`/news/${slug}`} passHref>
@@ -51,6 +53,18 @@ export function NewsCard({
               {short_description}
             </p>
           </div>
+          {tags && tags.length > 0 ? (
+            <div className="mb-2 flex flex-wrap gap-1">
+              {tags.map((tag) => (
+                <span
+                  key={tag}
+                  className="rounded bg-gray-300 px-2 py-0.5 text-xs text-gray-700"
+                >
+                  {tag}
+                </span>
+              ))}
+            </div>
+          ) : null}
           <div className="flex justify-between">
             <Image
               alt="Logo"
