@@ -94,9 +94,19 @@ export interface Config {
   };
   globals: {
     'main-page': MainPage;
+    departments: Department;
+    'background-video': BackgroundVideo;
+    contact: Contact;
+    recruitment: Recruitment;
+    'team-history': TeamHistory;
   };
   globalsSelect: {
     'main-page': MainPageSelect<false> | MainPageSelect<true>;
+    departments: DepartmentsSelect<false> | DepartmentsSelect<true>;
+    'background-video': BackgroundVideoSelect<false> | BackgroundVideoSelect<true>;
+    contact: ContactSelect<false> | ContactSelect<true>;
+    recruitment: RecruitmentSelect<false> | RecruitmentSelect<true>;
+    'team-history': TeamHistorySelect<false> | TeamHistorySelect<true>;
   };
   locale: 'en' | 'pl';
   user: User & {
@@ -478,11 +488,149 @@ export interface MainPage {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "departments".
+ */
+export interface Department {
+  id: string;
+  departments?:
+    | {
+        name: string;
+        description: string;
+        image: string | Media;
+        id?: string | null;
+      }[]
+    | null;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "background-video".
+ */
+export interface BackgroundVideo {
+  id: string;
+  video?: (string | null) | Media;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "contact".
+ */
+export interface Contact {
+  id: string;
+  people?:
+    | {
+        name: string;
+        role: string;
+        email: string;
+        photo?: (string | null) | Media;
+        id?: string | null;
+      }[]
+    | null;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "recruitment".
+ */
+export interface Recruitment {
+  id: string;
+  active: boolean;
+  endDate: string;
+  link: string;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "team-history".
+ */
+export interface TeamHistory {
+  id: string;
+  achievementsCount: number;
+  projectsCount: number;
+  membersCount: number;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "main-page_select".
  */
 export interface MainPageSelect<T extends boolean = true> {
   title?: T;
   description?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "departments_select".
+ */
+export interface DepartmentsSelect<T extends boolean = true> {
+  departments?:
+    | T
+    | {
+        name?: T;
+        description?: T;
+        image?: T;
+        id?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "background-video_select".
+ */
+export interface BackgroundVideoSelect<T extends boolean = true> {
+  video?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "contact_select".
+ */
+export interface ContactSelect<T extends boolean = true> {
+  people?:
+    | T
+    | {
+        name?: T;
+        role?: T;
+        email?: T;
+        photo?: T;
+        id?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "recruitment_select".
+ */
+export interface RecruitmentSelect<T extends boolean = true> {
+  active?: T;
+  endDate?: T;
+  link?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "team-history_select".
+ */
+export interface TeamHistorySelect<T extends boolean = true> {
+  achievementsCount?: T;
+  projectsCount?: T;
+  membersCount?: T;
   updatedAt?: T;
   createdAt?: T;
   globalType?: T;
