@@ -27,7 +27,7 @@ export default function JoinUsPage() {
           <div className="my-4 mb-24 border-b-2 border-black py-4 text-center md:w-3/5">
             <Title color="black">{t("becomeMember")}</Title>
           </div>
-          <Timer targetDate="2025-10-15T00:00:00" />
+          <Timer targetDate="2025-10-29T23:59:00" />
           <ButtonsSection />
         </div>
       </Container>
