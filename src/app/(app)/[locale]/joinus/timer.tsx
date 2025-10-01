@@ -57,13 +57,13 @@ export function Timer({ targetDate }: TimerProps) {
     <div className="flex flex-col items-center gap-4">
       <div className="mb-8">
         <Text bold medium color="black">
-          {t("recruitmentClosed")}
-          {/* {dict.recruitmentOpen} */}
+          {/* {t("recruitmentClosed")} */}
+          {t("recruitmentOpen")}
         </Text>
       </div>
       <Text wide small>
-        {t("recruitmentNextIn")}
-        {/* {dict.recruitmentOpenEndIn} */}
+        {/* {t("recruitmentNextIn")} */}
+        {t("recruitmentOpenEndIn")}
       </Text>
       <div className="flex gap-2 md:gap-4">
         <div className="flex flex-col text-center">
