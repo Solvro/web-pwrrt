@@ -74,7 +74,7 @@ export default async function ContactUs() {
   const t = await getTranslations("contactUs");
 
   const mainMembers = await getMembersData(
-    ["paweł wójcik", "bartosz sobczak", "alicja jeżak", "joanna popielewska"],
+    ["yelizaveta amelyaniuk", "kamil wadas", "hubert kiernożycki"],
     "RT15e",
   );
 
@@ -87,17 +87,8 @@ export default async function ContactUs() {
     "RT14e",
   );
 
-  const siteAdministration = await getMembersData(
-    ["dawid chmal", "maria kanczewska"],
-    "RT14e",
-  );
-
   const roleHistory: RoleHistory = {};
-  for (const member of [
-    ...mainMembers,
-    ...projectSupervisors,
-    ...siteAdministration,
-  ]) {
+  for (const member of [...mainMembers, ...projectSupervisors]) {
     const memberFullName = `${member.name} ${member.surname}`;
     roleHistory[memberFullName] = sortRoles(
       member.roles.map((role) => ({
@@ -180,13 +171,6 @@ export default async function ContactUs() {
                   ],
                 }}
               />
-              {siteAdministration.map((member) => (
-                <UserCard
-                  key={`${member.name}${member.surname}admin`}
-                  member={member}
-                  roleHistory={roleHistory}
-                />
-              ))}
             </div>
           </div>
         </div>
