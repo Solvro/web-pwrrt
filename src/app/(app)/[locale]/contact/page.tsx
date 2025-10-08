@@ -74,7 +74,12 @@ export default async function ContactUs() {
   const t = await getTranslations("contactUs");
 
   const mainMembers = await getMembersData(
-    ["yelizaveta amelyaniuk", "kamil wadas", "hubert kiernożycki"],
+    [
+      "kamil wadas",
+      "bartosz sobczak",
+      "yelizaveta amelyaniuk",
+      "hubert kiernożycki",
+    ],
     "RT15e",
   );
 
