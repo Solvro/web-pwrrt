@@ -25,6 +25,9 @@ export function FooterSection() {
   const router = useRouter();
   const t = useTranslations("footer");
 
+  const contactPhoneNumber = t("phone");
+  const contactPhoneLink = `tel:${contactPhoneNumber.replaceAll(" ", "")}`;
+
   return (
     <div id="section-contact" className="relative md:pt-6">
       <div className="absolute inset-0 z-0 overflow-hidden">
@@ -50,7 +53,7 @@ export function FooterSection() {
             </div>
             <div className="flex flex-wrap items-center justify-end gap-4 md:flex-row md:gap-12">
               <Link
-                href="tel:+48517350915"
+                href={contactPhoneLink}
                 className="group flex cursor-pointer flex-col items-center md:items-start"
               >
                 <div className="flex items-center gap-3 pb-1 uppercase">
@@ -72,7 +75,7 @@ export function FooterSection() {
                 </div>
                 <div className="font-black">
                   <Text color="white" opacity1 hoverColor="red" small bold wide>
-                    +48 517 350 915
+                    {contactPhoneNumber}
                   </Text>
                 </div>
               </Link>
@@ -162,7 +165,7 @@ export function FooterSection() {
                 >
                   50-344 Wrocław
                 </FooterLink>
-                <FooterLink href={"tel:+48517350915"}>{t("phone")}</FooterLink>
+                <FooterLink href={contactPhoneLink}>{t("phone")}</FooterLink>
                 <FooterLink href={"mailto:racing@gmail.com"}>
                   {t("email")}
                 </FooterLink>
