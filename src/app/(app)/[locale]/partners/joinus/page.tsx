@@ -34,7 +34,7 @@ const getMembersData = async (names: string[]): Promise<TeamMember[]> => {
 
   return teamMembers.map((member) => {
     const currentRole = member.roles.find(
-      (role) => role.bolidName === "RT15e",
+      (role) => role.bolidName === "RT16e",
     )?.role;
     return {
       ...member,
@@ -276,10 +276,10 @@ export default async function PartnersJoinPage() {
   const t = await getTranslations("partnerJoinUsPage");
 
   const mainMembers = await getMembersData([
-    "paweł wójcik",
+    "kamil wadas",
     "bartosz sobczak",
-    "alicja jeżak",
-    "joanna popielewska",
+    "yelizaveta amelyaniuk",
+    "hubert kiernożycki",
   ]);
 
   return (

@@ -80,7 +80,7 @@ export default async function ContactUs() {
       "yelizaveta amelyaniuk",
       "hubert kiernożycki",
     ],
-    "RT15e",
+    "RT16e",
   );
 
   const projectSupervisors = await getMembersData(
