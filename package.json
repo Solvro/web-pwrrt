@@ -9,12 +9,12 @@
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "knip": "knip",
-    "lint": "eslint --max-warnings=0 .",
+    "lint": "next typegen && eslint --max-warnings=0 .",
     "lint:fix": "eslint --fix .",
     "precommit": "next typegen && npm run lint && npm run typecheck",
     "prepare": "husky || true",
     "start": "next start",
-    "typecheck": "tsc"
+    "typecheck": "next typegen && tsc"
   },
   "lint-staged": {
     "*": "prettier -w --ignore-unknown"
