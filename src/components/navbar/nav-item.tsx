@@ -1,10 +1,10 @@
 "use client";
 
+import type { Route } from "next";
 import Link from "next/link";
 import React, { useContext, useEffect, useState } from "react";
 
 import { ClosestSectionContext } from "./closest-section-context";
-import type { Route } from "next";
 
 interface NavItemProps {
   to: string;
