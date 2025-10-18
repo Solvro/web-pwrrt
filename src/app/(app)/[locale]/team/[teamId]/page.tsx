@@ -119,27 +119,29 @@ async function TeamPage(props: { params: Promise<Iparams> }) {
     "opiekun naukowy",
   ];
 
-  const sortedDepartments = Object.keys(membersByDepartment).sort((a, b) => {
-    const aIndex = departmentOrder.indexOf(a);
-    const bIndex = departmentOrder.indexOf(b);
+  const sortedDepartments = Object.keys(membersByDepartment).toSorted(
+    (a, b) => {
+      const aIndex = departmentOrder.indexOf(a);
+      const bIndex = departmentOrder.indexOf(b);
 
-    if (a === "opiekun naukowy") {
-      return 1;
-    }
-    if (b === "opiekun naukowy") {
-      return -1;
-    }
-    if (aIndex === -1 && bIndex === -1) {
-      return a.localeCompare(b);
-    }
-    if (aIndex === -1) {
-      return 1;
-    }
-    if (bIndex === -1) {
-      return -1;
-    }
-    return aIndex - bIndex;
-  });
+      if (a === "opiekun naukowy") {
+        return 1;
+      }
+      if (b === "opiekun naukowy") {
+        return -1;
+      }
+      if (aIndex === -1 && bIndex === -1) {
+        return a.localeCompare(b);
+      }
+      if (aIndex === -1) {
+        return 1;
+      }
+      if (bIndex === -1) {
+        return -1;
+      }
+      return aIndex - bIndex;
+    },
+  );
 
   return (
     <div className="relative bg-neutral-950 pt-32 pb-12">
@@ -181,7 +183,7 @@ async function TeamPage(props: { params: Promise<Iparams> }) {
                     } my-4 grid gap-6`}
                   >
                     {membersByDepartment[department]
-                      .sort((a, b) => {
+                      .toSorted((a, b) => {
                         const roleA = a.currentRole || "";
                         const roleB = b.currentRole || "";
                         const isLeaderA =

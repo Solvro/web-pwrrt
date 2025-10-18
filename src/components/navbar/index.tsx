@@ -9,15 +9,11 @@ import { UserMenu } from "./usermenu/user-menu";
 
 export function Navbar() {
   const [atTop, setAtTop] = useState(true);
-  const [isHome, setIsHome] = useState(false);
   const [lastScrollY, setLastScrollY] = useState(0);
   const [hideNavbar, setHideNavbar] = useState(false);
 
   const pathname = usePathname();
-
-  useEffect(() => {
-    setIsHome(pathname === "/pl" || pathname === "/en" || pathname === "/");
-  }, [pathname]);
+  const isHome = pathname === "/pl" || pathname === "/en" || pathname === "/";
 
   useEffect(() => {
     const handleScroll = () => {

@@ -1,5 +1,6 @@
 import ENFlag from "@public/images/Flagaen.png";
 import PLFlag from "@public/images/Flagapl.png";
+import type { Route } from "next";
 import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
 import React from "react";
@@ -17,7 +18,7 @@ export function LangButton({ lang, black = false }: LangButtonProps) {
     if (pathname) {
       const newLang = lang === "pl" ? "en" : "pl";
       const newPath = pathname.replace(/^\/[a-z]{2}/, `/${newLang}`);
-      router.push(newPath);
+      router.push(newPath as Route);
     }
   };
 

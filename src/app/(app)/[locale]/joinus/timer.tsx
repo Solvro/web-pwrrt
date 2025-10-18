@@ -13,7 +13,7 @@ interface TimerProps {
 export function Timer({ targetDate }: TimerProps) {
   const t = useTranslations("joinUs");
   const calculateTimeLeft = useCallback(() => {
-    const difference = +new Date(targetDate) - Date.now();
+    const difference = Number(new Date(targetDate)) - Date.now();
     let timeLeft = {
       days: "00",
       hours: "00",

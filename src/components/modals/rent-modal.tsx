@@ -1,6 +1,5 @@
 "use client";
 
-import axios from "axios";
 import { useRouter } from "next/navigation";
 import { useMemo, useState } from "react";
 import type { FieldValues, SubmitHandler } from "react-hook-form";
@@ -95,9 +94,17 @@ export function RentModal() {
 
     setIsLoading(true);
 
-    axios
-      .post("/api/listings", data)
-      .then(() => {
+    fetch("/api/listings", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Failed to create listing");
+        }
         toast.success("Listing Created!");
         router.refresh();
         reset();

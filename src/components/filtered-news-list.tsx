@@ -4,6 +4,7 @@ import { usePathname, useRouter, useSearchParams } from "next/navigation";
 
 import { Container } from "@/components/container";
 import { NewsCard } from "@/components/news-card";
+import type { Route } from "next";
 
 export interface NewsItem {
   id: string;
@@ -48,13 +49,13 @@ export function FilteredNewsList({ allNews, tags }: FilteredNewsListProps) {
       parameters.delete("tags");
     }
 
-    router.push(`${pathname}?${parameters.toString()}`);
+    router.push(`${pathname}?${parameters.toString()}` as Route);
   };
 
   const handleClear = (): void => {
     const parameters = new URLSearchParams(searchParameters.toString());
     parameters.delete("tags");
-    router.push(pathname);
+    router.push(pathname as Route);
   };
 
   return (

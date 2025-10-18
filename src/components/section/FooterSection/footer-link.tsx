@@ -1,5 +1,6 @@
 "use client";
 
+import type { Route } from "next";
 import Link from "next/link";
 
 interface FooterLinkProps {
@@ -12,7 +13,7 @@ export function FooterLink({ children, href, blank = false }: FooterLinkProps) {
   return (
     <li>
       <Link
-        href={href}
+        href={href as Route}
         target={blank ? "_blank" : undefined}
         className="text-opacity-70 hover:text-custom-red cursor-pointer py-1 whitespace-nowrap duration-300"
       >

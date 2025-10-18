@@ -33,7 +33,6 @@ const textVariants = {
     transition: {
       duration: 0.8,
       delay,
-      ease: "easeOut",
     },
   }),
 };
@@ -48,7 +47,6 @@ const imageVariants = {
     opacity: 1,
     transition: {
       duration: 1,
-      ease: "easeOut",
     },
   },
 };

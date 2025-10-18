@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useEffect, useState } from "react";
+import React, { createContext, useContext, useState } from "react";
 import type { ReactNode } from "react";
 
 // Define the shape of the context data
@@ -13,15 +13,14 @@ const AuthContext = createContext<AuthContextProps | undefined>(undefined);
 
 // Create a provider component
 export function AuthProvider({ children }: { children: ReactNode }) {
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
-
-  useEffect(() => {
+  const [isAuthenticated, setIsAuthenticated] = useState(() => {
     // Check if the user is already logged in by checking localStorage/sessionStorage
-    const loggedIn = localStorage.getItem("isAuthenticated");
-    if (loggedIn === "true") {
-      setIsAuthenticated(true);
+    if (typeof window !== "undefined") {
+      const loggedIn = localStorage.getItem("isAuthenticated");
+      return loggedIn === "true";
     }
-  }, []);
+    return false;
+  });
 
   const login = () => {
     setIsAuthenticated(true);

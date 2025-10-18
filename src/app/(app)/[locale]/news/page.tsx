@@ -17,7 +17,7 @@ export default async function AboutUs() {
       slug: item.slug ?? item.id,
       title: item.title,
       shortDescription: item.shortDescription,
-      howLong: Number(item.howLong) || 0,
+      howLong: item.howLong || 0,
       heroImage: getUrlFromMedia(item.heroImage),
       tags: Array.isArray(item.tags) ? item.tags : [],
     }));

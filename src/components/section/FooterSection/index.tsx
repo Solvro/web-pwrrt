@@ -20,6 +20,7 @@ import { SocialIcons } from "../../navbar/usermenu/social-icons";
 import { Text } from "../../text";
 import { Title } from "../../title";
 import { FooterLink } from "./footer-link";
+import type { Route } from "next";
 
 export function FooterSection() {
   const router = useRouter();
@@ -53,7 +54,7 @@ export function FooterSection() {
             </div>
             <div className="flex flex-wrap items-center justify-end gap-4 md:flex-row md:gap-12">
               <Link
-                href={contactPhoneLink}
+                href={contactPhoneLink as Route}
                 className="group flex cursor-pointer flex-col items-center md:items-start"
               >
                 <div className="flex items-center gap-3 pb-1 uppercase">

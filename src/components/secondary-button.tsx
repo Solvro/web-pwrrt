@@ -1,5 +1,6 @@
 "use client";
 
+import type { Route } from "next";
 import { useRouter } from "next/navigation";
 
 interface IconLinkProps {
@@ -15,7 +16,7 @@ export function SecondaryButton({
 }: IconLinkProps) {
   const router = useRouter();
   const handleNavigation = () => {
-    router.push(to);
+    router.push(to as Route);
   };
   return (
     <button

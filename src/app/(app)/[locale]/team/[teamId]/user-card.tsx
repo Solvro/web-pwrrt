@@ -2,7 +2,7 @@
 
 import type { StaticImageData } from "next/image";
 import Image from "next/image";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 
 import type { Media } from "@/payload-types";
 
@@ -31,20 +31,15 @@ interface UserCardProps {
 
 export function UserCard({ guardian, member, roleHistory }: UserCardProps) {
   const placeholderImage = "/images/TeamPlaceholder.jpg";
-  const [imageSource, setImageSource] = useState(placeholderImage);
+  const [imageFailed, setImageFailed] = useState(false);
 
-  useEffect(() => {
-    const profileUrl = member.profile?.url;
-    if (profileUrl) {
-      setImageSource(profileUrl);
-    } else {
-      setImageSource(placeholderImage);
-    }
-  }, [member.profile]);
+  const imageSource = imageFailed
+    ? placeholderImage
+    : (member.profile?.url ?? placeholderImage);
 
   const handleError = (event: React.SyntheticEvent<HTMLImageElement>) => {
     event.currentTarget.src = placeholderImage;
-    setImageSource(placeholderImage);
+    setImageFailed(true);
   };
 
   return (
