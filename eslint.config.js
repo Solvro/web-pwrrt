@@ -10,6 +10,12 @@ export default solvro([
     //   "import/prefer-default-export": "true",
     // },
   },
+  {
+    files: ["next-env.d.ts"],
+    rules: {
+      "@typescript-eslint/triple-slash-reference": "off",
+    },
+  },
   globalIgnores([
     "src/app/(payload)/**/*",
     "src/payload-types.ts",

@@ -4,7 +4,6 @@ import { usePathname, useRouter, useSearchParams } from "next/navigation";
 
 import { Container } from "@/components/container";
 import { NewsCard } from "@/components/news-card";
-import { getUrlFromMedia } from "@/lib/utils";
 
 export interface NewsItem {
   id: string;
@@ -100,7 +99,7 @@ export function FilteredNewsList({ allNews, tags }: FilteredNewsListProps) {
               short_description={item.shortDescription}
               length_time={item.howLong}
               logo="/images/logo-czarne.svg"
-              main_image={getUrlFromMedia(item.heroImage)}
+              main_image={item.heroImage}
               tags={item.tags}
             />
           ))}
