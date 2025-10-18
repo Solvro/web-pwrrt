@@ -4,7 +4,10 @@ import { getFirstBolidFunction } from "@/functions/bolid";
 
 export const dynamic = "force-dynamic";
 
-export default async function BolidPage() {
-  const current = await getFirstBolidFunction("en");
-  return redirect(`/bolid/${current.name}`);
+export default async function BolidPage({
+  params,
+}: PageProps<"/[locale]/bolid">) {
+  const { locale } = await params;
+  const current = await getFirstBolidFunction(locale as "en" | "pl");
+  return redirect(`/${locale}/bolid/${current.name || ""}`);
 }

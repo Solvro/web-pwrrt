@@ -1,6 +1,5 @@
 import type { MetadataRoute } from "next";
 
-// eslint-disable-next-line import/no-default-export
 export default function robots(): MetadataRoute.Robots {
   return {
     rules: {

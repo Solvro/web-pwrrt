@@ -12,6 +12,7 @@ const nextConfig: NextConfig = {
     ],
   },
   transpilePackages: ["three"],
+  typedRoutes: true,
 };
 
 const withNextIntl = createNextIntlPlugin();

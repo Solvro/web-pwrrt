@@ -3,7 +3,6 @@ import type { MetadataRoute } from "next";
 import { getAllBolidsFunction } from "@/functions/bolid";
 import { getAllNews } from "@/functions/news";
 
-// eslint-disable-next-line import/no-default-export
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const news = await getAllNews("pl");
   const bolids = await getAllBolidsFunction("pl", true, false);

@@ -13,7 +13,7 @@ const parseBolidName = (bolidName: string) => {
 };
 
 export const sortRoles = (roles: RoleHistoryItem[]): RoleHistoryItem[] => {
-  return [...roles].sort((a, b) => {
+  return roles.toSorted((a, b) => {
     const aValue = parseBolidName(a.bolidName);
     const bValue = parseBolidName(b.bolidName);
     return bValue - aValue;

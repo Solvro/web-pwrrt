@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { Text } from "./text";
+import type { Route } from "next";
 
 interface NewsCardProps {
   title: string;
@@ -25,7 +26,7 @@ export function NewsCard({
   tags,
 }: NewsCardProps) {
   return (
-    <Link href={`/news/${slug}`} passHref>
+    <Link href={`/news/${slug}` as Route} passHref>
       <div className="group flex h-104 cursor-pointer flex-col overflow-hidden rounded-md md:h-136">
         <div className="relative h-full overflow-hidden">
           <Image

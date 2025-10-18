@@ -15,6 +15,7 @@ import { Avatar } from "../../avatar";
 import { LangButton } from "./lang-button";
 import { MenuItem } from "./menu-item";
 import { SocialIcons } from "./social-icons";
+import type { Route } from "next";
 
 export function UserMenu() {
   const router = useRouter();
@@ -54,7 +55,7 @@ export function UserMenu() {
     (path: string) => {
       const currentLocale = pathname.split("/")[1];
       const newPath = `/${currentLocale}${path}`;
-      router.push(newPath);
+      router.push(newPath as Route);
       setIsOpen(false);
     },
     [router, pathname],

@@ -4,6 +4,7 @@ import Link from "next/link";
 import React, { useContext, useEffect, useState } from "react";
 
 import { ClosestSectionContext } from "./closest-section-context";
+import type { Route } from "next";
 
 interface NavItemProps {
   to: string;
@@ -31,7 +32,7 @@ export function NavItem({ to, children }: NavItemProps) {
         className={`group relative flex h-full cursor-pointer items-center px-3 font-semibold transition duration-300 ${
           to === closestSectionId ? "text-custom-red/80" : "text-white"
         } hover:text-custom-red`}
-        href={to}
+        href={to as Route}
       >
         <p className="whitespace-nowrap">{children}</p>
         {isScrolled ? (
