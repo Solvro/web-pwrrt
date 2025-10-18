@@ -29,12 +29,15 @@ jobs:
 
       - name: Format check
         run: npm run format:check
+        if: always()
 
       - name: Lint
         run: npm run lint
+        if: always()
 
       - name: Typecheck
         run: npm run typecheck
+        if: always()
 
       - name: Next.js Cache
         uses: actions/cache@v4
