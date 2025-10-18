@@ -1,10 +1,10 @@
 "use client";
 
+import type { Route } from "next";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 
 import { Container } from "@/components/container";
 import { NewsCard } from "@/components/news-card";
-import type { Route } from "next";
 
 export interface NewsItem {
   id: string;

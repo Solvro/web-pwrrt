@@ -1,6 +1,7 @@
 "use client";
 
 import JoinUsImage from "@public/images/joinus/photo5.jpeg";
+import type { Route } from "next";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
 import Link from "next/link";
@@ -20,7 +21,6 @@ import { SocialIcons } from "../../navbar/usermenu/social-icons";
 import { Text } from "../../text";
 import { Title } from "../../title";
 import { FooterLink } from "./footer-link";
-import type { Route } from "next";
 
 export function FooterSection() {
   const router = useRouter();

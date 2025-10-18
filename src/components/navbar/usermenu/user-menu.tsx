@@ -1,5 +1,6 @@
 "use client";
 
+import type { Route } from "next";
 import { useLocale, useTranslations } from "next-intl";
 import { usePathname, useRouter } from "next/navigation";
 import { useCallback, useEffect, useRef, useState } from "react";
@@ -15,7 +16,6 @@ import { Avatar } from "../../avatar";
 import { LangButton } from "./lang-button";
 import { MenuItem } from "./menu-item";
 import { SocialIcons } from "./social-icons";
-import type { Route } from "next";
 
 export function UserMenu() {
   const router = useRouter();
