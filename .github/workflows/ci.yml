@@ -29,15 +29,12 @@ jobs:
 
       - name: Format check
         run: npm run format:check
-        if: always()
 
       - name: Lint
         run: npm run lint
-        if: always()
 
       - name: Typecheck
         run: npm run typecheck
-        if: always()
 
       - name: Next.js Cache
         uses: actions/cache@v4
@@ -51,7 +48,6 @@ jobs:
 
       - name: Build
         run: npm run build
-        if: always()
         env:
           DATABASE_URL: ${{ secrets.DATABASE_URL }}
           DATABASE_URI: ${{ secrets.DATABASE_URL }}
