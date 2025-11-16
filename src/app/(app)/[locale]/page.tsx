@@ -16,7 +16,7 @@ export default async function Home() {
   const bolid = await getFirstBolidFunction(locale);
 
   return (
-    <div className="">
+    <div>
       <HeroSection />
       <DepartmentsSubsection />
       <BolidSection presetBolid={bolid} />
