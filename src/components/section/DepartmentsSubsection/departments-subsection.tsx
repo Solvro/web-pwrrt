@@ -1,6 +1,5 @@
 "use client";
 
-import { BottomBar } from "./bottom-bar";
 import { Department } from "./department";
 
 export function DepartmentsSubsection() {
@@ -19,7 +18,6 @@ export function DepartmentsSubsection() {
           <Department department="business" objectPositionY="20%" />
         </div>
       </div>
-      <BottomBar />
     </div>
   );
 }
