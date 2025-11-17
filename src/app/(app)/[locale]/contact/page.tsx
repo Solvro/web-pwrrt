@@ -79,6 +79,7 @@ export default async function ContactUs() {
       "bartosz sobczak",
       "yelizaveta amelyaniuk",
       "hubert kiernożycki",
+      "joanna popielewska",
     ],
     "RT16e",
   );
