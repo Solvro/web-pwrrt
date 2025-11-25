@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { useTranslations } from "next-intl";
+import Photo1 from "@public/images/joinus/new_images/photo1.jpg";
 
 import { Container } from "@/components/container";
 import { Title } from "@/components/title";
@@ -16,22 +17,29 @@ export default function JoinUsPage() {
   const t = useTranslations("joinUs");
 
   return (
-    <div className="pt-[120px]">
-      <div className="absolute right-0 opacity-5">
-        <h1 className="text-[15rem] leading-none font-extrabold text-black uppercase">
-          {t("pageTitle")}
-        </h1>
-      </div>
-      <Container>
-        <div className="mt-16 flex w-full flex-col items-center">
-          <div className="my-4 mb-24 border-b-2 border-black py-4 text-center md:w-3/5">
-            <Title color="black">{t("becomeMember")}</Title>
+    <div className="relative w-screen overflow-x-hidden">
+      <div className="relative inset-0 -z-20 md:h-screen">
+        <img
+          src={Photo1.src}
+          alt="Join Us"
+          className="w-full h-full object-cover"
+        />
+        <div className="absolute inset-0 bg-black/70" />
+
+        <div className="absolute inset-x-0 bottom-20 flex justify-center px-4 z-10">
+          <div className="w-full max-w-5xl">
+            <Timer targetDate="2025-10-30T23:59:00" />
           </div>
-          <Timer targetDate="2025-10-30T23:59:00" />
-          <ButtonsSection />
+        </div>
+      </div>
+
+      <Container>
+        <div className="mt-10 flex w-full flex-col items-center relative z-10">
+          <div className="w-full">
+            <DepartmentsAbout />
+          </div>
         </div>
       </Container>
-      <DepartmentsAbout lightMode />
     </div>
   );
 }
