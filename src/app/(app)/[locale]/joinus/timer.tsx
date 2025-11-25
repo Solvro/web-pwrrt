@@ -55,52 +55,47 @@ export function Timer({ targetDate }: TimerProps) {
 
   return (
     <div className="flex flex-col items-center gap-4">
-      <div className="mb-8">
-        <Text bold medium color="black">
-          {/* {t("recruitmentClosed")} */}
-          {t("recruitmentOpen")}
+      <div className="mb-5">
+        <Text bold wide medium color="white">
+          {t("recruitmentNextIn")}
         </Text>
       </div>
-      <Text wide small>
-        {/* {t("recruitmentNextIn")} */}
-        {t("recruitmentOpenEndIn")}
-      </Text>
       <div className="flex gap-2 md:gap-4">
         <div className="flex flex-col text-center">
-          <Title lower size="bigger" color="red">
+          <Title lower size="bigger" color="white">
             {timeLeft.days}
           </Title>
           <Title lower size="subtitle" color="red">
             {t("days")}
           </Title>
         </div>
-        <Title lower size="bigger" color="red">
+        <Title lower size="bigger" color="white">
           :
         </Title>
         <div className="flex flex-col text-center">
-          <Title lower size="bigger" color="red">
+          <Title lower size="bigger" color="white">
             {timeLeft.hours}
           </Title>
           <Title lower size="subtitle" color="red">
             {t("hours")}
           </Title>
         </div>
-        <Title lower size="bigger" color="red">
+        <Title lower size="bigger" color="white">
           :
         </Title>
         <div className="flex flex-col text-center">
-          <Title lower size="bigger" color="red">
+          <Title lower size="bigger" color="white">
             {timeLeft.minutes}
           </Title>
           <Title lower size="subtitle" color="red">
             {t("minutes")}
           </Title>
         </div>
-        <Title lower size="bigger" color="red">
+        <Title lower size="bigger" color="white">
           :
         </Title>
         <div className="flex flex-col text-center">
-          <Title lower size="bigger" color="red">
+          <Title lower size="bigger" color="white">
             {timeLeft.seconds}
           </Title>
           <Title lower size="subtitle" color="red">
