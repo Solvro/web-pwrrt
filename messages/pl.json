@@ -299,10 +299,35 @@
   "joinUs": {
     "pageTitle": "REKRUTACJA",
     "becomeMember": "ZOSTAŃ CZŁONKIEM",
+    "racingTeamTitle": "PWR RACING TEAM",
     "recruitmentClosed": "Rekrutacja zakończona, dziękujemy za zainteresowanie! 🚀",
     "recruitmentNextIn": "REKRUTACJA DO TEAMU RUSZY ZA:",
     "recruitmentOpen": "Rekrutacja otwarta! Dołącz do nas i twórz z nami coś wyjątkowego. 🚀",
     "recruitmentOpenEndIn": "REKRUTACJA TRWA JESZCZE PRZEZ:",
+    "career": "KARIERA",
+    "careerDescription1": "W naszym zespole każdy znajdzie przestrzeń do rozwoju – niezależnie od kierunku studiów czy doświadczenia. Działamy w wielu obszarach, od zaawansowanej inżynierii i projektowania bolidu, po marketing, PR i kontakty z partnerami.",
+    "careerDescription2": "Niezależnie od tego, czy interesuje Cię mechanika, elektronika, zarządzanie projektem, grafika czy media społecznościowe – PWR Racing Team to miejsce, gdzie Twoje umiejętności się liczą. Tworzymy zespół z pasją, a każda ścieżka jest równie ważna w drodze po sukces.",
+    "ourDepartments": "NASZE DZIAŁY",
+    "departments": {
+      "mechanical": {
+        "description": "Dział odpowiada za projektowanie i budowę układu zawieszenia, elementów autonomicznego układu kierowniczego i hamulcowego, a także za mocowania oraz struktury metalowe w monocoque. Do Twoich zadań będzie należeć udział w pracach związanych z każdym z tych obszarów – od koncepcji po realizację."
+      },
+      "electrical": {
+        "description": "Dział zajmuje się projektowaniem płytek PCB, tworzeniem wiązek wysokiego i niskiego napięcia oraz budową autorskiej baterii wysokiego napięcia. Do Twoich zadań będzie należeć projektowanie i wykonawstwo elektroniki, modelowanie obudów w CAD, projektowanie baterii oraz magistrali CAN, a także przeprowadzanie symulacji termicznych komponentów elektronicznych."
+      },
+      "composites": {
+        "description": "Dział zajmuje się własnoręcznym wykonaniem wszystkich elementów kompozytowych bolidu – od struktury nośnej, przez pakiet aerodynamiczny, aż po elementy ergonomiczne i osłonę baterii wysokiego napięcia. Pracując z nami, będziesz projektować komponenty w CAD, przeprowadzać symulacje wytrzymałościowe i CFD, optymalizować struktury kompozytowe, a także brać udział w ich wytwarzaniu i testach."
+      },
+      "software": {
+        "description": "Dział odpowiada za rozwój systemu autonomicznego oraz programowanie mikroprocesorów sterujących interfejsem kierowcy, hamowaniem i skręcaniem pojazdu. Tworzymy oprogramowanie w językach C, C++ i Python, rozwijając systemy percepcji, planowania trasy i kontroli ruchu, umożliwiające jazdę bez udziału kierowcy. W ramach pracy będziesz rozwijać algorytmy autonomicznej jazdy oraz systemy embedded."
+      },
+      "verticalPerformance": {
+        "description": "Dział skupia się na maksymalizacji osiągów bolidu poprzez pracę nad jego kinematyką, dynamiką, układem napędowym, akwizycją danych oraz organizacją testów. Do Twoich zadań będzie należeć prowadzenie symulacji dynamiki pojazdu, rozwój układu napędowego oraz analiza danych z przejazdów."
+      },
+      "business": {
+        "description": "Dział odpowiada za kontakt z partnerami, zarządzanie finansami Zespołu oraz przygotowanie konkurencji statycznych na zawody Formula Student, w tym prezentacji biznesowej. W ramach pracy będziesz zajmować się koordynacją zamówień, analizą danych, optymalizacją procesów, tworzeniem prezentacji oraz utrzymywaniem relacji z partnerami."
+      }
+    },
     "days": "DNI",
     "hours": "GODZIN",
     "minutes": "MINUT",

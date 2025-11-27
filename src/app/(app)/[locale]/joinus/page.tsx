@@ -8,17 +8,65 @@ import { Title } from "@/components/title";
 import { DepartmentsAbout } from "../about/DepartmentsAbout";
 import { ButtonsSection } from "./button-join-us";
 import { Timer } from "./timer";
+import { Text } from "@/components/text";
+import { Carousel } from "@/components/carousel/carousel";
 
 export const metadata: Metadata = {
   title: "Join Us",
 };
 
+interface SlideData {
+  id: number;
+  title: string;
+  description: string;
+  imageUrl: string;
+}
+
 export default function JoinUsPage() {
   const t = useTranslations("joinUs");
 
+  const slides: SlideData[] = [
+    {
+      id: 1,
+      title: "VEHICLE PERFORMANCE",
+      description: t("departments.verticalPerformance.description"),
+      imageUrl: "/images/departments/vehiclePerformance.png",
+    },
+    {
+      id: 2,
+      title: "ELECTRICAL",
+      description: t("departments.electrical.description"),
+      imageUrl: "/images/departments/electrical.png",
+    },
+    {
+      id: 3,
+      title: "MECHANICAL",
+      description: t("departments.mechanical.description"),
+      imageUrl: "/images/departments/mechanical.png",
+    },
+    {
+      id: 4,
+      title: "SOFTWARE",
+      description: t("departments.software.description"),
+      imageUrl: "/images/departments/software.png",
+    },
+    {
+      id: 5,
+      title: "BUSINESS",
+      description: t("departments.business.description"),
+      imageUrl: "/images/departments/business.png",
+    },
+    {
+      id: 6,
+      title: "COMPOSITES",
+      description: t("departments.composites.description"),
+      imageUrl: "/images/departments/composites.png",
+    },
+  ];
+
   return (
-    <div className="relative w-screen overflow-x-hidden">
-      <div className="relative inset-0 -z-20 md:h-screen">
+    <div className="relative w-screen overflow-x-hidden bg-black">
+      <div className="relative inset-0 md:h-screen">
         <img
           src={Photo1.src}
           alt="Join Us"
@@ -35,8 +83,48 @@ export default function JoinUsPage() {
 
       <Container>
         <div className="mt-10 flex w-full flex-col items-center relative z-10">
-          <div className="w-full">
-            <DepartmentsAbout />
+          <div className="w-full mt-20">
+            <div className="flex items-center gap-3">
+              <Text wide bold color="red">
+                1
+              </Text>
+              <span className="relative text-custom-red font-medium before:block before:h-[1.1px] before:w-20 before:bg-custom-red mr-1 ml-5"></span>
+              <Text wide bold color="red">
+                {t("career")}
+              </Text>
+            </div>
+
+            <div className="relative w-full bg-black flex flex-col items-center mt-6 mb-20">
+              <div className="md:w-190 inset-0 flex flex-col gap-4 py-10 px-4">
+                <Title color="white" size="medium">
+                  {t("racingTeamTitle")}
+                </Title>
+                <Text small wide color="white" center>
+                  {t("careerDescription1")}
+                </Text>
+                <div className="opacity-50">
+                  <Text small wide color="white" center>
+                    {t("careerDescription2")}
+                  </Text>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="w-full mt-20">
+            <div className="flex items-center gap-3">
+              <Text wide bold color="red">
+                2
+              </Text>
+              <span className="relative text-custom-red font-medium before:block before:h-[1.1px] before:w-20 before:bg-custom-red mr-1 ml-5"></span>
+              <Text wide bold color="red">
+                {t("ourDepartments")}
+              </Text>
+            </div>
+
+            <div className="relative w-full bg-black flex flex-col items-center mt-6 mb-20">
+              <Carousel slides={slides} />
+            </div>
           </div>
         </div>
       </Container>
