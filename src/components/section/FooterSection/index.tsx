@@ -253,7 +253,7 @@ export function FooterSection() {
                 © {new Date().getFullYear()} All rights reserved.
               </p>
               <div className="text-[10px] text-white">
-                This site is protected by reCAPTCHA and the Google
+                This site is protected by reCAPTCHA and Google
               </div>
             </div>
           </div>
