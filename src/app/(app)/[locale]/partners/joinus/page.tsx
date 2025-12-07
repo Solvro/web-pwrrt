@@ -280,6 +280,7 @@ export default async function PartnersJoinPage() {
     "bartosz sobczak",
     "yelizaveta amelyaniuk",
     "hubert kiernożycki",
+    "joanna popielewska",
   ]);
 
   return (
