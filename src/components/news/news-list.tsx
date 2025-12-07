@@ -72,8 +72,6 @@ export function NewsList({ news, tags }: NewsListProps) {
               slug={item.slug}
               title={item.title}
               short_description={item.shortDescription}
-              length_time={item.howLong}
-              logo="/images/logo-czarne.svg"
               main_image={item.mainImageUrl}
             />
           ))}

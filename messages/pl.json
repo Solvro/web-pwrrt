@@ -42,7 +42,8 @@
   "newsControls": {
     "title": "AKTUALNOŚCI",
     "becomePartner": "Zostań partnerem",
-    "contact": "Kontakt"
+    "contact": "Kontakt",
+    "buttonText": "Więcej informacji"
   },
   "navigation": {
     "home": "Strona główna",
