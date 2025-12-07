@@ -67,10 +67,14 @@ function DialogContent({
       >
         {children}
 <<<<<<< HEAD
+<<<<<<< HEAD
         {showCloseButton ? (
 =======
         {showCloseButton && (
 >>>>>>> 8e85df0 (feat: fixing content of contact page / added report bugs and forms handler / added translations)
+=======
+        {showCloseButton ? (
+>>>>>>> 4aef4e9 (fix: corrections)
           <DialogPrimitive.Close
             data-slot="dialog-close"
             className="ring-offset-background focus:ring-ring data-[state=open]:bg-accent data-[state=open]:text-muted-foreground absolute top-4 right-4 rounded-xs opacity-70 transition-opacity hover:opacity-100 focus:ring-2 focus:ring-offset-2 focus:outline-hidden disabled:pointer-events-none [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4"
@@ -79,10 +83,14 @@ function DialogContent({
             <span className="sr-only">Close</span>
           </DialogPrimitive.Close>
 <<<<<<< HEAD
+<<<<<<< HEAD
         ) : null}
 =======
         )}
 >>>>>>> 8e85df0 (feat: fixing content of contact page / added report bugs and forms handler / added translations)
+=======
+        ) : null}
+>>>>>>> 4aef4e9 (fix: corrections)
       </DialogPrimitive.Content>
     </DialogPortal>
   );
