@@ -3,21 +3,20 @@
 /// <reference types="grecaptcha" />
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useTranslations } from "next-intl";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import type { z } from "zod";
 
 import { sendContactReportForm } from "@/actions/bug-report-form";
-import { Button } from "@/components/button";
-import { Text } from "@/components/text";
 import {
   Form,
   FormControl,
   FormField,
   FormItem,
-  FormLabel,
   FormMessage,
 } from "@/components/ui/form";
+import { cn } from "@/lib/utils";
 
 import { ReportFormSchema } from "../../../../schemas/index";
 
@@ -47,7 +46,7 @@ export function ContactReportForm() {
   });
 
   const t = useTranslations("contactUs");
-
+  const [message, setMessage] = useState("");
   async function onSubmit(values: z.infer<typeof ReportFormSchema>) {
     try {
       const token = await getCaptchaToken();
@@ -67,29 +66,21 @@ export function ContactReportForm() {
 
   return (
     <div className="flex flex-col items-center">
-      <div className="my-4 mb-2 flex w-3/5 flex-col items-center border-b-2 border-black py-4 text-center">
-        <Text bold medium>
-          {t("contactUsForm")}
-        </Text>
-      </div>
       <Form {...form}>
         <form
           onSubmit={form.handleSubmit(onSubmit)}
-          className="mx-auto mt-8 w-[85vw] space-y-4 rounded border p-4 shadow md:w-[55vw] xl:w-[35vw]"
+          className="w-[85vw] space-y-4 shadow md:w-[55vw] xl:w-[35vw]"
         >
           <FormField
             control={form.control}
             name="email"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>
-                  <Text small>{t("formEmail")}</Text>
-                </FormLabel>
                 <FormControl>
                   <input
-                    placeholder="123456@student.pwr.edu.pl"
+                    placeholder={t("formEmail")}
                     {...field}
-                    className="peer w-full rounded-md border-1 border-[#cb1f3a] bg-white p-4 font-light outline-hidden transition disabled:cursor-not-allowed disabled:opacity-70"
+                    className="placeholder-ring border-ring border-b bg-transparent px-1 py-3 focus:outline-none"
                   />
                 </FormControl>
                 <FormMessage />
@@ -101,27 +92,45 @@ export function ContactReportForm() {
             name="content"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>
-                  <Text small>{t("formContactDescription")}</Text>
-                </FormLabel>
                 <FormControl>
-                  <textarea
-                    placeholder="..."
-                    {...field}
-                    className="peer w-full rounded-md border-1 border-[#cb1f3a] bg-white p-4 font-light outline-hidden transition disabled:cursor-not-allowed disabled:opacity-70"
-                    rows={4}
-                  />
+                  <div className="relative">
+                    <textarea
+                      placeholder={t("formContactDescription")}
+                      {...field}
+                      maxLength={200}
+                      rows={6}
+                      value={message}
+                      onChange={(event) => {
+                        setMessage(event.target.value);
+                      }}
+                      className="placeholder-ring border-ring w-full resize-none border-b bg-transparent px-1 py-3 focus:outline-none"
+                    />
+                    <span className="text-ring absolute right-0 bottom-3 text-sm">
+                      {message.length}/200
+                    </span>
+                  </div>
                 </FormControl>
                 <FormMessage />
               </FormItem>
             )}
           />
-          <Button
+          <button
             type="submit"
-            variant="default"
-            size="default"
-            label={t("formSubmitContactReport")}
-          />
+            className={cn(
+              "group border-ring text-ring flex gap-[5px] rounded-full border px-6 py-2 hover:bg-gray-800",
+              "cursor-pointer",
+            )}
+          >
+            {t("formSubmitContactButton")}
+            <span
+              className={cn(
+                "inline-block transition-transform duration-300 ease-out",
+                "group-hover:translate-x-1.5",
+              )}
+            >
+              →
+            </span>
+          </button>
         </form>
       </Form>
     </div>

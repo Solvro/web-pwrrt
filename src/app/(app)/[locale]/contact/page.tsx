@@ -1,200 +1,64 @@
-import knSolvro from "@public/images/SolvroPlaceholder.png";
-import type { Metadata } from "next";
-import { getTranslations } from "next-intl/server";
+"use client";
 
-import { getTeamByFullName } from "@/actions/team";
-import { Container } from "@/components/container";
-import { Text } from "@/components/text";
-import { Title } from "@/components/title";
+import { useTranslations } from "next-intl";
+import Image from "next/image";
+import Link from "next/link";
 
-import { UserCard } from "../team/[teamId]/user-card";
-import { sortRoles } from "../team/[teamId]/utils";
+import { cn } from "@/lib/utils";
+
 import { ContactReportForm } from "./contact-report";
-import { Admin, EmailAction } from "./email-action";
 import { ErrorReportForm } from "./error-report";
-import { GoogleMapComponent } from "./map";
 
-interface Role {
-  department: string;
-  role: string;
-  bolidName: string;
-}
-interface TeamMember {
-  name: string;
-  surname: string;
-  roles: Role[];
-  currentRole: string;
-  phoneNumber?: string | null;
-  email?: string | null;
-}
-
-type RoleHistory = Record<string, Role[]>;
-
-export const metadata: Metadata = {
-  title: "Contact Us",
-};
-
-const getMembersData = async (
-  names: string[],
-  bolidName: string,
-): Promise<TeamMember[]> => {
-  const teamMembers: TeamMember[] = [];
-
-  for (const member of names) {
-    const [name, ...rest] = member.split(" ");
-    const surname = rest.join(" ");
-    const memberData = await getTeamByFullName(name, surname);
-    if (memberData.length > 0) {
-      const member2 = memberData[0];
-      const currentRole =
-        member2.roles.find((role: Role) => role.bolidName === bolidName)
-          ?.role ?? "No current role";
-
-      teamMembers.push({
-        ...member2,
-        currentRole,
-      });
-    }
-  }
-
-  return teamMembers;
-};
-
-const formatPhoneNumber = (phoneNumber: string | null | undefined) => {
-  if (!phoneNumber) {
-    return "";
-  }
-  const countryCode = phoneNumber.slice(0, 3);
-  const restOfNumber = phoneNumber.slice(3);
-  const formattedNumber = restOfNumber.replaceAll(/(\d{3})(?=\d)/g, "$1 ");
-  return `${countryCode} ${formattedNumber}`;
-};
-
-export default async function ContactUs() {
-  const t = await getTranslations("contactUs");
-
-  const mainMembers = await getMembersData(
-    [
-      "kamil wadas",
-      "bartosz sobczak",
-      "yelizaveta amelyaniuk",
-      "hubert kiernożycki",
-      "joanna popielewska",
-    ],
-    "RT16e",
-  );
-
-  const projectSupervisors = await getMembersData(
-    [
-      "dr hab. inż. Anna Janicka",
-      "dr hab. inż. Damian Derlukiewicz",
-      "dr inż. Gustaw Sierzputowski",
-    ],
-    "RT14e",
-  );
-
-  const roleHistory: RoleHistory = {};
-  for (const member of [...mainMembers, ...projectSupervisors]) {
-    const memberFullName = `${member.name} ${member.surname}`;
-    roleHistory[memberFullName] = sortRoles(
-      member.roles.map((role) => ({
-        role: role.role,
-        bolidName: role.bolidName,
-        department: role.department,
-      })),
-    );
-  }
-
+export default function ContactUsRedesign() {
+  const t = useTranslations("contactUs");
   return (
-    <div className="pt-[100px] md:pt-[120px]">
-      <div className="absolute right-0 opacity-5">
-        <h1 className="text-[15rem] leading-none font-extrabold text-black uppercase">
-          {t("pageTitle")}
-        </h1>
-      </div>
-      <Container>
-        <div className="mt-16 mb-12 flex w-full flex-col items-center">
-          <div className="my-4 mb-24 w-3/5 border-b-2 border-black py-4 text-center">
-            <Title color="black">{t("writeToUs")}</Title>
+    <div className="pt-[100px] md:pt-[80px]">
+      <div className="flex min-h-[82vh] w-full">
+        <div className="relative flex w-[55%] justify-center">
+          <Image
+            src="/images/contact/main.jpg"
+            alt="Kontakt"
+            fill
+            className="object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-black/80 to-black/40"></div>
+          <div className="absolute bottom-12 flex flex-col items-center text-white">
+            <h2 className="text-4xl font-normal tracking-wide uppercase md:text-5xl">
+              {t("contactWithUs")}
+            </h2>
+            <Link
+              href="mailto:pwr.racing@gmail.com "
+              className="mt-6 text-xl font-medium md:text-base"
+            >
+              PWR.RACING@GMAIL.COM
+            </Link>
+            <Link
+              href="tel:+48 517 350 915"
+              className="mt-1 text-xl font-medium md:text-base"
+            >
+              +48 517 350 915
+            </Link>
           </div>
-          <div className="mb-8">
-            <Text bold medium>
-              {t("theyWillAnswer")}
-            </Text>
-          </div>
-          <div className="grid w-full grid-cols-1 gap-6 sm:grid-cols-2 xl:grid-cols-4">
-            {mainMembers.map((member) => (
-              <div
-                key={member.name + member.surname}
-                className="flex flex-col gap-6"
+        </div>
+
+        <div className="flex w-full justify-between bg-[#0c0c0c] text-gray-300 lg:w-1/2">
+          <div className="mx-auto flex h-full max-w-xl flex-col justify-between px-6 py-12">
+            <div className="group flex cursor-pointer items-center gap-[5px]">
+              <span
+                className={cn(
+                  "inline-block transition-transform duration-300 ease-out",
+                  "group-hover:-translate-x-1.5",
+                )}
               >
-                <UserCard member={member} roleHistory={roleHistory} />
-                <EmailAction
-                  email={member.email ?? "pawel.wojcik.pwrrt@gmail.com"}
-                />
-                <EmailAction
-                  email={formatPhoneNumber(member.phoneNumber) || "Brak numeru"}
-                />
-              </div>
-            ))}
-          </div>
-        </div>
-      </Container>
-      <Container>
-        <div className="my-8 grid w-full grid-cols-1 gap-12 md:my-12 md:gap-20">
-          <div className="flex flex-col items-start gap-4 md:items-center md:gap-6">
-            <Text bold medium>
-              {t("projectSupervisors")}
-            </Text>
-            <div className="grid w-full grid-cols-1 gap-6 md:w-3/4 md:grid-cols-3">
-              {projectSupervisors.map((member) => (
-                <UserCard
-                  key={`${member.name}${member.surname}supervisor`}
-                  member={member}
-                  roleHistory={roleHistory}
-                />
-              ))}
+                ←
+              </span>
+              <p className="color-ring">{t("becomePartner")}</p>
             </div>
-          </div>
-          <div className="flex flex-col items-start gap-4 md:items-center md:gap-6">
-            <Admin text={t("siteAdministration")} />
-            <div className="grid w-full grid-cols-1 gap-6 md:w-3/4 md:grid-cols-3">
-              <UserCard
-                member={{
-                  name: "KN",
-                  surname: "Solvro",
-                  currentRole: "Developing & Maintaining website",
-                  email: "kn.solvro@gmail.com",
-                  profilePlaceholder: knSolvro,
-                }}
-                roleHistory={{
-                  "KN Solvro": [
-                    {
-                      bolidName: "RT15e",
-                      role: "Developing & Maintaining website",
-                      department: "KN",
-                    },
-                  ],
-                }}
-              />
-            </div>
-          </div>
-        </div>
-      </Container>
-      <Container>
-        <div className="mt-16 mb-12 flex w-full flex-col items-center">
-          <div className="flex w-[100vw] flex-wrap justify-center gap-20">
-            <ErrorReportForm />
             <ContactReportForm />
+            <ErrorReportForm />
           </div>
         </div>
-      </Container>
-      <div className="mt-4 mb-6 text-center md:mt-12">
-        <Title color="black" size="medium">
-          {t("whereToFindUs")}
-        </Title>
       </div>
-      <GoogleMapComponent />
     </div>
   );
 }
