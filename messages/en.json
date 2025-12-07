@@ -40,9 +40,10 @@
     "buttonPartner": "Become a Partner"
   },
   "newsControls": {
-    "title": "NEWS",
+    "title": "News",
     "becomePartner": "Become a Partner",
-    "contact": "Contact"
+    "contact": "Contact",
+    "buttonText": "Learn more"
   },
   "navigation": {
     "home": "Home",

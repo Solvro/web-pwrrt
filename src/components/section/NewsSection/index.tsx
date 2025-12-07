@@ -24,8 +24,6 @@ export async function NewsSection() {
                 key={item.id}
                 title={item.title}
                 short_description={item.shortDescription}
-                length_time={item.howLong}
-                logo={"/images/logo-czarne.svg"}
                 main_image={getUrlFromMedia(item.heroImage)}
               />
             ))}

@@ -1,10 +1,21 @@
 "use client";
 
 import type { Route } from "next";
-import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import { useTranslations } from "next-intl";
+import Image from "next/image";
+import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
 
-import { Container } from "@/components/container";
+import { Button } from "@/components/button";
 import { NewsCard } from "@/components/news-card";
+import { Text } from "@/components/text";
+import { Title } from "@/components/title";
+import type { CarouselApi } from "@/components/ui/carousel";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+} from "@/components/ui/carousel";
 
 export interface NewsItem {
   id: string;
@@ -16,96 +27,123 @@ export interface NewsItem {
   tags?: string[];
 }
 
-interface FilteredNewsListProps {
+interface NewsListProps {
   allNews: NewsItem[];
-  tags: string[];
 }
 
-export function FilteredNewsList({ allNews, tags }: FilteredNewsListProps) {
-  const searchParameters = useSearchParams();
+export function NewsList({ allNews }: NewsListProps) {
   const router = useRouter();
-  const pathname = usePathname();
+  const [api, setApi] = useState<CarouselApi>();
+  const [current, setCurrent] = useState(0);
+  const t = useTranslations("newsControls");
 
-  const selectedTags =
-    searchParameters.get("tags")?.split(",").filter(Boolean) ?? [];
+  const handleDetailView = (slug: string) => {
+    router.push(`/news/${slug}` as Route);
+  };
 
-  const filteredNews =
-    selectedTags.length > 0
-      ? allNews.filter((item) =>
-          item.tags?.some((tag) => selectedTags.includes(tag)),
-        )
-      : allNews;
-
-  const handleTagClick = (tag: string): void => {
-    const current = new Set(selectedTags);
-    current.has(tag) ? current.delete(tag) : current.add(tag);
-
-    const newTags = [...current];
-    const parameters = new URLSearchParams(searchParameters.toString());
-
-    if (newTags.length > 0) {
-      parameters.set("tags", newTags.join(","));
-    } else {
-      parameters.delete("tags");
+  useEffect(() => {
+    if (!api) {
+      return;
     }
 
-    router.push(`${pathname}?${parameters.toString()}` as Route);
-  };
+    setCurrent(api.selectedScrollSnap());
 
-  const handleClear = (): void => {
-    const parameters = new URLSearchParams(searchParameters.toString());
-    parameters.delete("tags");
-    router.push(pathname as Route);
-  };
+    const handleSelect = () => {
+      setCurrent(api.selectedScrollSnap());
+    };
+
+    api.on("select", handleSelect);
+    api.on("reInit", handleSelect);
+
+    return () => {
+      api.off("select", handleSelect);
+      api.off("reInit", handleSelect);
+    };
+  }, [api, allNews.length]);
+
+  if (allNews.length === 0) {
+    return null;
+  }
+
+  const currentItem = allNews[current];
 
   return (
-    <>
-      <div className="mb-6 flex flex-wrap items-center gap-2">
-        {tags.map((tag) => {
-          const isActive = selectedTags.includes(tag);
-          return (
-            <button
-              key={tag}
-              onClick={() => {
-                handleTagClick(tag);
-              }}
-              className={`rounded px-3 py-1 text-xs font-semibold transition-colors ${
-                isActive
-                  ? "bg-white text-black"
-                  : "bg-gray-300 text-gray-700 hover:bg-gray-400"
-              }`}
-            >
-              {tag}
-            </button>
-          );
-        })}
+    <div className="flex flex-col bg-black pt-[100px] pb-20 pl-20 md:pt-[120px]">
+      <Image
+        src={currentItem.heroImage}
+        alt={currentItem.title}
+        className="duration-500 ease-in-out group-hover:scale-105"
+        fill
+        sizes="100%"
+        style={{ objectFit: "cover", maxWidth: "100%" }}
+        priority
+      />
+      <div className="absolute inset-0 bg-gradient-to-b from-black via-black/30 to-black" />
 
-        {selectedTags.length > 0 && (
-          <button
-            onClick={handleClear}
-            className="ml-2 rounded bg-red-500 px-3 py-1 text-xs font-semibold text-white transition-colors hover:bg-red-600"
-          >
-            ✕ Wyczyść wszystkie
-          </button>
-        )}
+      <div className="relative left-0 z-20 my-4">
+        <Title size="small" color="red">
+          {t("title")}
+        </Title>
       </div>
 
-      <Container>
-        <div className="my-6 grid w-full grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {filteredNews.map((item) => (
-            <NewsCard
+      <div className="relative left-0 z-20 max-w-1/5 break-words">
+        <Text medium color="white" bold>
+          {currentItem.title}
+        </Text>
+      </div>
+
+      <div className="mt-6 w-40">
+        <Button
+          onClick={() => {
+            handleDetailView(currentItem.slug ?? currentItem.id);
+          }}
+          label={t("buttonText")}
+          color="bg-red"
+          className="h-10 rounded-full"
+        />
+      </div>
+
+      <Carousel className="relative mt-20 flex w-full" setApi={setApi}>
+        <CarouselContent>
+          {allNews.map((item, index) => (
+            <CarouselItem
               key={item.id}
-              slug={item.slug ?? item.id}
-              title={item.title}
-              short_description={item.shortDescription}
-              length_time={item.howLong}
-              logo="/images/logo-czarne.svg"
-              main_image={item.heroImage}
-              tags={item.tags}
-            />
+              className="pr-6 md:basis-1/2 lg:basis-1/4"
+              onClick={() => {
+                api?.scrollTo(index);
+              }}
+            >
+              <NewsCard
+                slug={item.slug ?? item.id}
+                title={item.title}
+                short_description={item.shortDescription}
+                main_image={item.heroImage}
+              />
+            </CarouselItem>
           ))}
-        </div>
-      </Container>
-    </>
+        </CarouselContent>
+      </Carousel>
+
+      <div className="mt-6 flex justify-center">
+        {allNews.map((item, index) => (
+          <button
+            type="button"
+            key={item.id}
+            className={`mx-1 inline-block h-2 w-2 rounded-full bg-gray-400 ${
+              index === current ? "w-6 bg-red-500" : ""
+            }`}
+            onClick={() => {
+              api?.scrollTo(index);
+            }}
+            onKeyDown={(event) => {
+              if (event.key === "Enter" || event.key === " ") {
+                event.preventDefault();
+                api?.scrollTo(index);
+              }
+            }}
+          />
+        ))}
+      </div>
+    </div>
   );
 }
