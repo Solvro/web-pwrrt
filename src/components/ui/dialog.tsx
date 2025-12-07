@@ -1,8 +1,14 @@
 "use client";
 
+<<<<<<< HEAD
 import * as DialogPrimitive from "@radix-ui/react-dialog";
 import { XIcon } from "lucide-react";
 import * as React from "react";
+=======
+import * as React from "react";
+import * as DialogPrimitive from "@radix-ui/react-dialog";
+import { XIcon } from "lucide-react";
+>>>>>>> 95fa49d (feat: fixing content of contact page / added report bugs and forms handler / added translations)
 
 import { cn } from "@/lib/utils";
 
@@ -66,7 +72,11 @@ function DialogContent({
         {...props}
       >
         {children}
+<<<<<<< HEAD
         {showCloseButton ? (
+=======
+        {showCloseButton && (
+>>>>>>> 95fa49d (feat: fixing content of contact page / added report bugs and forms handler / added translations)
           <DialogPrimitive.Close
             data-slot="dialog-close"
             className="ring-offset-background focus:ring-ring data-[state=open]:bg-accent data-[state=open]:text-muted-foreground absolute top-4 right-4 rounded-xs opacity-70 transition-opacity hover:opacity-100 focus:ring-2 focus:ring-offset-2 focus:outline-hidden disabled:pointer-events-none [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4"
@@ -74,7 +84,11 @@ function DialogContent({
             <XIcon />
             <span className="sr-only">Close</span>
           </DialogPrimitive.Close>
+<<<<<<< HEAD
         ) : null}
+=======
+        )}
+>>>>>>> 95fa49d (feat: fixing content of contact page / added report bugs and forms handler / added translations)
       </DialogPrimitive.Content>
     </DialogPortal>
   );
