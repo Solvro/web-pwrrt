@@ -282,18 +282,14 @@
     }
   },
   "contactUs": {
-    "pageTitle": "CONTACT",
-    "writeToUs": "WRITE TO US",
-    "theyWillAnswer": "They will answer your questions:",
-    "whereToFindUs": "WHERE TO FIND US?",
-    "projectSupervisors": "Project Supervisors:",
-    "siteAdministration": "Site Administration:",
     "reportBugs": "Report Bugs",
-    "contactUsForm": "Contact with us",
+    "becomePartner": "Become Partner",
+    "contactWithUs": "Contact with us",
     "formEmail": "Email Address:",
     "formBugDescription": "Bug Description:",
     "formContactDescription": "Content:",
     "formSubmitBugReport": "Submit Bug",
+    "formSubmitContactButton": "Send",
     "formSubmitContactReport": "Contact us"
   },
   "joinUs": {

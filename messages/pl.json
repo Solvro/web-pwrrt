@@ -286,19 +286,15 @@
     }
   },
   "contactUs": {
-    "pageTitle": "KONTAKT",
-    "writeToUs": "NAPISZ DO NAS",
-    "theyWillAnswer": "Oni odpowiedzą na Twoje pytania:",
-    "whereToFindUs": "GDZIE NAS ZNAJDZIESZ?",
-    "projectSupervisors": "Opiekunowie zespołu:",
-    "siteAdministration": "Administracja strony:",
     "reportBugs": "Zgłoś Błędy",
-    "contactUsForm": "Kontakt",
+    "becomePartner": "Zostań partnerem",
+    "contactWithUs": "Skontaktuj się z nami",
     "formEmail": "Adres Email:",
     "formBugDescription": "Opis Błędu:",
-    "formContactDescription": "Treść:",
-    "formSubmitBugReport": "Zgłoś Błąd",
-    "formSubmitContactReport": "Skontaktuj się"
+    "formContactDescription": "Treść wiadomości",
+    "formSubmitBugReport": "Zgłoś błąd na stronie",
+    "formSubmitContactButton": "Wyślij",
+    "formSubmitContactReport": "Skontaktuj się z nami"
   },
   "joinUs": {
     "pageTitle": "REKRUTACJA",
