@@ -1,7 +1,8 @@
 "use client";
 
+import Image, { type StaticImageData } from "next/image";
 import { useEffect, useRef, useState } from "react";
-import Image, { StaticImageData } from "next/image";
+
 import { Text } from "@/components/text";
 
 interface ScrollRevealSectionProps {
@@ -50,10 +51,10 @@ export function ScrollRevealSection({
   return (
     <div
       ref={sectionRef}
-      className="relative w-full ms:h-120 md:h-full overflow-hidden"
+      className="ms:h-120 relative w-full overflow-hidden md:h-full"
     >
-      <div className="w-full h-full flex justify-between">
-        <div className="w-full md:w-2/5 min-h-[50vh] md:min-h-screen flex flex-col justify-center items-start px-6 sm:px-8 md:px-12 lg:px-16 bg-black">
+      <div className="flex h-full w-full justify-between">
+        <div className="flex min-h-[50vh] w-full flex-col items-start justify-center bg-black px-6 sm:px-8 md:min-h-screen md:w-2/5 md:px-12 lg:px-16">
           <div className="max-w-xl py-12 md:py-0">
             <Text medium wide color="white">
               {quote}
@@ -68,7 +69,7 @@ export function ScrollRevealSection({
           </div>
         </div>
 
-        <div className="relative w-full md:w-3/5 min-h-[50vh] md:min-h-screen">
+        <div className="relative min-h-[50vh] w-full md:min-h-screen md:w-3/5">
           <Image
             src={photo}
             alt="Racing"
@@ -81,7 +82,7 @@ export function ScrollRevealSection({
       </div>
 
       <div
-        className="absolute left-0 top-0 h-full bg-black transition-all duration-100 ease-out z-20"
+        className="absolute top-0 left-0 z-20 h-full bg-black transition-all duration-100 ease-out"
         style={{ width: `${overlayWidth}%` }}
       />
     </div>
