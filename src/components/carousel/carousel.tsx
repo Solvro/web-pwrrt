@@ -1,15 +1,18 @@
 "use client";
+
+import Image from "next/image";
 import React, {
-  useState,
+  forwardRef,
   useEffect,
   useImperativeHandle,
-  forwardRef,
+  useState,
 } from "react";
-import { FaArrowRight, FaArrowLeft } from "react-icons/fa6";
-import { Title } from "../title";
-import { Text } from "../text";
-import Image from "next/image";
+import { FaArrowLeft, FaArrowRight } from "react-icons/fa6";
+
 import { cn } from "@/lib/utils";
+
+import { Text } from "../text";
+import { Title } from "../title";
 
 interface SlideData {
   id: number;
@@ -24,7 +27,7 @@ interface CarouselProps {
 
 export interface CarouselRef {
   moveToNext: () => void;
-  moveToPrev: () => void;
+  moveToPrevious: () => void;
 }
 
 export const Carousel = forwardRef<CarouselRef, CarouselProps>(
@@ -55,7 +58,7 @@ export const Carousel = forwardRef<CarouselRef, CarouselProps>(
       );
     };
 
-    const moveToPrev = () => {
+    const moveToPrevious = () => {
       setMainIndex((prevIndex) =>
         prevIndex === 0 ? slides.length - 1 : prevIndex - 1,
       );
@@ -63,7 +66,7 @@ export const Carousel = forwardRef<CarouselRef, CarouselProps>(
 
     useImperativeHandle(ref, () => ({
       moveToNext,
-      moveToPrev,
+      moveToPrevious,
     }));
 
     const getSlideTransform = (slideIndex: number) => {
@@ -84,30 +87,30 @@ export const Carousel = forwardRef<CarouselRef, CarouselProps>(
     };
 
     return (
-      <div className="relative w-full flex flex-col justify-center items-center">
-        <div className="-mt-12 absolute top-0 right-0 flex justify-between px-4 z-20">
+      <div className="relative flex w-full flex-col items-center justify-center">
+        <div className="absolute top-0 right-0 z-20 -mt-12 flex justify-between px-4">
           <button
-            onClick={moveToPrev}
-            className="text-white p-2 cursor-pointer"
+            onClick={moveToPrevious}
+            className="cursor-pointer p-2 text-white"
           >
             <FaArrowLeft />
           </button>
           <button
             onClick={moveToNext}
-            className="text-white p-2 cursor-pointer"
+            className="cursor-pointer p-2 text-white"
           >
             <FaArrowRight />
           </button>
         </div>
-        <div className="relative w-full h-[300px] sm:h-[400px] lg:h-[500px] flex justify-center items-center p-2 sm:p-4">
+        <div className="relative flex h-[300px] w-full items-center justify-center p-2 sm:h-[400px] sm:p-4 lg:h-[500px]">
           <div className={`relative h-full w-full`}>
             {slides.map((slide, index) => (
               <div
                 key={slide.id}
                 className={cn(
-                  "absolute top-1/2 left-1/2 rounded-lg transition-all duration-500 ease-in-out cursor-pointer",
+                  "absolute top-1/2 left-1/2 cursor-pointer rounded-lg transition-all duration-500 ease-in-out",
                   "h-[200px] sm:h-[280px] md:h-[320px] lg:h-[400px]",
-                  "w-[140px] sm:w-[210px] lg:w-[280px] -translate-x-1/2 -translate-y-1/2",
+                  "w-[140px] -translate-x-1/2 -translate-y-1/2 sm:w-[210px] lg:w-[280px]",
                   {
                     "z-10": index === mainIndex,
                     "z-0": index !== mainIndex,
@@ -128,17 +131,17 @@ export const Carousel = forwardRef<CarouselRef, CarouselProps>(
                   height={slideWidth * 0.75}
                   quality={100}
                   className={cn(
-                    "w-full h-full object-cover rounded-lg shadow-lg",
+                    "h-full w-full rounded-lg object-cover shadow-lg",
                     "transition-transform duration-500 ease-in-out",
                     {
                       "rotate-0": index === mainIndex,
                       "-rotate-20": index < mainIndex,
                       "rotate-20": index > mainIndex,
-                      "md:-translate-x-30 sm:-translate-x-20 -translate-x-10":
+                      "-translate-x-10 sm:-translate-x-20 md:-translate-x-30":
                         index < mainIndex && index !== mainIndex,
-                      "md:translate-x-30 sm:translate-x-20 translate-x-10":
+                      "translate-x-10 sm:translate-x-20 md:translate-x-30":
                         index > mainIndex,
-                      "md:translate-y-15 sm:translate-y-10 translate-y-5":
+                      "translate-y-5 sm:translate-y-10 md:translate-y-15":
                         index !== mainIndex,
                     },
                   )}
@@ -148,12 +151,12 @@ export const Carousel = forwardRef<CarouselRef, CarouselProps>(
           </div>
         </div>
 
-        <div className="w-full max-w-md sm:max-w-lg md:max-w-xl lg:max-w-3xl flex flex-col justify-center items-center text-center px-4">
+        <div className="flex w-full max-w-md flex-col items-center justify-center px-4 text-center sm:max-w-lg md:max-w-xl lg:max-w-3xl">
           <Title size="big" color="white">
             {" "}
             {slides[mainIndex].title}{" "}
           </Title>
-          <div className="w-full flex justify-center py-6 sm:py-8 lg:py-10 opacity-50">
+          <div className="flex w-full justify-center py-6 opacity-50 sm:py-8 lg:py-10">
             <Text small center color="white">
               {" "}
               {slides[mainIndex].description}{" "}
@@ -164,3 +167,5 @@ export const Carousel = forwardRef<CarouselRef, CarouselProps>(
     );
   },
 );
+
+Carousel.displayName = "Carousel";
