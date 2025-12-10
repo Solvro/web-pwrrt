@@ -7,14 +7,13 @@ import React, {
   useImperativeHandle,
   useState,
 } from "react";
-import { FaArrowLeft, FaArrowRight } from "react-icons/fa6";
 
 import { cn } from "@/lib/utils";
 
 import { Text } from "../text";
 import { Title } from "../title";
 
-interface SlideData {
+export interface SlideData {
   id: number;
   title: string;
   description: string;
@@ -34,6 +33,7 @@ export const Carousel = forwardRef<CarouselRef, CarouselProps>(
   ({ slides }, ref) => {
     const [mainIndex, setMainIndex] = useState(1);
     const [slideWidth, setSlideWidth] = useState(280);
+    const [isAnimating, setIsAnimating] = useState(false);
 
     useEffect(() => {
       const updateDimensions = () => {
@@ -49,19 +49,40 @@ export const Carousel = forwardRef<CarouselRef, CarouselProps>(
 
       updateDimensions();
       window.addEventListener("resize", updateDimensions);
-      return () => window.removeEventListener("resize", updateDimensions);
+      return () => {
+        window.removeEventListener("resize", updateDimensions);
+      };
     }, []);
 
     const moveToNext = () => {
-      setMainIndex((prevIndex) =>
-        prevIndex === slides.length - 1 ? 0 : prevIndex + 1,
-      );
+      if (isAnimating) {
+        return;
+      }
+
+      setIsAnimating(true);
+
+      setMainIndex((previousIndex) => {
+        return previousIndex === slides.length - 1 ? 0 : previousIndex + 1;
+      });
+
+      setTimeout(() => {
+        setIsAnimating(false);
+      }, 300);
     };
 
     const moveToPrevious = () => {
-      setMainIndex((prevIndex) =>
-        prevIndex === 0 ? slides.length - 1 : prevIndex - 1,
-      );
+      if (isAnimating) {
+        return;
+      }
+      setIsAnimating(true);
+
+      setMainIndex((previousIndex) => {
+        return previousIndex === 0 ? slides.length - 1 : previousIndex - 1;
+      });
+
+      setTimeout(() => {
+        setIsAnimating(false);
+      }, 300);
     };
 
     useImperativeHandle(ref, () => ({
@@ -71,13 +92,19 @@ export const Carousel = forwardRef<CarouselRef, CarouselProps>(
 
     const getSlideTransform = (slideIndex: number) => {
       const diff = slideIndex - mainIndex;
-      return `translateX(${diff * slideWidth}px)`;
+      const position = diff * slideWidth;
+      return `translateX(${position.toString()}px)`;
     };
 
     const getSlideOpacity = (slideIndex: number) => {
       const diff = Math.abs(slideIndex - mainIndex);
-      if (diff === 0) return 100;
-      if (diff === 1) return 50;
+      if (diff === 0) {
+        return 100;
+      }
+      if (diff === 1) {
+        return 50;
+      }
+
       return 0;
     };
 
@@ -88,20 +115,6 @@ export const Carousel = forwardRef<CarouselRef, CarouselProps>(
 
     return (
       <div className="relative flex w-full flex-col items-center justify-center">
-        <div className="absolute top-0 right-0 z-20 -mt-12 flex justify-between px-4">
-          <button
-            onClick={moveToPrevious}
-            className="cursor-pointer p-2 text-white"
-          >
-            <FaArrowLeft />
-          </button>
-          <button
-            onClick={moveToNext}
-            className="cursor-pointer p-2 text-white"
-          >
-            <FaArrowRight />
-          </button>
-        </div>
         <div className="relative flex h-[300px] w-full items-center justify-center p-2 sm:h-[400px] sm:p-4 lg:h-[500px]">
           <div className={`relative h-full w-full`}>
             {slides.map((slide, index) => (
@@ -122,7 +135,18 @@ export const Carousel = forwardRef<CarouselRef, CarouselProps>(
                   transform: getSlideTransform(index),
                   opacity: getSlideOpacity(index) / 100,
                 }}
-                onClick={() => setMainIndex(index)}
+                onClick={() => {
+                  setMainIndex(index);
+                }}
+                onKeyDown={(event) => {
+                  if (event.key === "Enter" || event.key === " ") {
+                    event.preventDefault();
+                    setMainIndex(index);
+                  }
+                }}
+                role="button"
+                tabIndex={isSlideVisible(index) ? 0 : -1}
+                aria-label={`Select ${slide.title}`}
               >
                 <Image
                   src={slide.imageUrl}

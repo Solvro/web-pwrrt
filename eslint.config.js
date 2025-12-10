@@ -22,5 +22,6 @@ export default solvro([
     "src/payload.config.ts",
     "src/collections/*",
     "src/globals/*",
+    "src/components/ui/**/*",
   ]),
 ]);
