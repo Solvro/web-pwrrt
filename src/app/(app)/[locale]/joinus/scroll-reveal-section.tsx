@@ -1,6 +1,7 @@
 "use client";
 
-import Image, { type StaticImageData } from "next/image";
+import Image from "next/image";
+import type { StaticImageData } from "next/image";
 import { useEffect, useRef, useState } from "react";
 
 import { Text } from "@/components/text";
@@ -8,7 +9,7 @@ import { Text } from "@/components/text";
 interface ScrollRevealSectionProps {
   photo: StaticImageData;
   quote: string;
-  quoteAuthor?: string;
+  quoteAuthor: string;
 }
 
 export function ScrollRevealSection({
@@ -21,7 +22,9 @@ export function ScrollRevealSection({
 
   useEffect(() => {
     const handleScroll = () => {
-      if (!sectionRef.current) return;
+      if (!sectionRef.current) {
+        return;
+      }
 
       const rect = sectionRef.current.getBoundingClientRect();
       const sectionTop = rect.top;
@@ -43,7 +46,9 @@ export function ScrollRevealSection({
     window.addEventListener("scroll", handleScroll);
     handleScroll();
 
-    return () => window.removeEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
   }, []);
 
   const overlayWidth = Math.max(0, 100 - scrollProgress * 100);
@@ -59,13 +64,11 @@ export function ScrollRevealSection({
             <Text medium wide color="white">
               {quote}
             </Text>
-            {quoteAuthor && (
-              <div className="mt-4 opacity-60">
-                <Text small color="white">
-                  {quoteAuthor}
-                </Text>
-              </div>
-            )}
+            <div className="mt-4 opacity-60">
+              <Text small color="white">
+                {quoteAuthor}
+              </Text>
+            </div>
           </div>
         </div>
 
@@ -83,7 +86,7 @@ export function ScrollRevealSection({
 
       <div
         className="absolute top-0 left-0 z-20 h-full bg-black transition-all duration-100 ease-out"
-        style={{ width: `${overlayWidth}%` }}
+        style={{ width: `${overlayWidth.toString()}%` }}
       />
     </div>
   );

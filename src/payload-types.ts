@@ -95,6 +95,7 @@ export interface Config {
   globals: {
     'main-page': MainPage;
     departments: Department;
+    'join-us': JoinUs;
     'background-video': BackgroundVideo;
     contact: Contact;
     recruitment: Recruitment;
@@ -103,6 +104,7 @@ export interface Config {
   globalsSelect: {
     'main-page': MainPageSelect<false> | MainPageSelect<true>;
     departments: DepartmentsSelect<false> | DepartmentsSelect<true>;
+    'join-us': JoinUsSelect<false> | JoinUsSelect<true>;
     'background-video': BackgroundVideoSelect<false> | BackgroundVideoSelect<true>;
     contact: ContactSelect<false> | ContactSelect<true>;
     recruitment: RecruitmentSelect<false> | RecruitmentSelect<true>;
@@ -519,6 +521,18 @@ export interface Department {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "join-us".
+ */
+export interface JoinUs {
+  id: string;
+  formLink: string;
+  isEnabled?: boolean | null;
+  time: string;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "background-video".
  */
 export interface BackgroundVideo {
@@ -593,6 +607,18 @@ export interface DepartmentsSelect<T extends boolean = true> {
         image?: T;
         id?: T;
       };
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "join-us_select".
+ */
+export interface JoinUsSelect<T extends boolean = true> {
+  formLink?: T;
+  isEnabled?: T;
+  time?: T;
   updatedAt?: T;
   createdAt?: T;
   globalType?: T;

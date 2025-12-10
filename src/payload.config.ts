@@ -17,6 +17,7 @@ import { Users } from "./collections/users";
 import BackgroundVideo from "./globals/background-video";
 import Contact from "./globals/contact";
 import Departments from "./globals/departments";
+import JoinUs from "./globals/join-us";
 import MainPage from "./globals/main-page";
 import Recruitment from "./globals/recruitment";
 import TeamHistory from "./globals/team-history";
@@ -35,6 +36,7 @@ export default buildConfig({
   globals: [
     MainPage,
     Departments,
+    JoinUs,
     BackgroundVideo,
     Contact,
     Recruitment,
