@@ -1,6 +1,4 @@
-import type { Route } from "next";
 import Image from "next/image";
-import Link from "next/link";
 
 import { Text } from "./text";
 
@@ -10,19 +8,14 @@ interface NewsCardProps {
   long_description?: string;
   main_image: string;
   whiteMode?: boolean;
-  slug: string;
 }
 export function NewsCard({
   title,
   short_description,
   main_image,
-  slug,
 }: NewsCardProps) {
   return (
-    <Link
-      href={`/news/${slug}` as Route}
-      className="group flex h-80 w-full cursor-pointer flex-col overflow-hidden rounded-md md:h-110"
-    >
+    <div className="group flex h-80 w-full cursor-pointer flex-col overflow-hidden rounded-md md:h-110">
       <div className="relative h-full overflow-hidden">
         <Image
           src={main_image}
@@ -35,17 +28,20 @@ export function NewsCard({
             maxWidth: "100%",
           }}
         />
-        <div className="relative z-20 flex w-full flex-col px-5 py-50 md:py-80">
-          <Text color="white" small wide bold opacity1 center>
-            {title}
-          </Text>
-          <div className="mt-1 mb-3 md:mt-2 md:mb-4">
-            <p className="font-openSans text-opacity-70 line-clamp-2 text-justify text-xs font-normal tracking-tighter text-white duration-300 ease-in-out sm:text-base sm:leading-5">
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/20 to-black/60" />
+        <div className="relative z-20 grid w-full grid-rows-2 px-5 py-50 md:py-80">
+          <div className="flex h-10 items-center justify-start">
+            <Text color="white" medium wide bold center>
+              {title}
+            </Text>
+          </div>
+          <div className="flex items-center justify-start">
+            <p className="text-s mt-3 line-clamp-2 leading-tight font-normal text-white">
               {short_description}
             </p>
           </div>
         </div>
       </div>
-    </Link>
+    </div>
   );
 }

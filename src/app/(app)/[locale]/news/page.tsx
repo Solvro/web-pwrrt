@@ -1,7 +1,7 @@
 import { getLocale } from "next-intl/server";
 
-import { NewsList } from "@/components/filtered-news-list";
-import type { NewsItem } from "@/components/filtered-news-list";
+import { NewsList } from "@/components/news-list";
+import type { NewsItem } from "@/components/news-list";
 import { getAllNews } from "@/functions/news";
 import { getUrlFromMedia } from "@/lib/utils";
 

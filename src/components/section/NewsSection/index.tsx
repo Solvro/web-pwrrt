@@ -19,7 +19,6 @@ export async function NewsSection() {
           <div className="relative my-10 grid grid-cols-1 gap-8 border-none sm:grid-cols-2 lg:grid-cols-3">
             {news.map((item) => (
               <NewsCard
-                slug={item.slug ?? ""}
                 whiteMode
                 key={item.id}
                 title={item.title}
