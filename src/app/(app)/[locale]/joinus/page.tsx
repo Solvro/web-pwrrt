@@ -9,8 +9,8 @@ import { Text } from "@/components/text";
 import { Title } from "@/components/title";
 
 import { CarouselSection } from "./carousel-section";
+import { JoinUsTimerSection } from "./join-us-timer-section";
 import { ScrollRevealSection } from "./scroll-reveal-section";
-import { Timer } from "./timer";
 
 export const metadata: Metadata = {
   title: "Join Us",
@@ -30,9 +30,12 @@ export default function JoinUsPage() {
 
         <div className="absolute inset-0 bg-black/70" />
 
-        <div className="absolute inset-x-0 bottom-20 z-10 flex justify-center px-4">
+        <div className="absolute inset-x-0 bottom-0 z-10 flex justify-center px-4 md:bottom-20">
           <div className="w-full max-w-5xl">
-            <Timer targetDate="2025-10-30T23:59:00" />
+            <JoinUsTimerSection
+              nextRecruitmentText={t("recruitmentNextIn")}
+              recruitmentOpenEndText={t("recruitmentOpenEndIn")}
+            />
           </div>
         </div>
       </div>

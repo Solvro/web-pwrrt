@@ -9,17 +9,19 @@ const JoinUs: GlobalConfig = {
     {
       name: "formLink",
       type: "text",
+      label: "Link do formularza",
       required: true,
     },
     {
       name: "isEnabled",
       type: "checkbox",
-      label: "Aktywna rekrutacja",
-      defaultValue: true,
+      label: "Czy rekrutacja jest aktywna?",
+      defaultValue: false,
     },
     {
       name: "time",
-      type: "text",
+      type: "date",
+      label: "Czas",
       defaultValue: "2025-10-30T23:59:00",
       required: true,
     },
