@@ -5,10 +5,10 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useTranslations } from "next-intl";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
-import toast from "react-hot-toast";
+// import toast from "react-hot-toast";
 import type { z } from "zod";
 
-import { sendContactReportForm } from "@/actions/bug-report-form";
+// import { sendContactReportForm } from "@/actions/bug-report-form";
 import {
   Form,
   FormControl,
@@ -20,21 +20,21 @@ import { cn } from "@/lib/utils";
 
 import { ReportFormSchema } from "../../../../schemas/index";
 
-async function getCaptchaToken() {
-  return new Promise<string | null>((resolve) => {
-    grecaptcha.ready(async () => {
-      const siteKey = process.env.NEXT_PUBLIC_CAPTCHA_SITE_KEY;
-      if (!siteKey) {
-        resolve(null);
-        return;
-      }
-      const token = await grecaptcha.execute(siteKey, {
-        action: "sendForm",
-      });
-      resolve(token);
-    });
-  });
-}
+// async function getCaptchaToken() {
+//   return new Promise<string | null>((resolve) => {
+//     grecaptcha.ready(async () => {
+//       const siteKey = process.env.NEXT_PUBLIC_CAPTCHA_SITE_KEY;
+//       if (!siteKey) {
+//         resolve(null);
+//         return;
+//       }
+//       const token = await grecaptcha.execute(siteKey, {
+//         action: "sendForm",
+//       });
+//       resolve(token);
+//     });
+//   });
+// }
 
 export function PartnersForm() {
   const form = useForm<z.infer<typeof ReportFormSchema>>({
@@ -47,22 +47,22 @@ export function PartnersForm() {
 
   const t = useTranslations("contactUs");
   const [message, setMessage] = useState("");
-  async function onSubmit(values: z.infer<typeof ReportFormSchema>) {
-    try {
-      const token = await getCaptchaToken();
-      const response = await sendContactReportForm(values, token);
-      if (!response.success) {
-        toast.error(
-          `Failed to send message. Please try again. ${response.reason}`,
-        );
-        return;
-      }
-      toast.success("Thank you for sending a message!");
-    } catch (error) {
-      console.error("Message failed:", error);
-      toast.error("Failed to send the message. Please try again.");
-    }
-  }
+  // async function onSubmit(values: z.infer<typeof ReportFormSchema>) {
+  //   try {
+  //     const token = await getCaptchaToken();
+  //     const response = await sendContactReportForm(values, token);
+  //     if (!response.success) {
+  //       toast.error(
+  //         `Failed to send message. Please try again. ${response.reason}`,
+  //       );
+  //       return;
+  //     }
+  //     toast.success("Thank you for sending a message!");
+  //   } catch (error) {
+  //     console.error("Message failed:", error);
+  //     toast.error("Failed to send the message. Please try again.");
+  //   }
+  // }
 
   return (
     <div className="flex flex-col items-center">
