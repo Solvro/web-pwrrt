@@ -43,7 +43,10 @@ export default function ContactUsRedesign() {
 
         <div className="flex w-full justify-between bg-[#0c0c0c] text-gray-300 lg:w-1/2">
           <div className="mx-auto flex h-full max-w-xl flex-col justify-between px-6 py-12">
-            <div className="group flex cursor-pointer items-center gap-[5px]">
+            <Link
+              href="/partners"
+              className="group flex cursor-pointer items-center gap-[5px]"
+            >
               <span
                 className={cn(
                   "inline-block transition-transform duration-300 ease-out",
@@ -53,7 +56,7 @@ export default function ContactUsRedesign() {
                 ←
               </span>
               <p className="color-ring">{t("becomePartner")}</p>
-            </div>
+            </Link>
             <ContactReportForm />
             <ErrorReportForm />
           </div>

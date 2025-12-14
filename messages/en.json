@@ -336,13 +336,15 @@
   },
   "partnersPage": {
     "zostanPartnerem": "Become a Partner",
-    "kontakt": "Contact",
+    "kontakt": "Contact with us",
     "partners": "PARTNERS",
     "brązowi": "Bronze PARTNERS",
     "srebrni": "Silver PARTNERS",
     "złoci": "Gold PARTNERS",
     "platynowi": "Platinum PARTNERS",
-    "strategiczni": "Strategic PARTNERS"
+    "strategiczni": "Strategic PARTNERS",
+    "mainPhotoDesc": "Become our partner and gain international promotion, greater brand visibility, and effective employer branding. Join this innovative project and showcase your talent to the world!",
+    "formDesc": "Contact us to learn more about our collaboration opportunities or to submit your partnership proposal. You can find all of our current partners below."
   },
   "teamPage": {
     "doBolidu": "To the car",
