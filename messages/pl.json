@@ -344,13 +344,15 @@
   },
   "partnersPage": {
     "zostanPartnerem": "Zostań Partnerem",
-    "kontakt": "Kontakt",
+    "kontakt": "Skontaktuj się z nami",
     "partners": "PARTNERZY",
-    "brązowi": "PARTNERZY BRĄZOWI",
-    "srebrni": "PARTNERZY SREBRNI",
-    "złoci": "PARTNERZY ZŁOCI",
-    "platynowi": "PARTNERZY PLATYNOWI",
-    "strategiczni": "PARTNERZY STRATEGICZNI"
+    "brązowi": "Partnerzy brązowi",
+    "srebrni": "Partnerzy srebrni",
+    "złoci": "Partnerzy złoci",
+    "platynowi": "Partnerzy platynowi",
+    "strategiczni": "Patrnerzy strategiczni",
+    "mainPhotoDesc": "Zostań naszym partnerem i zyskaj międzynarodową promocję, większą widoczność marki i skuteczny employer branding. Dołącz do innowacyjnego projektu i pokaż się światu!",
+    "formDesc": "Skontaktuj się z nami, aby dowiedzieć się więcej o możliwościach współpracy lub przedstawić swoją ofertę partnerstwa. Wszystkich naszych dotychczasowych partnerów znajdziesz poniżej."
   },
   "teamPage": {
     "doBolidu": "Do bolidu",
