@@ -4,8 +4,8 @@ import { useTranslations } from "next-intl";
 import { useRef } from "react";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 
-import { Carousel } from "@/components/carousel/carousel";
-import type { CarouselRef, SlideData } from "@/components/carousel/carousel";
+import { Carousel } from "@/components/carousel/index";
+import type { CarouselRef, SlideData } from "@/components/carousel/index";
 import { Text } from "@/components/text";
 
 export function CarouselSection() {
