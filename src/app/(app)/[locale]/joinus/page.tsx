@@ -32,10 +32,7 @@ export default function JoinUsPage() {
 
         <div className="absolute inset-x-0 bottom-0 z-10 flex justify-center px-4 md:bottom-20">
           <div className="w-full max-w-5xl">
-            <JoinUsTimerSection
-              nextRecruitmentText={t("recruitmentNextIn")}
-              recruitmentOpenEndText={t("recruitmentOpenEndIn")}
-            />
+            <JoinUsTimerSection />
           </div>
         </div>
       </div>
@@ -76,8 +73,8 @@ export default function JoinUsPage() {
       <div className="relative inset-0 mt-20 w-screen md:h-screen">
         <ScrollRevealSection
           photo={Photo2}
-          quote={t("racingQuote")}
-          quoteAuthor={t("racingQuoteAuthor")}
+          quote="If you can dream it, you can do it."
+          quoteAuthor="— Enzo Ferrari"
         />
       </div>
     </div>

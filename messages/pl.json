@@ -333,9 +333,7 @@
     "minutes": "MINUT",
     "seconds": "SEKUND",
     "becomePartner": "Zostań Partnerem",
-    "contact": "Kontakt",
-    "racingQuote": "„If you can dream it, you can do it.”",
-    "racingQuoteAuthor": "— Enzo Ferrari"
+    "contact": "Kontakt"
   },
   "admin": {
     "title": "Zaloguj się do panelu administratora",
