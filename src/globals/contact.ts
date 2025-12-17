@@ -26,6 +26,13 @@ const Contact: GlobalConfig = {
         },
       ],
     },
+    {
+      name: "phoneNumber",
+      label: "Numer telefonu",
+      type: "text",
+      defaultValue: "+48 517 350 915",
+      required: true,
+    },
   ],
 };
 

@@ -95,8 +95,8 @@ export interface Config {
   globals: {
     'main-page': MainPage;
     departments: Department;
+    'footer-section': FooterSection;
     'join-us': JoinUs;
-    'background-video': BackgroundVideo;
     contact: Contact;
     recruitment: Recruitment;
     'team-history': TeamHistory;
@@ -104,8 +104,8 @@ export interface Config {
   globalsSelect: {
     'main-page': MainPageSelect<false> | MainPageSelect<true>;
     departments: DepartmentsSelect<false> | DepartmentsSelect<true>;
+    'footer-section': FooterSectionSelect<false> | FooterSectionSelect<true>;
     'join-us': JoinUsSelect<false> | JoinUsSelect<true>;
-    'background-video': BackgroundVideoSelect<false> | BackgroundVideoSelect<true>;
     contact: ContactSelect<false> | ContactSelect<true>;
     recruitment: RecruitmentSelect<false> | RecruitmentSelect<true>;
     'team-history': TeamHistorySelect<false> | TeamHistorySelect<true>;
@@ -521,6 +521,20 @@ export interface Department {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "footer-section".
+ */
+export interface FooterSection {
+  id: string;
+  address: string;
+  mapLink: string;
+  zipCode: string;
+  phone: string;
+  email: string;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "join-us".
  */
 export interface JoinUs {
@@ -528,16 +542,6 @@ export interface JoinUs {
   formLink: string;
   isEnabled?: boolean | null;
   time: string;
-  updatedAt?: string | null;
-  createdAt?: string | null;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "background-video".
- */
-export interface BackgroundVideo {
-  id: string;
-  video?: (string | null) | Media;
   updatedAt?: string | null;
   createdAt?: string | null;
 }
@@ -556,6 +560,7 @@ export interface Contact {
         id?: string | null;
       }[]
     | null;
+  phoneNumber: string;
   updatedAt?: string | null;
   createdAt?: string | null;
 }
@@ -613,22 +618,26 @@ export interface DepartmentsSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "join-us_select".
+ * via the `definition` "footer-section_select".
  */
-export interface JoinUsSelect<T extends boolean = true> {
-  formLink?: T;
-  isEnabled?: T;
-  time?: T;
+export interface FooterSectionSelect<T extends boolean = true> {
+  address?: T;
+  mapLink?: T;
+  zipCode?: T;
+  phone?: T;
+  email?: T;
   updatedAt?: T;
   createdAt?: T;
   globalType?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "background-video_select".
+ * via the `definition` "join-us_select".
  */
-export interface BackgroundVideoSelect<T extends boolean = true> {
-  video?: T;
+export interface JoinUsSelect<T extends boolean = true> {
+  formLink?: T;
+  isEnabled?: T;
+  time?: T;
   updatedAt?: T;
   createdAt?: T;
   globalType?: T;
@@ -647,6 +656,7 @@ export interface ContactSelect<T extends boolean = true> {
         photo?: T;
         id?: T;
       };
+  phoneNumber?: T;
   updatedAt?: T;
   createdAt?: T;
   globalType?: T;

@@ -14,9 +14,9 @@ import { News } from "./collections/news";
 import Partners from "./collections/partners";
 import { TeamMembers } from "./collections/team-members";
 import { Users } from "./collections/users";
-import BackgroundVideo from "./globals/background-video";
 import Contact from "./globals/contact";
 import Departments from "./globals/departments";
+import FooterSection from "./globals/footer-section";
 import JoinUs from "./globals/join-us";
 import MainPage from "./globals/main-page";
 import Recruitment from "./globals/recruitment";
@@ -36,8 +36,8 @@ export default buildConfig({
   globals: [
     MainPage,
     Departments,
+    FooterSection,
     JoinUs,
-    BackgroundVideo,
     Contact,
     Recruitment,
     TeamHistory,
