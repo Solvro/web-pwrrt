@@ -70,8 +70,8 @@ export function NewsList({ news, tags }: NewsListProps) {
             <NewsCard
               key={item.id}
               title={item.title}
-              short_description={item.shortDescription}
-              main_image={item.mainImageUrl}
+              shortDescription={item.shortDescription}
+              mainImage={item.mainImageUrl}
             />
           ))}
         </div>

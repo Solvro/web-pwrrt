@@ -1,24 +1,22 @@
 import Image from "next/image";
 
-import { Text } from "./text";
-
 interface NewsCardProps {
   title: string;
-  short_description: string;
-  long_description?: string;
-  main_image: string;
+  shortDescription: string;
+  longDescription?: string;
+  mainImage: string;
   whiteMode?: boolean;
 }
 export function NewsCard({
   title,
-  short_description,
-  main_image,
+  shortDescription,
+  mainImage,
 }: NewsCardProps) {
   return (
     <div className="group flex h-80 w-full cursor-pointer flex-col overflow-hidden rounded-md md:h-110">
       <div className="relative h-full overflow-hidden">
         <Image
-          src={main_image}
+          src={mainImage}
           alt="test"
           className="duration-500 ease-in-out group-hover:scale-105"
           fill
@@ -30,14 +28,12 @@ export function NewsCard({
         />
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/20 to-black/60" />
         <div className="relative z-20 grid w-full grid-rows-2 px-5 py-50 md:py-80">
-          <div className="flex h-10 items-center justify-start">
-            <Text color="white" medium wide bold center>
-              {title}
-            </Text>
-          </div>
-          <div className="flex items-center justify-start">
-            <p className="text-s mt-3 line-clamp-2 leading-tight font-normal text-white">
-              {short_description}
+          <h1 className="font-monument-extended text-l h-10 text-left text-white md:text-2xl">
+            {title}
+          </h1>
+          <div className="flex justify-start">
+            <p className="font-monument-extended-light sm:text-s text-m mt-3 line-clamp-2 text-left leading-tight font-normal text-white">
+              {shortDescription}
             </p>
           </div>
         </div>

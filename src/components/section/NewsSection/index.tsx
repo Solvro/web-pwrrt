@@ -22,8 +22,8 @@ export async function NewsSection() {
                 whiteMode
                 key={item.id}
                 title={item.title}
-                short_description={item.shortDescription}
-                main_image={getUrlFromMedia(item.heroImage)}
+                shortDescription={item.shortDescription}
+                mainImage={getUrlFromMedia(item.heroImage)}
               />
             ))}
           </div>
