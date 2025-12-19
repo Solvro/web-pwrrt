@@ -3,14 +3,12 @@
 import Image from "next/image";
 import React, { useEffect, useRef, useState } from "react";
 
-import "../../app/(app)/[locale]/globals.css";
-
-interface CarouselProps {
+interface NewsCarouselProps {
   items: React.ReactElement[];
   onChange?: (index: number) => void;
 }
 
-export function Carousel({ items, onChange }: CarouselProps) {
+export function NewsCarousel({ items, onChange }: NewsCarouselProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [dragStartX, setDragStartX] = useState<number | null>(null);
   const [dragTranslate, setDragTranslate] = useState(0);
