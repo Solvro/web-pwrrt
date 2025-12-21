@@ -78,7 +78,7 @@ export function Navbar() {
           )}
         >
           <div className="mx-auto px-4 sm:px-2 md:px-10 xl:px-20">
-            <div className="grid grid-cols-3 items-center gap-4">
+            <div className="grid grid-cols-2 items-center gap-4 md:grid-cols-3">
               <div className="flex items-center gap-4">
                 <button
                   onClick={() => {
@@ -92,12 +92,12 @@ export function Navbar() {
                   {pageLabel()}
                 </h2>
               </div>
-              <div className="flex items-center justify-center">
+              <div className="flex items-center justify-end md:justify-center">
                 <div className="w-32">
                   <Logo />
                 </div>
               </div>
-              <div className="flex items-center justify-end">
+              <div className="hidden items-center justify-end md:flex">
                 <UserMenu />
               </div>
             </div>
