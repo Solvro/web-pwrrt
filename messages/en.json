@@ -46,11 +46,12 @@
     "buttonText": "Learn more"
   },
   "navigation": {
-    "home": "Home",
+    "home": "Homepage",
     "bolid": "Cars",
     "team": "Team",
     "about": "About Us",
     "partners": "Partners",
+    "recruitment": "Recruitment",
     "news": "News",
     "contact": "Contact"
   },

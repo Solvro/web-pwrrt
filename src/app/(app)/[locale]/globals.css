@@ -14,8 +14,8 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme {
-  --color-custom-red: rgb(203, 31, 58);
-  --color-custom-red-transparent: rgba(203, 31, 58, 0.2);
+  --color-custom-red: rgb(212, 30, 62);
+  --color-custom-red-transparent: rgba(212, 30, 62, 0.2);
 
   --text-6xl: 6rem;
 
