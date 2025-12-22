@@ -361,7 +361,24 @@
   "teamPage": {
     "doBolidu": "To the car",
     "zadzwon": "Call me!",
-    "napisz": "Write to me!"
+    "napisz": "Write to me!",
+    "team": "TEAM",
+    "teamDescription": "PWR Racing Team – The Oldest and Most Titled Formula Student Team in Poland",
+    "raceSeries": "RACE SERIES",
+    "raceSeriesDescription": "Participant in Formula Student competitions: Germany, Italy, Austria, Czech Republic",
+    "location": "LOCATION",
+    "locationDescription": "🇵🇱 POLAND",
+    "members": "MEMBERS",
+    "projects": "PROJECTS",
+    "achievements": "ACHIEVEMENTS",
+    "meetOurTeam": "MEET OUR TEAM",
+    "meetOurTeamDescription": "We are the oldest and most titled Formula Student team in Poland. We have been operating at Wrocław University of Science and Technology since 2009. Our team consists of about 80 students who design and build racing cars every year, competing in prestigious competitions around the world.",
+    "teamHistory": "TEAM HISTORY",
+    "getToKnowUs": "GET TO KNOW US",
+    "getToKnowUsDescription1": "PWR Racing Team is a group of students from Wrocław University of Science and Technology, operating since 2009. Every year, we create a new racing car – we have already built 12 combustion models and the first electric one with an autonomous system (RT12e).",
+    "getToKnowUsDescription2": "Currently, we are working on our fourteenth construction. In 2017, as the first Polish team, we won the Formula Student Italy competition. Since then, we have maintained our position among the world's elite – in 2021, we were the best in Poland and 11th in the world.",
+    "internationalsTracksTitle": "PWR Racing Team on international tracks",
+    "internationalsTracksDescription": "The PWR Racing Team shows no signs of slowing down! Our team has successfully represented Wrocław University of Science and Technology in international Formula Student competitions. During the season, competitions took place in countries including Spain, Italy, Austria, and Bulgaria, where our car competed against the best teams from across Europe. Thanks to hard work, innovative solutions, and excellent teamwork, we achieved high rankings."
   },
   "partnerJoinUsPage": {
     "pageTitle": "BECOME A PARTNER",

@@ -22,6 +22,7 @@ export interface SlideData {
 
 interface CarouselProps {
   slides: SlideData[];
+  isBigger?: boolean;
 }
 
 export interface CarouselRef {
@@ -30,7 +31,7 @@ export interface CarouselRef {
 }
 
 export const Carousel = forwardRef<CarouselRef, CarouselProps>(
-  ({ slides }, ref) => {
+  ({ slides, isBigger }, ref) => {
     const [mainIndex, setMainIndex] = useState(1);
     const [slideWidth, setSlideWidth] = useState(280);
     const [isAnimating, setIsAnimating] = useState(false);
@@ -174,19 +175,31 @@ export const Carousel = forwardRef<CarouselRef, CarouselProps>(
             ))}
           </div>
         </div>
-
-        <div className="flex w-full max-w-md flex-col items-center justify-center px-4 text-center sm:max-w-lg md:max-w-xl lg:max-w-3xl">
-          <Title size="big" color="white">
-            {" "}
-            {slides[mainIndex].title}{" "}
-          </Title>
-          <div className="flex w-full justify-center py-6 opacity-50 sm:py-8 lg:py-10">
-            <Text small center color="white">
+        {isBigger ? (
+          <div className="flex w-full max-w-md flex-col items-center justify-center px-4 text-center sm:max-w-lg md:max-w-xl lg:max-w-3xl">
+            <Title size="big" color="white">
               {" "}
-              {slides[mainIndex].description}{" "}
-            </Text>
+              {slides[mainIndex].title}{" "}
+            </Title>
+            <div className="flex w-full justify-center py-6 opacity-50 sm:py-8 lg:py-10">
+              <Text small center color="white">
+                {" "}
+                {slides[mainIndex].description}{" "}
+              </Text>
+            </div>
           </div>
-        </div>
+        ) : (
+          <div className="z-10 -mt-15 flex w-full max-w-md flex-col items-center justify-center px-4 text-center sm:max-w-lg md:-mt-18 md:max-w-xl lg:-mt-20 lg:max-w-3xl">
+            <Title size="bigger" color="white">
+              {slides[mainIndex].title}{" "}
+            </Title>
+            <div className="flex w-full justify-center">
+              <Title size="normal" color="white">
+                {slides[mainIndex].description}{" "}
+              </Title>
+            </div>
+          </div>
+        )}
       </div>
     );
   },
