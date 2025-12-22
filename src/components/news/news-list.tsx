@@ -69,12 +69,9 @@ export function NewsList({ news, tags }: NewsListProps) {
           {filteredNews.map((item) => (
             <NewsCard
               key={item.id}
-              slug={item.slug}
               title={item.title}
-              short_description={item.shortDescription}
-              length_time={item.howLong}
-              logo="/images/logo-czarne.svg"
-              main_image={item.mainImageUrl}
+              shortDescription={item.shortDescription}
+              mainImage={item.mainImageUrl}
             />
           ))}
         </div>

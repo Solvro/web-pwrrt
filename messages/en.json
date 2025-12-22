@@ -40,16 +40,18 @@
     "buttonPartner": "Become a Partner"
   },
   "newsControls": {
-    "title": "NEWS",
+    "title": "News",
     "becomePartner": "Become a Partner",
-    "contact": "Contact"
+    "contact": "Contact",
+    "buttonText": "Learn more"
   },
   "navigation": {
-    "home": "Home",
+    "home": "Homepage",
     "bolid": "Cars",
     "team": "Team",
     "about": "About Us",
     "partners": "Partners",
+    "recruitment": "Recruitment",
     "news": "News",
     "contact": "Contact"
   },
@@ -282,27 +284,49 @@
     }
   },
   "contactUs": {
-    "pageTitle": "CONTACT",
-    "writeToUs": "WRITE TO US",
-    "theyWillAnswer": "They will answer your questions:",
-    "whereToFindUs": "WHERE TO FIND US?",
-    "projectSupervisors": "Project Supervisors:",
-    "siteAdministration": "Site Administration:",
     "reportBugs": "Report Bugs",
-    "contactUsForm": "Contact with us",
+    "becomePartner": "Become Partner",
+    "contactWithUs": "Contact with us",
     "formEmail": "Email Address:",
     "formBugDescription": "Bug Description:",
     "formContactDescription": "Content:",
     "formSubmitBugReport": "Submit Bug",
+    "formSubmitContactButton": "Send",
     "formSubmitContactReport": "Contact us"
   },
+
   "joinUs": {
     "pageTitle": "RECRUITMENT",
+    "racingTeamTitle": "PWR RACING TEAM",
     "becomeMember": "BECOME A MEMBER",
     "recruitmentClosed": "Recruitment closed, thank you for your interest! 🚀",
-    "recruitmentNextIn": "NEXT RECRUITMENT STARTS IN:",
+    "recruitmentNextIn": "RECRUITMENT FOR THE TEAM STARTS IN:",
     "recruitmentOpen": "Recruitment open! Join us and create something amazing with us. 🚀",
     "recruitmentOpenEndIn": "RECRUITMENT LASTS FOR:",
+    "career": "CAREER",
+    "careerDescription1": "In our team, everyone will find space for development – regardless of their field of study or experience. We operate in many areas, from advanced engineering and car design to marketing, PR, and partner relations.",
+    "careerDescription2": "Regardless of whether you are interested in mechanics, electronics, project management, graphics, or social media – PWR Racing Team is a place where your skills matter. We create a team with passion, and every path is equally important on the road to success.",
+    "ourDepartments": "OUR DEPARTMENTS",
+    "departments": {
+      "mechanical": {
+        "description": "This department is responsible for the design and construction of the suspension system, autonomous steering and braking components, as well as the mounting and metal structures within the monocoque. Your responsibilities will include participating in work related to each of these areas – from concept to implementation."
+      },
+      "electrical": {
+        "description": "This department is responsible for designing PCB boards, creating high and low voltage wiring harnesses, and building a custom high-voltage battery. Your tasks will include designing and manufacturing electronics, modeling enclosures in CAD, designing batteries and CAN bus, as well as conducting thermal simulations of electronic components."
+      },
+      "composites": {
+        "description": "This department is responsible for the manual production of all composite elements of the car – from the load-bearing structure, through the aerodynamic package, to ergonomic elements and the high-voltage battery cover. Working with us, you will design components in CAD, conduct strength and CFD simulations, optimize composite structures, and participate in their manufacturing and testing."
+      },
+      "software": {
+        "description": "This department is responsible for the development of the autonomous system and programming microcontrollers controlling the driver interface, braking, and steering of the vehicle. We create software in C, C++, and Python, developing perception, path planning, and motion control systems that enable driverless driving. As part of the work, you will develop autonomous driving algorithms and embedded systems."
+      },
+      "verticalPerformance": {
+        "description": "This department focuses on maximizing the car's performance through work on its kinematics, dynamics, drivetrain, data acquisition, and test organization. Your tasks will include conducting vehicle dynamics simulations, developing the drivetrain, and analyzing data from runs."
+      },
+      "business": {
+        "description": "This department is responsible for partner relations, team financial management, and preparing static events for the Formula Student competition, including the business presentation. Your work will involve coordinating orders, data analysis, process optimization, creating presentations, and maintaining relationships with partners."
+      }
+    },
     "days": "DAYS",
     "hours": "HOURS",
     "minutes": "MINUTES",

@@ -1,86 +1,43 @@
-import type { Route } from "next";
 import Image from "next/image";
-import Link from "next/link";
-
-import { Text } from "./text";
 
 interface NewsCardProps {
   title: string;
-  short_description: string;
-  long_description?: string;
-  length_time?: number;
-  logo: string;
-  main_image: string;
+  shortDescription: string;
+  longDescription?: string;
+  mainImage: string;
   whiteMode?: boolean;
-  slug: string;
-  tags?: string[];
 }
 export function NewsCard({
   title,
-  short_description,
-  length_time,
-  logo,
-  main_image,
-  whiteMode,
-  slug,
-  tags,
+  shortDescription,
+  mainImage,
 }: NewsCardProps) {
   return (
-    <Link href={`/news/${slug}` as Route} passHref>
-      <div className="group flex h-104 cursor-pointer flex-col overflow-hidden rounded-md md:h-136">
-        <div className="relative h-full overflow-hidden">
-          <Image
-            src={main_image}
-            alt={"test"}
-            className="duration-500 ease-in-out group-hover:scale-105"
-            fill
-            sizes="100%"
-            style={{
-              objectFit: "cover",
-              maxWidth: "100%",
-            }}
-          />
-        </div>
-        <div
-          className={` ${
-            whiteMode ? "bg-neutral-200" : "bg-neutral-200"
-          } flex w-full flex-col px-5 py-4`}
-        >
-          <Text color="black" small wide bold opacity1 center>
+    <div className="group flex h-80 w-full cursor-pointer flex-col overflow-hidden rounded-md md:h-110">
+      <div className="relative h-full overflow-hidden">
+        <Image
+          src={mainImage}
+          alt="test"
+          className="duration-500 ease-in-out group-hover:scale-105"
+          fill
+          sizes="100%"
+          style={{
+            objectFit: "cover",
+            maxWidth: "100%",
+          }}
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/20 to-black/60" />
+        <div className="relative z-20 grid w-full grid-rows-2 px-5 py-50 md:py-80">
+          <h1 className="font-monument-extended text-l h-10 text-left text-white md:text-2xl">
             {title}
-          </Text>
-          <div className="mt-1 mb-3 md:mt-2 md:mb-4">
-            <p className="font-openSans text-opacity-70 line-clamp-2 text-justify text-xs font-normal tracking-tighter text-gray-700 duration-300 ease-in-out sm:text-base sm:leading-5">
-              {short_description}
+          </h1>
+          <div className="flex justify-start">
+            <p className="font-monument-extended-light sm:text-s text-m mt-3 line-clamp-2 text-left leading-tight font-normal text-white">
+              {shortDescription}
             </p>
-          </div>
-          {tags && tags.length > 0 ? (
-            <div className="mb-2 flex flex-wrap gap-1">
-              {tags.map((tag) => (
-                <span
-                  key={tag}
-                  className="rounded bg-gray-300 px-2 py-0.5 text-xs text-gray-700"
-                >
-                  {tag}
-                </span>
-              ))}
-            </div>
-          ) : null}
-          <div className="flex justify-between">
-            <Image
-              alt="Logo"
-              height={40}
-              width={80}
-              src={logo}
-              style={{
-                maxWidth: "100%",
-                height: "auto",
-              }}
-            />
-            <Text color="gray">{length_time} min czytania</Text>
           </div>
         </div>
       </div>
-    </Link>
+    </div>
   );
 }

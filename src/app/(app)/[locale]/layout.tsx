@@ -11,7 +11,6 @@ import Script from "next/script";
 
 import { ClientProviders } from "@/components/client-providers";
 import { Navbar } from "@/components/navbar";
-import { SideBar } from "@/components/navbar/side-bar";
 import { FooterSection } from "@/components/section/FooterSection";
 import { routing } from "@/i18n/routing";
 import { cn } from "@/lib/utils";
@@ -109,7 +108,6 @@ export default async function LocaleLayout({
         <NextIntlClientProvider>
           <ClientProviders>
             <Navbar />
-            <SideBar />
             {children}
             <FooterSection />
             <ToasterProvider />

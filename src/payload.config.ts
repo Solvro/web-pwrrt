@@ -14,7 +14,13 @@ import { News } from "./collections/news";
 import Partners from "./collections/partners";
 import { TeamMembers } from "./collections/team-members";
 import { Users } from "./collections/users";
+import Contact from "./globals/contact";
+import Departments from "./globals/departments";
+import FooterSection from "./globals/footer-section";
+import JoinUs from "./globals/join-us";
 import MainPage from "./globals/main-page";
+import Recruitment from "./globals/recruitment";
+import TeamHistory from "./globals/team-history";
 
 const filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(filename);
@@ -27,7 +33,15 @@ export default buildConfig({
     },
   },
   collections: [Users, Media, Bolids, Partners, TeamMembers, News],
-  globals: [MainPage],
+  globals: [
+    MainPage,
+    Departments,
+    FooterSection,
+    JoinUs,
+    Contact,
+    Recruitment,
+    TeamHistory,
+  ],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET ?? "",
   typescript: {

@@ -2,6 +2,8 @@
 
 import React, { useMemo } from "react";
 
+import { cn } from "@/lib/utils";
+
 export interface TitleProps {
   children: React.ReactNode;
   size?: "small" | "medium" | "big" | "bigger" | "subtitle" | "normal";
@@ -10,6 +12,7 @@ export interface TitleProps {
   cardHover?: boolean;
   wrap?: boolean;
   lower?: boolean;
+  className?: string;
 }
 
 export function Title({
@@ -20,6 +23,7 @@ export function Title({
   cardHover = false,
   wrap = false,
   lower = false,
+  className,
 }: TitleProps) {
   const colorClass = useMemo(() => {
     switch (color) {
@@ -112,11 +116,18 @@ export function Title({
 
   return (
     <h1
-      className={` ${
-        wrap ? "" : "whitespace-nowrap"
-      } font-syncopate font-extrabold ${colorClass} ${sizeClass} ${hoverSizeClass} ${
-        lower ? "leading-none" : "leading-tight"
-      } transition-colors duration-300 ${hoverColorClass}`}
+      className={cn(
+        "font-syncopate font-extrabold normal-case transition-colors duration-300",
+        colorClass,
+        sizeClass,
+        hoverSizeClass,
+        hoverColorClass,
+        lower ? "leading-none" : "leading-tight",
+        {
+          "whitespace-nowrap": !wrap,
+        },
+        className,
+      )}
     >
       {children}
     </h1>
