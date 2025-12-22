@@ -5,6 +5,7 @@ import { useLocale } from "next-intl";
 import { useState } from "react";
 
 import { getAllBolids } from "@/actions/bolid";
+import { Title } from "@/components/title";
 import type { Bolid } from "@/payload-types";
 
 import { BolidContent } from "./bolid-content";
@@ -92,7 +93,13 @@ export function BolidSection({ presetBolid }: BolidSectionProps) {
   };
 
   return (
-    <div id="bolid" className="overflow-hidden">
+    <div id="bolid" className="overflow-hidden pt-3">
+      <Title
+        className="font-monument-extended text-center font-light uppercase lg:text-[1.75rem]!"
+        size="medium"
+      >
+        Historia naszych bolidów
+      </Title>
       <div className="relative flex w-[200vw] flex-col">
         <Slider
           currentBolid={currentBolidData.name}

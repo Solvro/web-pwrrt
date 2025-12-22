@@ -1,10 +1,7 @@
 import { getLocale, getTranslations } from "next-intl/server";
 
 import { BolidSection } from "@/components/section/BolidSection";
-import { DepartmentsSubsection } from "@/components/section/DepartmentsSubsection/departments-subsection";
-import { FSSection } from "@/components/section/FSSection";
 import { HeroSection } from "@/components/section/HeroSection";
-import { HistorySection } from "@/components/section/HistorySection";
 import { HomepageSection } from "@/components/section/HomepageSection";
 import { JoinusSection } from "@/components/section/JoinusSection";
 import { NewsSection } from "@/components/section/NewsSection";
@@ -24,12 +21,11 @@ export default async function Home() {
         <BolidSection presetBolid={bolid} />
       </HomepageSection>
       <HomepageSection sectionNumber={2} header={t("navigation.team")}>
-        <DepartmentsSubsection />
+        <TeamSection />
       </HomepageSection>
-      <FSSection />
-      <TeamSection />
-      <HistorySection />
-      <JoinusSection />
+      <HomepageSection sectionNumber={3} header={t("navigation.joinUs")}>
+        <JoinusSection />
+      </HomepageSection>
       {/* <SponsorsSection /> what tf is this piece of shit (slowing down model loading about 15 seconds) */}
       <NewsSection />
     </div>
