@@ -15,10 +15,12 @@
     "buttonText": "Learn more"
   },
   "teamSection": {
-    "title": "TEAM",
-    "subtitle": "TOGETHER WE CAN DO ANYTHING",
-    "description": "Young, ambitious, committed, and brave. These words describe the students of Wrocław University of Science and Technology, especially the members of the PWR Racing Team. Our team has a structure like a serious company. At its head is the team leader. The greatest responsibility rests on them. Directly reporting to them is the technical leader, who in turn oversees the leaders of individual departments, except for marketing and bussiness, whose heads are subordinate to the team leader. For the rest of the members, the leader of their department is their supervisor.",
-    "buttonLabel": "Learn more about the team"
+    "title": "Team",
+    "subtitle": "A few words about us",
+    "description1": "Young, ambitious, committed, and courageous—this is the best way to describe the students of Wrocław University of Science and Technology, especially the members of the PWR Racing Team. Our organization operates according to a structure similar to that of large companies.",
+    "description2": "At the head of the team is a leader who bears the greatest responsibility. Directly subordinate to them is the technical leader, who manages the leaders of individual departments, with the exception of marketing and business—these departments report directly to the team leader. Each team member reports to their respective department leader.",
+    "buttonLabel": "Discover our team",
+    "members": "members"
   },
   "historySection": {
     "title": "TEAM HISTORY",
@@ -51,7 +53,8 @@
     "partners": "Partners",
     "recruitment": "Recruitment",
     "news": "News",
-    "contact": "Contact"
+    "contact": "Contact",
+    "joinUs": "Join PWR Racing Team"
   },
   "footer": {
     "callUs": "Call us",
