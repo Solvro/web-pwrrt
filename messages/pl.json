@@ -35,9 +35,15 @@
     "buttonText": "Dowiedz się więcej"
   },
   "joinusSection": {
-    "title": "Chcesz zostać częścią PWR Racing Team?",
-    "buttonRecruitment": "Rekrutacja",
-    "buttonPartner": "Zostań Partnerem"
+    "team": {
+      "title": "Rekrutacja do teamu",
+      "text": "Dołącz do naszej ekipy i rozwijaj swoje pasje w inspirującym środowisku!"
+    },
+    "partners": {
+      "title": "Zostań partnerem",
+      "text": "Wpółpracuj z nami i twórz wartościowe projekty, które robią różnicę!"
+    },
+    "buttonText": "Dowiedz się więcej"
   },
   "newsControls": {
     "title": "Aktualności",
