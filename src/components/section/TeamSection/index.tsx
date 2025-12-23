@@ -60,14 +60,14 @@ export function TeamSection() {
             <div className="text-muted-foreground">+85 {t("members")}</div>
           </Link>
         </Button>
-        <div className="flex flex-wrap justify-center gap-10 lg:justify-start">
+        <div className="flex flex-wrap justify-center gap-10 xl:justify-start">
           <Image
             className="h-[300px] w-[400px] object-cover md:h-[400px]"
             src={Team1}
             alt="bolid"
           />
           <Image
-            className="h-[300px] w-[400px] object-cover md:h-[400px]"
+            className="size-[400px] object-cover max-lg:hidden"
             src={Team2}
             alt="bolid"
           />

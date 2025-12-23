@@ -1,8 +1,8 @@
-import { CircleArrowRight } from "lucide-react";
 import { useTranslations } from "next-intl";
 import type { StaticImageData } from "next/image";
 import Image from "next/image";
 import type { ComponentProps } from "react";
+import { FaArrowCircleRight } from "react-icons/fa";
 
 import { AccentLine } from "@/components/accent-line";
 import { Button } from "@/components/button";
@@ -24,7 +24,7 @@ export function CtaCard({
   const title = t(`${section}.title`);
   const text = t(`${section}.text`);
   return (
-    <div className="group font-monument-extended relative z-0 flex aspect-[1] w-2xl flex-col items-center justify-end gap-8 overflow-hidden rounded-2xl p-6 shadow-lg">
+    <div className="group font-monument-extended relative z-0 flex aspect-[1] w-2xl flex-col items-center justify-end gap-8 overflow-hidden rounded-3xl p-6 shadow-lg">
       <Image
         className={cn(
           "absolute inset-0 -z-10 size-full scale-130 object-cover transition-transform duration-700 group-hover:scale-135",
@@ -35,7 +35,7 @@ export function CtaCard({
       />
       <div
         aria-hidden="true"
-        className="absolute inset-0 -z-10 bg-black/40 shadow-[inset_0_0_150px_rgba(0,0,0,0.4)]"
+        className="to-red/10 absolute inset-0 -z-10 bg-gradient-to-t from-black/80 from-30% via-black/60 via-45% to-70% shadow-[inset_0_0_150px_rgba(0,0,0,0.4)]"
       />
       <div className="text-custom-red flex items-center gap-4">
         <AccentLine />
@@ -45,8 +45,8 @@ export function CtaCard({
       <p className="text-center text-3xl font-light text-white">{text}</p>
       <Button asChild variant={null} className="text-xl text-white">
         <Link href={href}>
-          <span className="underline">{t("buttonText")}</span>{" "}
-          <CircleArrowRight />
+          <span className="underline">{t("buttonText")}</span>
+          <FaArrowCircleRight />
         </Link>
       </Button>
     </div>
