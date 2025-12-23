@@ -127,7 +127,7 @@ export function NewsCarousel({ items, onChange }: NewsCarouselProps) {
 
       <div className="relative w-full overflow-hidden select-none">
         <div
-          className="flex pl-4 transition-transform duration-500 ease-in-out md:pl-10 lg:pl-20"
+          className="flex pl-4 transition-transform duration-500 ease-in-out md:pl-10 lg:pl-20 xl:pl-56"
           style={{
             transform: `translateX(${-(currentIndex * itemStep) + dragTranslate}px)`,
           }}
