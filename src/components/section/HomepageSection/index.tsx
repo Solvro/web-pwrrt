@@ -1,5 +1,7 @@
 import type { ReactNode } from "react";
 
+import { AccentLine } from "@/components/accent-line";
+
 export function HomepageSection({
   children,
   sectionNumber,
@@ -13,7 +15,7 @@ export function HomepageSection({
     <section className="bg-background px-4 lg:px-16">
       <header className="text-custom-red font-monument-extended flex items-center gap-12 py-12 font-normal uppercase">
         {sectionNumber}
-        <div className="h-0.5 w-25 bg-[currentColor]"></div>
+        <AccentLine />
         {header}
       </header>
       {children}

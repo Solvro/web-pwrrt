@@ -35,9 +35,15 @@
     "buttonText": "Learn more"
   },
   "joinusSection": {
-    "title": "Do you want to become part of the PWR Racing Team?",
-    "buttonRecruitment": "Recruitment",
-    "buttonPartner": "Become a Partner"
+    "team": {
+      "title": "Team recruitment",
+      "text": "Join our team and develop your skills in an inspirational environment!"
+    },
+    "partners": {
+      "title": "Become a partner",
+      "text": "Partner with us and create valuable projects, which make a difference!"
+    },
+    "buttonText": "Learn more"
   },
   "newsControls": {
     "title": "News",
