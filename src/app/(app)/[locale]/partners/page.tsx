@@ -29,9 +29,9 @@ export default async function Partners() {
   const bronzeSponsors = await getBronzeSponsors();
   return (
     <div className="pt-[100px] md:pt-[80px]">
-      <div className="flex min-h-[100vh] w-full">
-        <div className="flex w-full justify-between bg-[#0c0c0c] text-gray-300 lg:w-1/2">
-          <div className="mx-auto flex h-full max-w-xl flex-col justify-between px-6 py-12">
+      <div className="flex h-full w-full flex-col md:flex-row lg:h-full">
+        <div className="flex w-full justify-between bg-[#0c0c0c] text-gray-300 md:w-1/2">
+          <div className="mx-auto flex h-full max-w-xl flex-col gap-5 px-6 py-12 lg:gap-15">
             <Link
               href={"/contact"}
               className="group flex cursor-pointer items-center gap-[5px] self-end"
@@ -47,10 +47,10 @@ export default async function Partners() {
               </span>
             </Link>
             <PartnersForm />
-            <p>{t("formDesc")}</p>
+            <p className="text-sm">{t("formDesc")}</p>
           </div>
         </div>
-        <div className="relative flex w-[55%] justify-center">
+        <div className="relative -order-1 flex h-[70vh] w-full justify-center md:order-none md:h-auto md:w-[55%]">
           <Image
             src="/images/partners/main.jpg"
             alt="Kontakt"
@@ -58,11 +58,13 @@ export default async function Partners() {
             className="object-fill"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-black/80 to-black/40"></div>
-          <div className="absolute bottom-12 flex flex-col items-center gap-6 p-8 text-white">
-            <h2 className="text-4xl font-bold tracking-wide uppercase md:text-5xl">
+          <div className="absolute bottom-12 flex flex-col items-center gap-3 p-8 text-white lg:gap-6">
+            <h2 className="text-center text-4xl font-bold tracking-wide uppercase lg:text-5xl">
               {t("zostanPartnerem")}
             </h2>
-            <p className="text-center text-xl">{t("mainPhotoDesc")}</p>
+            <p className="text-l text-center lg:text-xl">
+              {t("mainPhotoDesc")}
+            </p>
           </div>
         </div>
       </div>
