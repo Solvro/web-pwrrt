@@ -69,7 +69,7 @@ export function ContactReportForm() {
       <Form {...form}>
         <form
           onSubmit={form.handleSubmit(onSubmit)}
-          className="w-[85vw] space-y-4 shadow md:w-[55vw] xl:w-[35vw]"
+          className="w-full space-y-4 shadow"
         >
           <FormField
             control={form.control}
