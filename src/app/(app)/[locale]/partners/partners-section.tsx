@@ -99,8 +99,8 @@ export function PartnersSection({ sponsors }: PartnersSectionProps) {
 
   const [active, setActive] = useState<SponsorKey>("bronze");
   return (
-    <div className="flex min-h-[20vh] justify-between bg-[var(--color-partners-section)] pt-15 pr-25 pb-15 pl-25">
-      <div className="flex w-[40%] flex-col gap-2">
+    <div className="flex min-h-[20vh] flex-col justify-between gap-5 bg-[var(--color-partners-section)] pt-15 pr-10 pb-15 pl-10 md:flex-row md:gap-0 lg:pr-25 lg:pl-25">
+      <div className="flex w-[70%] flex-col gap-2 sm:w-[40%]">
         {partners.map((item) => (
           <NavPartner
             key={item.key}
@@ -117,9 +117,9 @@ export function PartnersSection({ sponsors }: PartnersSectionProps) {
         <SponsorGrid
           sponsorRank={active}
           sponsors={sponsors[active]}
-          height="h-5 md:h-20"
-          gap="gap-2"
-          gridCols="grid-cols-3"
+          height="h-10 md:h-20"
+          gap="gap-3 lg:gap-2"
+          gridCols="grid-cols-2 sm:grid-cols-3 md:grid-cols-2 lg:grid-cols-3"
         />
       </div>
     </div>

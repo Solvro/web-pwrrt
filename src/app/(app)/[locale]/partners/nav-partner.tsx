@@ -11,7 +11,7 @@ export function NavPartner({ isActive, content, onClick }: NavPartnerProps) {
     <button
       onClick={onClick}
       className={cn(
-        "flex cursor-pointer items-center gap-2 text-2xl",
+        "flex cursor-pointer items-center gap-2 text-left text-xl lg:text-2xl",
         isActive && "text-foreground",
       )}
     >

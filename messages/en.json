@@ -336,6 +336,9 @@
   },
   "partnersPage": {
     "zostanPartnerem": "Become a Partner",
+    "formName": "Name:",
+    "formSurname": "Surname:",
+    "formCompany": "Company:",
     "kontakt": "Contact with us",
     "partners": "PARTNERS",
     "brązowi": "Bronze PARTNERS",

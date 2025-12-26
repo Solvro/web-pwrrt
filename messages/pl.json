@@ -345,6 +345,9 @@
   "partnersPage": {
     "zostanPartnerem": "Zostań Partnerem",
     "kontakt": "Skontaktuj się z nami",
+    "formName": "Imię:",
+    "formSurname": "Nazwisko:",
+    "formCompany": "Nazwa firmy:",
     "partners": "PARTNERZY",
     "brązowi": "Partnerzy brązowi",
     "srebrni": "Partnerzy srebrni",

@@ -46,6 +46,7 @@ export function PartnersForm() {
   });
 
   const t = useTranslations("contactUs");
+  const p = useTranslations("partnersPage");
   const [message, setMessage] = useState("");
   // async function onSubmit(values: z.infer<typeof ReportFormSchema>) {
   //   try {
@@ -69,8 +70,27 @@ export function PartnersForm() {
       <Form {...form}>
         <form
           //onSubmit={form.handleSubmit(onSubmit)}
-          className="w-[85vw] space-y-10 shadow md:w-[55vw] xl:w-[35vw]"
+          className="w-full space-y-7 shadow md:space-y-5 lg:space-y-10"
         >
+          <div className="flex gap-4 md:gap-10">
+            <input
+              placeholder={p("formName")}
+              name="name"
+              className="placeholder-ring border-ring w-full border-b bg-transparent px-1 py-3 focus:outline-none"
+            />
+            <input
+              placeholder={p("formSurname")}
+              name="surname"
+              className="placeholder-ring border-ring w-full border-b bg-transparent px-1 py-3 focus:outline-none"
+            />
+          </div>
+
+          <input
+            placeholder={p("formCompany")}
+            name="company"
+            className="placeholder-ring border-ring w-full border-b bg-transparent px-1 py-3 focus:outline-none"
+          />
+
           <FormField
             control={form.control}
             name="email"
