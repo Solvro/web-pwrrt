@@ -94,7 +94,7 @@ export function ErrorReportForm() {
           <Form {...form}>
             <form
               onSubmit={form.handleSubmit(onSubmit)}
-              className="mt-8 w-[25vw] space-y-4 shadow"
+              className="mt-8 w-[80%] space-y-4 shadow"
             >
               <FormField
                 control={form.control}
