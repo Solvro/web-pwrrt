@@ -1,10 +1,12 @@
 import Photo1 from "@public/images/team/team-page-redesign/photo1.png";
 import Photo2 from "@public/images/team/team-page-redesign/photo2.png";
+import "flag-icons/css/flag-icons.min.css";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
 import { FaQuoteLeft, FaQuoteRight } from "react-icons/fa";
 
 import { Container } from "@/components/container";
+import { JoinusSection } from "@/components/section/JoinusSectionRedesign";
 import { Text } from "@/components/text";
 import { Title } from "@/components/title";
 
@@ -18,25 +20,25 @@ export default function TeamPage() {
   const slides: SlideData[] = [
     {
       id: 1,
-      title: "Nasz bolid RT11B dwa lata temu zadebiutował na torze w Michigan",
+      title: t("slide1Text"),
       imageUrl:
         "/images/team/team-page-redesign/second-carousel/secCarousel1.png",
     },
     {
       id: 2,
-      title: "RT14e zawody we Włoszech",
+      title: t("slide2Text"),
       imageUrl:
         "/images/team/team-page-redesign/second-carousel/secCarousel2.jpg",
     },
     {
       id: 3,
-      title: "RT12e zawody we Czechach",
+      title: t("slide3Text"),
       imageUrl:
         "/images/team/team-page-redesign/second-carousel/secCarousel3.jpg",
     },
     {
       id: 4,
-      title: "RT14e podczas testów na torze Krzywa",
+      title: t("slide4Text"),
       imageUrl:
         "/images/team/team-page-redesign/second-carousel/secCarousel4.jpg",
     },
@@ -48,10 +50,10 @@ export default function TeamPage() {
         <Image
           src={Photo1}
           alt="Join Us"
-          className="h-full w-full object-cover"
+          className="h-full w-full object-cover opacity-50"
         />
-        <div className="absolute top-0 z-10 flex w-screen justify-center bg-black md:h-120 lg:h-100">
-          <div className="mt-[100px] flex w-full flex-col justify-between gap-4 p-5 md:mt-[120px] md:w-9/10 md:flex-row">
+        <div className="top-0 z-10 flex w-screen justify-center bg-black min-md:absolute md:h-120 lg:h-100">
+          <div className="flex w-full flex-col justify-between gap-4 p-5 md:mt-[120px] min-md:mt-[100px] md:w-9/10 md:flex-row">
             <div className="flex w-full flex-col gap-4 md:w-1/2">
               <div className="opacity-60">
                 <Title color="white" size="small">
@@ -80,6 +82,7 @@ export default function TeamPage() {
                 </Title>
               </div>
               <Text bold color="white" small>
+                <span className="fi fi-pl"></span>
                 {t("locationDescription")}
               </Text>
               <Text bold color="white" small>
@@ -88,8 +91,6 @@ export default function TeamPage() {
             </div>
           </div>
         </div>
-
-        <div className="absolute inset-0 bg-black/70" />
       </div>
 
       <Container>
@@ -204,6 +205,8 @@ export default function TeamPage() {
           </div>
 
           <TeamPageCarousel slides={slides} />
+
+          <JoinusSection />
         </div>
       </Container>
     </div>
