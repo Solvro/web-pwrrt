@@ -39,7 +39,7 @@ export function BolidSection({ presetBolid }: BolidSectionProps) {
               alt="bolid"
               width={700}
               height={300}
-              className="h-72 object-contain"
+              className="h-32 object-contain lg:h-72"
             />
             <header className="text-xl">{bolid.name}</header>
             <p className="text-sm">{bolid.year}</p>
