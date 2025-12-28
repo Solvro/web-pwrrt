@@ -74,7 +74,7 @@ export function NewsList({ allNews }: NewsListProps) {
           <Button label={t("buttonText")} className="rounded-full" />
         </Link>
       </div>
-      <div className="relative mt-10 flex w-full">
+      <div className="relative z-20 mt-10 flex w-full">
         <NewsCarousel items={cards} onChange={setCurrent} />
       </div>
     </div>
