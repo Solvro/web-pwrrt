@@ -373,7 +373,7 @@
     "raceSeries": "SERIA WYŚCIGÓW",
     "raceSeriesDescription": "Uczestnik zawodów Formula Student: Germany, Italy, Austria, Czech Republic",
     "location": "LOKALIZACJA",
-    "locationDescription": "🇵🇱 POLSKA",
+    "locationDescription": " POLSKA",
     "members": "CZŁONKÓW",
     "projects": "PROJEKTÓW",
     "achievements": "OSIĄGNIĘĆ",
@@ -384,7 +384,11 @@
     "getToKnowUsDescription1": "PWR Racing Team to zespół studentów Politechniki Wrocławskiej, działający od 2009 roku. Co roku tworzymy nowy bolid wyścigowy – mamy już 12 modeli spalinowych oraz pierwszy elektryczny z systemem autonomicznym (RT12e). ",
     "getToKnowUsDescription2": "Obecnie pracujemy nad czternastą konstrukcją. W 2017 roku jako pierwszy polski zespół wygraliśmy zawody Formula Student Italy. Od tamtej pory utrzymujemy się w światowej czołówce – w 2021 roku byliśmy najlepsi w Polsce i 11. na świecie.",
     "internationalsTracksTitle": "PWR Racing Team na międzynarodowych torach",
-    "internationalsTracksDescription": "PWR Racing Team nie zwalnia tempa! Nasz zespół z sukcesami reprezentuje Politechnikę Wrocławską na międzynarodowych zawodach Formuły Student. W sezonie zawody odbyły się m.in. w Hiszpanii, Włoszech, Austrii i Bułgarii, gdzie nasz bolid rywalizował z najlepszymi zespołami z całej Europy. Dzięki ciężkiej pracy, innowacyjnym rozwiązaniom i świetnej współpracy zespołowej, udało się osiągnąć wysokie miejsca w klasyfikacjach."
+    "internationalsTracksDescription": "PWR Racing Team nie zwalnia tempa! Nasz zespół z sukcesami reprezentuje Politechnikę Wrocławską na międzynarodowych zawodach Formuły Student. W sezonie zawody odbyły się m.in. w Hiszpanii, Włoszech, Austrii i Bułgarii, gdzie nasz bolid rywalizował z najlepszymi zespołami z całej Europy. Dzięki ciężkiej pracy, innowacyjnym rozwiązaniom i świetnej współpracy zespołowej, udało się osiągnąć wysokie miejsca w klasyfikacjach.",
+    "slide1Text": "Nasz bolid RT11B dwa lata temu zadebiutował na torze w Michigan",
+    "slide2Text": "RT14e zawody we Włoszech",
+    "slide3Text": "RT12e zawody we Czechach",
+    "slide4Text": "RT14e podczas testów na torze Krzywa"
   },
   "partnerJoinUsPage": {
     "pageTitle": "ZOSTAŃ PARTNEREM",
@@ -439,5 +443,13 @@
         }
       }
     }
+  },
+  "newJoinUsSection": {
+    "sectionLabel": "DOŁĄCZ DO PWR RACING TEAM",
+    "labelTeam": "REKRUTACJA DO TEAMU",
+    "labelPartner": "ZOSTAŃ PARTNEREM",
+    "titleTeam": "Dołącz do naszej ekipy i rozwijaj swoje pasje w inspirującym środowisku!",
+    "titlePartner": "Współpracuj z nami i twórz wartościowe projekty, które robią różnicę!",
+    "seeMore": "Dowiedz się więcej"
   }
 }
