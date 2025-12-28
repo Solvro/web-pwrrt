@@ -95,7 +95,7 @@ export function NewsCarousel({ items, onChange }: NewsCarouselProps) {
   };
 
   return (
-    <div className="pt-16">
+    <div className="overflow-hidden pt-16">
       {!isMobile && (
         <div className="absolute top-0 right-20 z-30 flex gap-2">
           <button
