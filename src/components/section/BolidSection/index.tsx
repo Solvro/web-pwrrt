@@ -5,8 +5,8 @@ import { useLocale } from "next-intl";
 import Image from "next/image";
 
 import { getAllBolids } from "@/actions/bolid";
-import { getImageUrl } from "@/components/payload/utilities/get-image-url";
 import { NewsCarousel } from "@/components/ui/news-carousel";
+import { getUrlFromMedia } from "@/lib/utils";
 import type { Bolid } from "@/payload-types";
 
 interface BolidSectionProps {
@@ -35,7 +35,7 @@ export function BolidSection({ presetBolid }: BolidSectionProps) {
             className="font-monument-extended flex flex-col items-start gap-4 text-white"
           >
             <Image
-              src={getImageUrl(bolid.image)}
+              src={getUrlFromMedia(bolid.image)}
               alt="bolid"
               width={700}
               height={300}
