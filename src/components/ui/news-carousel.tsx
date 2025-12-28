@@ -3,6 +3,8 @@
 import Image from "next/image";
 import React, { useEffect, useRef, useState } from "react";
 
+import { cn } from "@/lib/utils";
+
 interface NewsCarouselProps {
   items: React.ReactElement[];
   onChange?: (index: number) => void;
@@ -178,9 +180,12 @@ export function NewsCarousel({ items, onChange }: NewsCarouselProps) {
               <button
                 key={child.key ?? index}
                 type="button"
-                className={`mx-1 inline-block h-2 w-2 rounded-full bg-gray-500 transition-all ${
-                  index === currentIndex ? "w-6 bg-red-700" : ""
-                }`}
+                className={cn(
+                  "mx-1 inline-block h-2 rounded-full transition-all",
+                  index === currentIndex
+                    ? "bg-custom-red w-6"
+                    : "w-2 bg-gray-500",
+                )}
                 onClick={() => {
                   setIndex(index);
                 }}
