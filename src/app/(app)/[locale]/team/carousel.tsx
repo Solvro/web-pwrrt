@@ -63,7 +63,7 @@ export const TeamPageCarousel = forwardRef<CarouselRef, TeamCarouselProps>(
           <CarouselContent>
             {slides.map((slide) => (
               <CarouselItem key={slide.id} className="basis-4/5">
-                <div className="relative h-50 w-full overflow-hidden rounded-lg sm:h-80 md:h-90 md:h-[500px] lg:h-100 lg:h-[600px]">
+                <div className="relative h-90 w-full overflow-hidden rounded-lg sm:h-80 md:h-90 md:h-[500px] lg:h-100 lg:h-[600px]">
                   <Image
                     src={slide.imageUrl}
                     alt={slide.title}
@@ -71,7 +71,7 @@ export const TeamPageCarousel = forwardRef<CarouselRef, TeamCarouselProps>(
                     className="object-cover"
                   />
 
-                  <div className="absolute bottom-6 left-6 max-w-md">
+                  <div className="absolute bottom-6 left-6 max-w-md pr-3">
                     <Text color="white" small>
                       {slide.title}
                     </Text>

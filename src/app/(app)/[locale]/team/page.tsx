@@ -3,7 +3,6 @@ import Photo2 from "@public/images/team/team-page-redesign/photo2.png";
 import "flag-icons/css/flag-icons.min.css";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
-import { FaQuoteLeft, FaQuoteRight } from "react-icons/fa";
 
 import { Container } from "@/components/container";
 import { JoinusSection } from "@/components/section/JoinusSectionRedesign";
@@ -12,11 +11,11 @@ import { Title } from "@/components/title";
 
 import { TeamPageCarousel } from "./carousel";
 import type { SlideData } from "./carousel";
+import { Quote } from "./quote";
 import { TeamPageCarouselSection } from "./team-page-carousel-section";
 
 export default function TeamPage() {
   const t = useTranslations("teamPage");
-
   const slides: SlideData[] = [
     {
       id: 1,
@@ -120,38 +119,7 @@ export default function TeamPage() {
                 className="h-full w-full object-cover"
               />
             </div>
-            <div className="flex w-full flex-col justify-center gap-6 px-8 md:w-1/2">
-              <div className="text-custom-red text-2xl leading-none font-bold">
-                <FaQuoteLeft />
-              </div>
-              <Text color="white" small>
-                PWR RACING TEAM is the first team from Poland to win the Formula
-                Student (FSAE International) competition. Our team finished 1st
-                in the electric classification with their RT 08 racing car.
-              </Text>
-              <Text color="white" small>
-                It was built by over 50 enthusiasts from Wroclaw University of
-                Technology. From the very beginning in 2009, members of PWR
-                RACING TEAM have wanted to compete in the international Formula
-                Student competition.
-              </Text>
-              <div className="mt-4 flex items-end justify-between">
-                <Text color="white" extrasmall opacity1={false}>
-                  ZOBACZ TŁUMACZENIE
-                </Text>
-
-                <div className="flex items-center justify-center gap-4">
-                  <div className="opacity-60">
-                    <Text color="white" extrasmall opacity1 right>
-                      TME.COM
-                    </Text>
-                  </div>
-                  <div className="text-custom-red text-2xl leading-none font-bold">
-                    <FaQuoteRight />
-                  </div>
-                </div>
-              </div>
-            </div>
+            <Quote />
           </div>
 
           <div className="mt-20 w-full">
