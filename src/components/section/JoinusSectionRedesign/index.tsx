@@ -12,7 +12,7 @@ export function JoinusSection() {
   const t = useTranslations("newJoinUsSection");
   return (
     <div className="flex w-full flex-col">
-      <div className="mt-20 w-full">
+      <div className="mt-10 w-full">
         <div className="flex items-center gap-3">
           <Text wide bold color="red">
             5
@@ -23,7 +23,7 @@ export function JoinusSection() {
           </Text>
         </div>
       </div>
-      <div className="relative mt-10 mb-20 flex w-full justify-center md:mr-10 md:justify-end">
+      <div className="relative mt-10 mb-20 flex w-full justify-center">
         <div className="flex flex-col gap-6 md:flex-row">
           <JoinusCard
             image={Photo1}
