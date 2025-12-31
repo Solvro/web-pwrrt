@@ -97,6 +97,13 @@
 }
 
 @font-face {
+  font-family: "PPMonumentExtended";
+  src: url("/fonts/PPMonumentExtended-Regular.otf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
   font-family: "MonumentExtended";
   src: url("/fonts/MonumentExtended-Ultrabold.otf") format("opentype");
   font-weight: bold;
@@ -120,6 +127,10 @@
 
 .font-monument-extended-light {
   font-family: "MonumentExtendedLight", sans-serif;
+}
+
+.font-pp-monument-extended {
+  font-family: "PPMonumentExtended", sans-serif;
 }
 
 body {

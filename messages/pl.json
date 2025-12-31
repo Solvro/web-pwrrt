@@ -380,7 +380,7 @@
     "projects": "PROJEKTÓW",
     "achievements": "OSIĄGNIĘĆ",
     "meetOurTeam": "POZNAJ NASZ ZESPÓŁ",
-    "meetOurTeamDescription": "Jesteśmy najstarszym i najbardziej utytułowanym zespołem Formuły Student w Polsce. Działamy przy Politechnice Wrocławskiej od 2009 roku. Nasz zespół tworzy około 80 studentów i studentek, którzy co roku projektują i budują bolidy wyścigowe, startując w prestiżowych zawodach na całym świecie.",
+    "meetOurTeamDescription": "Jesteśmy najstarszym i najbardziej utytułowanym zespołem <link>Formuły Student</link> w Polsce. Działamy przy Politechnice Wrocławskiej od 2009 roku. Nasz zespół tworzy około 80 studentów i studentek, którzy co roku projektują i budują bolidy wyścigowe, startując w prestiżowych zawodach na całym świecie.",
     "teamHistory": "HISTORIA ZESPOŁU",
     "getToKnowUs": "POZNAJ NAS",
     "getToKnowUsDescription1": "PWR Racing Team to zespół studentów Politechniki Wrocławskiej, działający od 2009 roku. Co roku tworzymy nowy bolid wyścigowy – mamy już 12 modeli spalinowych oraz pierwszy elektryczny z systemem autonomicznym (RT12e). ",
@@ -390,7 +390,10 @@
     "slide1Text": "Nasz bolid RT11B dwa lata temu zadebiutował na torze w Michigan",
     "slide2Text": "RT14e zawody we Włoszech",
     "slide3Text": "RT12e zawody we Czechach",
-    "slide4Text": "RT14e podczas testów na torze Krzywa"
+    "slide4Text": "RT14e podczas testów na torze Krzywa",
+    "joinUsLabel": "DOŁĄCZ DO PWR RACING TEAM",
+    "quote1": "PWR RACING TEAM jest pierwszym zespołem z Polski, który wygrał konkurs Formula Student (FSAE International). Nasz zespół zajął 1 miejsce w klasyfikacji elektrycznej z samochodem wyścigowym RT 08.",
+    "quote2": "Został zbudowany przez ponad 50 entuzjastów z Politechniki Wrocławskiej. Od samego początku w 2009 roku członkowie PWR RACING TEAM chcieli rywalizować w międzynarodowych zawodach Formula Student."
   },
   "partnerJoinUsPage": {
     "pageTitle": "ZOSTAŃ PARTNEREM",
@@ -445,13 +448,5 @@
         }
       }
     }
-  },
-  "newJoinUsSection": {
-    "sectionLabel": "DOŁĄCZ DO PWR RACING TEAM",
-    "labelTeam": "REKRUTACJA DO TEAMU",
-    "labelPartner": "ZOSTAŃ PARTNEREM",
-    "titleTeam": "Dołącz do naszej ekipy i rozwijaj swoje pasje w inspirującym środowisku!",
-    "titlePartner": "Współpracuj z nami i twórz wartościowe projekty, które robią różnicę!",
-    "seeMore": "Dowiedz się więcej"
   }
 }

@@ -372,7 +372,7 @@
     "projects": "PROJECTS",
     "achievements": "ACHIEVEMENTS",
     "meetOurTeam": "MEET OUR TEAM",
-    "meetOurTeamDescription": "We are the oldest and most titled Formula Student team in Poland. We have been operating at Wrocław University of Science and Technology since 2009. Our team consists of about 80 students who design and build racing cars every year, competing in prestigious competitions around the world.",
+    "meetOurTeamDescription": "We are the oldest and most titled <link>Formula Student</link> team in Poland. We have been operating at Wrocław University of Science and Technology since 2009. Our team consists of about 80 students who design and build racing cars every year, competing in prestigious competitions around the world.",
     "teamHistory": "TEAM HISTORY",
     "getToKnowUs": "GET TO KNOW US",
     "getToKnowUsDescription1": "PWR Racing Team is a group of students from Wrocław University of Science and Technology, operating since 2009. Every year, we create a new racing car – we have already built 12 combustion models and the first electric one with an autonomous system (RT12e).",
@@ -382,7 +382,10 @@
     "slide1Text": "Our RT11B car made its debut two years ago on the track in Michigan",
     "slide2Text": "RT14e at the competition in Italy",
     "slide3Text": "RT12e at the competition in the Czech Republic",
-    "slide4Text": "RT14e during tests at the Krzywa track"
+    "slide4Text": "RT14e during tests at the Krzywa track",
+    "joinUsLabel": "JOIN THE PWR RACING TEAM",
+    "quote1": "PWR RACING TEAM is the first team from Poland to win the Formula Student (FSAE International) competition. Our team finished 1st in the electric classification with their RT 08 racing car.",
+    "quote2": "It was built by over 50 enthusiasts from Wroclaw University of Technology. From the very beginning in 2009, members of PWR RACING TEAM have wanted to compete in the international Formula Student competition."
   },
   "partnerJoinUsPage": {
     "pageTitle": "BECOME A PARTNER",
@@ -437,13 +440,5 @@
         }
       }
     }
-  },
-  "newJoinUsSection": {
-    "sectionLabel": "JOIN THE PWR RACING TEAM",
-    "labelTeam": "JOIN THE TEAM",
-    "labelPartner": "BECOME A PARTNER",
-    "titleTeam": "Join our team and develop your passions in an inspiring environment!",
-    "titlePartner": "Collaborate with us and create valuable projects that make a difference!",
-    "seeMore": "Learn more"
   }
 }
