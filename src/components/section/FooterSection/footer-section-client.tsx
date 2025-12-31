@@ -25,7 +25,7 @@ export function FooterSectionClient({
   const t = useTranslations("footer");
 
   return (
-    <div id="section-contact" className="bg-[#110F0F]">
+    <div id="section-contact" className="relative bg-[#110F0F]">
       <Container className="z-10">
         <div className="flex w-full flex-col items-center justify-between">
           <div className="w-[65vw] md:mt-12">

@@ -9,6 +9,11 @@ export interface TitleProps {
   size?: "small" | "medium" | "big" | "bigger" | "subtitle" | "normal";
   color?: "white" | "black" | "red" | "gray";
   hoverColor?: "white" | "black" | "red" | "gray";
+  font?:
+    | "openSans"
+    | "monument-extended"
+    | "monument-extended-light"
+    | "pp-monument-extended";
   cardHover?: boolean;
   wrap?: boolean;
   lower?: boolean;
@@ -24,6 +29,7 @@ export function Title({
   wrap = false,
   lower = false,
   className,
+  font,
 }: TitleProps) {
   const colorClass = useMemo(() => {
     switch (color) {
@@ -114,12 +120,35 @@ export function Title({
     }
   }, [size, cardHover]);
 
+  const fontClass = useMemo(() => {
+    if (!font) {
+      return "font-syncopate";
+    }
+
+    switch (font) {
+      case "monument-extended": {
+        return "font-monument-extended font-normal";
+      }
+      case "monument-extended-light": {
+        return "font-monument-extended-light font-normal";
+      }
+      case "pp-monument-extended": {
+        return "font-pp-monument-extended font-normal";
+      }
+      case "openSans":
+      default: {
+        return "font-openSans";
+      }
+    }
+  }, [font]);
+
   return (
     <h1
       className={cn(
-        "font-syncopate font-extrabold normal-case transition-colors duration-300",
+        "font-extrabold normal-case transition-colors duration-300",
         colorClass,
         sizeClass,
+        fontClass,
         hoverSizeClass,
         hoverColorClass,
         lower ? "leading-none" : "leading-tight",

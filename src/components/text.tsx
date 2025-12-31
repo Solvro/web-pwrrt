@@ -14,6 +14,11 @@ interface TextProps {
   opacity1?: boolean;
   color?: "white" | "black" | "red" | "gray";
   hoverColor?: "white" | "black" | "red" | "gray";
+  font?:
+    | "openSans"
+    | "monument-extended"
+    | "monument-extended-light"
+    | "pp-monument-extended";
   alignCenter?: boolean;
   right?: boolean;
   balance?: boolean;
@@ -34,6 +39,7 @@ export function Text({
   alignCenter,
   right,
   balance,
+  font,
 }: TextProps) {
   const colorClass = () => {
     switch (color) {
@@ -73,6 +79,28 @@ export function Text({
     return "text-xs sm:text-base sm:leading-5";
   };
 
+  const fontClass = () => {
+    if (!font) {
+      return "font-openSans";
+    }
+
+    switch (font) {
+      case "monument-extended": {
+        return "font-monument-extended font-normal";
+      }
+      case "monument-extended-light": {
+        return "font-monument-extended-light font-normal";
+      }
+      case "pp-monument-extended": {
+        return "font-pp-monument-extended font-normal";
+      }
+      case "openSans":
+      default: {
+        return "font-openSans";
+      }
+    }
+  };
+
   const hoverColorClass = useMemo(() => {
     if (!hoverColor) {
       return "";
@@ -96,7 +124,7 @@ export function Text({
 
   return (
     <p
-      className={`font-openSans duration-300 ease-in-out ${hoverColorClass} ${colorClass()} ${sizeClass()} ${opacity1 ? "text-opacity-100" : "text-opacity-70"} ${center ? "justify-center" : "text-justify"} ${right ? "text-right" : ""} ${wide ? "" : "tracking-tighter"} ${bold ? "font-bold" : "font-normal"} ${alignCenter ? "text-center" : ""} ${balance ? "text-balance" : ""}`}
+      className={`${fontClass()} duration-300 ease-in-out ${hoverColorClass} ${colorClass()} ${sizeClass()} ${opacity1 ? "text-opacity-100" : "text-opacity-70"} ${center ? "justify-center" : "text-justify"} ${right ? "text-right" : ""} ${wide ? "" : "tracking-tighter"} ${bold ? "font-bold" : "font-normal"} ${alignCenter ? "text-center" : ""} ${balance ? "text-balance" : ""}`}
     >
       {children}
     </p>

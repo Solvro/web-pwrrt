@@ -14,7 +14,7 @@ import { cn } from "@/lib/utils";
 
 export interface SlideData {
   id: number;
-  title: string;
+  text?: string;
   imageUrl: string;
 }
 
@@ -27,7 +27,7 @@ export interface CarouselRef {
   moveToPrevious: () => void;
 }
 
-export const TeamPageCarousel = forwardRef<CarouselRef, TeamCarouselProps>(
+export const SwipeCarousel = forwardRef<CarouselRef, TeamCarouselProps>(
   ({ slides }, ref) => {
     const [api, setApi] = React.useState<CarouselApi>();
     const [current, setCurrent] = React.useState(0);
@@ -62,20 +62,21 @@ export const TeamPageCarousel = forwardRef<CarouselRef, TeamCarouselProps>(
         <Carousel setApi={setApi} className="w-full">
           <CarouselContent>
             {slides.map((slide) => (
-              <CarouselItem key={slide.id} className="basis-4/5">
+              <CarouselItem key={slide.id} className="basis-4/5 md:basis-3/5">
                 <div className="relative h-90 w-full overflow-hidden rounded-lg sm:h-80 md:h-90 md:h-[500px] lg:h-100 lg:h-[600px]">
                   <Image
                     src={slide.imageUrl}
-                    alt={slide.title}
+                    alt={slide.text ?? `Slide ${slide.id.toString()}`}
                     fill
                     className="object-cover"
                   />
-
-                  <div className="absolute bottom-6 left-6 max-w-md pr-3">
-                    <Text color="white" small>
-                      {slide.title}
-                    </Text>
-                  </div>
+                  {slide.text ? (
+                    <div className="absolute bottom-6 left-6 max-w-md pr-3">
+                      <Text color="white" small>
+                        {slide.text}
+                      </Text>
+                    </div>
+                  ) : null}
                 </div>
               </CarouselItem>
             ))}
@@ -102,4 +103,4 @@ export const TeamPageCarousel = forwardRef<CarouselRef, TeamCarouselProps>(
   },
 );
 
-TeamPageCarousel.displayName = "TeamPageCarousel";
+SwipeCarousel.displayName = "SwipeCarousel";

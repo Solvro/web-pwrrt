@@ -31,20 +31,19 @@ export interface CarouselRef {
 }
 
 export const Carousel = forwardRef<CarouselRef, CarouselProps>(
-  ({ slides, isBigger }, ref) => {
+  ({ slides, isBigger = false }, ref) => {
     const [mainIndex, setMainIndex] = useState(1);
     const [slideWidth, setSlideWidth] = useState(280);
     const [isAnimating, setIsAnimating] = useState(false);
-
     useEffect(() => {
       const updateDimensions = () => {
         const width = window.innerWidth;
         if (width < 640) {
-          setSlideWidth(140);
+          setSlideWidth(180);
         } else if (width < 1024) {
-          setSlideWidth(210);
+          setSlideWidth(250);
         } else {
-          setSlideWidth(280);
+          setSlideWidth(320);
         }
       };
 
@@ -123,8 +122,8 @@ export const Carousel = forwardRef<CarouselRef, CarouselProps>(
                 key={slide.id}
                 className={cn(
                   "absolute top-1/2 left-1/2 cursor-pointer rounded-lg transition-all duration-500 ease-in-out",
-                  "h-[200px] sm:h-[280px] md:h-[320px] lg:h-[400px]",
-                  "w-[140px] -translate-x-1/2 -translate-y-1/2 sm:w-[210px] lg:w-[280px]",
+                  "h-[240px] sm:h-[320px] md:h-[360px] lg:h-[440px]",
+                  "w-[180px] -translate-x-1/2 -translate-y-1/2 sm:w-[250px] lg:w-[320px]",
                   {
                     "z-10": index === mainIndex,
                     "z-0": index !== mainIndex,
@@ -162,9 +161,9 @@ export const Carousel = forwardRef<CarouselRef, CarouselProps>(
                       "rotate-0": index === mainIndex,
                       "-rotate-20": index < mainIndex,
                       "rotate-20": index > mainIndex,
-                      "-translate-x-10 sm:-translate-x-20 md:-translate-x-30":
+                      "-translate-x-20 sm:-translate-x-30 md:-translate-x-40":
                         index < mainIndex && index !== mainIndex,
-                      "translate-x-10 sm:translate-x-20 md:translate-x-30":
+                      "translate-x-20 sm:translate-x-30 md:translate-x-40":
                         index > mainIndex,
                       "translate-y-5 sm:translate-y-10 md:translate-y-15":
                         index !== mainIndex,
@@ -176,6 +175,17 @@ export const Carousel = forwardRef<CarouselRef, CarouselProps>(
           </div>
         </div>
         {isBigger ? (
+          <div className="z-10 -mt-15 flex w-full max-w-md flex-col items-center justify-center px-4 text-center sm:max-w-lg md:-mt-18 md:max-w-xl lg:-mt-20 lg:max-w-3xl">
+            <Title font="monument-extended" size="bigger" color="white">
+              {slides[mainIndex].title}{" "}
+            </Title>
+            <div className="flex w-full justify-center">
+              <Title font="monument-extended" size="normal" color="white">
+                {slides[mainIndex].description}{" "}
+              </Title>
+            </div>
+          </div>
+        ) : (
           <div className="flex w-full max-w-md flex-col items-center justify-center px-4 text-center sm:max-w-lg md:max-w-xl lg:max-w-3xl">
             <Title size="big" color="white">
               {" "}
@@ -186,17 +196,6 @@ export const Carousel = forwardRef<CarouselRef, CarouselProps>(
                 {" "}
                 {slides[mainIndex].description}{" "}
               </Text>
-            </div>
-          </div>
-        ) : (
-          <div className="z-10 -mt-15 flex w-full max-w-md flex-col items-center justify-center px-4 text-center sm:max-w-lg md:-mt-18 md:max-w-xl lg:-mt-20 lg:max-w-3xl">
-            <Title size="bigger" color="white">
-              {slides[mainIndex].title}{" "}
-            </Title>
-            <div className="flex w-full justify-center">
-              <Title size="normal" color="white">
-                {slides[mainIndex].description}{" "}
-              </Title>
             </div>
           </div>
         )}

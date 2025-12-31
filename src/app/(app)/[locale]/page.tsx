@@ -2,9 +2,9 @@ import { getLocale, getTranslations } from "next-intl/server";
 
 import { BolidSection } from "@/components/section/BolidSection";
 import { HeroSection } from "@/components/section/HeroSection";
-import { HomepageSection } from "@/components/section/HomepageSection";
 import { JoinusSection } from "@/components/section/JoinusSection";
 import { NewsSection } from "@/components/section/NewsSection";
+import { PageSection } from "@/components/section/PageSection";
 // import { SponsorsSection } from "@/components/section/SponsorsSection";
 import { TeamSection } from "@/components/section/TeamSection";
 import { getFirstBolidFunction } from "@/functions/bolid";
@@ -17,15 +17,15 @@ export default async function Home() {
   return (
     <div>
       <HeroSection />
-      <HomepageSection sectionNumber={1} header={t("navigation.bolid")}>
+      <PageSection sectionNumber={1} header={t("navigation.bolid")}>
         <BolidSection presetBolid={bolid} />
-      </HomepageSection>
-      <HomepageSection sectionNumber={2} header={t("navigation.team")}>
+      </PageSection>
+      <PageSection sectionNumber={2} header={t("navigation.team")}>
         <TeamSection />
-      </HomepageSection>
-      <HomepageSection sectionNumber={3} header={t("navigation.joinUs")}>
+      </PageSection>
+      <PageSection sectionNumber={3} header={t("navigation.joinUs")}>
         <JoinusSection />
-      </HomepageSection>
+      </PageSection>
       {/* <SponsorsSection /> what tf is this piece of shit (slowing down model loading about 15 seconds) */}
       <NewsSection />
     </div>
