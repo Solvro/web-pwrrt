@@ -59,13 +59,13 @@ export function ScrollRevealSection({
       className="ms:h-120 relative w-full overflow-hidden md:h-full"
     >
       <div className="flex h-full w-full justify-between">
-        <div className="flex min-h-[50vh] w-full flex-col items-start justify-center bg-black px-6 sm:px-8 md:min-h-screen md:w-2/5 md:px-12 lg:px-16">
+        <div className="bg-background flex min-h-[50vh] w-full flex-col items-start justify-center px-6 sm:px-8 md:min-h-screen md:w-2/5 md:px-12 lg:px-16">
           <div className="max-w-xl py-12 md:py-0">
-            <Text medium wide color="white">
-              {quote}
+            <Text font="pp-monument-extended" medium wide color="white">
+              „{quote}“
             </Text>
             <div className="mt-4 opacity-60">
-              <Text small color="white">
+              <Text font="pp-monument-extended" small color="white">
                 {quoteAuthor}
               </Text>
             </div>
@@ -85,7 +85,7 @@ export function ScrollRevealSection({
       </div>
 
       <div
-        className="absolute top-0 left-0 z-20 h-full bg-black transition-all duration-100 ease-out"
+        className="bg-background absolute top-0 left-0 z-20 h-full transition-all duration-100 ease-out"
         style={{ width: `${overlayWidth.toString()}%` }}
       />
     </div>
