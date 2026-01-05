@@ -186,13 +186,13 @@ export const Carousel = forwardRef<CarouselRef, CarouselProps>(
             </div>
           </div>
         ) : (
-          <div className="flex w-full max-w-md flex-col items-center justify-center px-4 text-center sm:max-w-lg md:max-w-xl lg:max-w-3xl">
-            <Title size="big" color="white">
+          <div className="flex w-full max-w-md flex-col items-center justify-center px-4 text-center sm:max-w-lg md:max-w-3xl lg:max-w-5xl">
+            <Title font="monument-extended" size="big" color="white">
               {" "}
               {slides[mainIndex].title}{" "}
             </Title>
             <div className="flex w-full justify-center py-6 opacity-50 sm:py-8 lg:py-10">
-              <Text small center color="white">
+              <Text font="pp-monument-extended" small center color="white">
                 {" "}
                 {slides[mainIndex].description}{" "}
               </Text>
