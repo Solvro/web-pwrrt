@@ -28,7 +28,7 @@ export function NewsCard({
         />
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/20 to-black/60" />
         <div className="relative z-20 grid w-full grid-rows-2 px-5 py-50 md:py-80">
-          <h1 className="font-monument-extended text-l h-10 text-left text-white md:text-2xl">
+          <h1 className="font-monument-extended text-l h-10 text-left text-white 2xl:text-xl">
             {title}
           </h1>
           <div className="flex justify-start">
