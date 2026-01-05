@@ -45,7 +45,7 @@ export function NewsList({ allNews }: NewsListProps) {
   ));
 
   return (
-    <div className="flex w-full flex-col bg-black pt-[100px] pb-20 md:pt-[120px]">
+    <div className="flex w-full flex-col bg-black pb-20">
       <Image
         src={currentItem.heroImage}
         alt={currentItem.title}
@@ -57,14 +57,14 @@ export function NewsList({ allNews }: NewsListProps) {
       />
       <div className="absolute inset-0 bg-gradient-to-b from-black via-black/40 to-black" />
 
-      <div className="relative left-0 z-20 my-4 pl-4 md:pl-10 lg:pl-20 xl:pl-56">
+      <div className="relative left-0 z-20 my-4 pl-4 pl-5 md:pl-10 lg:pl-20 xl:pl-56">
         <h1 className="font-monument-extended text-custom-red text-lg sm:text-2xl">
           {t("title")}
         </h1>
       </div>
 
-      <div className="relative left-0 z-20 h-50 max-w-1/3 pl-4 break-words md:pl-10 lg:pl-20 xl:pl-56">
-        <h1 className="font-monument-extended text-white sm:text-4xl lg:text-5xl">
+      <div className="relative left-0 z-20 h-50 max-w-3/4 pl-4 pl-5 break-words md:max-w-1/2 md:pl-10 lg:pl-20 xl:pl-56">
+        <h1 className="font-monument-extended text-4xl text-white md:text-5xl">
           {currentItem.title}
         </h1>
       </div>

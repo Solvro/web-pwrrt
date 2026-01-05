@@ -1,128 +1,103 @@
 "use client";
 
 import { useLivePreview } from "@payloadcms/live-preview-react";
-import type { SerializedEditorState } from "@payloadcms/richtext-lexical/lexical";
 import { format } from "date-fns";
 import { pl } from "date-fns/locale/pl";
+import { useTranslations } from "next-intl";
 import type { Locale } from "next-intl";
 import Image from "next/image";
-import Link from "next/link";
 import React from "react";
-import { FaArrowLeft } from "react-icons/fa";
 
-import { Button } from "@/components/button";
-// import type { SanitizedConfig } from "payload";
-
-import { Container } from "@/components/container";
-import { RichText } from "@/components/payload/rich-text";
-import { Text } from "@/components/text";
+import { Link } from "@/i18n/navigation";
 import { cn, getUrlFromMedia } from "@/lib/utils";
-import type { Media } from "@/payload-types";
+import type { News } from "@/payload-types";
 
 // eslint-disable-next-line @typescript-eslint/consistent-type-definitions
 type NewsPageClientProps = {
-  title: string;
-  shortDescription: string;
-  heroImage: string | Media;
-  content: SerializedEditorState;
-  publishedAt: string;
-  tags?: string[];
+  news: News;
+  prev: News | null;
+  next: News | null;
+  locale: Locale;
 };
 
 export function NewsPageClient({
   news,
+  prev,
+  next,
   locale,
-}: {
-  news: NewsPageClientProps;
-  locale: Locale;
-}) {
-  const { data } = useLivePreview<NewsPageClientProps>({
+}: NewsPageClientProps) {
+  const { data } = useLivePreview<News>({
     serverURL: process.env.NEXT_PUBLIC_SERVER_URL ?? "",
     depth: 2,
     initialData: news,
   });
+  const t = useTranslations("newsControls");
 
   return (
-    <div className="relative pt-[100px] md:pt-[120px]">
-      {/* <div className="from-custom-red/60 absolute inset-0 z-0 max-h-screen bg-gradient-to-b to-transparent" /> */}
-      <div
-        className={cn("absolute inset-0 z-0 h-[700px] bg-cover bg-center")}
-        style={{
-          backgroundImage: `url(${getUrlFromMedia(data.heroImage)})`,
-        }}
-      >
-        <div className="from-custom-red/40 absolute inset-0 z-0 max-h-screen bg-gradient-to-b from-40% to-white to-90% backdrop-blur-sm" />
-      </div>
-      <Container>
-        <div className="relative my-12 flex w-full flex-col">
-          <div className="relative flex items-center justify-end">
-            <div className="border-custom-red absolute inset-0 z-20 my-auto flex h-104 w-120 flex-col items-center justify-center gap-8 rounded-md border-2 bg-neutral-100 p-12">
-              <Button
-                className="!absolute top-2 left-2 max-w-0 px-4"
-                asChild
-                variant={"default"}
-              >
-                <Link href="/news">
-                  <FaArrowLeft className="h-4 w-4" />
-                </Link>
-              </Button>
-              <div className="border-b-2 border-black px-4 py-8">
-                <Text
-                  color="black"
-                  medium
-                  bold
-                  opacity1
-                  alignCenter
-                  center
-                  balance
-                >
-                  {data.title}
-                </Text>
-              </div>
-              <Text color="black" center alignCenter>
-                {data.shortDescription}
-              </Text>
-
-              <div className="flex items-center gap-2">
-                <p className="text-xs text-gray-500">
-                  {format(new Date(data.publishedAt), "dd MMM yyyy", {
-                    locale: locale === "pl" ? pl : undefined,
-                  })}
-                  {" | "}
-                </p>
-                {data.tags?.map((tag) => (
-                  <div
-                    key={tag}
-                    className="bg-custom-red rounded-full px-2 py-1 text-xs text-white"
-                  >
-                    <p>{tag}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-            <div className="relative h-128 w-2/3 overflow-hidden rounded-md bg-red-500">
-              <Image
-                src={getUrlFromMedia(data.heroImage)}
-                alt={data.title}
-                style={{ objectFit: "cover" }}
-                fill
-                sizes="100%"
-                className="duration-500 ease-in-out group-hover:scale-105"
-              />
-            </div>
-          </div>
-          {/* <div className="mx-auto mt-12 flex w-2/3 flex-col gap-6">
-            {news.content.map((paragraph: { text: string }, index: number) => (
-              <Text color="gray" key={paragraph.text + index.toString()}>
-                {paragraph.text}
-              </Text>
-            ))}
-          </div> */}
-          <div className="mx-auto mt-24 flex w-2/3 flex-col gap-6">
-            <RichText data={data.content} />
-          </div>
+    <div className="relative flex w-full flex-col bg-black py-40">
+      <Image
+        src={getUrlFromMedia(data.heroImage)}
+        alt={data.title}
+        className="duration-500 ease-in-out group-hover:scale-105"
+        fill
+        sizes="100%"
+        style={{ objectFit: "cover", maxWidth: "100%" }}
+        priority
+      />
+      <div className="absolute inset-0 bg-gradient-to-b from-black via-black/40 to-black" />
+      <div className="relative left-0 z-20 my-4 pr-5 pl-4 pl-5 md:pl-10 lg:pl-20 xl:pl-56">
+        <Link href={`/news`} className="mb-6 flex items-center gap-2">
+          <Image
+            src="/images/news/left-arrow.svg"
+            alt="Back"
+            width={16}
+            height={16}
+          />
+          <span className="text-gray-300">{t("backToNews")}</span>
+        </Link>
+        <div className="flex justify-between">
+          <Link
+            href={`/news/${prev?.slug ?? ""}`}
+            className={cn(prev ? "" : "pointer-events-none opacity-40")}
+          >
+            <Image
+              src="/images/news/left-arrow.svg"
+              alt="Previous"
+              width={24}
+              height={24}
+            />
+          </Link>
+          <Link
+            href={`/news/${next?.slug ?? ""}`}
+            className={cn(next ? "" : "pointer-events-none opacity-40")}
+          >
+            <Image
+              src="/images/news/right-arrow.svg"
+              alt="Next"
+              width={24}
+              height={24}
+            />
+          </Link>
         </div>
-      </Container>
+        <h1 className="font-monument-extended text-custom-red mt-10 text-lg sm:text-2xl">
+          {t("title")}
+        </h1>
+        <div className="h-50 max-w-3/4 break-words md:max-w-1/2">
+          <h1 className="font-monument-extended text-4xl text-white md:text-5xl">
+            {data.title}
+          </h1>
+        </div>
+        <div className="my-4 pr-10 pl-10 lg:pl-20 xl:pl-56">
+          <p className="font-monument-extended sm:text-l mb-10 flex text-xl text-white">
+            {format(new Date(data.publishedAt), "dd MMM yyyy", {
+              locale: locale === "pl" ? pl : undefined,
+            })}
+          </p>
+          <p className="font-monument-extended-light sm:text-s text-m flex text-white">
+            {data.shortDescription}
+          </p>
+        </div>
+      </div>
     </div>
   );
 }

@@ -2,8 +2,9 @@ import type { Locale } from "next-intl";
 import { getLocale } from "next-intl/server";
 import { redirect } from "next/navigation";
 
-import { getNewsBySlug } from "@/functions/news";
+import { getAllNews, getNewsBySlug } from "@/functions/news";
 import { getUrlFromMedia } from "@/lib/utils";
+import type { News } from "@/payload-types";
 
 import { NewsPageClient } from "./page.client";
 
@@ -48,10 +49,30 @@ export async function generateMetadata({
   };
 }
 
+const getPreviousNextNews = (
+  news: News[],
+  currentSlug: string | null | undefined,
+) => {
+  const index = news.findIndex((item) => item.slug === currentSlug);
+
+  if (index === -1) {
+    return {
+      prev: null,
+      next: null,
+    };
+  }
+
+  return {
+    prev: index > 0 ? news[index - 1] : null,
+    next: index < news.length - 1 ? news[index + 1] : null,
+  };
+};
+
 async function NewsPage(props: { params: Promise<Iparams> }) {
   const parameters = await props.params;
   const newsId = parameters.newsId;
   const locale = await getLocale();
+  const allNews = await getAllNews(locale);
 
   if (!newsId) {
     redirect("/news");
@@ -63,7 +84,9 @@ async function NewsPage(props: { params: Promise<Iparams> }) {
     redirect("/news");
   }
 
-  return <NewsPageClient news={news} locale={locale} />;
+  const { prev, next } = getPreviousNextNews(allNews, news.slug);
+
+  return <NewsPageClient news={news} prev={prev} next={next} locale={locale} />;
 }
 
 export default NewsPage;

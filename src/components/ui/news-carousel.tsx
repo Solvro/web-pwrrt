@@ -18,6 +18,8 @@ export function NewsCarousel({ items, onChange }: NewsCarouselProps) {
   const [itemStep, setItemStep] = useState(0);
   const [gapPx, setGapPx] = useState(32);
   const [isMobile, setIsMobile] = useState(false);
+  const [isMedium, setIsMedium] = useState(false);
+  const itemsPerView = isMobile ? 2 : isMedium ? 3 : 4;
 
   // helper to update index and notify parent
   const setIndex = (index: number): void => {
@@ -49,16 +51,20 @@ export function NewsCarousel({ items, onChange }: NewsCarouselProps) {
     if (itemRef.current) {
       setItemStep(itemRef.current.offsetWidth + gapPx);
     }
-  }, [gapPx]);
+  }, [gapPx, itemsPerView]);
 
   useEffect(() => {
-    const checkIsMobile = (): void => {
-      setIsMobile(window.innerWidth < 768);
+    const checkDeviceWidth = () => {
+      const w = window.innerWidth;
+      setIsMobile(w < 768);
+      setIsMedium(w >= 768 && w < 1024);
     };
-    checkIsMobile();
-    window.addEventListener("resize", checkIsMobile);
+
+    checkDeviceWidth();
+    window.addEventListener("resize", checkDeviceWidth);
+
     return () => {
-      window.removeEventListener("resize", checkIsMobile);
+      window.removeEventListener("resize", checkDeviceWidth);
     };
   }, []);
 
@@ -69,7 +75,8 @@ export function NewsCarousel({ items, onChange }: NewsCarouselProps) {
   };
 
   const scrollRight = (): void => {
-    if (currentIndex < items.length - 1) {
+    const maxIndex = items.length - itemsPerView;
+    if (currentIndex < maxIndex) {
       setIndex(currentIndex + 1);
     }
   };
@@ -87,7 +94,10 @@ export function NewsCarousel({ items, onChange }: NewsCarouselProps) {
   const handleDragEnd = (): void => {
     if (dragTranslate > 50 && currentIndex > 0) {
       scrollLeft();
-    } else if (dragTranslate < -50 && currentIndex < items.length - 1) {
+    } else if (
+      dragTranslate < -50 &&
+      currentIndex < items.length - itemsPerView
+    ) {
       scrollRight();
     }
     setDragStartX(null);
@@ -128,77 +138,79 @@ export function NewsCarousel({ items, onChange }: NewsCarouselProps) {
       )}
 
       <div className="relative w-full overflow-hidden select-none">
-        <div
-          className="flex pl-4 transition-transform duration-500 ease-in-out md:pl-10 lg:pl-20 xl:pl-56"
-          style={{
-            transform: `translateX(${-(currentIndex * itemStep) + dragTranslate}px)`,
-          }}
-          onMouseDown={(event) => {
-            handleDragStart(event.clientX);
-          }}
-          onMouseMove={(event) => {
-            handleDragMove(event.clientX);
-          }}
-          onMouseUp={() => {
-            handleDragEnd();
-          }}
-          onMouseLeave={() => {
-            handleDragEnd();
-          }}
-          onTouchStart={(event) => {
-            handleDragStart(event.touches[0].clientX);
-          }}
-          onTouchMove={(event) => {
-            handleDragMove(event.touches[0].clientX);
-          }}
-          onTouchEnd={() => {
-            handleDragEnd();
-          }}
-          role="presentation"
-          aria-hidden="true"
-        >
-          {items.map((child, index) => {
-            return (
-              <button
-                key={child.key ?? index}
-                type="button"
-                ref={index === 0 ? itemRef : null}
-                className="mr-4 w-1/2 flex-shrink-0 cursor-pointer md:mr-6 md:w-1/3 lg:mr-8 lg:w-1/4"
-                onClick={() => {
-                  setIndex(index);
-                }}
-              >
-                {child}
-              </button>
-            );
-          })}
-        </div>
-
-        <div className="mt-6 flex justify-center">
-          {React.Children.toArray(
-            items.map((child, index) => (
-              <button
-                key={child.key ?? index}
-                type="button"
-                className={cn(
-                  "mx-1 inline-block h-2 rounded-full transition-all",
-                  index === currentIndex
-                    ? "bg-custom-red w-6"
-                    : "w-2 bg-gray-500",
-                )}
-                onClick={() => {
-                  setIndex(index);
-                }}
-                onKeyDown={(event) => {
-                  if (event.key === "Enter" || event.key === " ") {
-                    event.preventDefault();
+        <div className="pl-4 md:pl-10 lg:pl-20 xl:pl-56">
+          <div
+            className="flex transition-transform duration-500 ease-in-out"
+            style={{
+              transform: `translateX(${-(currentIndex * itemStep) + dragTranslate}px)`,
+            }}
+            onMouseDown={(event) => {
+              handleDragStart(event.clientX);
+            }}
+            onMouseMove={(event) => {
+              handleDragMove(event.clientX);
+            }}
+            onMouseUp={() => {
+              handleDragEnd();
+            }}
+            onMouseLeave={() => {
+              handleDragEnd();
+            }}
+            onTouchStart={(event) => {
+              handleDragStart(event.touches[0].clientX);
+            }}
+            onTouchMove={(event) => {
+              handleDragMove(event.touches[0].clientX);
+            }}
+            onTouchEnd={() => {
+              handleDragEnd();
+            }}
+            role="presentation"
+            aria-hidden="true"
+          >
+            {items.map((child, index) => {
+              return (
+                <button
+                  key={child.key ?? index}
+                  type="button"
+                  ref={index === 0 ? itemRef : null}
+                  className="mr-4 w-1/2 flex-shrink-0 cursor-pointer md:mr-6 md:w-1/3 lg:mr-8 lg:w-1/4"
+                  onClick={() => {
                     setIndex(index);
-                  }
-                }}
-                tabIndex={0}
-              />
-            )),
-          )}
+                  }}
+                >
+                  {child}
+                </button>
+              );
+            })}
+          </div>
+
+          <div className="mt-6 flex justify-center">
+            {React.Children.toArray(
+              items.map((child, index) => (
+                <button
+                  key={child.key ?? index}
+                  type="button"
+                  className={cn(
+                    "mx-1 inline-block h-2 rounded-full transition-all",
+                    index === currentIndex
+                      ? "bg-custom-red w-6"
+                      : "w-2 bg-gray-500",
+                  )}
+                  onClick={() => {
+                    setIndex(index);
+                  }}
+                  onKeyDown={(event) => {
+                    if (event.key === "Enter" || event.key === " ") {
+                      event.preventDefault();
+                      setIndex(index);
+                    }
+                  }}
+                  tabIndex={0}
+                />
+              )),
+            )}
+          </div>
         </div>
       </div>
     </div>
