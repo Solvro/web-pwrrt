@@ -8,6 +8,7 @@ import type { Locale } from "next-intl";
 import Image from "next/image";
 import React from "react";
 
+import { RichText } from "@/components/payload/rich-text";
 import { Link } from "@/i18n/navigation";
 import { cn, getUrlFromMedia } from "@/lib/utils";
 import type { News } from "@/payload-types";
@@ -44,17 +45,8 @@ export function NewsPageClient({
         style={{ objectFit: "cover", maxWidth: "100%" }}
         priority
       />
-      <div className="absolute inset-0 bg-gradient-to-b from-black via-black/40 to-black" />
+      <div className="absolute inset-0 bg-gradient-to-b from-black via-black/80 to-black" />
       <div className="relative left-0 z-20 my-4 pr-5 pl-4 pl-5 md:pl-10 lg:pl-20 xl:pl-56">
-        <Link href={`/news`} className="mb-6 flex items-center gap-2">
-          <Image
-            src="/images/news/left-arrow.svg"
-            alt="Back"
-            width={16}
-            height={16}
-          />
-          <span className="text-gray-300">{t("backToNews")}</span>
-        </Link>
         <div className="flex justify-between">
           <Link
             href={`/news/${prev?.slug ?? ""}`}
@@ -93,9 +85,13 @@ export function NewsPageClient({
               locale: locale === "pl" ? pl : undefined,
             })}
           </p>
-          <p className="font-monument-extended-light sm:text-s text-m flex text-white">
+          <p className="font-monument-extended sm:text-s text-m mb-4 flex pb-8 font-normal text-white">
             {data.shortDescription}
           </p>
+          <RichText
+            data={data.content}
+            className="font-monument-extended-light sm:text-s text-m text-white"
+          />
         </div>
       </div>
     </div>
