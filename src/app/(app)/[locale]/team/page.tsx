@@ -43,16 +43,18 @@ export default function TeamPage() {
   ];
 
   return (
-    <div className="bg-background">
+    <div className="bg-background overflow-x-hidden">
       <div className="bg-background relative inset-0 overflow-hidden md:h-screen">
         <Image
           src={Photo1}
           alt="Join Us"
-          className="z-0 h-full w-full object-cover max-md:fixed max-md:top-[90px] max-md:left-0 md:absolute"
+          quality={100}
+          className="z-0 h-full w-full object-cover max-md:fixed max-md:left-0 md:absolute"
         />
-        <div className="absolute inset-0 z-[5] bg-purple-900 opacity-90 mix-blend-multiply max-md:fixed max-md:top-[90px]"></div>
-        <div className="md:bg-background top-0 z-10 flex w-screen justify-center min-md:absolute md:h-120 lg:h-100">
-          <div className="mt-[90px] flex w-full flex-col gap-4 md:mt-[130px] min-md:mt-[110px] md:w-9/10 md:flex-row">
+        <div className="absolute inset-0 z-5 bg-purple-900 mix-blend-multiply max-md:fixed" />
+        <div className="bg-background absolute inset-0 z-5 h-[90px] w-full md:hidden" />
+        <div className="md:bg-background top-0 z-10 flex w-full justify-center min-md:absolute md:h-120 lg:h-100">
+          <div className="mt-[90px] flex w-full flex-col gap-4 md:mt-[130px] md:w-9/10 md:flex-row">
             <div className="max-md:bg-background z-10 flex w-full flex-col gap-4 max-md:relative max-md:p-5 md:w-1/2">
               <div className="opacity-60">
                 <Title font="pp-monument-extended" color="white" size="small">
@@ -63,7 +65,7 @@ export default function TeamPage() {
               <Title font="monument-extended" size="medium" color="white" wrap>
                 {t("teamDescription")}
               </Title>
-              <div className="flex w-full flex-col">
+              <div className="flex w-full flex-col max-md:hidden">
                 <div className="opacity-60">
                   <Title font="pp-monument-extended" color="white" size="small">
                     {t("raceSeries")}
@@ -74,7 +76,17 @@ export default function TeamPage() {
                 </Text>
               </div>
             </div>
-            <div className="max-md:bg-background flex w-full max-md:relative max-md:z-20 max-md:mt-60 md:w-1/2 md:justify-end">
+            <div className="max-md:bg-background flex w-full max-md:relative max-md:z-20 max-md:mt-60 max-md:flex-col md:w-1/2 md:justify-end">
+              <div className="flex w-full flex-col gap-4 p-5 md:hidden">
+                <div className="opacity-60">
+                  <Title font="pp-monument-extended" color="white" size="small">
+                    {t("raceSeries")}
+                  </Title>
+                </div>
+                <Text font="monument-extended" color="white" small>
+                  {t("raceSeriesDescription")}
+                </Text>
+              </div>
               <div className="flex flex-col gap-4 max-md:p-5">
                 <div className="opacity-60">
                   <Title font="pp-monument-extended" color="white" size="small">
@@ -99,7 +111,7 @@ export default function TeamPage() {
         </PageSection>
         <PageSection sectionNumber={2} header={t("teamHistory")}>
           <div className="relative mb-10 flex w-full flex-col items-center">
-            <div className="inset-0 flex flex-col gap-4 px-4 py-10 md:w-190">
+            <div className="flex flex-col gap-4 px-4 py-10 md:max-w-3xl">
               <Title color="white" size="medium">
                 {t("getToKnowUs")}
               </Title>
