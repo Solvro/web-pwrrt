@@ -394,6 +394,13 @@
     "quote1": "PWR RACING TEAM jest pierwszym zespołem z Polski, który wygrał konkurs Formula Student (FSAE International). Nasz zespół zajął 1 miejsce w klasyfikacji elektrycznej z samochodem wyścigowym RT 08.",
     "quote2": "Został zbudowany przez ponad 50 entuzjastów z Politechniki Wrocławskiej. Od samego początku w 2009 roku członkowie PWR RACING TEAM chcieli rywalizować w międzynarodowych zawodach Formula Student."
   },
+  "formulaStudent": {
+    "title": "FORMUŁA STUDENT",
+    "description": "Zawody Formuły Student oceniają nie tylko osiągi bolidu, ale też wiedzę inżynierską i umiejętności zarządzania. Rywalizacja toczy się w klasach EV (elektrycznej), CV (spalinowej) oraz opcjonalnie DV (autonomicznej). Zespoły zdobywają punkty w konkurencjach statycznych i dynamicznych – zwycięża ten, który zdobędzie ich najwięcej (maks. 1000). System punktacji może się nieznacznie różnić między edycjami.",
+    "fourDynamicCompetitions": "CZTERY KONKURENCJE DYNAMICZNE",
+    "threeStaticCompetitions": "TRZY KONKURENCJE STATYCZNE",
+    "competitionText": "Konkurencja polegająca na wyścigu na około 22 kilometry. Po przejechaniu 11 kilometrów następuje zmiana kierowcy, na którą Zespół ma 3 minuty. Jest to najwyżej punktowana konkurencja, ale punkty otrzymują tylko Zespoły, które ukończyły przejazd."
+  },
   "partnerJoinUsPage": {
     "pageTitle": "ZOSTAŃ PARTNEREM",
     "sectionTitle1": "Skontaktuj się z naszymi członkami:",

@@ -76,7 +76,7 @@ export default function TeamPage() {
                 </Text>
               </div>
             </div>
-            <div className="max-md:bg-background flex w-full max-md:relative max-md:z-20 max-md:mt-60 max-md:flex-col md:w-1/2 md:justify-end">
+            <div className="max-md:bg-background flex w-full max-md:relative max-md:z-10 max-md:mt-60 max-md:flex-col md:w-1/2 md:justify-end">
               <div className="flex w-full flex-col gap-4 p-5 md:hidden">
                 <div className="opacity-60">
                   <Title font="pp-monument-extended" color="white" size="small">

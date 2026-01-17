@@ -63,7 +63,7 @@ export const SwipeCarousel = forwardRef<CarouselRef, TeamCarouselProps>(
           <CarouselContent>
             {slides.map((slide) => (
               <CarouselItem key={slide.id} className="basis-4/5 md:basis-3/5">
-                <div className="relative h-90 w-full overflow-hidden rounded-lg sm:h-80 md:h-90 md:h-[500px] lg:h-100 lg:h-[600px]">
+                <div className="relative h-90 w-full overflow-hidden rounded-lg sm:h-80 md:h-90 lg:h-100">
                   <Image
                     src={slide.imageUrl}
                     alt={slide.text ?? `Slide ${slide.id.toString()}`}
