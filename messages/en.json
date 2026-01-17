@@ -387,6 +387,13 @@
     "quote1": "PWR RACING TEAM is the first team from Poland to win the Formula Student (FSAE International) competition. Our team finished 1st in the electric classification with their RT 08 racing car.",
     "quote2": "It was built by over 50 enthusiasts from Wroclaw University of Technology. From the very beginning in 2009, members of PWR RACING TEAM have wanted to compete in the international Formula Student competition."
   },
+  "formulaStudent": {
+    "title": "FORMULA STUDENT",
+    "description": "The Formula Student competition evaluates not only the car's performance but also engineering knowledge and management skills. Competition takes place in EV (electric), CV (combustion engine), and optional DV (autonomous) classes. Teams earn points in static and dynamic events – the winner is the team with the most points (up to 1,000). The scoring system may vary slightly between editions.",
+    "fourDynamicCompetitions": "FOUR DYNAMIC COMPETITIONS",
+    "threeStaticCompetitions": "THREE STATIC COMPETITIONS",
+    "competitionText": "The competition involves a race of approximately 22 kilometers. After 11 kilometers, there is a driver change, for which the team has 3 minutes. This is the highest-scoring competition, but points are awarded only to teams that complete the race."
+  },
   "partnerJoinUsPage": {
     "pageTitle": "BECOME A PARTNER",
     "sectionTitle1": "Contact us:",

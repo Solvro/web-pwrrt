@@ -1,10 +1,11 @@
 import Photo2 from "@public/images/team/team-page-redesign/photo2.png";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
-import Link from "next/link";
 import { FaQuoteLeft, FaQuoteRight } from "react-icons/fa";
 
 import { Text } from "@/components/text";
+
+import { FormulaStudentPopup } from "./formula-student-popup";
 
 function MeetOurTeamSection() {
   const t = useTranslations("teamPage");
@@ -12,16 +13,17 @@ function MeetOurTeamSection() {
   return (
     <div>
       <div className="flex w-full justify-center">
-        <div className="relative mt-6 flex w-3/4 justify-center">
+        <div className="relative mt-6 flex w-4/5 justify-center">
           <Text font="monument-extended" small wide color="white" center>
             {t.rich("meetOurTeamDescription", {
               link: (children) => (
-                <Link
-                  href="/bolid"
-                  className="hover:text-custom-red underline duration-300"
-                >
-                  {children}
-                </Link>
+                <span className="relative inline-block">
+                  <FormulaStudentPopup>
+                    <button className="hover:text-custom-red cursor-pointer underline duration-300">
+                      {children}
+                    </button>
+                  </FormulaStudentPopup>
+                </span>
               ),
             })}
           </Text>
