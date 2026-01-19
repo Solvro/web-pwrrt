@@ -1,9 +1,7 @@
 "use client";
 
-import Image from "next/image";
 import React, { forwardRef, useImperativeHandle } from "react";
 
-import { Text } from "@/components/text";
 import {
   Carousel,
   CarouselContent,
@@ -12,14 +10,16 @@ import {
 import type { CarouselApi } from "@/components/ui/carousel";
 import { cn } from "@/lib/utils";
 
-export interface SlideData {
-  id: number;
-  text?: string;
-  imageUrl: string;
-}
-
 interface TeamCarouselProps {
-  slides: SlideData[];
+  items: React.ReactElement[];
+  slidesPerView?: {
+    mobile?: string;
+    tablet?: string;
+    desktop?: string;
+  };
+  showDots?: boolean;
+  className?: string;
+  onChange?: (index: number) => void;
 }
 
 export interface CarouselRef {
@@ -28,7 +28,20 @@ export interface CarouselRef {
 }
 
 export const SwipeCarousel = forwardRef<CarouselRef, TeamCarouselProps>(
-  ({ slides }, ref) => {
+  (
+    {
+      items,
+      slidesPerView = {
+        mobile: "basis-4/5",
+        tablet: "md:basis-3/5",
+        desktop: "lg:basis-3/5",
+      },
+      showDots = true,
+      className,
+      onChange,
+    },
+    ref,
+  ) => {
     const [api, setApi] = React.useState<CarouselApi>();
     const [current, setCurrent] = React.useState(0);
 
@@ -37,12 +50,19 @@ export const SwipeCarousel = forwardRef<CarouselRef, TeamCarouselProps>(
         return;
       }
 
-      setCurrent(api.selectedScrollSnap());
+      const handleSelect = () => {
+        const newIndex = api.selectedScrollSnap();
+        setCurrent(newIndex);
+        onChange?.(newIndex);
+      };
 
-      api.on("select", () => {
-        setCurrent(api.selectedScrollSnap());
-      });
-    }, [api]);
+      handleSelect();
+      api.on("select", handleSelect);
+
+      return () => {
+        api.off("select", handleSelect);
+      };
+    }, [api, onChange]);
 
     const moveToNext = () => {
       api?.scrollNext();
@@ -57,47 +77,57 @@ export const SwipeCarousel = forwardRef<CarouselRef, TeamCarouselProps>(
       moveToPrevious,
     }));
 
+    const basisClasses = [
+      slidesPerView.mobile,
+      slidesPerView.tablet,
+      slidesPerView.desktop,
+    ]
+      .filter(Boolean)
+      .join(" ");
+
+    if (items.length === 0) {
+      return null;
+    }
+
     return (
-      <div className="relative mb-20 w-full">
-        <Carousel setApi={setApi} className="w-full">
-          <CarouselContent>
-            {slides.map((slide) => (
-              <CarouselItem key={slide.id} className="basis-4/5 md:basis-3/5">
-                <div className="relative h-90 w-full overflow-hidden rounded-lg sm:h-80 md:h-90 lg:h-100">
-                  <Image
-                    src={slide.imageUrl}
-                    alt={slide.text ?? `Slide ${slide.id.toString()}`}
-                    fill
-                    className="object-cover"
-                  />
-                  {slide.text ? (
-                    <div className="absolute bottom-6 left-6 max-w-md pr-3">
-                      <Text color="white" small>
-                        {slide.text}
-                      </Text>
-                    </div>
-                  ) : null}
-                </div>
+      <div className={cn("relative mb-20 w-full", className)}>
+        <Carousel
+          setApi={setApi}
+          className="w-full"
+          opts={{
+            align: "start",
+            containScroll: false,
+          }}
+        >
+          <CarouselContent className="-ml-2 md:-ml-4">
+            {items.map((item, index) => (
+              <CarouselItem
+                key={item.key ?? `slide-${index.toString()}`}
+                className={cn(basisClasses, "pl-2 md:pl-4")}
+              >
+                {item}
               </CarouselItem>
             ))}
           </CarouselContent>
         </Carousel>
 
-        <div className="mt-6 flex justify-center gap-2">
-          {slides.map((slide, index) => (
-            <button
-              key={slide.id}
-              onClick={() => api?.scrollTo(index)}
-              className={cn(
-                "h-2 rounded-full transition-all duration-300",
-                index === current
-                  ? "bg-custom-red w-8"
-                  : "w-2 bg-gray-600 hover:bg-gray-400",
-              )}
-              aria-label={`Go to slide ${String(index + 1)}`}
-            />
-          ))}
-        </div>
+        {showDots ? (
+          <div className="mt-6 flex justify-center gap-2">
+            {items.map((item, index) => (
+              <button
+                key={item.key ?? `dot-${index.toString()}`}
+                onClick={() => api?.scrollTo(index)}
+                className={cn(
+                  "h-2 rounded-full transition-all duration-300",
+                  index === current
+                    ? "bg-custom-red w-8"
+                    : "w-2 bg-gray-600 hover:bg-gray-400",
+                )}
+                aria-label={`Go to slide ${String(index + 1)}`}
+              />
+            ))}
+          </div>
+        ) : null}
       </div>
     );
   },
