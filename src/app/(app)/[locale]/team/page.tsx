@@ -6,7 +6,6 @@ import Image from "next/image";
 import { JoinusSection } from "@/components/section/JoinusSection";
 import { PageSection } from "@/components/section/PageSection";
 import { SwipeCarousel } from "@/components/swipe-carousel/index";
-import type { SlideData } from "@/components/swipe-carousel/index";
 import { Text } from "@/components/text";
 import { Title } from "@/components/title";
 
@@ -15,7 +14,7 @@ import { TeamPageCarouselSection } from "./team-page-carousel-section";
 
 export default function TeamPage() {
   const t = useTranslations("teamPage");
-  const slides: SlideData[] = [
+  const slides = [
     {
       id: 1,
       text: t("slide1Text"),
@@ -135,7 +134,26 @@ export default function TeamPage() {
               </Text>
             </div>
           </div>
-          <SwipeCarousel slides={slides} />
+          <SwipeCarousel
+            items={slides.map((slide) => (
+              <div
+                key={slide.id}
+                className="relative h-90 w-full overflow-hidden rounded-lg sm:h-80 md:h-90 lg:h-100"
+              >
+                <Image
+                  src={slide.imageUrl}
+                  alt={slide.text}
+                  fill
+                  className="object-cover"
+                />
+                <div className="absolute bottom-6 left-6 max-w-md pr-3">
+                  <Text color="white" small>
+                    {slide.text}
+                  </Text>
+                </div>
+              </div>
+            ))}
+          />
         </PageSection>
 
         <PageSection sectionNumber={5} header={t("joinUsLabel")}>
