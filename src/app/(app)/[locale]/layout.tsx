@@ -22,7 +22,7 @@ export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
 }
 
-const font = Open_Sans({ subsets: ["latin"] });
+const openSansFont = Open_Sans({ subsets: ["latin"] });
 
 export async function generateMetadata({
   params,
@@ -100,7 +100,7 @@ export default async function LocaleLayout({
           href="https://racing-pwr.pl/"
         />
       </Head>
-      <body className={cn(font.className, "overflow-x-hidden")}>
+      <body className={cn(openSansFont.className, "overflow-x-hidden")}>
         <Script
           strategy="beforeInteractive"
           src={`https://www.google.com/recaptcha/api.js?render=${captchaKey}`}

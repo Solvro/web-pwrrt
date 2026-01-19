@@ -1,6 +1,6 @@
 import { getTranslations } from "next-intl/server";
 
-import { Text } from "@/components/text";
+import { Title } from "@/components/title";
 import { getJoinUsData } from "@/functions/join-us";
 
 import { ButtonsSection } from "./button-join-us";
@@ -12,12 +12,12 @@ export async function JoinUsTimerSection() {
 
   return (
     <div className="mb-5 flex flex-col items-center gap-4">
-      <div className="mb-5">
-        <Text bold wide medium color="white">
+      <div className="mb-5 text-center">
+        <Title font="monument-extended" size="medium" wrap color="white">
           {joinUsData.isEnabled
             ? t("recruitmentOpenEndIn")
             : t("recruitmentNextIn")}
-        </Text>
+        </Title>
       </div>
       <TimerClient targetDate={joinUsData.time} />
       {joinUsData.isEnabled && joinUsData.formLink ? (

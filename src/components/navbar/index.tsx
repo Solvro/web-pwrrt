@@ -133,22 +133,35 @@ export function Navbar() {
                   event.stopPropagation();
                 }}
               >
-                <motion.div
-                  variants={{
-                    hidden: { opacity: 0, y: 12 },
-                    visible: { opacity: 1, y: 0 },
-                  }}
-                  className="absolute top-15 left-5 z-[80]"
-                >
-                  <button
-                    onClick={() => {
-                      setMenuOpen((v) => !v);
+                <div className="absolute inset-x-0 top-15 z-[80] container mx-auto flex items-center justify-between">
+                  <motion.div
+                    variants={{
+                      hidden: { opacity: 0, y: 12 },
+                      visible: { opacity: 1, y: 0 },
                     }}
-                    className="flex h-8 w-8 cursor-pointer items-center justify-center rounded-sm hover:bg-white/10"
+                    className=" "
                   >
-                    <XIcon className="m-1 h-6 w-6 text-white" />
-                  </button>
-                </motion.div>
+                    <button
+                      onClick={() => {
+                        setMenuOpen((v) => !v);
+                      }}
+                      className="flex h-8 w-8 cursor-pointer items-center justify-center rounded-sm hover:bg-white/10"
+                    >
+                      <XIcon className="m-1 h-6 w-6 text-white" />
+                    </button>
+                  </motion.div>
+                  <motion.div
+                    variants={{
+                      hidden: { opacity: 0, y: 12 },
+                      visible: { opacity: 1, y: 0 },
+                    }}
+                    className=""
+                  >
+                    <div className="w-32">
+                      <Logo />
+                    </div>
+                  </motion.div>
+                </div>
                 {MENU_ITEMS.map((item) => (
                   <motion.div
                     key={item.href}
@@ -163,7 +176,7 @@ export function Navbar() {
                       onClick={() => {
                         setMenuOpen(false);
                       }}
-                      className="hover:text-custom-red font-monument-extended text-5xl font-black tracking-[14px]"
+                      className="hover:text-custom-red font-monument-extended text-2xl font-black tracking-widest md:text-5xl md:tracking-[10px]"
                     >
                       {item.label}
                     </Link>

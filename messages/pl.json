@@ -5,11 +5,9 @@
     "description": "PWR Racing Team to Strategiczne Koło Naukowe, a zarazem najstarszy i najbardziej utytułowany Zespół wyścigowy Formula Student w Polsce, działający przy Politechnice Wrocławskiej."
   },
   "heroSection": {
-    "title1": "POLITECHNIKA WROCŁAWSKA",
-    "title2": "PWR RACING TEAM",
-    "description": "PWR Racing Team to Strategiczne Koło Naukowe Politechniki Wrocławskiej, a zarazem najstarszy i najbardziej utytułowany Zespół wyścigowy Formuły Student w Polsce od 2009 roku.",
-    "subtitle": "WE TAKE IT TO THE NEXT LEVEL",
-    "button": "Dowiedz się więcej"
+    "subtitle": "Politechnika Wrocławska, Wrocław",
+    "title": "PWR Racing Team",
+    "description": "PWR Racing Team to Strategiczne Koło Naukowe Politechniki Wrocławskiej, a zarazem najstarszy i najbardziej utytułowany Zespół wyścigowy Formuły Student w Polsce od 2009 roku."
   },
   "fsSection": {
     "title": "ZAWODY FORMULA STUDENT",
@@ -17,10 +15,12 @@
     "buttonText": "Dowiedz się więcej"
   },
   "teamSection": {
-    "title": "ZESPÓŁ",
-    "subtitle": "RAZEM MOŻEMY WSZYSTKO",
-    "description": "Młodzi, ambitni, zaangażowani i odważni – tak najlepiej można opisać studentów Politechniki Wrocławskiej, a zwłaszcza członków PWR Racing Team. Nasza organizacja działa według struktury jak w dużych firmach. Na czele zespołu stoi lider, który ponosi największą odpowiedzialność. Bezpośrednio podlega mu lider techniczny, zarządzający liderami poszczególnych działów, z wyjątkiem marketingu i business – te działy raportują bezpośrednio do lidera zespołu. Każdy członek zespołu podlega swojemu liderowi działu.",
-    "buttonLabel": "Poznaj nasz zespół"
+    "title": "Zespół",
+    "subtitle": "Kilka słów o nas",
+    "description1": "Młodzi, ambitni, zaangażowani i odważni – tak najlepiej można opisać studentów Politechniki Wrocławskiej, a zwłaszcza członków PWR Racing Team. Nasza organizacja działa według struktury jak w dużych firmach.",
+    "description2": "Na czele zespołu stoi lider, który ponosi największą odpowiedzialność. Bezpośrednio podlega mu lider techniczny, zarządzający liderami poszczególnych działów, z wyjątkiem marketingu i business – te działy raportują bezpośrednio do lidera zespołu. Każdy członek zespołu podlega swojemu liderowi działu.",
+    "buttonLabel": "Poznaj nasz zespół",
+    "members": "członków"
   },
   "historySection": {
     "title": "HISTORIA ZESPOŁU",
@@ -35,9 +35,15 @@
     "buttonText": "Dowiedz się więcej"
   },
   "joinusSection": {
-    "title": "Chcesz zostać częścią PWR Racing Team?",
-    "buttonRecruitment": "Rekrutacja",
-    "buttonPartner": "Zostań Partnerem"
+    "team": {
+      "title": "Rekrutacja do teamu",
+      "text": "Dołącz do naszej ekipy i rozwijaj swoje pasje w inspirującym środowisku!"
+    },
+    "partners": {
+      "title": "Zostań partnerem",
+      "text": "Wpółpracuj z nami i twórz wartościowe projekty, które robią różnicę!"
+    },
+    "buttonText": "Dowiedz się więcej"
   },
   "newsControls": {
     "title": "Aktualności",
@@ -53,7 +59,8 @@
     "partners": "Partnerzy",
     "recruitment": "Rekrutacja",
     "news": "Aktualności",
-    "contact": "Kontakt"
+    "contact": "Kontakt",
+    "joinUs": "Dołącz do PWR Racing Team"
   },
   "footer": {
     "callUs": "Zadzwoń do nas",
@@ -84,6 +91,7 @@
   },
   "bolidSection": {
     "moreAboutBolid": "Więcej o bolidzie",
+    "moreBolids": "Zobacz więcej",
     "meetTeam": "Poznaj zespół",
     "acceleration": "Przyspieszenie",
     "mass": "Masa",
@@ -344,18 +352,54 @@
   },
   "partnersPage": {
     "zostanPartnerem": "Zostań Partnerem",
-    "kontakt": "Kontakt",
+    "kontakt": "Skontaktuj się z nami",
+    "formName": "Imię:",
+    "formSurname": "Nazwisko:",
+    "formCompany": "Nazwa firmy:",
     "partners": "PARTNERZY",
-    "brązowi": "PARTNERZY BRĄZOWI",
-    "srebrni": "PARTNERZY SREBRNI",
-    "złoci": "PARTNERZY ZŁOCI",
-    "platynowi": "PARTNERZY PLATYNOWI",
-    "strategiczni": "PARTNERZY STRATEGICZNI"
+    "brązowi": "Partnerzy brązowi",
+    "srebrni": "Partnerzy srebrni",
+    "złoci": "Partnerzy złoci",
+    "platynowi": "Partnerzy platynowi",
+    "strategiczni": "Patrnerzy strategiczni",
+    "mainPhotoDesc": "Zostań naszym partnerem i zyskaj międzynarodową promocję, większą widoczność marki i skuteczny employer branding. Dołącz do innowacyjnego projektu i pokaż się światu!",
+    "formDesc": "Skontaktuj się z nami, aby dowiedzieć się więcej o możliwościach współpracy lub przedstawić swoją ofertę partnerstwa. Wszystkich naszych dotychczasowych partnerów znajdziesz poniżej."
   },
   "teamPage": {
     "doBolidu": "Do bolidu",
     "zadzwon": "Zadzwoń do mnie!",
-    "napisz": "Napisz do mnie!"
+    "napisz": "Napisz do mnie!",
+    "team": "Zespół",
+    "teamDescription": "PWR Racing Team – Najstarszy i Najbardziej Utytułowany Zespół Formuły Student w Polsce",
+    "raceSeries": "SERIA WYŚCIGÓW",
+    "raceSeriesDescription": "Uczestnik zawodów Formula Student: Germany, Italy, Austria, Czech Republic",
+    "location": "LOKALIZACJA",
+    "locationDescription": " POLSKA",
+    "members": "CZŁONKÓW",
+    "projects": "PROJEKTÓW",
+    "achievements": "OSIĄGNIĘĆ",
+    "meetOurTeam": "POZNAJ NASZ ZESPÓŁ",
+    "meetOurTeamDescription": "Jesteśmy najstarszym i najbardziej utytułowanym zespołem <link>Formuły Student</link> w Polsce. Działamy przy Politechnice Wrocławskiej od 2009 roku. Nasz zespół tworzy około 80 studentów i studentek, którzy co roku projektują i budują bolidy wyścigowe, startując w prestiżowych zawodach na całym świecie.",
+    "teamHistory": "HISTORIA ZESPOŁU",
+    "getToKnowUs": "POZNAJ NAS",
+    "getToKnowUsDescription1": "PWR Racing Team to zespół studentów Politechniki Wrocławskiej, działający od 2009 roku. Co roku tworzymy nowy bolid wyścigowy – mamy już 12 modeli spalinowych oraz pierwszy elektryczny z systemem autonomicznym (RT12e). ",
+    "getToKnowUsDescription2": "Obecnie pracujemy nad czternastą konstrukcją. W 2017 roku jako pierwszy polski zespół wygraliśmy zawody Formula Student Italy. Od tamtej pory utrzymujemy się w światowej czołówce – w 2021 roku byliśmy najlepsi w Polsce i 11. na świecie.",
+    "internationalsTracksTitle": "PWR Racing Team na międzynarodowych torach",
+    "internationalsTracksDescription": "PWR Racing Team nie zwalnia tempa! Nasz zespół z sukcesami reprezentuje Politechnikę Wrocławską na międzynarodowych zawodach Formuły Student. W sezonie zawody odbyły się m.in. w Hiszpanii, Włoszech, Austrii i Bułgarii, gdzie nasz bolid rywalizował z najlepszymi zespołami z całej Europy. Dzięki ciężkiej pracy, innowacyjnym rozwiązaniom i świetnej współpracy zespołowej, udało się osiągnąć wysokie miejsca w klasyfikacjach.",
+    "slide1Text": "Nasz bolid RT11B dwa lata temu zadebiutował na torze w Michigan",
+    "slide2Text": "RT14e zawody we Włoszech",
+    "slide3Text": "RT12e zawody we Czechach",
+    "slide4Text": "RT14e podczas testów na torze Krzywa",
+    "joinUsLabel": "DOŁĄCZ DO PWR RACING TEAM",
+    "quote1": "PWR RACING TEAM jest pierwszym zespołem z Polski, który wygrał konkurs Formula Student (FSAE International). Nasz zespół zajął 1 miejsce w klasyfikacji elektrycznej z samochodem wyścigowym RT 08.",
+    "quote2": "Został zbudowany przez ponad 50 entuzjastów z Politechniki Wrocławskiej. Od samego początku w 2009 roku członkowie PWR RACING TEAM chcieli rywalizować w międzynarodowych zawodach Formula Student."
+  },
+  "formulaStudent": {
+    "title": "FORMUŁA STUDENT",
+    "description": "Zawody Formuły Student oceniają nie tylko osiągi bolidu, ale też wiedzę inżynierską i umiejętności zarządzania. Rywalizacja toczy się w klasach EV (elektrycznej), CV (spalinowej) oraz opcjonalnie DV (autonomicznej). Zespoły zdobywają punkty w konkurencjach statycznych i dynamicznych – zwycięża ten, który zdobędzie ich najwięcej (maks. 1000). System punktacji może się nieznacznie różnić między edycjami.",
+    "fourDynamicCompetitions": "CZTERY KONKURENCJE DYNAMICZNE",
+    "threeStaticCompetitions": "TRZY KONKURENCJE STATYCZNE",
+    "competitionText": "Konkurencja polegająca na wyścigu na około 22 kilometry. Po przejechaniu 11 kilometrów następuje zmiana kierowcy, na którą Zespół ma 3 minuty. Jest to najwyżej punktowana konkurencja, ale punkty otrzymują tylko Zespoły, które ukończyły przejazd."
   },
   "partnerJoinUsPage": {
     "pageTitle": "ZOSTAŃ PARTNEREM",

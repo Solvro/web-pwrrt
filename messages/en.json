@@ -5,11 +5,9 @@
     "description": "PWR Racing Team is a Strategic Science Club of Wrocław University of Science and Technology, as well as the oldest and most titled Formula Student racing team in Poland since 2009."
   },
   "heroSection": {
-    "title1": "WROCŁAW UNIVERSITY OF SCIENCE AND TECHNOLOGY",
-    "title2": "PWR RACING TEAM",
-    "description": "PWR Racing Team is a Strategic Science Club of Wrocław University of Science and Technology, as well as the oldest and most titled Formula Student racing team in Poland since 2009.",
-    "subtitle": "WE TAKE IT TO THE NEXT LEVEL",
-    "button": "Learn more"
+    "subtitle": "Wrocław University of Science and Technology, Wrocław",
+    "title": "PWR Racing Team",
+    "description": "PWR Racing Team is a Strategic Science Club of Wrocław University of Science and Technology, as well as the oldest and most titled Formula Student racing team in Poland since 2009."
   },
   "fsSection": {
     "title": "FORMULA STUDENT",
@@ -17,10 +15,12 @@
     "buttonText": "Learn more"
   },
   "teamSection": {
-    "title": "TEAM",
-    "subtitle": "TOGETHER WE CAN DO ANYTHING",
-    "description": "Young, ambitious, committed, and brave. These words describe the students of Wrocław University of Science and Technology, especially the members of the PWR Racing Team. Our team has a structure like a serious company. At its head is the team leader. The greatest responsibility rests on them. Directly reporting to them is the technical leader, who in turn oversees the leaders of individual departments, except for marketing and bussiness, whose heads are subordinate to the team leader. For the rest of the members, the leader of their department is their supervisor.",
-    "buttonLabel": "Learn more about the team"
+    "title": "Team",
+    "subtitle": "A few words about us",
+    "description1": "Young, ambitious, committed, and courageous—this is the best way to describe the students of Wrocław University of Science and Technology, especially the members of the PWR Racing Team. Our organization operates according to a structure similar to that of large companies.",
+    "description2": "At the head of the team is a leader who bears the greatest responsibility. Directly subordinate to them is the technical leader, who manages the leaders of individual departments, with the exception of marketing and business—these departments report directly to the team leader. Each team member reports to their respective department leader.",
+    "buttonLabel": "Discover our team",
+    "members": "members"
   },
   "historySection": {
     "title": "TEAM HISTORY",
@@ -35,9 +35,15 @@
     "buttonText": "Learn more"
   },
   "joinusSection": {
-    "title": "Do you want to become part of the PWR Racing Team?",
-    "buttonRecruitment": "Recruitment",
-    "buttonPartner": "Become a Partner"
+    "team": {
+      "title": "Team recruitment",
+      "text": "Join our team and develop your skills in an inspirational environment!"
+    },
+    "partners": {
+      "title": "Become a partner",
+      "text": "Partner with us and create valuable projects, which make a difference!"
+    },
+    "buttonText": "Learn more"
   },
   "newsControls": {
     "title": "News",
@@ -53,7 +59,8 @@
     "partners": "Partners",
     "recruitment": "Recruitment",
     "news": "News",
-    "contact": "Contact"
+    "contact": "Contact",
+    "joinUs": "Join PWR Racing Team"
   },
   "footer": {
     "callUs": "Call us",
@@ -84,6 +91,7 @@
   },
   "bolidSection": {
     "moreAboutBolid": "More about the vehicle",
+    "moreBolids": "See more",
     "meetTeam": "Meet the team",
     "acceleration": "Acceleration",
     "mass": "Mass",
@@ -336,18 +344,54 @@
   },
   "partnersPage": {
     "zostanPartnerem": "Become a Partner",
-    "kontakt": "Contact",
+    "formName": "Name:",
+    "formSurname": "Surname:",
+    "formCompany": "Company:",
+    "kontakt": "Contact with us",
     "partners": "PARTNERS",
     "brązowi": "Bronze PARTNERS",
     "srebrni": "Silver PARTNERS",
     "złoci": "Gold PARTNERS",
     "platynowi": "Platinum PARTNERS",
-    "strategiczni": "Strategic PARTNERS"
+    "strategiczni": "Strategic PARTNERS",
+    "mainPhotoDesc": "Become our partner and gain international promotion, greater brand visibility, and effective employer branding. Join this innovative project and showcase your talent to the world!",
+    "formDesc": "Contact us to learn more about our collaboration opportunities or to submit your partnership proposal. You can find all of our current partners below."
   },
   "teamPage": {
     "doBolidu": "To the car",
     "zadzwon": "Call me!",
-    "napisz": "Write to me!"
+    "napisz": "Write to me!",
+    "team": "TEAM",
+    "teamDescription": "PWR Racing Team – The Oldest and Most Titled Formula Student Team in Poland",
+    "raceSeries": "RACE SERIES",
+    "raceSeriesDescription": "Participant in Formula Student competitions: Germany, Italy, Austria, Czech Republic",
+    "location": "LOCATION",
+    "locationDescription": " POLAND",
+    "members": "MEMBERS",
+    "projects": "PROJECTS",
+    "achievements": "ACHIEVEMENTS",
+    "meetOurTeam": "MEET OUR TEAM",
+    "meetOurTeamDescription": "We are the oldest and most titled <link>Formula Student</link> team in Poland. We have been operating at Wrocław University of Science and Technology since 2009. Our team consists of about 80 students who design and build racing cars every year, competing in prestigious competitions around the world.",
+    "teamHistory": "TEAM HISTORY",
+    "getToKnowUs": "GET TO KNOW US",
+    "getToKnowUsDescription1": "PWR Racing Team is a group of students from Wrocław University of Science and Technology, operating since 2009. Every year, we create a new racing car – we have already built 12 combustion models and the first electric one with an autonomous system (RT12e).",
+    "getToKnowUsDescription2": "Currently, we are working on our fourteenth construction. In 2017, as the first Polish team, we won the Formula Student Italy competition. Since then, we have maintained our position among the world's elite – in 2021, we were the best in Poland and 11th in the world.",
+    "internationalsTracksTitle": "PWR Racing Team on international tracks",
+    "internationalsTracksDescription": "The PWR Racing Team shows no signs of slowing down! Our team has successfully represented Wrocław University of Science and Technology in international Formula Student competitions. During the season, competitions took place in countries including Spain, Italy, Austria, and Bulgaria, where our car competed against the best teams from across Europe. Thanks to hard work, innovative solutions, and excellent teamwork, we achieved high rankings.",
+    "slide1Text": "Our RT11B car made its debut two years ago on the track in Michigan",
+    "slide2Text": "RT14e at the competition in Italy",
+    "slide3Text": "RT12e at the competition in the Czech Republic",
+    "slide4Text": "RT14e during tests at the Krzywa track",
+    "joinUsLabel": "JOIN THE PWR RACING TEAM",
+    "quote1": "PWR RACING TEAM is the first team from Poland to win the Formula Student (FSAE International) competition. Our team finished 1st in the electric classification with their RT 08 racing car.",
+    "quote2": "It was built by over 50 enthusiasts from Wroclaw University of Technology. From the very beginning in 2009, members of PWR RACING TEAM have wanted to compete in the international Formula Student competition."
+  },
+  "formulaStudent": {
+    "title": "FORMULA STUDENT",
+    "description": "The Formula Student competition evaluates not only the car's performance but also engineering knowledge and management skills. Competition takes place in EV (electric), CV (combustion engine), and optional DV (autonomous) classes. Teams earn points in static and dynamic events – the winner is the team with the most points (up to 1,000). The scoring system may vary slightly between editions.",
+    "fourDynamicCompetitions": "FOUR DYNAMIC COMPETITIONS",
+    "threeStaticCompetitions": "THREE STATIC COMPETITIONS",
+    "competitionText": "The competition involves a race of approximately 22 kilometers. After 11 kilometers, there is a driver change, for which the team has 3 minutes. This is the highest-scoring competition, but points are awarded only to teams that complete the race."
   },
   "partnerJoinUsPage": {
     "pageTitle": "BECOME A PARTNER",

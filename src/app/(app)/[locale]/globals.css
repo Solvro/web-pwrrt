@@ -14,9 +14,9 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme {
-  --color-custom-red: rgb(212, 30, 62);
-  --color-custom-red-transparent: rgba(212, 30, 62, 0.2);
-
+  --color-custom-red: rgb(203, 31, 58);
+  --color-custom-red-transparent: rgba(203, 31, 58, 0.2);
+  --color-partners-text: rgba(255, 156, 156, 1);
   --text-6xl: 6rem;
 
   --animate-rotate-y-180: rotateX 0.5s ease-in-out;
@@ -97,6 +97,13 @@
 }
 
 @font-face {
+  font-family: "PPMonumentExtended";
+  src: url("/fonts/PPMonumentExtended-Regular.otf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
   font-family: "MonumentExtended";
   src: url("/fonts/MonumentExtended-Ultrabold.otf") format("opentype");
   font-weight: bold;
@@ -120,6 +127,10 @@
 
 .font-monument-extended-light {
   font-family: "MonumentExtendedLight", sans-serif;
+}
+
+.font-pp-monument-extended {
+  font-family: "PPMonumentExtended", sans-serif;
 }
 
 body {
@@ -262,6 +273,7 @@ body,
   --color-primary: var(--primary);
   --color-primary-foreground: var(--primary-foreground);
   --color-secondary: var(--secondary);
+  --color-partners-section: var(--partners-section);
   --color-secondary-foreground: var(--secondary-foreground);
   --color-muted: var(--muted);
   --color-muted-foreground: var(--muted-foreground);
@@ -293,7 +305,7 @@ body,
 :root {
   --radius: 0.625rem;
   --background: oklch(0.1709 0.0033 17.49);
-  --foreground: oklch(0.145 0 0);
+  --foreground: oklch(0.985 0 0);
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.145 0 0);
   --popover: oklch(1 0 0);
@@ -316,6 +328,7 @@ body,
   --chart-4: oklch(0.828 0.189 84.429);
   --chart-5: oklch(0.769 0.188 70.08);
   --sidebar: oklch(0.985 0 0);
+  --partners-section: rgba(139, 21, 41, 1);
   --sidebar-foreground: oklch(0.145 0 0);
   --sidebar-primary: oklch(0.205 0 0);
   --sidebar-primary-foreground: oklch(0.985 0 0);

@@ -1,81 +1,82 @@
 "use client";
 
+import { useTranslations } from "next-intl";
+import Image from "next/image";
 import { useState } from "react";
 
-import { Container } from "@/components/container";
-import { NewsCard } from "@/components/news-card";
+import { Button } from "@/components/button";
+import { NewsCarousel } from "@/components/ui/news-carousel";
+import { Link } from "@/i18n/navigation";
 
-interface News {
+import { NewsCard } from "./news-card";
+
+export interface NewsItem {
   id: string;
-  slug: string;
+  slug?: string;
   title: string;
   shortDescription: string;
   howLong: number;
-  mainImageUrl: string;
+  heroImage: string;
   tags?: string[];
 }
 
 interface NewsListProps {
-  news: News[];
-  tags: string[];
+  allNews: NewsItem[];
 }
 
-export function NewsList({ news, tags }: NewsListProps) {
-  const [selectedTag, setSelectedTag] = useState<string | null>(null);
+export function NewsList({ allNews }: NewsListProps) {
+  const [current, setCurrent] = useState(0);
+  const t = useTranslations("newsControls");
 
-  const hasSelectedTag = selectedTag !== null;
-  const filteredNews = hasSelectedTag
-    ? news.filter((item) => (item.tags ?? []).includes(selectedTag))
-    : news;
+  if (allNews.length === 0) {
+    return null;
+  }
+
+  const currentItem = allNews[current];
+  const slug = currentItem.slug ?? currentItem.id;
+
+  const cards = allNews.map((item) => (
+    <NewsCard
+      key={item.id}
+      title={item.title}
+      shortDescription={item.shortDescription}
+      mainImage={item.heroImage}
+    />
+  ));
 
   return (
-    <>
-      <div className="mb-6 flex flex-wrap gap-2">
-        <button
-          type="button"
-          className={`focus:ring-custom-red rounded border px-3 py-1 text-sm transition-colors duration-150 focus:ring-2 focus:outline-none ${
-            hasSelectedTag
-              ? "border-gray-400 bg-gray-300 text-gray-600 hover:bg-gray-400 hover:text-black"
-              : "bg-custom-red border-custom-red text-white"
-          }`}
-          onClick={() => {
-            setSelectedTag(null);
-          }}
-        >
-          Wszystkie
-        </button>
-        {tags.map((tag) => {
-          const isSelected = selectedTag === tag;
-          return (
-            <button
-              key={tag}
-              type="button"
-              className={`focus:ring-custom-red rounded border px-3 py-1 text-sm transition-colors duration-150 focus:ring-2 focus:outline-none ${
-                isSelected
-                  ? "bg-custom-red border-custom-red text-white"
-                  : "border-gray-400 bg-gray-300 text-gray-600 hover:bg-gray-400 hover:text-black"
-              }`}
-              onClick={() => {
-                setSelectedTag(isSelected ? null : tag);
-              }}
-            >
-              {tag}
-            </button>
-          );
-        })}
+    <div className="flex w-full flex-col bg-black pb-20">
+      <Image
+        src={currentItem.heroImage}
+        alt={currentItem.title}
+        className="duration-500 ease-in-out group-hover:scale-105"
+        fill
+        sizes="100%"
+        style={{ objectFit: "cover", maxWidth: "100%" }}
+        priority
+      />
+      <div className="absolute inset-0 bg-gradient-to-b from-black via-black/40 to-black" />
+
+      <div className="relative left-0 z-20 my-4 pl-4 pl-5 md:pl-10 lg:pl-20 xl:pl-56">
+        <h1 className="font-monument-extended text-custom-red text-lg sm:text-2xl">
+          {t("title")}
+        </h1>
       </div>
-      <Container>
-        <div className="my-6 grid w-full grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {filteredNews.map((item) => (
-            <NewsCard
-              key={item.id}
-              title={item.title}
-              shortDescription={item.shortDescription}
-              mainImage={item.mainImageUrl}
-            />
-          ))}
-        </div>
-      </Container>
-    </>
+
+      <div className="relative left-0 z-20 h-50 max-w-3/4 pl-4 pl-5 break-words md:max-w-1/2 md:pl-10 lg:pl-20 xl:pl-56">
+        <h1 className="font-monument-extended text-4xl text-white md:text-5xl">
+          {currentItem.title}
+        </h1>
+      </div>
+
+      <div className="w-40 pl-4 md:pl-10 lg:pl-20 xl:pl-56">
+        <Link href={`/news/${slug}`}>
+          <Button label={t("buttonText")} className="rounded-full" />
+        </Link>
+      </div>
+      <div className="relative z-20 mt-10 flex w-full">
+        <NewsCarousel items={cards} onChange={setCurrent} />
+      </div>
+    </div>
   );
 }
