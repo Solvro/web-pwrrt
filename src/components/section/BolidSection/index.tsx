@@ -31,8 +31,8 @@ export function BolidSection({ presetBolid }: BolidSectionProps) {
   const bolids = allBolids ?? [{ ...presetBolid }];
 
   return (
-    <div className="flex flex-col items-center gap-8">
-      <div className="relative -mx-4 flex lg:-mx-16">
+    <div className="flex w-full flex-col items-center gap-8">
+      <div className="relative -mx-4 flex max-w-full lg:-mx-16">
         <NewsCarousel
           items={bolids.map((bolid) => (
             <article
