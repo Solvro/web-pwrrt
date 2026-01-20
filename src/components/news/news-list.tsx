@@ -5,7 +5,7 @@ import Image from "next/image";
 import { useState } from "react";
 
 import { Button } from "@/components/button";
-import { NewsCarousel } from "@/components/ui/news-carousel";
+import { SwipeCarousel } from "@/components/swipe-carousel";
 import { Link } from "@/i18n/navigation";
 
 import { NewsCard } from "./news-card";
@@ -74,8 +74,16 @@ export function NewsList({ allNews }: NewsListProps) {
           <Button label={t("buttonText")} className="rounded-full" />
         </Link>
       </div>
-      <div className="relative z-20 mt-10 flex w-full">
-        <NewsCarousel items={cards} onChange={setCurrent} />
+      <div className="relative z-20 mt-10 flex w-full pl-4 md:pl-10 lg:pl-20 xl:pl-56">
+        <SwipeCarousel
+          items={cards}
+          onChange={setCurrent}
+          slidesPerView={{
+            mobile: "basis-4/5",
+            tablet: "md:basis-2/5",
+            desktop: "lg:basis-1/4",
+          }}
+        />
       </div>
     </div>
   );
