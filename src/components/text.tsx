@@ -18,8 +18,7 @@ interface TextProps {
     | "openSans"
     | "monument-extended"
     | "monument-extended-light"
-    | "pp-monument-extended"
-    | "shadows-into-light-two";
+    | "pp-monument-extended";
   alignCenter?: boolean;
   right?: boolean;
   balance?: boolean;
@@ -94,9 +93,6 @@ export function Text({
       }
       case "pp-monument-extended": {
         return "font-pp-monument-extended font-normal";
-      }
-      case "shadows-into-light-two": {
-        return "font-shadows-into-light-two";
       }
       case "openSans":
       default: {

@@ -1,6 +1,12 @@
 "use client";
 
-import React, { forwardRef, useImperativeHandle } from "react";
+import React, {
+  forwardRef,
+  useEffect,
+  useImperativeHandle,
+  useState,
+} from "react";
+import type { ReactElement } from "react";
 
 import {
   Carousel,
@@ -11,7 +17,7 @@ import type { CarouselApi } from "@/components/ui/carousel";
 import { cn } from "@/lib/utils";
 
 interface TeamCarouselProps {
-  items: React.ReactElement[];
+  items: ReactElement[];
   slidesPerView?: {
     mobile?: string;
     tablet?: string;
@@ -42,10 +48,10 @@ export const SwipeCarousel = forwardRef<CarouselRef, TeamCarouselProps>(
     },
     ref,
   ) => {
-    const [api, setApi] = React.useState<CarouselApi>();
-    const [current, setCurrent] = React.useState(0);
+    const [api, setApi] = useState<CarouselApi>();
+    const [current, setCurrent] = useState(0);
 
-    React.useEffect(() => {
+    useEffect(() => {
       if (!api) {
         return;
       }
