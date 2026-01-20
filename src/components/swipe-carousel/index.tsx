@@ -1,12 +1,7 @@
 "use client";
 
-import React, {
-  forwardRef,
-  useEffect,
-  useImperativeHandle,
-  useState,
-} from "react";
-import type { ReactElement } from "react";
+import React, { forwardRef, useImperativeHandle } from "react";
+import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 
 import {
   Carousel,
@@ -17,13 +12,14 @@ import type { CarouselApi } from "@/components/ui/carousel";
 import { cn } from "@/lib/utils";
 
 interface TeamCarouselProps {
-  items: ReactElement[];
+  items: React.ReactElement[];
   slidesPerView?: {
     mobile?: string;
     tablet?: string;
     desktop?: string;
   };
   showDots?: boolean;
+  moveByClick?: boolean;
   className?: string;
   onChange?: (index: number) => void;
 }
@@ -43,15 +39,16 @@ export const SwipeCarousel = forwardRef<CarouselRef, TeamCarouselProps>(
         desktop: "lg:basis-3/5",
       },
       showDots = true,
+      moveByClick = true,
       className,
       onChange,
     },
     ref,
   ) => {
-    const [api, setApi] = useState<CarouselApi>();
-    const [current, setCurrent] = useState(0);
+    const [api, setApi] = React.useState<CarouselApi>();
+    const [current, setCurrent] = React.useState(0);
 
-    useEffect(() => {
+    React.useEffect(() => {
       if (!api) {
         return;
       }
@@ -97,6 +94,26 @@ export const SwipeCarousel = forwardRef<CarouselRef, TeamCarouselProps>(
 
     return (
       <div className={cn("relative mb-20 w-full", className)}>
+        <div className="mb-4 flex w-full items-center justify-end">
+          <div className="z-20 flex justify-between px-4">
+            <button
+              onClick={() => {
+                api?.scrollPrev();
+              }}
+              className="cursor-pointer p-2 text-white"
+            >
+              <FaArrowLeft />
+            </button>
+            <button
+              onClick={() => {
+                api?.scrollNext();
+              }}
+              className="cursor-pointer p-2 text-white"
+            >
+              <FaArrowRight />
+            </button>
+          </div>
+        </div>
         <Carousel
           setApi={setApi}
           className="w-full"
@@ -105,11 +122,17 @@ export const SwipeCarousel = forwardRef<CarouselRef, TeamCarouselProps>(
             containScroll: false,
           }}
         >
-          <CarouselContent className="-ml-2 md:-ml-4">
+          <CarouselContent
+            className={cn(
+              "-ml-2 md:-ml-4",
+              moveByClick ? "cursor-pointer" : "",
+            )}
+          >
             {items.map((item, index) => (
               <CarouselItem
                 key={item.key ?? `slide-${index.toString()}`}
                 className={cn(basisClasses, "pl-2 md:pl-4")}
+                onClick={() => moveByClick && api?.scrollTo(index)}
               >
                 {item}
               </CarouselItem>
