@@ -12,7 +12,7 @@ import { ErrorReportForm } from "./error-report";
 export default function ContactUsRedesign() {
   const t = useTranslations("contactUs");
   return (
-    <div className="pt-[100px] md:pt-[80px]">
+    <div className="font-pp-monument-extended pt-[100px] md:pt-[80px]">
       <div className="flex min-h-[82vh] w-full flex-col md:flex-row">
         <div className="relative flex h-[60vh] w-full justify-center md:h-auto md:w-[55%]">
           <Image
@@ -21,6 +21,7 @@ export default function ContactUsRedesign() {
             fill
             className="object-cover"
           />
+
           <div className="absolute inset-0 bg-gradient-to-r from-black/80 to-black/40"></div>
           <div className="absolute bottom-12 flex flex-col items-center text-white">
             <h2 className="text-center text-2xl font-normal tracking-wide uppercase lg:text-4xl">

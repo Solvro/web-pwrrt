@@ -88,7 +88,7 @@ export function ErrorReportForm() {
           {t("formSubmitBugReport")}
         </button>
       </DialogTrigger>
-      <DialogContent className="text-ring bg-[#0c0c0c] sm:max-w-[425px]">
+      <DialogContent className="font-pp-monument-extended text-ring bg-[#0c0c0c] sm:max-w-[425px]">
         <DialogTitle className="flex justify-center">Bug report</DialogTitle>
         <div className="flex w-full flex-col items-center">
           <Form {...form}>

@@ -80,7 +80,7 @@ export function ContactReportForm() {
                   <input
                     placeholder={t("formEmail")}
                     {...field}
-                    className="placeholder-ring border-ring border-b bg-transparent px-1 py-3 focus:outline-none"
+                    className="placeholder-ring border-ring w-full border-b bg-transparent px-1 py-3 focus:outline-none"
                   />
                 </FormControl>
                 <FormMessage />
