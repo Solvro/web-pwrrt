@@ -17,9 +17,9 @@ function MeetOurTeamSection() {
           <Text font="monument-extended" small wide color="white" center>
             {t.rich("meetOurTeamDescription", {
               link: (children) => (
-                <span className="relative inline-block">
+                <span className="text-custom-red relative inline-block">
                   <FormulaStudentPopup>
-                    <button className="hover:text-custom-red cursor-pointer underline duration-300">
+                    <button className="cursor-pointer duration-300 hover:text-white hover:underline">
                       {children}
                     </button>
                   </FormulaStudentPopup>

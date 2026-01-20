@@ -1,15 +1,16 @@
 "use client";
 
-import Photo1 from "@public/images/team/team-page-redesign/formula-student/photo1.png";
-import Photo2 from "@public/images/team/team-page-redesign/formula-student/photo2.png";
-import Photo3 from "@public/images/team/team-page-redesign/formula-student/photo3.png";
-import Photo4 from "@public/images/team/team-page-redesign/formula-student/photo4.png";
-import Photo5 from "@public/images/team/team-page-redesign/formula-student/photo5.png";
-import Photo6 from "@public/images/team/team-page-redesign/formula-student/photo6.png";
+import Acceleration from "@public/images/FS/acceleration.png";
+import Autocross from "@public/images/FS/autocross.png";
+import Business from "@public/images/FS/business.png";
+import Cost from "@public/images/FS/cost.png";
+import Endurance from "@public/images/FS/endurance.png";
+import Engineering from "@public/images/FS/engineering.png";
+import SkidPad from "@public/images/FS/skipad.png";
 import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
 import { useTranslations } from "next-intl";
-import Image from "next/image";
 
+import { FlipCard } from "@/components/flip-card/flip-card";
 import { Text } from "@/components/text";
 import { Title } from "@/components/title";
 import {
@@ -24,7 +25,8 @@ export function FormulaStudentPopup({
 }: {
   children: React.ReactNode;
 }) {
-  const t = useTranslations("formulaStudent");
+  const popupT = useTranslations("formulaStudent");
+  const t = useTranslations("fsAbout");
 
   return (
     <Dialog>
@@ -32,69 +34,80 @@ export function FormulaStudentPopup({
       <DialogContent className="mt-5 flex max-h-[98vh] !max-w-[98vw] flex-col items-center overflow-hidden rounded-4xl border-none bg-[#A5A5A5] p-0 text-black max-md:rounded-2xl">
         <div className="h-full w-full overflow-y-auto p-4 md:p-8 [&::-webkit-scrollbar]:w-[6px] [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-white [&::-webkit-scrollbar-track]:bg-transparent">
           <VisuallyHidden>
-            <DialogTitle>{t("title")}</DialogTitle>
+            <DialogTitle>{popupT("title")}</DialogTitle>
           </VisuallyHidden>
           <div className="mt-4 w-full px-2 py-2 opacity-50 md:px-10">
             <Title font="pp-monument-extended" size="small" color="black" wrap>
-              {t("title")}
+              {popupT("title")}
             </Title>
           </div>
           <div className="w-full px-2 py-2 md:px-10">
             <Text medium color="black">
-              {t("description")}
+              {popupT("description")}
             </Text>
           </div>
 
-          <div className="mt-4 w-full px-2 py-2 opacity-50 md:px-10">
+          <div className="mt-4 mb-4 w-full px-2 py-2 opacity-50 md:px-10">
             <Title font="pp-monument-extended" size="small" color="black" wrap>
-              {t("fourDynamicCompetitions")}
+              {popupT("fourDynamicCompetitions")}
             </Title>
           </div>
           <div className="w-full grid-cols-1 flex-col items-center gap-4 px-2 max-sm:flex sm:grid sm:grid-cols-2 md:grid-cols-2 md:gap-6 md:px-10 lg:grid-cols-3 xl:grid-cols-4">
-            <div className="flex h-72 w-full max-w-100 flex-col justify-center gap-2 overflow-hidden rounded-4xl bg-[#EFEFEF] p-6 md:h-72 lg:h-80">
-              <p className="font-pp-monument-extended text-sm leading-tight text-black opacity-50">
-                ENDURANCE
-              </p>
-              <p className="font-pp-monument-extended text-sm leading-tight text-black xl:text-base">
-                {t("competitionText")}
-              </p>
-            </div>
-            <Image
-              src={Photo1}
-              alt={`Formula Student 1`}
-              className="h-65 w-full max-w-100 rounded-4xl max-sm:h-75 md:h-72 lg:h-80"
+            <FlipCard
+              height={"h-60"}
+              src={Acceleration}
+              maxWidth="max-w-80"
+              title={t("competitions.acceleration.title")}
+              text={t("competitions.acceleration.text")}
             />
-            <Image
-              src={Photo2}
-              alt={`Formula Student 2`}
-              className="h-65 w-full max-w-100 rounded-4xl max-sm:h-75 md:h-72 lg:h-80"
+            <FlipCard
+              height={"h-60"}
+              maxWidth="max-w-80"
+              src={SkidPad}
+              title={t("competitions.skidPad.title")}
+              text={t("competitions.skidPad.text")}
             />
-            <Image
-              src={Photo3}
-              alt={`Formula Student 3`}
-              className="h-65 w-full max-w-100 rounded-4xl max-sm:h-75 md:h-72 lg:h-80"
+            <FlipCard
+              height={"h-60"}
+              src={Autocross}
+              maxWidth="max-w-80"
+              title={t("competitions.autocross.title")}
+              text={t("competitions.autocross.text")}
+            />
+            <FlipCard
+              height={"h-60"}
+              src={Endurance}
+              maxWidth="max-w-80"
+              title={t("competitions.endurance.title")}
+              text={t("competitions.endurance.text")}
             />
           </div>
-          <div className="mt-4 w-full px-2 py-2 opacity-50 md:px-10">
+          <div className="mt-4 mb-4 w-full px-2 py-2 opacity-50 md:px-10">
             <Title font="pp-monument-extended" size="small" color="black" wrap>
-              {t("threeStaticCompetitions")}
+              {popupT("threeStaticCompetitions")}
             </Title>
           </div>
           <div className="flex w-full flex-col items-center gap-4 px-2 md:grid md:grid-cols-2 md:gap-10 md:px-10 xl:grid-cols-3">
-            <Image
-              src={Photo4}
-              alt={`Formula Student 4`}
-              className="h-60 w-full max-w-140 rounded-4xl max-sm:h-80 sm:h-72 lg:h-80"
+            <FlipCard
+              height={"h-74 md:h-80"}
+              maxWidth="max-w-100"
+              src={Cost}
+              title={t("competitions.cost.title")}
+              text={t("competitions.cost.text")}
             />
-            <Image
-              src={Photo5}
-              alt={`Formula Student 5`}
-              className="h-60 w-full max-w-140 rounded-4xl max-sm:h-80 sm:h-72 lg:h-80"
+            <FlipCard
+              height={"h-74 md:h-80"}
+              maxWidth="max-w-100"
+              src={Engineering}
+              title={t("competitions.engineering.title")}
+              text={t("competitions.engineering.text")}
             />
-            <Image
-              src={Photo6}
-              alt={`Formula Student 6`}
-              className="h-60 w-full max-w-140 rounded-4xl max-sm:h-80 sm:h-72 lg:h-80"
+            <FlipCard
+              height={"h-74 md:h-80"}
+              maxWidth="max-w-100"
+              src={Business}
+              title={t("competitions.business.title")}
+              text={t("competitions.business.text")}
             />
           </div>
         </div>
