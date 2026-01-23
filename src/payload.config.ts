@@ -8,6 +8,7 @@ import { fileURLToPath } from "node:url";
 import { buildConfig } from "payload";
 import sharp from "sharp";
 
+import { Achievements } from "./collections/achievements";
 import { Bolids } from "./collections/bolids";
 import { Media } from "./collections/media";
 import { News } from "./collections/news";
@@ -32,7 +33,15 @@ export default buildConfig({
       baseDir: path.resolve(dirname),
     },
   },
-  collections: [Users, Media, Bolids, Partners, TeamMembers, News],
+  collections: [
+    Users,
+    Media,
+    Bolids,
+    Partners,
+    TeamMembers,
+    News,
+    Achievements,
+  ],
   globals: [
     MainPage,
     Departments,

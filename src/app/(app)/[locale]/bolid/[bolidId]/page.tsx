@@ -1,20 +1,14 @@
-import Image1 from "@public/images/bolid/RT12e/images/zawody/1.jpg";
-import Image2 from "@public/images/bolid/RT12e/images/zawody/2.jpg";
-import Image3 from "@public/images/bolid/RT12e/images/zawody/3.jpg";
-import Logo1 from "@public/images/bolid/RT12e/images/zawody/logo1.png";
-import Logo2 from "@public/images/bolid/RT12e/images/zawody/logo2.png";
-import Logo3 from "@public/images/bolid/RT12e/images/zawody/logo3.png";
+import { ArrowUpIcon } from "lucide-react";
 import { getLocale, getTranslations } from "next-intl/server";
 import Image from "next/image";
+import { MdElectricCar } from "react-icons/md";
 
 import { Container } from "@/components/container";
-import { BolidSection } from "@/components/section/BolidSection";
-import { Text } from "@/components/text";
-import { Title } from "@/components/title";
 import {
   getBolidByNameFunction,
   getFirstBolidFunction,
 } from "@/functions/bolid";
+import { getUrlFromMedia } from "@/lib/utils";
 import type { Bolid } from "@/payload-types";
 
 interface Iparams {
@@ -50,164 +44,96 @@ async function BolidPage(props: { params: Promise<Iparams> }) {
   const t = await getTranslations("bolidSection");
 
   return (
-    <div className="flex flex-col pt-[100px]">
-      <BolidSection presetBolid={bolid} />
-      <div className="w-full" id="achievements">
-        <Container>
-          <div className="flex w-full flex-col py-8 md:py-16">
-            <Title size="big" color="black">
-              {t("achievements")} {bolid.year}
-            </Title>
-
-            <div className="flex">
-              <div className="grid w-full grid-cols-1 gap-8 pt-6 text-white md:grid-cols-3">
-                <div className="relative h-52 overflow-hidden rounded-sm md:h-60">
-                  <Image
-                    src={Image1}
-                    alt="Zdjęcie 2"
-                    style={{
-                      objectFit: "cover",
-                    }}
-                  />
-                  <div className="absolute inset-0 bg-black opacity-50"></div>
-                  <div className="absolute inset-0 flex flex-col justify-between p-4">
-                    <Title size="small">FORMULA STUDENT GERMANY</Title>
-                    <div className="flex items-end justify-between">
-                      <div className=" ">
-                        <Text extrasmall>6th Overall</Text>
-                        <Text extrasmall>8th Skidpad</Text>
-                        <Text extrasmall>11th Acceleration</Text>
-                        <Text extrasmall>2nd Engineering Design</Text>
-                        <Text extrasmall>4th Business Plan Presentation</Text>
-                        <Text extrasmall>7th Endurance </Text>
-                      </div>
-                      <div className="">
-                        <Image
-                          src={Logo1}
-                          alt="Zdjęcie 1"
-                          style={{
-                            maxWidth: "100%",
-                            height: "auto",
-                          }}
-                        />
-                      </div>
-                    </div>
+    <div className="flex flex-col">
+      <section className="flex min-h-[calc(100dvh-2rem)] w-full flex-col rounded-b-[100px] bg-[#D41E3E]">
+        <Container className="flex w-full flex-1 flex-col items-start justify-start pt-26 pb-10">
+          <div className="w-full">
+            <button className="flex h-12 w-12 cursor-pointer items-center justify-center rounded-2xl border-2 border-white opacity-70 transition-all hover:opacity-100">
+              <ArrowUpIcon />
+            </button>
+          </div>
+          <div className="w-full flex-1">
+            <div className="flex h-[calc(100dvh-16rem)] w-full items-center">
+              <div className="flex h-full flex-1 flex-col py-4">
+                <h3 className="font-gilroy-heavy text-bolid-secondary text-5xl font-medium">
+                  RT15E
+                </h3>
+                <h1 className="font-gilroy-heavy text-[200px] font-bold">
+                  <span className="font-outline-2 text-transparent">
+                    {bolid.name.slice(0, 2)}
+                  </span>
+                  {bolid.name.slice(2)}
+                </h1>
+                <Image
+                  src={getUrlFromMedia(bolid.image)}
+                  alt={bolid.name}
+                  width={1000}
+                  height={1000}
+                  unoptimized
+                  className="absolute top-60 left-40 h-auto w-[800px]"
+                />
+                <div className="flex-1" />
+                <h3 className="font-gilroy-heavy text-bolid-secondary text-5xl font-medium">
+                  RT13E
+                </h3>
+              </div>
+              <div className="flex h-full w-60 flex-col items-start justify-center gap-4">
+                <div className="flex w-full items-center gap-4">
+                  <div className="flex-1">
+                    <p className="font-sculptor text-bolid-secondary font-bold">
+                      Rok
+                    </p>
+                    <h4 className="font-gilroy-heavy text-4xl text-white">
+                      {bolid.year}
+                    </h4>
+                  </div>
+                  <div className="bg-bolid-secondary h-5 w-px"></div>
+                  <div className="flex flex-1 items-center justify-center">
+                    <MdElectricCar
+                      className="translate-y-1 text-emerald-400"
+                      size={40}
+                    />
                   </div>
                 </div>
-                <div className="relative h-52 overflow-hidden rounded-sm md:h-60">
-                  <Image
-                    src={Image2}
-                    alt="Zdjęcie 2"
-                    style={{
-                      objectFit: "cover",
-                    }}
-                  />
-                  <div className="absolute inset-0 bg-black opacity-50"></div>
-                  <div className="absolute inset-0 flex flex-col justify-between p-4">
-                    <Title size="small">FORMULA STUDENT ALPE ADRIA</Title>
-                    <div className="flex items-end justify-between">
-                      <div className="">
-                        <Text extrasmall>6th Overall</Text>
-                        <Text extrasmall>8th Skidpad</Text>
-                        <Text extrasmall>11th Acceleration</Text>
-                        <Text extrasmall>2nd Engineering Design</Text>
-                        <Text extrasmall>4th Business Plan Presentation</Text>
-                        <Text extrasmall>7th Endurance </Text>
-                      </div>
-                      <div className="">
-                        <Image
-                          src={Logo2}
-                          alt="Zdjęcie 1"
-                          style={{
-                            maxWidth: "100%",
-                            height: "auto",
-                          }}
-                        />
-                      </div>
-                    </div>
-                  </div>
+                <div className="bg-bolid-secondary h-px w-full"></div>
+                <div>
+                  <p className="font-sculptor text-bolid-secondary font-bold">
+                    Moc
+                  </p>
+                  <h4 className="font-gilroy-heavy text-4xl text-white">
+                    {bolid.power}
+                  </h4>
                 </div>
-                <div className="relative h-52 overflow-hidden rounded-sm md:h-60">
-                  <Image
-                    src={Image3}
-                    alt="Zdjęcie 2"
-                    style={{
-                      objectFit: "cover",
-                    }}
-                  />
-                  <div className="absolute inset-0 bg-black opacity-50"></div>
-                  <div className="absolute inset-0 flex flex-col justify-between p-4">
-                    <Title size="small">FORMULA STUDENT ITALY</Title>
-                    <div className="flex items-end justify-between">
-                      <div className="">
-                        <Text extrasmall>6th Overall</Text>
-                        <Text extrasmall>8th Skidpad</Text>
-                        <Text extrasmall>11th Acceleration</Text>
-                        <Text extrasmall>2nd Engineering Design</Text>
-                        <Text extrasmall>4th Business Plan Presentation</Text>
-                        <Text extrasmall>7th Endurance </Text>
-                      </div>
-                      <div className="">
-                        <Image
-                          src={Logo3}
-                          alt="Zdjęcie 1"
-                          style={{
-                            maxWidth: "100%",
-                            height: "auto",
-                          }}
-                        />
-                      </div>
-                    </div>
+                <div className="bg-bolid-secondary h-px w-full"></div>
+                <div className="flex w-full items-center gap-4">
+                  <div className="flex-1">
+                    <p className="font-sculptor text-bolid-secondary font-bold">
+                      0-100km/h
+                    </p>
+                    <h4 className="font-gilroy-heavy text-4xl text-white">
+                      {bolid.acceleration}
+                    </h4>
+                  </div>
+                  <div className="bg-bolid-secondary h-5 w-px"></div>
+                  <div className="flex-1">
+                    <p className="font-sculptor text-bolid-secondary font-bold">
+                      Masa
+                    </p>
+                    <h4 className="font-gilroy-heavy text-4xl text-white">
+                      {bolid.mass}
+                    </h4>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-        </Container>
-      </div>
-      <div className="w-full">
-        {bolid.parts?.map((part, depIndex) => (
-          <div
-            key={part.partName}
-            className={depIndex % 2 === 0 ? "bg-neutral-200" : "bg-white"}
-          >
-            <Container>
-              <div
-                className={`${
-                  depIndex % 2 === 0 ? "" : "md:flex-row-reverse"
-                } my-8 flex flex-col gap-0 md:flex-row md:gap-16`}
-              >
-                <div className="my-0 md:my-20 md:w-2/3">
-                  <div className="uppercase">
-                    <Title size="big" color="black">
-                      {part.partName}
-                    </Title>
-                  </div>
-                  <div className="my-4 md:my-6">
-                    <Text color="black">{part.description}</Text>
-                  </div>
-                </div>
-                <div className="my-auto md:w-1/3">
-                  <Image
-                    src={`/images/bolid/RT12e/parts/${part.partName}.png`}
-                    alt={`Zdjęcie ${part.partName}`}
-                    // Używaj rzeczywistych proporcji obrazu
-                    width={300}
-                    // Używaj rzeczywistych proporcji obrazu
-                    height={400}
-                    sizes="(max-width: 768px) 100vw, 25vw"
-                    style={{
-                      width: "100%",
-                      height: "auto",
-                      maxWidth: "100%",
-                    }}
-                  />
-                </div>
-              </div>
-            </Container>
+          <div className="w-full">
+            <button className="flex h-12 w-12 rotate-180 cursor-pointer items-center justify-center rounded-2xl border-2 border-white opacity-70 transition-all hover:opacity-100">
+              <ArrowUpIcon />
+            </button>
           </div>
-        ))}
-      </div>
+        </Container>
+      </section>
     </div>
   );
 }

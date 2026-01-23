@@ -28,7 +28,7 @@ export function FooterSectionClient({
     <div id="section-contact" className="relative bg-[#110F0F]">
       <Container className="z-10">
         <div className="flex w-full flex-col items-center justify-between">
-          <div className="w-[65vw] md:mt-12">
+          <div className="container mx-auto w-full md:mt-20">
             <div className="font-syncopate mt-4 flex flex-col flex-wrap items-center justify-around gap-4 text-center text-sm font-bold text-white md:flex-row md:items-start md:gap-12 md:px-12 md:text-start">
               <div className="mt-8 flex flex-col items-center whitespace-nowrap md:mt-0">
                 <div className="text-[#5C5C5C]">
@@ -112,10 +112,7 @@ export function FooterSectionClient({
             </div>
           </div>
           <div className="flex w-full flex-col items-center justify-between border-t border-[#5C5C5C] py-3 md:flex-row md:py-6">
-            <div className="text-md text-center font-medium text-[#5C5C5C]">
-              <p>
-                Original Project & Execution: Maria Kanczewska & Dawid Chmal
-              </p>
+            <div className="text-center text-sm font-medium text-[#5C5C5C]">
               <p>
                 Developed and maintained with ❤️ by{" "}
                 <Link

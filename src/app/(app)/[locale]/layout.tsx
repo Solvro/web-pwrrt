@@ -2,7 +2,7 @@
 import { GoogleAnalytics } from "@next/third-parties/google";
 import type { Metadata } from "next";
 import type { Locale } from "next-intl";
-import { NextIntlClientProvider, hasLocale } from "next-intl";
+import { NextIntlClientProvider } from "next-intl";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Open_Sans } from "next/font/google";
 import Head from "next/head";
@@ -82,10 +82,10 @@ export default async function LocaleLayout({
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
-  if (!hasLocale(routing.locales, locale)) {
+  if (!locale || !routing.locales.includes(locale as "pl" | "en")) {
     notFound();
   }
-  setRequestLocale(locale);
+  setRequestLocale(locale as "pl" | "en");
 
   const captchaKey = process.env.NEXT_PUBLIC_CAPTCHA_SITE_KEY ?? "";
 
