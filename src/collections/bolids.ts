@@ -104,5 +104,18 @@ export const Bolids: CollectionConfig = {
         },
       ],
     },
+    {
+      name: "gallery",
+      type: "array",
+      label: "Galeria",
+      fields: [
+        {
+          name: "image",
+          type: "upload",
+          relationTo: "media",
+          required: true,
+        },
+      ],
+    },
   ],
 };

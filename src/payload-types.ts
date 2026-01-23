@@ -73,6 +73,8 @@ export interface Config {
     partners: Partner;
     teamMembers: TeamMember;
     news: News;
+    achievements: Achievement;
+    'payload-kv': PayloadKv;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
     'payload-migrations': PayloadMigration;
@@ -85,6 +87,8 @@ export interface Config {
     partners: PartnersSelect<false> | PartnersSelect<true>;
     teamMembers: TeamMembersSelect<false> | TeamMembersSelect<true>;
     news: NewsSelect<false> | NewsSelect<true>;
+    achievements: AchievementsSelect<false> | AchievementsSelect<true>;
+    'payload-kv': PayloadKvSelect<false> | PayloadKvSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
     'payload-migrations': PayloadMigrationsSelect<false> | PayloadMigrationsSelect<true>;
@@ -92,6 +96,7 @@ export interface Config {
   db: {
     defaultIDType: string;
   };
+  fallbackLocale: ('false' | 'none' | 'null') | false | null | ('en' | 'pl') | ('en' | 'pl')[];
   globals: {
     'main-page': MainPage;
     departments: Department;
@@ -201,6 +206,12 @@ export interface Bolid {
         id?: string | null;
       }[]
     | null;
+  gallery?:
+    | {
+        image: string | Media;
+        id?: string | null;
+      }[]
+    | null;
   updatedAt: string;
   createdAt: string;
   _status?: ('draft' | 'published') | null;
@@ -273,6 +284,42 @@ export interface News {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "achievements".
+ */
+export interface Achievement {
+  id: string;
+  title: string;
+  results?:
+    | {
+        result: string;
+        id?: string | null;
+      }[]
+    | null;
+  backgroundImage: string | Media;
+  raceLogo: string | Media;
+  bolid: string | Bolid;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "payload-kv".
+ */
+export interface PayloadKv {
+  id: string;
+  key: string;
+  data:
+    | {
+        [k: string]: unknown;
+      }
+    | unknown[]
+    | string
+    | number
+    | boolean
+    | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-locked-documents".
  */
 export interface PayloadLockedDocument {
@@ -301,6 +348,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'news';
         value: string | News;
+      } | null)
+    | ({
+        relationTo: 'achievements';
+        value: string | Achievement;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -404,6 +455,12 @@ export interface BolidsSelect<T extends boolean = true> {
         description?: T;
         id?: T;
       };
+  gallery?:
+    | T
+    | {
+        image?: T;
+        id?: T;
+      };
   updatedAt?: T;
   createdAt?: T;
   _status?: T;
@@ -458,6 +515,32 @@ export interface NewsSelect<T extends boolean = true> {
   updatedAt?: T;
   createdAt?: T;
   _status?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "achievements_select".
+ */
+export interface AchievementsSelect<T extends boolean = true> {
+  title?: T;
+  results?:
+    | T
+    | {
+        result?: T;
+        id?: T;
+      };
+  backgroundImage?: T;
+  raceLogo?: T;
+  bolid?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "payload-kv_select".
+ */
+export interface PayloadKvSelect<T extends boolean = true> {
+  key?: T;
+  data?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema

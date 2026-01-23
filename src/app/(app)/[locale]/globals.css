@@ -73,6 +73,10 @@
   ::file-selector-button {
     border-color: var(--color-gray-200, currentcolor);
   }
+
+  .font-outline-2 {
+    -webkit-text-stroke: 2px white;
+  }
 }
 
 @font-face {
@@ -117,6 +121,13 @@
   font-style: normal;
 }
 
+@font-face {
+  font-family: "GilroyHeavy";
+  src: url("/fonts/gilroy-heavy.ttf") format("truetype");
+  font-weight: bold;
+  font-style: normal;
+}
+
 .font-syncopate {
   font-family: "Syncopate", sans-serif;
 }
@@ -131,6 +142,10 @@
 
 .font-pp-monument-extended {
   font-family: "PPMonumentExtended", sans-serif;
+}
+
+.font-gilroy-heavy {
+  font-family: "GilroyHeavy", sans-serif;
 }
 
 body {
@@ -296,6 +311,8 @@ body,
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
+
+  --color-bolid-secondary: var(--bolid-secondary);
 }
 
 /*
@@ -336,6 +353,8 @@ body,
   --sidebar-accent-foreground: oklch(0.205 0 0);
   --sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: oklch(0.708 0 0);
+
+  --bolid-secondary: #ff9c9c;
 }
 
 /*
@@ -374,6 +393,8 @@ body,
   --sidebar-accent-foreground: oklch(0.985 0 0);
   --sidebar-border: oklch(1 0 0 / 10%);
   --sidebar-ring: oklch(0.556 0 0);
+
+  --bolid-secondary: #ff9c9c;
 }
 
 /*
@@ -386,5 +407,62 @@ body,
   }
   body {
     @apply bg-background text-foreground;
+  }
+}
+
+/* View Transitions for Bolid Carousel */
+
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 0.8s;
+  animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+  mix-blend-mode: normal;
+}
+
+/* Direction: DOWN (Clicking Bottom Arrow -> Next Item -> Slide Up) */
+/* We want to go to the item BELOW. So the camera moves DOWN, meaning content moves UP. */
+/* Wait. If items are stack:
+   [15]
+   [14] (Viewport)
+   [13]
+   Click Down Arrow (to 13): Viewport moves down. Content moves UP.
+   So Current (14) moves UP out of view. Next (13) moves UP into view.
+*/
+[data-transition="next"]::view-transition-old(root) {
+  animation-name: slide-exit-up;
+}
+[data-transition="next"]::view-transition-new(root) {
+  animation-name: slide-enter-up;
+}
+
+/* Direction: UP (Clicking Top Arrow -> Prev Item -> Slide Down) */
+/* We want to go to the item ABOVE. So camera moves UP, meaning content moves DOWN. */
+/* Current (14) moves DOWN out of view. Prev (15) moves DOWN into view. */
+[data-transition="prev"]::view-transition-old(root) {
+  animation-name: slide-exit-down;
+}
+[data-transition="prev"]::view-transition-new(root) {
+  animation-name: slide-enter-down;
+}
+
+@keyframes slide-exit-up {
+  to {
+    transform: translateY(-100%);
+  }
+}
+@keyframes slide-enter-up {
+  from {
+    transform: translateY(100%);
+  }
+}
+
+@keyframes slide-exit-down {
+  to {
+    transform: translateY(100%);
+  }
+}
+@keyframes slide-enter-down {
+  from {
+    transform: translateY(-100%);
   }
 }

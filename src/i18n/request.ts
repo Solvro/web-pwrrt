@@ -2,20 +2,19 @@
 /* eslint-disable unicorn/no-await-expression-member */
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 /* eslint-disable import/no-default-export */
-import { hasLocale } from "next-intl";
 import { getRequestConfig } from "next-intl/server";
 
 import { routing } from "./routing";
 
 export default getRequestConfig(async ({ requestLocale }) => {
   // Typically corresponds to the `[locale]` segment
-  const requested = await requestLocale;
-  const locale = hasLocale(routing.locales, requested)
-    ? requested
-    : routing.defaultLocale;
+  let locale = await requestLocale;
+  if (!locale || !routing.locales.includes(locale as "pl" | "en")) {
+    locale = routing.defaultLocale;
+  }
 
   return {
-    locale,
+    locale: locale as "en" | "pl",
     messages: (await import(`../../messages/${locale}.json`)).default,
   };
 });
