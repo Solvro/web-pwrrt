@@ -52,7 +52,7 @@ export function FormulaStudentPopup({
               {popupT("fourDynamicCompetitions")}
             </Title>
           </div>
-          <div className="w-full grid-cols-1 flex-col items-center gap-4 px-2 max-sm:flex sm:grid sm:grid-cols-2 md:grid-cols-2 md:gap-6 md:px-10 lg:grid-cols-3 xl:grid-cols-4">
+          <div className="w-full grid-cols-1 flex-col items-center justify-center gap-4 px-2 max-sm:flex sm:grid sm:grid-cols-2 sm:justify-items-center md:grid-cols-2 md:gap-6 md:px-10 lg:grid-cols-3 xl:grid-cols-4">
             <FlipCard
               height={"h-60"}
               src={Acceleration}
@@ -87,7 +87,7 @@ export function FormulaStudentPopup({
               {popupT("threeStaticCompetitions")}
             </Title>
           </div>
-          <div className="flex w-full flex-col items-center gap-4 px-2 md:grid md:grid-cols-2 md:gap-10 md:px-10 xl:grid-cols-3">
+          <div className="flex w-full flex-col items-center justify-center gap-4 px-2 pb-5 md:grid md:grid-cols-2 md:justify-items-center md:gap-2 md:px-10 xl:grid-cols-3">
             <FlipCard
               height={"h-74 md:h-80"}
               maxWidth="max-w-100"
