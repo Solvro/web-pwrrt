@@ -1,9 +1,7 @@
-import Image1 from "@public/images/bolid/RT12e/images/zawody/1.jpg";
-import Image2 from "@public/images/bolid/RT12e/images/zawody/2.jpg";
-import Image3 from "@public/images/bolid/RT12e/images/zawody/3.jpg";
-import Logo1 from "@public/images/bolid/RT12e/images/zawody/logo1.png";
-import Logo2 from "@public/images/bolid/RT12e/images/zawody/logo2.png";
-import Logo3 from "@public/images/bolid/RT12e/images/zawody/logo3.png";
+import Image1 from "@public/images/bolid/RT15e/zawody/1.png";
+import Image2 from "@public/images/bolid/RT15e/zawody/2.png";
+import Image3 from "@public/images/bolid/RT15e/zawody/3.png";
+import Image4 from "@public/images/bolid/RT15e/zawody/4.png";
 import { getLocale, getTranslations } from "next-intl/server";
 import Image from "next/image";
 
@@ -56,12 +54,12 @@ async function BolidPage(props: { params: Promise<Iparams> }) {
         <Container>
           <div className="flex w-full flex-col py-8 md:py-16">
             <Title size="big" color="black">
-              {t("achievements")} {bolid.year}
+              {t("achievements")} 2025/2026
             </Title>
 
             <div className="flex">
-              <div className="grid w-full grid-cols-1 gap-8 pt-6 text-white md:grid-cols-3">
-                <div className="relative h-52 overflow-hidden rounded-sm md:h-60">
+              <div className="grid w-full grid-cols-1 gap-8 pt-6 text-white md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+                {/* <div className="relative h-52 overflow-hidden rounded-sm md:h-60">
                   <Image
                     src={Image1}
                     alt="Zdjęcie 2"
@@ -159,6 +157,46 @@ async function BolidPage(props: { params: Promise<Iparams> }) {
                       </div>
                     </div>
                   </div>
+                </div> */}
+                <div className="relative h-62 overflow-hidden rounded-sm">
+                  <Image
+                    src={Image1}
+                    alt="Zdjęcie 1"
+                    style={{
+                      width: "auto",
+                      height: "100%",
+                    }}
+                  />
+                </div>
+                <div className="relative h-62 overflow-hidden rounded-sm">
+                  <Image
+                    src={Image2}
+                    alt="Zdjęcie 2"
+                    style={{
+                      width: "auto",
+                      height: "100%",
+                    }}
+                  />
+                </div>
+                <div className="relative h-62 overflow-hidden rounded-sm">
+                  <Image
+                    src={Image3}
+                    alt="Zdjęcie 3"
+                    style={{
+                      width: "auto",
+                      height: "100%",
+                    }}
+                  />
+                </div>
+                <div className="relative h-62 overflow-hidden rounded-sm">
+                  <Image
+                    src={Image4}
+                    alt="Zdjęcie 4"
+                    style={{
+                      width: "auto",
+                      height: "100%",
+                    }}
+                  />
                 </div>
               </div>
             </div>
