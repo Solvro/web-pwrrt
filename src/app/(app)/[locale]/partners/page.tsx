@@ -28,7 +28,7 @@ export default async function Partners() {
   const silverSponsors = await getSilverSponsors();
   const bronzeSponsors = await getBronzeSponsors();
   return (
-    <div className="font-pp-monument-extended pt-[100px] md:pt-[80px]">
+    <div className="font-monument-extended pt-[100px] md:pt-[80px]">
       <div className="flex h-full w-full flex-col md:flex-row lg:h-full">
         <div className="flex w-full justify-between bg-[#0c0c0c] text-gray-300 md:w-1/2">
           <div className="mx-auto flex h-full max-w-xl flex-col gap-5 px-6 py-12 lg:gap-15">
