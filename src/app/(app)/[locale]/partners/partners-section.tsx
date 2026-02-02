@@ -90,11 +90,11 @@ interface PartnersSectionProps {
 export function PartnersSection({ sponsors }: PartnersSectionProps) {
   const t = useTranslations("partnersPage");
   const partners = [
-    { key: "bronze", label: t("brązowi") },
-    { key: "silver", label: t("srebrni") },
-    { key: "gold", label: t("złoci") },
-    { key: "platinum", label: t("platynowi") },
     { key: "strategic", label: t("strategiczni") },
+    { key: "platinum", label: t("platynowi") },
+    { key: "gold", label: t("złoci") },
+    { key: "silver", label: t("srebrni") },
+    { key: "bronze", label: t("brązowi") },
   ] as const;
 
   const [active, setActive] = useState<SponsorKey>("bronze");

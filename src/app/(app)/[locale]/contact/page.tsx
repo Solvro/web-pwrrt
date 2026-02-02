@@ -12,7 +12,7 @@ import { ErrorReportForm } from "./error-report";
 export default function ContactUsRedesign() {
   const t = useTranslations("contactUs");
   return (
-    <div className="font-pp-monument-extended pt-[100px] md:pt-[80px]">
+    <div className="font-monument-extended pt-[100px] md:pt-[80px]">
       <div className="flex min-h-[82vh] w-full flex-col md:flex-row">
         <div className="relative flex h-[60vh] w-full justify-center md:h-auto md:w-[55%]">
           <Image
@@ -33,10 +33,10 @@ export default function ContactUsRedesign() {
               PWR.RACING@GMAIL.COM
             </Link>
             <Link
-              href="tel:+48 517 350 915"
+              href="tel:+48 882 454 945"
               className="text-l mt-1 text-center font-medium md:text-base"
             >
-              +48 517 350 915
+              +48 882 454 945
             </Link>
           </div>
         </div>
