@@ -93,7 +93,9 @@
     "moreAboutBolid": "Więcej o bolidzie",
     "moreBolids": "Zobacz więcej",
     "meetTeam": "Poznaj zespół",
+    "year": "Rok",
     "acceleration": "Przyspieszenie",
+    "accelerationUnit": "0-100km/h",
     "mass": "Masa",
     "power": "Moc",
     "specyfikacja": "Specyfikacja",
@@ -101,7 +103,8 @@
     "TXTacceleration": "PRZYSPIESZENIE 0-100 KM/H",
     "TXTpower": "MOC BOLIDU",
     "TXTmass": "MASA POJAZDU",
-    "achievements": "OSIĄGNIĘCIA ZA SEZON"
+    "achievements": "OSIĄGNIĘCIA ZA SEZON",
+    "underConstruction": "W TRAKCIE BUDOWY"
   },
   "heroAbout": {
     "title": "POZNAJ NASZ ZESPÓŁ"

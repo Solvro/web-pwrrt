@@ -313,6 +313,7 @@ body,
   --color-sidebar-ring: var(--sidebar-ring);
 
   --color-bolid-secondary: var(--bolid-secondary);
+  --color-custom-red: var(--custom-red);
 }
 
 /*
@@ -355,6 +356,7 @@ body,
   --sidebar-ring: oklch(0.708 0 0);
 
   --bolid-secondary: #ff9c9c;
+  --custom-red: #d41e3e;
 }
 
 /*

@@ -93,7 +93,9 @@
     "moreAboutBolid": "More about the vehicle",
     "moreBolids": "See more",
     "meetTeam": "Meet the team",
+    "year": "Year",
     "acceleration": "Acceleration",
+    "accelerationUnit": "0-100km/h",
     "mass": "Mass",
     "power": "Power",
     "specyfikacja": "Specification",
@@ -101,7 +103,8 @@
     "TXTacceleration": "ACCELERATION 0-100 KM/H",
     "TXTpower": "ENGINE POWER",
     "TXTmass": "VEHICLE MASS",
-    "achievements": "ACHIEVEMENTS FOR THE SEASON"
+    "achievements": "ACHIEVEMENTS FOR THE SEASON",
+    "underConstruction": "UNDER CONSTRUCTION"
   },
   "heroAbout": {
     "title": "MEET OUR TEAM"
@@ -302,7 +305,6 @@
     "formSubmitContactButton": "Send",
     "formSubmitContactReport": "Contact us"
   },
-
   "joinUs": {
     "pageTitle": "RECRUITMENT",
     "racingTeamTitle": "PWR RACING TEAM",
