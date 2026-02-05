@@ -36,7 +36,7 @@ export async function generateMetadata({
 
 async function BolidPage(props: { params: Promise<Iparams> }) {
   const parameters = await props.params;
-  const locale = await getLocale();
+  const locale = (await getLocale()) as unknown as "pl" | "en";
   const { bolidId } = parameters;
   let bolid: Bolid | null = null;
 
