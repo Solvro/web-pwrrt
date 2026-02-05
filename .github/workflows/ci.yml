@@ -57,19 +57,19 @@ jobs:
         run: pnpm run typecheck
         if: always()
 
-      - name: Next.js Cache
-        uses: actions/cache@v4
-        with:
-          path: |
-            ~/.pnpm-store
-            ${{ github.workspace }}/.next/cache
-          key: ${{ runner.os }}-nextjs-${{ hashFiles('**/pnpm-lock.yaml') }}-${{ hashFiles('**/*.js', '**/*.jsx', '**/*.ts', '**/*.tsx') }}
-          restore-keys: |
-            ${{ runner.os }}-nextjs-${{ hashFiles('**/pnpm-lock.yaml') }}-
+      # - name: Next.js Cache
+      #   uses: actions/cache@v4
+      #   with:
+      #     path: |
+      #       ~/.pnpm-store
+      #       ${{ github.workspace }}/.next/cache
+      #     key: ${{ runner.os }}-nextjs-${{ hashFiles('**/pnpm-lock.yaml') }}-${{ hashFiles('**/*.js', '**/*.jsx', '**/*.ts', '**/*.tsx') }}
+      #     restore-keys: |
+      #       ${{ runner.os }}-nextjs-${{ hashFiles('**/pnpm-lock.yaml') }}-
 
-      - name: Build
-        run: pnpm run build
-        env:
-          DATABASE_URL: ${{ secrets.DATABASE_URL }}
-          DATABASE_URI: ${{ secrets.DATABASE_URL }}
-          PAYLOAD_SECRET: "very_secret_key"
+      # - name: Build
+      #   run: pnpm run build
+      #   env:
+      #     DATABASE_URL: ${{ secrets.DATABASE_URL }}
+      #     DATABASE_URI: ${{ secrets.DATABASE_URL }}
+      #     PAYLOAD_SECRET: "very_secret_key"
