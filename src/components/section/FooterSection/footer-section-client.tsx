@@ -63,6 +63,9 @@ export function FooterSectionClient({
                   <FooterLink href="https://www.youtube.com/@PWRRacingTeam">
                     Youtube
                   </FooterLink>
+                  <FooterLink href="https://www.tiktok.com/@pwrracingteam">
+                    TikTok
+                  </FooterLink>
                 </ul>
               </div>
               <div className="mt-8 flex flex-col items-center whitespace-nowrap md:mt-0">
