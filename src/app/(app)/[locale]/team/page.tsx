@@ -62,7 +62,7 @@ export default function TeamPage() {
               </div>
 
               <Title font="monument-extended" size="medium" color="white" wrap>
-                {t("teamDescription")}
+                <span className="tracking-wide">{t("teamDescription")}</span>
               </Title>
               <div className="flex w-full flex-col max-md:hidden">
                 <div className="opacity-60">
@@ -70,8 +70,10 @@ export default function TeamPage() {
                     {t("raceSeries")}
                   </Title>
                 </div>
-                <Text font="monument-extended" color="white" small>
-                  {t("raceSeriesDescription")}
+                <Text font="monument-extended-light" color="white" small>
+                  <span className="tracking-wide">
+                    {t("raceSeriesDescription")}
+                  </span>
                 </Text>
               </div>
             </div>
@@ -94,9 +96,11 @@ export default function TeamPage() {
                 </div>
                 <Text font="monument-extended" color="white" small>
                   <span className="fi fi-pl"></span>
-                  {t("locationDescription")}
+                  <span className="tracking-widest">
+                    {t("locationDescription")}
+                  </span>
                 </Text>
-                <Text font="monument-extended" color="white" small>
+                <Text font="monument-extended-light" color="white" small>
                   UL. SOPOCKA 16, WROCŁAW
                 </Text>
               </div>
@@ -114,11 +118,23 @@ export default function TeamPage() {
               <Title color="white" size="medium">
                 {t("getToKnowUs")}
               </Title>
-              <Text font="monument-extended" small wide color="white" center>
+              <Text
+                font="monument-extended-light"
+                small
+                wide
+                color="white"
+                center
+              >
                 {t("getToKnowUsDescription1")}
               </Text>
               <div className="opacity-50">
-                <Text font="monument-extended" small wide color="white" center>
+                <Text
+                  font="monument-extended-light"
+                  small
+                  wide
+                  color="white"
+                  center
+                >
                   {t("getToKnowUsDescription2")}
                 </Text>
               </div>
@@ -129,7 +145,13 @@ export default function TeamPage() {
         <PageSection sectionNumber={4} header={t("internationalsTracksTitle")}>
           <div className="flex w-full justify-center">
             <div className="relative mt-6 mb-20 flex w-3/4 justify-center">
-              <Text font="monument-extended" small wide color="white" center>
+              <Text
+                font="monument-extended-light"
+                small
+                wide
+                color="white"
+                center
+              >
                 {t("internationalsTracksDescription")}
               </Text>
             </div>
