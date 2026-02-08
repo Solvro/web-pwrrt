@@ -8,6 +8,7 @@ import {
   FaLinkedinIn,
   FaYoutube,
 } from "react-icons/fa";
+import { FaTiktok } from "react-icons/fa6";
 
 import { LangButton } from "./lang-button";
 import { SocialIcons } from "./social-icons";
@@ -40,6 +41,11 @@ export function UserMenu() {
               href="https://www.youtube.com/@PWRRacingTeam"
               icon={FaYoutube}
               ariaLabel="YouTube"
+            />
+            <SocialIcons
+              href="https://www.tiktok.com/@pwrracingteam"
+              icon={FaTiktok}
+              ariaLabel="TikTok"
             />
             <LangButton lang={lang} />
           </div>
