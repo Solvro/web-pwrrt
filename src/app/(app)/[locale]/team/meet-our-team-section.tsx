@@ -14,7 +14,7 @@ function MeetOurTeamSection() {
     <div>
       <div className="flex w-full justify-center">
         <div className="relative mt-6 flex w-4/5 justify-center">
-          <Text font="monument-extended" small wide color="white" center>
+          <Text font="monument-extended-light" small wide color="white" center>
             {t.rich("meetOurTeamDescription", {
               link: (children) => (
                 <span className="text-custom-red relative inline-block">
@@ -41,11 +41,11 @@ function MeetOurTeamSection() {
           <div className="text-custom-red text-2xl leading-none font-bold">
             <FaQuoteLeft />
           </div>
-          <Text font="monument-extended" color="white" small>
-            {t("quote1")}
+          <Text font="monument-extended-light" color="white" small>
+            <span className="tracking-wide">{t("quote1")}</span>
           </Text>
-          <Text font="monument-extended" color="white" small>
-            {t("quote2")}
+          <Text font="monument-extended-light" color="white" small>
+            <span className="tracking-wide">{t("quote2")}</span>
           </Text>
           <div className="mt-4 flex items-end justify-end">
             <div className="flex items-center justify-center gap-4">
