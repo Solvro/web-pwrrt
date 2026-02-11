@@ -46,7 +46,7 @@ export function HistorySection({ aboutUs = false }: HistorySectionProps) {
               <div
                 className={`${
                   aboutUs ? "" : "mb-8 md:mb-12"
-                } flex w-auto justify-between text-center`}
+                } flex w-auto justify-between text-center lg:grid lg:w-full lg:grid-cols-2 lg:gap-8`}
               >
                 <div className="flex flex-col">
                   <Counter targetNumber={90} size="bigger" color="red">
@@ -85,6 +85,19 @@ export function HistorySection({ aboutUs = false }: HistorySectionProps) {
                   </div>
                   <Text center color="gray">
                     {t("achievementsDescription")}
+                  </Text>
+                </div>
+                <div className="flex flex-col">
+                  <Counter targetNumber={33} size="bigger" color="red">
+                    0
+                  </Counter>
+                  <div className="text-lg">
+                    <Text center bold color="red" wide>
+                      {t("formmulaStudentPlace")}
+                    </Text>
+                  </div>
+                  <Text center color="gray">
+                    {t("formmulaStudentPlaceDescription")}
                   </Text>
                 </div>
               </div>
