@@ -31,6 +31,8 @@
     "projectsDescription": "Completed cars",
     "achievements": "ACHIEVEMENTS",
     "achievementsDescription": "In international competitions",
+    "formmulaStudentPlace": "PLACE IN",
+    "formmulaStudentPlaceDescription": "Formula Student world rankings",
     "description": "Students from Wrocław University of Science and Technology are among the most talented in Poland, driven by an exceptional passion for knowledge and innovation. To support the ambitions of aspiring engineers and managers, the PWR Racing Team was established in 2009. Every season, we design and build a new racing car, constantly raising the bar. Over the years, we’ve created 15 unique car models, each outperforming its predecessor. In 2022, we reached a new milestone with the development of our first electric car equipped with autonomous driving systems – the RT12e. Today, we are hard at work on our sixteenth car, combining cutting-edge technology with relentless determination. In the 2016/2017 season, we made history as the first Polish team to win the prestigious Formula Student Italy competition, showcasing what Polish ingenuity can achieve. Since then, we’ve consistently ranked among the best teams globally, holding the title of Poland’s number one and achieving an impressive 6th place in the world rankings in 2024.",
     "buttonText": "Learn more"
   },
@@ -336,6 +338,9 @@
       },
       "business": {
         "description": "This department is responsible for partner relations, team financial management, and preparing static events for the Formula Student competition, including the business presentation. Your work will involve coordinating orders, data analysis, process optimization, creating presentations, and maintaining relationships with partners."
+      },
+      "marketing": {
+        "description": "This department is responsible for the team's image and promoting its activities on social media. Additionally, it handles logistics and event organization."
       }
     },
     "days": "DAYS",
