@@ -23,9 +23,9 @@ export function CarouselSection() {
   const slides: SlideData[] = [
     {
       id: 1,
-      title: "VEHICLE PERFORMANCE",
-      description: t("departments.verticalPerformance.description"),
-      imageUrl: "/images/departments/vehiclePerformance.png",
+      title: "MARKETING",
+      description: t("departments.marketing.description"),
+      imageUrl: "/images/departments/marketing.png",
     },
     {
       id: 2,
@@ -56,6 +56,12 @@ export function CarouselSection() {
       title: "COMPOSITES",
       description: t("departments.composites.description"),
       imageUrl: "/images/departments/composites.png",
+    },
+    {
+      id: 7,
+      title: "VEHICLE PERFORMANCE",
+      description: t("departments.verticalPerformance.description"),
+      imageUrl: "/images/departments/vehiclePerformance.png",
     },
   ];
 
