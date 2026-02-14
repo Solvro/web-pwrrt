@@ -23,21 +23,21 @@ export function CarouselSection() {
   const slides: SlideData[] = [
     {
       id: 1,
-      title: "MARKETING",
-      description: t("departments.marketing.description"),
-      imageUrl: "/images/departments/marketing.png",
-    },
-    {
-      id: 2,
-      title: "ELECTRICAL",
-      description: t("departments.electrical.description"),
-      imageUrl: "/images/departments/electrical.png",
-    },
-    {
-      id: 3,
       title: "MECHANICAL",
       description: t("departments.mechanical.description"),
       imageUrl: "/images/departments/mechanical.png",
+    },
+    {
+      id: 2,
+      title: "COMPOSITES",
+      description: t("departments.composites.description"),
+      imageUrl: "/images/departments/composites.png",
+    },
+    {
+      id: 3,
+      title: "VEHICLE PERFORMANCE",
+      description: t("departments.verticalPerformance.description"),
+      imageUrl: "/images/departments/vehiclePerformance.png",
     },
     {
       id: 4,
@@ -47,21 +47,21 @@ export function CarouselSection() {
     },
     {
       id: 5,
-      title: "BUSINESS",
-      description: t("departments.business.description"),
-      imageUrl: "/images/departments/business.png",
+      title: "ELECTRICAL",
+      description: t("departments.electrical.description"),
+      imageUrl: "/images/departments/electrical.png",
     },
     {
       id: 6,
-      title: "COMPOSITES",
-      description: t("departments.composites.description"),
-      imageUrl: "/images/departments/composites.png",
+      title: "MARKETING",
+      description: t("departments.marketing.description"),
+      imageUrl: "/images/departments/marketing.png",
     },
     {
       id: 7,
-      title: "VEHICLE PERFORMANCE",
-      description: t("departments.verticalPerformance.description"),
-      imageUrl: "/images/departments/vehiclePerformance.png",
+      title: "BUSINESS",
+      description: t("departments.business.description"),
+      imageUrl: "/images/departments/business.png",
     },
   ];
 

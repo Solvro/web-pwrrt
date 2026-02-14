@@ -40,8 +40,8 @@ export function DepartmentsAbout({ lightMode }: DepartmentsAboutProps) {
       description: t("composites.description"),
     },
     {
-      name: "marketing",
-      description: t("marketing.description"),
+      name: "vehiclePerformance",
+      description: t("vehiclePerformance.description"),
     },
     {
       name: "software",
@@ -52,8 +52,8 @@ export function DepartmentsAbout({ lightMode }: DepartmentsAboutProps) {
       description: t("electrical.description"),
     },
     {
-      name: "vehiclePerformance",
-      description: t("vehiclePerformance.description"),
+      name: "marketing",
+      description: t("marketing.description"),
     },
     {
       name: "business",
