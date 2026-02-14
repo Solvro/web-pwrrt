@@ -176,7 +176,7 @@ export function Navbar() {
                       onClick={() => {
                         setMenuOpen(false);
                       }}
-                      className="hover:text-custom-red font-monument-extended text-2xl font-black tracking-widest md:text-5xl md:tracking-[10px]"
+                      className="hover:text-custom-red font-monument-extended text-2xl font-black tracking-widest md:text-3xl md:tracking-[4px] xl:text-5xl xl:tracking-[10px]"
                     >
                       {item.label}
                     </Link>
