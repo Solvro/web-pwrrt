@@ -55,7 +55,7 @@ export default async function Partners() {
             src="/images/partners/main2.jpg"
             alt="Kontakt"
             fill
-            className="object-cover object-[20%_center]"
+            className="object-cover"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-black/80 to-black/40"></div>
           <div className="absolute bottom-12 flex flex-col items-center gap-3 p-8 text-white lg:gap-6">
