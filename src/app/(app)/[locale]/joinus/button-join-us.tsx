@@ -10,7 +10,7 @@ export function ButtonsSection() {
     <div className="my-16 flex gap-4 md:w-1/3">
       <Button asChild>
         <Link
-          href="https://docs.google.com/forms/d/e/1FAIpQLSc57B7z70VuvtpOlOQo8U3ud4ZQk0ECdouwiyrdFZ6Dvi2Www/viewform?usp=sharing&ouid=103611118926959540711"
+          href="https://docs.google.com/forms/d/e/1FAIpQLSf-Yb-2w7oDO6GOTPIbQh_Vl4X87D5KDTFsiBxErXNCZLD4xQ/viewform?usp=sharing&ouid=103611118926959540711"
           target="_blank"
         >
           <SiGoogleforms className="size-5" />
