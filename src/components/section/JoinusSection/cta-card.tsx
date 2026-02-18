@@ -20,7 +20,7 @@ export function CtaCard({
 }) {
   const t = useTranslations("joinusSection");
   const href: ComponentProps<typeof Link>["href"] =
-    section === "team" ? "/joinus" : "/partners/joinus";
+    section === "team" ? "/joinus" : "/partners";
   const title = t(`${section}.title`);
   const text = t(`${section}.text`);
   return (

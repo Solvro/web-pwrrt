@@ -39,7 +39,9 @@ export function HeroSection() {
             custom={0.6}
             variants={textVariants}
           >
-            <h2 className="text-xs uppercase">{t("subtitle")}</h2>
+            <h2 className="text-xxs text-custom-red uppercase">
+              {t("subtitle")}
+            </h2>
           </motion.div>
 
           <motion.div
@@ -59,7 +61,9 @@ export function HeroSection() {
             variants={textVariants}
             className="max-w-11/12 md:max-w-3/4 md:leading-tight lg:max-w-2/3"
           >
-            <p className="max-sm:text-xs">{t("description")}</p>
+            <p className="font-pp-monument-extended max-sm:text-xs">
+              {t("description")}
+            </p>
           </motion.div>
         </div>
       </Container>
