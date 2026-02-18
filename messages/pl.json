@@ -7,7 +7,7 @@
   "heroSection": {
     "subtitle": "Politechnika Wrocławska, Wrocław",
     "title": "PWR Racing Team",
-    "description": "PWR Racing Team to Strategiczne Koło Naukowe Politechniki Wrocławskiej, a zarazem najstarszy i najbardziej utytułowany Zespół wyścigowy Formuły Student w Polsce od 2009 roku."
+    "description": "PWR Racing Team to Strategiczne Koło Naukowe Politechniki Wrocławskiej, a zarazem najstarszy i najbardziej utytułowany Zespół wyścigowy Formula Student w Polsce, działający od 2009 roku."
   },
   "fsSection": {
     "title": "ZAWODY FORMULA STUDENT",
@@ -17,8 +17,8 @@
   "teamSection": {
     "title": "Zespół",
     "subtitle": "Kilka słów o nas",
-    "description1": "Młodzi, ambitni, zaangażowani i odważni – tak najlepiej można opisać studentów Politechniki Wrocławskiej, a zwłaszcza członków PWR Racing Team. Nasza organizacja działa według struktury jak w dużych firmach.",
-    "description2": "Na czele zespołu stoi lider, który ponosi największą odpowiedzialność. Bezpośrednio podlega mu lider techniczny, zarządzający liderami poszczególnych działów, z wyjątkiem marketingu i business – te działy raportują bezpośrednio do lidera zespołu. Każdy członek zespołu podlega swojemu liderowi działu.",
+    "description1": "Młodzi, ambitni, zaangażowani i odważni – tak najlepiej można opisać studentów Politechniki Wrocławskiej, a zwłaszcza Członków PWR Racing Team. Nasza organizacja funkcjonuje w oparciu o strukturę podobną do tej, którą spotyka się w dużych przedsiębiorstwach. Na jej czele stoi trzyosobowy Zarząd.",
+    "description2": "Lider Zespołu ponosi największą odpowiedzialność za jego działalność i rozwój. Współpracują z nim Dyrektor Finansowa oraz Lider Techniczny, który koordynuje pracę Liderów poszczególnych Działów – Composites, Mechanical, Electrical, Software oraz Vehicle Performance. Wyjątek stanowią Działy Marketing oraz Business, które raportują bezpośrednio do Lidera Zespołu. Każdy Członek PWR Racing Team podlega swojemu Liderowi Działu.",
     "buttonLabel": "Poznaj nasz zespół",
     "members": "członków"
   },
