@@ -1,6 +1,8 @@
 import Image from "next/image";
 import type { StaticImageData } from "next/image";
 
+import { cn } from "@/lib/utils";
+
 export function UserAvatar({
   image,
   size = 50,
@@ -10,13 +12,18 @@ export function UserAvatar({
 }) {
   return (
     <div style={{ width: size / 2, height: size }}>
-      <Image
-        src={image}
-        alt="avatar image"
-        className="absolute rounded-full"
-        height={size}
-        width={size}
-      />
+      <div
+        className="absolute overflow-hidden rounded-full"
+        style={{ height: size, width: size }}
+      >
+        <Image
+          src={image}
+          alt="avatar image"
+          className="h-18 w-18 object-cover"
+          height={size}
+          width={size}
+        />
+      </div>
     </div>
   );
 }
