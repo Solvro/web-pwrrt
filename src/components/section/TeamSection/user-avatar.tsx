@@ -1,8 +1,6 @@
 import Image from "next/image";
 import type { StaticImageData } from "next/image";
 
-import { cn } from "@/lib/utils";
-
 export function UserAvatar({
   image,
   size = 50,
