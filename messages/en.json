@@ -303,7 +303,8 @@
     "formContactDescription": "Content:",
     "formSubmitBugReport": "Submit Bug",
     "formSubmitContactButton": "Send",
-    "formSubmitContactReport": "Contact us"
+    "formSubmitContactReport": "Contact us",
+    "theyWillAnswer": "They will answer your questions:"
   },
   "joinUs": {
     "pageTitle": "RECRUITMENT",
