@@ -18,7 +18,7 @@ function SponsorList({ gridCols, height, sponsors }: SponsorGridProps) {
           href={sponsor.website}
           target="_blank"
           rel="noopener noreferrer"
-          className={`${height} relative mx-6 overflow-hidden rounded-md duration-300 ease-in-out hover:scale-110`}
+          className={`${height} relative mx-6 overflow-hidden rounded-md bg-white duration-300 ease-in-out hover:scale-110`}
         >
           <Image
             src={getUrlFromMedia(sponsor.logo)}

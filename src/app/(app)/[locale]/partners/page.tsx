@@ -52,10 +52,10 @@ export default async function Partners() {
         </div>
         <div className="relative -order-1 flex h-[70vh] w-full justify-center md:order-none md:h-auto md:w-[55%]">
           <Image
-            src="/images/partners/main.jpg"
+            src="/images/partners/main2.jpg"
             alt="Kontakt"
             fill
-            className="object-fill"
+            className="object-cover object-[20%_center]"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-black/80 to-black/40"></div>
           <div className="absolute bottom-12 flex flex-col items-center gap-3 p-8 text-white lg:gap-6">

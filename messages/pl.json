@@ -307,7 +307,8 @@
     "formContactDescription": "Treść wiadomości",
     "formSubmitBugReport": "Zgłoś błąd na stronie",
     "formSubmitContactButton": "Wyślij",
-    "formSubmitContactReport": "Skontaktuj się z nami"
+    "formSubmitContactReport": "Skontaktuj się z nami",
+    "theyWillAnswer": "Oni odpowiedzą na twoje pytania"
   },
   "joinUs": {
     "pageTitle": "REKRUTACJA",
