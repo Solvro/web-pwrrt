@@ -13,12 +13,12 @@ export function JoinusSection() {
       <CtaCard
         section="team"
         image={teamPhoto}
-        className="origin-[70%_95%] object-left"
+        className="origin-[70%_100%] object-left"
       />
       <CtaCard
         section="partners"
         image={partnersPhoto}
-        className="origin-[15%_85%] object-bottom-left"
+        className="origin-[80%_10%] object-bottom-left"
       />
     </div>
   );
