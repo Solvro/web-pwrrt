@@ -12,8 +12,8 @@ import Avatar2 from "./avatar-2.jpg";
 import Avatar3 from "./avatar-3.jpg";
 import Avatar4 from "./avatar-4.jpg";
 import Avatar5 from "./avatar-5.jpg";
-import Team1 from "./team1.jpeg";
-import Team2 from "./team2.jpeg";
+import Team1 from "./team1.jpg";
+import Team2 from "./team2.jpg";
 import { UserAvatar } from "./user-avatar";
 
 export function TeamSection() {
