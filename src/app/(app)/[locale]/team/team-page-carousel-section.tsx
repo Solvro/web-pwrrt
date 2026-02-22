@@ -25,19 +25,19 @@ export function TeamPageCarouselSection() {
       id: 1,
       title: "90",
       description: t("members"),
-      imageUrl: "/images/team/team-page-redesign/carousel/photo1.jpg",
+      imageUrl: "/images/team/team-page-redesign/carousel/photoCarousel1.jpg",
     },
     {
       id: 2,
       title: "15",
       description: t("projects"),
-      imageUrl: "/images/team/team-page-redesign/carousel/photo2.jpg",
+      imageUrl: "/images/team/team-page-redesign/carousel/photoCarousel2.jpg",
     },
     {
       id: 3,
       title: "21",
       description: t("achievements"),
-      imageUrl: "/images/team/team-page-redesign/carousel/photo3.jpg",
+      imageUrl: "/images/team/team-page-redesign/carousel/photoCarousel3.jpg",
     },
   ];
 
