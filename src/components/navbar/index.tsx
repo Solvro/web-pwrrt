@@ -65,7 +65,7 @@ export function Navbar() {
         items={[
           "Dołącz do zespołu, który buduje bolidy elektryczne i zdobywa podium w Formula Student",
           "Rekrutacja do PWR Racing Team wystartowała!",
-          "Startujemy już 26 czerwca 2025",
+          "Termin rekrutacji do 13 marca 2026",
         ]}
       />
       <div className="fixed top-[39px] z-50 flex w-full flex-col">
