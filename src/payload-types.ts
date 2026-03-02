@@ -74,6 +74,7 @@ export interface Config {
     teamMembers: TeamMember;
     news: News;
     achievements: Achievement;
+    'payload-kv': PayloadKv;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
     'payload-migrations': PayloadMigration;
@@ -87,6 +88,7 @@ export interface Config {
     teamMembers: TeamMembersSelect<false> | TeamMembersSelect<true>;
     news: NewsSelect<false> | NewsSelect<true>;
     achievements: AchievementsSelect<false> | AchievementsSelect<true>;
+    'payload-kv': PayloadKvSelect<false> | PayloadKvSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
     'payload-migrations': PayloadMigrationsSelect<false> | PayloadMigrationsSelect<true>;
@@ -94,6 +96,7 @@ export interface Config {
   db: {
     defaultIDType: string;
   };
+  fallbackLocale: ('false' | 'none' | 'null') | false | null | ('en' | 'pl') | ('en' | 'pl')[];
   globals: {
     'main-page': MainPage;
     departments: Department;
@@ -102,6 +105,7 @@ export interface Config {
     contact: Contact;
     recruitment: Recruitment;
     'team-history': TeamHistory;
+    banner: Banner;
   };
   globalsSelect: {
     'main-page': MainPageSelect<false> | MainPageSelect<true>;
@@ -111,6 +115,7 @@ export interface Config {
     contact: ContactSelect<false> | ContactSelect<true>;
     recruitment: RecruitmentSelect<false> | RecruitmentSelect<true>;
     'team-history': TeamHistorySelect<false> | TeamHistorySelect<true>;
+    banner: BannerSelect<false> | BannerSelect<true>;
   };
   locale: 'en' | 'pl';
   user: User & {
@@ -297,6 +302,23 @@ export interface Achievement {
   bolid: string | Bolid;
   updatedAt: string;
   createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "payload-kv".
+ */
+export interface PayloadKv {
+  id: string;
+  key: string;
+  data:
+    | {
+        [k: string]: unknown;
+      }
+    | unknown[]
+    | string
+    | number
+    | boolean
+    | null;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -516,6 +538,14 @@ export interface AchievementsSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "payload-kv_select".
+ */
+export interface PayloadKvSelect<T extends boolean = true> {
+  key?: T;
+  data?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-locked-documents_select".
  */
 export interface PayloadLockedDocumentsSelect<T extends boolean = true> {
@@ -645,6 +675,21 @@ export interface TeamHistory {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "banner".
+ */
+export interface Banner {
+  id: string;
+  items?:
+    | {
+        text: string;
+        id?: string | null;
+      }[]
+    | null;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "main-page_select".
  */
 export interface MainPageSelect<T extends boolean = true> {
@@ -736,6 +781,21 @@ export interface TeamHistorySelect<T extends boolean = true> {
   achievementsCount?: T;
   projectsCount?: T;
   membersCount?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "banner_select".
+ */
+export interface BannerSelect<T extends boolean = true> {
+  items?:
+    | T
+    | {
+        text?: T;
+        id?: T;
+      };
   updatedAt?: T;
   createdAt?: T;
   globalType?: T;
