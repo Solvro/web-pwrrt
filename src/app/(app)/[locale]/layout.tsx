@@ -12,6 +12,7 @@ import Script from "next/script";
 import { ClientProviders } from "@/components/client-providers";
 import { Navbar } from "@/components/navbar";
 import { FooterSection } from "@/components/section/FooterSection";
+import { getBannerData } from "@/functions/banner";
 import { routing } from "@/i18n/routing";
 import { cn } from "@/lib/utils";
 import { ToasterProvider } from "@/providers/toaster-provider";
@@ -88,6 +89,7 @@ export default async function LocaleLayout({
   setRequestLocale(locale as "pl" | "en");
 
   const captchaKey = process.env.NEXT_PUBLIC_CAPTCHA_SITE_KEY ?? "";
+  const bannerItems = await getBannerData();
 
   return (
     <html lang={locale}>
@@ -107,7 +109,7 @@ export default async function LocaleLayout({
         />
         <NextIntlClientProvider>
           <ClientProviders>
-            <Navbar />
+            <Navbar bannerItems={bannerItems} />
             {children}
             <FooterSection />
             <ToasterProvider />

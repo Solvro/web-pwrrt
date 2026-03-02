@@ -14,7 +14,7 @@ import { Logo } from "./logo";
 import { TextTicker } from "./text-ticker";
 import { UserMenu } from "./usermenu/user-menu";
 
-export function Navbar() {
+export function Navbar({ bannerItems = [] }: { bannerItems?: string[] }) {
   const [atTop, setAtTop] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
   const [hideNavbar, setHideNavbar] = useState(false);
@@ -61,14 +61,13 @@ export function Navbar() {
 
   return (
     <>
-      <TextTicker
-        items={[
-          "Dołącz do zespołu, który buduje bolidy elektryczne i zdobywa podium w Formula Student",
-          "Rekrutacja do PWR Racing Team wystartowała!",
-          "Termin rekrutacji do 13 marca 2026",
-        ]}
-      />
-      <div className="fixed top-[39px] z-50 flex w-full flex-col">
+      {bannerItems.length > 0 && <TextTicker items={bannerItems} />}
+      <div
+        className={cn(
+          "fixed z-50 flex w-full flex-col",
+          bannerItems.length > 0 ? "top-[39px]" : "top-0",
+        )}
+      >
         <header
           className={cn(
             "w-full py-4 transition-all duration-500",
