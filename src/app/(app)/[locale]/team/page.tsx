@@ -144,7 +144,7 @@ export default function TeamPage() {
         <TeamPageCarouselSection />
         <PageSection sectionNumber={4} header={t("internationalsTracksTitle")}>
           <div className="flex w-full justify-center">
-            <div className="relative mt-6 mb-20 flex w-3/4 justify-center">
+            <div className="relative mt-6 mb-20 flex w-3/4 flex-col justify-center gap-4">
               <Text
                 font="monument-extended-light"
                 small
@@ -152,8 +152,19 @@ export default function TeamPage() {
                 color="white"
                 center
               >
-                {t("internationalsTracksDescription")}
+                {t("internationalsTracksDescription1")}
               </Text>
+              <div className="opacity-60">
+                <Text
+                  font="monument-extended-light"
+                  small
+                  wide
+                  color="white"
+                  center
+                >
+                  {t("internationalsTracksDescription2")}
+                </Text>
+              </div>
             </div>
           </div>
           <SwipeCarousel
