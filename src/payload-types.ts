@@ -102,6 +102,7 @@ export interface Config {
     contact: Contact;
     recruitment: Recruitment;
     'team-history': TeamHistory;
+    banner: Banner;
   };
   globalsSelect: {
     'main-page': MainPageSelect<false> | MainPageSelect<true>;
@@ -111,6 +112,7 @@ export interface Config {
     contact: ContactSelect<false> | ContactSelect<true>;
     recruitment: RecruitmentSelect<false> | RecruitmentSelect<true>;
     'team-history': TeamHistorySelect<false> | TeamHistorySelect<true>;
+    banner: BannerSelect<false> | BannerSelect<true>;
   };
   locale: 'en' | 'pl';
   user: User & {
@@ -645,6 +647,21 @@ export interface TeamHistory {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "banner".
+ */
+export interface Banner {
+  id: string;
+  items?:
+    | {
+        text: string;
+        id?: string | null;
+      }[]
+    | null;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "main-page_select".
  */
 export interface MainPageSelect<T extends boolean = true> {
@@ -736,6 +753,21 @@ export interface TeamHistorySelect<T extends boolean = true> {
   achievementsCount?: T;
   projectsCount?: T;
   membersCount?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "banner_select".
+ */
+export interface BannerSelect<T extends boolean = true> {
+  items?:
+    | T
+    | {
+        text?: T;
+        id?: T;
+      };
   updatedAt?: T;
   createdAt?: T;
   globalType?: T;

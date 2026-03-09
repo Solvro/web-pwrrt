@@ -14,7 +14,7 @@ import { Logo } from "./logo";
 import { TextTicker } from "./text-ticker";
 import { UserMenu } from "./usermenu/user-menu";
 
-export function Navbar() {
+export function Navbar({ bannerItems = [] }: { bannerItems?: string[] }) {
   const [atTop, setAtTop] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
   const [hideNavbar, setHideNavbar] = useState(false);

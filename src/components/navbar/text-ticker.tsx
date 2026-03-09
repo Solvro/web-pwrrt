@@ -22,7 +22,7 @@ export function TextTicker({ items, speed = 40 }: TextTickerProps) {
       className="flex items-center gap-10"
     >
       <span className="mx-4">{item}</span>
-      <span className="mr-9">--</span>
+      <span className="mr-9">—</span>
     </div>
   ));
 

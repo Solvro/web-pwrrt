@@ -44,9 +44,6 @@ function MeetOurTeamSection() {
           <Text font="monument-extended-light" color="white" small>
             <span className="tracking-wide">{t("quote1")}</span>
           </Text>
-          <Text font="monument-extended-light" color="white" small>
-            <span className="tracking-wide">{t("quote2")}</span>
-          </Text>
           <div className="mt-4 flex items-end justify-end">
             <div className="flex items-center justify-center gap-4">
               <div className="opacity-60">
@@ -57,7 +54,7 @@ function MeetOurTeamSection() {
                   opacity1
                   right
                 >
-                  TME.COM
+                  motosport.pzm.pl
                 </Text>
               </div>
               <div className="text-custom-red text-2xl leading-none font-bold">

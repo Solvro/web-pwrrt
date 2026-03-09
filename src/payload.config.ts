@@ -15,6 +15,7 @@ import { News } from "./collections/news";
 import Partners from "./collections/partners";
 import { TeamMembers } from "./collections/team-members";
 import { Users } from "./collections/users";
+import Banner from "./globals/banner";
 import Contact from "./globals/contact";
 import Departments from "./globals/departments";
 import FooterSection from "./globals/footer-section";
@@ -50,6 +51,7 @@ export default buildConfig({
     Contact,
     Recruitment,
     TeamHistory,
+    Banner,
   ],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET ?? "",
