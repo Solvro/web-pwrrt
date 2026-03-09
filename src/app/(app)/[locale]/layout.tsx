@@ -109,7 +109,7 @@ export default async function LocaleLayout({
         />
         <NextIntlClientProvider>
           <ClientProviders>
-            <Navbar bannerItems={bannerItems} />
+            <Navbar />
             {children}
             <FooterSection />
             <ToasterProvider />
