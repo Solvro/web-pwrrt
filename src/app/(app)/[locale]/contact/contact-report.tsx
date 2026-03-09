@@ -1,5 +1,4 @@
 "use client";
-
 /// <reference types="grecaptcha" />
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useTranslations } from "next-intl";
