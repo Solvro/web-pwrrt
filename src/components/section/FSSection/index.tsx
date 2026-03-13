@@ -18,7 +18,7 @@ export function FSSection({ aboutUs = false }: FSSectionProps) {
   return (
     <div
       id="formulastudent-section"
-      className="relative bg-white py-8 md:py-20"
+      className="relative bg-[#110F0F] py-8 md:py-20"
     >
       <Container>
         <div className="">
@@ -26,7 +26,7 @@ export function FSSection({ aboutUs = false }: FSSectionProps) {
             <div className="">
               {aboutUs ? (
                 <div className="my-6">
-                  <Title size="big" color="black">
+                  <Title size="big" color="white">
                     {t("title")}
                   </Title>
                 </div>
@@ -36,8 +36,12 @@ export function FSSection({ aboutUs = false }: FSSectionProps) {
                   {t("title")}
                 </Title>
               )}
-              <div className={aboutUs ? "" : "my-2 md:my-6"}>
-                <Text color="gray">{t("description")}</Text>
+              <div
+                className={
+                  aboutUs ? "font-pp-monument-extended" : "my-2 md:my-6"
+                }
+              >
+                <Text color="white">{t("description")}</Text>
               </div>
               {!aboutUs && (
                 <SecondaryButton

@@ -15,10 +15,12 @@ interface NavAboutItemProps {
 
 function NavAboutItem({ children, scrollToId }: NavAboutItemProps) {
   return (
-    <li className="min-w-fit p-2 first:pl-0 md:p-8">
+    <li className="min-w-fit p-2 first:pl-0 last:flex last:basis-full last:justify-center lg:p-8 lg:last:block lg:last:basis-auto">
       <Link href={`#${scrollToId}`} passHref scroll>
         <div className="hover:text-custom-red w-full cursor-pointer text-left duration-300 ease-in-out">
-          <Text bold>{children}</Text>
+          <Text bold>
+            <span className="tracking-wider">{children}</span>
+          </Text>
         </div>
       </Link>
     </li>
@@ -29,10 +31,10 @@ export function NavAbout() {
   const t = useTranslations("navAbout");
   return (
     <div className="bg-black pt-160">
-      <div className="relative bg-white">
+      <div className="relative bg-neutral-800">
         <Container>
           <div className="w-full">
-            <ul className="my-4 mb-8 flex justify-center md:justify-start">
+            <ul className="font-monument-extended mb-8 flex flex-wrap justify-center text-white sm:flex-nowrap md:justify-start">
               <NavAboutItem scrollToId="garage-section">
                 {t("garage")}
               </NavAboutItem>
@@ -60,12 +62,14 @@ export function NavAbout() {
                   }}
                 />
               </div>
-              <div className="flex flex-col gap-8 md:w-3/5">
-                <Text color="black" bold>
-                  {t("paragraph1")}
+              <div className="font-pp-monument-extended flex flex-col gap-8 md:w-3/5">
+                <Text color="white" bold>
+                  <span className="font-monument-extended tracking-widest">
+                    {t("paragraph1")}
+                  </span>
                 </Text>
-                <Text color="black">{t("paragraph2")}</Text>
-                <Text color="black">{t("paragraph3")}</Text>
+                <Text color="white">{t("paragraph2")}</Text>
+                <Text color="white">{t("paragraph3")}</Text>
               </div>
             </div>
           </div>

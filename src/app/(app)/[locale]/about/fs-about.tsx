@@ -15,11 +15,11 @@ export function FSAbout() {
   const t = useTranslations("fsAbout");
 
   return (
-    <div className="relative bg-white">
+    <div className="relative bg-[#110F0F]">
       <Container>
         <div className="w-full">
           <div className="">
-            <Title wrap size="medium" color="black">
+            <Title wrap size="medium" color="white">
               {t("dynamicCompetitions")}
             </Title>
             <div className="my-6 grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-4">
@@ -54,7 +54,7 @@ export function FSAbout() {
             </div>
           </div>
           <div className="my-8 md:my-12">
-            <Title wrap size="medium" color="black">
+            <Title wrap size="medium" color="white">
               {t("staticCompetitions")}
             </Title>
             <div className="my-6 grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3">

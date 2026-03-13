@@ -62,11 +62,11 @@ export function DepartmentsAbout({ lightMode }: DepartmentsAboutProps) {
   ] as const;
 
   return (
-    <div id="department-section" className="relative bg-white">
+    <div id="department-section" className="relative bg-black">
       {lightMode ? (
         <div className="mt-12 mb-6 flex flex-col gap-6 text-center">
           <Container>
-            <Title wrap color="black">
+            <Title wrap color="white" className="font-monument-extended">
               {t("interestedIn")}
             </Title>
           </Container>
@@ -149,13 +149,13 @@ export function DepartmentsAbout({ lightMode }: DepartmentsAboutProps) {
         </div>
       ) : (
         <Container>
-          <div className="mb-4 w-full md:mb-6">
-            <Title color="black">{t("title")}</Title>
+          <div className="font-pp-monument-extended mt-4 mb-4 w-full md:mt-12">
+            <Title color="white">{t("title")}</Title>
           </div>
         </Container>
       )}
       <div className="w-full">
-        <div className="flex flex-col">
+        <div className="font-pp-monument-extended flex flex-col gap-12 md:gap-20">
           {departments.map((department, index) => (
             <DepartmentElement
               key={department.name}

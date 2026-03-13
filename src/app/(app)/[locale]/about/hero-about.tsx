@@ -29,7 +29,7 @@ export function HeroAbout() {
         <div className="z-10 bg-neutral-900 pt-[100px] opacity-90 md:opacity-100">
           <div className="h-full p-8 md:p-20">
             <div className="flex h-full max-w-[400px] flex-col justify-between">
-              <h1 className="font-syncopate text-3xl font-extrabold text-white lg:text-5xl">
+              <h1 className="font-monument-extended text-3xl font-extrabold tracking-widest text-white lg:text-5xl">
                 {t("title")}
               </h1>
               <svg

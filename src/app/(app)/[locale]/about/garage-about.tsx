@@ -26,10 +26,10 @@ export function GarageAbout() {
   const [isHovered, setIsHovered] = useState(false);
 
   return (
-    <div id="garage-section" className="relative bg-white pt-12 md:pt-20">
+    <div id="garage-section" className="relative bg-neutral-800 py-12 md:py-20">
       <Container>
-        <div className="w-full">
-          <Title color="black">{t("title")}</Title>
+        <div className="font-pp-monument-extended w-full">
+          <Title color="white">{t("title")}</Title>
           <div className="mt-4 grid grid-cols-1 gap-6 md:grid-cols-5 md:gap-20">
             <div className="col-span-3 flex flex-col gap-6 md:gap-8">
               <div className="relative hidden h-2/3 md:block">
@@ -44,7 +44,7 @@ export function GarageAbout() {
                   }}
                 />
               </div>
-              <Text color="black">{t("paragraph")}</Text>
+              <Text color="white">{t("paragraph")}</Text>
               <div className="flex flex-col items-center justify-between gap-6 md:flex-row md:gap-0">
                 <button
                   onClick={handleMapClick}
