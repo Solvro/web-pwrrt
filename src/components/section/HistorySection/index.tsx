@@ -18,11 +18,11 @@ export function HistorySection({ aboutUs = false }: HistorySectionProps) {
   const t = useTranslations("historySection");
 
   return (
-    <div id="history-section" className="relative bg-white">
+    <div id="history-section" className="relative bg-[#110F0F]">
       <Container>
-        <div className="my-8 md:my-28">
-          <div className="hidden md:mb-8 md:block">
-            {aboutUs ? <Title color="black">{t("title")}</Title> : null}
+        <div className="my-8 md:my-20">
+          <div className="font-monument-extended hidden md:mb-8 md:block">
+            {aboutUs ? <Title color="white">{t("title")}</Title> : null}
           </div>
           <div className="grid grid-cols-1 gap-4 md:gap-20 lg:grid-cols-2">
             <div className="relative order-3 flex h-88 items-center justify-center lg:order-1 lg:h-full">
@@ -57,8 +57,10 @@ export function HistorySection({ aboutUs = false }: HistorySectionProps) {
                       {t("members")}
                     </Text>
                   </div>
-                  <Text center color="gray">
-                    {t("membersDescription")}
+                  <Text center color="white">
+                    <span className="font-pp-monument-extended">
+                      {t("membersDescription")}
+                    </span>
                   </Text>
                 </div>
                 <div className="flex flex-col">
@@ -70,8 +72,10 @@ export function HistorySection({ aboutUs = false }: HistorySectionProps) {
                       {t("projects")}
                     </Text>
                   </div>
-                  <Text center color="gray">
-                    {t("projectsDescription")}
+                  <Text center color="white">
+                    <span className="font-pp-monument-extended">
+                      {t("projectsDescription")}
+                    </span>
                   </Text>
                 </div>
                 <div className="flex flex-col">
@@ -83,8 +87,10 @@ export function HistorySection({ aboutUs = false }: HistorySectionProps) {
                       {t("achievements")}
                     </Text>
                   </div>
-                  <Text center color="gray">
-                    {t("achievementsDescription")}
+                  <Text center color="white">
+                    <span className="font-pp-monument-extended">
+                      {t("achievementsDescription")}
+                    </span>
                   </Text>
                 </div>
                 <div className="flex flex-col">
@@ -96,17 +102,19 @@ export function HistorySection({ aboutUs = false }: HistorySectionProps) {
                       {t("formmulaStudentPlace")}
                     </Text>
                   </div>
-                  <Text center color="gray">
-                    {t("formmulaStudentPlaceDescription")}
+                  <Text center color="white">
+                    <span className="font-pp-monument-extended">
+                      {t("formmulaStudentPlaceDescription")}
+                    </span>
                   </Text>
                 </div>
               </div>
-              <div className="">
-                <Title wrap size="big" color="black">
+              <div className="font-pp-monument-extended">
+                <Title wrap size="big" color="white">
                   {t("subtitle")}
                 </Title>
                 <div className="my-2">
-                  <Text color="gray">{t("description")}</Text>
+                  <Text color="white">{t("description")}</Text>
                 </div>
                 {!aboutUs && (
                   <SecondaryButton
