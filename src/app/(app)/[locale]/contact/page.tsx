@@ -29,6 +29,34 @@ interface TeamMember {
 
 type RoleHistory = Record<string, Role[]>;
 
+const mockMembersData = {
+  "kamil wadas": {
+    phone: "+48882454945",
+    role: "Team Leader",
+    email: "kamil.wadas.pwrrt@gmail.com",
+  },
+  "bartosz sobczak": {
+    phone: "+48667590471",
+    role: "Technical Leader",
+    email: "bartosz.sobczak.pwrrt@gmail.com",
+  },
+  "yelizaveta amelyaniuk": {
+    phone: "+48511048456",
+    role: "Marketing Leader",
+    email: "yelizaveta.amelyaniuk.pwrrt@gmail.com",
+  },
+  "hubert kiernożycki": {
+    phone: "+48570040806",
+    role: "Business Leader",
+    email: "hubert.kiernozycki.pwrrt@gmail.com",
+  },
+  "joanna popielewska": {
+    phone: "+48510550505",
+    role: "Financial Leader",
+    email: "joanna.popielewska.pwrrt@gmail.com",
+  },
+};
+
 const getMembersData = async (
   names: string[],
   bolidName: string,
@@ -43,15 +71,24 @@ const getMembersData = async (
       const member2 = memberData[0];
       const currentRole =
         member2.roles.find((role: Role) => role.bolidName === bolidName)
-          ?.role ?? "No current role";
+          ?.role ??
+        mockMembersData[member as keyof typeof mockMembersData].role;
+
+      const phoneNumber =
+        member2.phoneNumber ??
+        mockMembersData[member as keyof typeof mockMembersData].phone;
+      const email =
+        member2.email ??
+        mockMembersData[member as keyof typeof mockMembersData].email;
 
       teamMembers.push({
         ...member2,
         currentRole,
+        phoneNumber,
+        email,
       });
     }
   }
-
   return teamMembers;
 };
 
@@ -75,20 +112,11 @@ export default async function ContactUsRedesign() {
       "hubert kiernożycki",
       "joanna popielewska",
     ],
-    "RT15e",
-  );
-
-  const projectSupervisors = await getMembersData(
-    [
-      "dr hab. inż. Anna Janicka",
-      "dr hab. inż. Damian Derlukiewicz",
-      "dr inż. Gustaw Sierzputowski",
-    ],
-    "RT14e",
+    "RT16e",
   );
 
   const roleHistory: RoleHistory = {};
-  for (const member of [...mainMembers, ...projectSupervisors]) {
+  for (const member of mainMembers) {
     const memberFullName = `${member.name} ${member.surname}`;
     roleHistory[memberFullName] = sortRoles(
       member.roles.map((role) => ({
@@ -162,9 +190,7 @@ export default async function ContactUsRedesign() {
               className="flex flex-col gap-6"
             >
               <UserCard member={member} roleHistory={roleHistory} />
-              <EmailAction
-                email={member.email ?? "pawel.wojcik.pwrrt@gmail.com"}
-              />
+              <EmailAction email={member.email ?? "Brak emailu"} />
               <EmailAction
                 email={formatPhoneNumber(member.phoneNumber) || "Brak numeru"}
               />
