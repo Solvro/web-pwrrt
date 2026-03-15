@@ -97,7 +97,7 @@ export function PartnersSection({ sponsors }: PartnersSectionProps) {
     { key: "bronze", label: t("brązowi") },
   ] as const;
 
-  const [active, setActive] = useState<SponsorKey>("bronze");
+  const [active, setActive] = useState<SponsorKey>("strategic");
   return (
     <div className="flex min-h-[20vh] flex-col justify-between gap-5 bg-[var(--color-partners-section)] pt-15 pr-10 pb-15 pl-10 md:flex-row md:gap-0 lg:pr-25 lg:pl-25">
       <div className="flex w-[70%] flex-col gap-2 sm:w-[40%]">
