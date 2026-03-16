@@ -31,7 +31,7 @@ const FooterSection: GlobalConfig = {
       name: "phone",
       type: "text",
       label: "Numer telefonu",
-      defaultValue: "+48 882 454 945",
+      defaultValue: "+48 510 550 505",
       required: true,
     },
     {
