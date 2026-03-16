@@ -4,6 +4,7 @@ import Link from "next/link";
 
 import { getTeamByFullName } from "@/actions/team";
 import { Text } from "@/components/text";
+import { getContactData } from "@/functions/contact";
 import { cn } from "@/lib/utils";
 
 import { UserCard } from "../team/[teamId]/user-card";
@@ -67,6 +68,10 @@ const formatPhoneNumber = (phoneNumber: string | null | undefined) => {
 
 export default async function ContactUsRedesign() {
   const t = await getTranslations("contactUs");
+  const contactData = await getContactData();
+  const phoneNumber = contactData.phoneNumber?.trim() ?? "";
+  const phoneHref = phoneNumber.replaceAll(/\s+/g, "");
+
   const mainMembers = await getMembersData(
     [
       "kamil wadas",
@@ -120,10 +125,10 @@ export default async function ContactUsRedesign() {
               PWR.RACING@GMAIL.COM
             </Link>
             <Link
-              href="tel:+48 882 454 945"
+              href={`tel:${phoneHref}`}
               className="text-l mt-1 text-center font-medium md:text-base"
             >
-              +48 882 454 945
+              {phoneNumber}
             </Link>
           </div>
         </div>

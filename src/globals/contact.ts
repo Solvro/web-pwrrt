@@ -30,7 +30,7 @@ const Contact: GlobalConfig = {
       name: "phoneNumber",
       label: "Numer telefonu",
       type: "text",
-      defaultValue: "+48 517 350 915",
+      defaultValue: "+48 510 550 505",
       required: true,
     },
   ],
