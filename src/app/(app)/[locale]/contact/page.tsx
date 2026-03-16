@@ -75,7 +75,6 @@ export default async function ContactUs() {
 
   const mainMembers = await getMembersData(
     [
-      "kamil wadas",
       "bartosz sobczak",
       "yelizaveta amelyaniuk",
       "hubert kiernożycki",
