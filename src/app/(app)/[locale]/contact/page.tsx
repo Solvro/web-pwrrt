@@ -69,7 +69,7 @@ const formatPhoneNumber = (phoneNumber: string | null | undefined) => {
 export default async function ContactUsRedesign() {
   const t = await getTranslations("contactUs");
   const contactData = await getContactData();
-  const phoneNumber = contactData.phoneNumber?.trim() ?? "";
+  const phoneNumber = contactData.phoneNumber.trim();
   const phoneHref = phoneNumber.replaceAll(/\s+/g, "");
 
   const mainMembers = await getMembersData(
