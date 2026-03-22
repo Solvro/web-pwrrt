@@ -37,6 +37,25 @@ function organizeMembersByDepartment(
   members: ProcessedTeamMember[],
   bolidName: string,
 ): Record<string, MemberByDepartment[]> {
+  const normalizeRole = (role: string): string => {
+    return role
+      .replace(/\u00A0/g, " ")
+      .replace(/\s+/g, " ")
+      .trim()
+      .toUpperCase();
+  };
+
+  const getRolePriority = (role: string): number => {
+    const normalized = normalizeRole(role);
+    if (/\bTEAM\s+LEADER\b/.test(normalized)) {
+      return 0;
+    }
+    if (/\bTECHNICAL\s+LEADER\b/.test(normalized)) {
+      return 1;
+    }
+    return 2;
+  };
+
   const byDepartment: Record<string, MemberByDepartment[]> = {};
 
   for (const member of members) {
@@ -62,6 +81,14 @@ function organizeMembersByDepartment(
         });
       }
     }
+  }
+
+  for (const departmentMembers of Object.values(byDepartment)) {
+    departmentMembers.sort((a, b) => {
+      const priorityA = getRolePriority(a.role);
+      const priorityB = getRolePriority(b.role);
+      return priorityA - priorityB;
+    });
   }
 
   return byDepartment;
