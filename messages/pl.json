@@ -106,7 +106,11 @@
     "TXTpower": "MOC BOLIDU",
     "TXTmass": "MASA POJAZDU",
     "achievements": "OSIĄGNIĘCIA ZA SEZON",
-    "underConstruction": "W TRAKCIE BUDOWY"
+    "underConstruction": "W TRAKCIE BUDOWY",
+    "callMe": "Zadzwoń do mnie!",
+    "writeToMe": "Napisz do mnie!",
+    "emailClipboardSuccess": "E-mail skopiowany do schowka!",
+    "emailClipboardError": "Nie udało się skopiować e-maila."
   },
   "heroAbout": {
     "title": "POZNAJ NASZ ZESPÓŁ"

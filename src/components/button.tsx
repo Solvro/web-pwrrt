@@ -68,31 +68,35 @@ export function Button({
   };
 
   const defaultContent = (
-    <div className="relative mx-2 flex items-center justify-start gap-2">
-      {Icon ? <Icon size={24} className="size-5" /> : null}
-      <span
+    <div className="relative mx-2 w-full">
+      <div
         className={cn(
-          "flex w-full items-center justify-center transition-opacity duration-300 ease-in-out",
+          "flex w-full items-center justify-center gap-2 transition-opacity duration-300 ease-in-out",
           {
             "opacity-0": isHovered && hoverText,
             "opacity-100": !isHovered || !hoverText,
           },
         )}
       >
-        {label}
-      </span>
+        {Icon ? <Icon size={24} className="size-5 shrink-0" /> : null}
+        <span className="truncate">{label}</span>
+      </div>
+
       {hoverText ? (
-        <span
+        <div
           className={cn(
-            "absolute inset-0 transition-opacity duration-300 ease-in-out",
+            "absolute inset-0 flex w-full items-center justify-center gap-2 transition-opacity duration-300 ease-in-out",
             {
               "opacity-100": isHovered,
               "opacity-0": !isHovered,
             },
           )}
         >
-          {hoverText.includes("+") ? formatPhoneNumber(hoverText) : hoverText}
-        </span>
+          {Icon ? <Icon size={24} className="size-5 shrink-0" /> : null}
+          <span className="truncate">
+            {hoverText.includes("+") ? formatPhoneNumber(hoverText) : hoverText}
+          </span>
+        </div>
       ) : null}
     </div>
   );
