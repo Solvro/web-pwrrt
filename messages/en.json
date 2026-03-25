@@ -106,7 +106,11 @@
     "TXTpower": "ENGINE POWER",
     "TXTmass": "VEHICLE MASS",
     "achievements": "ACHIEVEMENTS FOR THE SEASON",
-    "underConstruction": "UNDER CONSTRUCTION"
+    "underConstruction": "UNDER CONSTRUCTION",
+    "callMe": "Call me!",
+    "writeToMe": "Write to me!",
+    "emailClipboardSuccess": "E-mail copied to clipboard!",
+    "emailClipboardError": "Failed to copy e-mail."
   },
   "heroAbout": {
     "title": "MEET OUR TEAM"

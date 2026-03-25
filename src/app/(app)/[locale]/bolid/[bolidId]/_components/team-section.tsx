@@ -1,11 +1,10 @@
-import TeamPlaceholderImage from "@public/images/TeamPlaceholder.jpg";
 import { getTranslations } from "next-intl/server";
-import Image from "next/image";
 
 import type { ProcessedTeamMember } from "@/actions/team";
 import { Container } from "@/components/container";
-import { getUrlFromMedia } from "@/lib/utils";
 import type { Media } from "@/payload-types";
+
+import MemberCard from "./member-card";
 
 interface TeamSectionProps {
   bolidName: string;
@@ -16,7 +15,15 @@ interface MemberByDepartment {
   name: string;
   surname: string;
   role: string;
+  phoneNumber?: string | null;
+  email?: string | null;
   profile?: Media | null;
+}
+
+interface RoleHistoryItem {
+  role: string;
+  bolidName: string;
+  department: string;
 }
 
 const DEPARTMENT_ORDER = [
@@ -36,13 +43,33 @@ const DEPARTMENT_ORDER = [
 function organizeMembersByDepartment(
   members: ProcessedTeamMember[],
   bolidName: string,
-): Record<string, MemberByDepartment[]> {
+): {
+  byDepartment: Record<string, MemberByDepartment[]>;
+  roleHistory: Record<string, RoleHistoryItem[]>;
+} {
   const normalizeRole = (role: string): string => {
     return role
       .replace(/\u00A0/g, " ")
       .replace(/\s+/g, " ")
       .trim()
       .toUpperCase();
+  };
+
+  const parseBolidName = (name: string): number => {
+    if (name === "RTX") {
+      return 10;
+    }
+
+    const match = /RT(\d+)/.exec(name);
+    return match ? Number.parseInt(match[1], 10) : 0;
+  };
+
+  const sortRoleHistory = (roles: RoleHistoryItem[]): RoleHistoryItem[] => {
+    return roles.toSorted((a, b) => {
+      const aValue = parseBolidName(a.bolidName);
+      const bValue = parseBolidName(b.bolidName);
+      return bValue - aValue;
+    });
   };
 
   const getRolePriority = (role: string): number => {
@@ -57,9 +84,24 @@ function organizeMembersByDepartment(
   };
 
   const byDepartment: Record<string, MemberByDepartment[]> = {};
+  const roleHistory: Record<string, RoleHistoryItem[]> = {};
 
   for (const member of members) {
+    const memberName = member.name || "Unknown";
+    const memberSurname = member.surname || "Member";
+    const memberFullName = `${memberName} ${memberSurname}`;
     const roles = Array.isArray(member.roles) ? member.roles : [];
+
+    roleHistory[memberFullName] = roleHistory[memberFullName] ?? [];
+
+    for (const role of roles) {
+      roleHistory[memberFullName].push({
+        role: role.role || "N/A",
+        bolidName: role.bolidName || "N/A",
+        department: role.department || "N/A",
+      });
+    }
+
     const currentRole = roles.find((r) => r.bolidName === bolidName);
 
     if (currentRole) {
@@ -67,16 +109,18 @@ function organizeMembersByDepartment(
 
       byDepartment[department] = byDepartment[department] ?? [];
 
-      const memberKey = `${member.name}-${member.surname}`;
+      const memberKey = `${memberName}-${memberSurname}`;
       const exists = byDepartment[department].some(
         (m) => `${m.name}-${m.surname}` === memberKey,
       );
 
       if (!exists) {
         byDepartment[department].push({
-          name: member.name || "Unknown",
-          surname: member.surname || "Member",
+          name: memberName,
+          surname: memberSurname,
           role: currentRole.role || "N/A",
+          phoneNumber: member.phoneNumber ?? null,
+          email: member.email ?? null,
           profile: member.profile,
         });
       }
@@ -91,7 +135,11 @@ function organizeMembersByDepartment(
     });
   }
 
-  return byDepartment;
+  for (const key of Object.keys(roleHistory)) {
+    roleHistory[key] = sortRoleHistory(roleHistory[key]);
+  }
+
+  return { byDepartment, roleHistory };
 }
 
 function sortDepartments(departments: string[]): string[] {
@@ -125,10 +173,8 @@ export async function TeamSection({
 }: TeamSectionProps) {
   const t = await getTranslations("bolidSection");
 
-  const membersByDepartment = organizeMembersByDepartment(
-    teamMembers,
-    bolidName,
-  );
+  const { byDepartment: membersByDepartment, roleHistory } =
+    organizeMembersByDepartment(teamMembers, bolidName);
   const sortedDepartments = sortDepartments(Object.keys(membersByDepartment));
 
   if (sortedDepartments.length === 0) {
@@ -158,31 +204,13 @@ export async function TeamSection({
               </div>
               <div className="grid grid-cols-2 gap-6 md:grid-cols-3 lg:grid-cols-4">
                 {membersByDepartment[department].map((member) => (
-                  <div
+                  <MemberCard
                     key={`${member.name}-${member.surname}-${member.role}`}
-                    className="flex flex-col"
-                  >
-                    <div className="mb-3 h-100 w-full overflow-hidden rounded-md bg-gray-200">
-                      <Image
-                        src={
-                          member.profile
-                            ? getUrlFromMedia(member.profile)
-                            : TeamPlaceholderImage
-                        }
-                        alt={`${member.name} ${member.surname}`}
-                        width={1080}
-                        height={1920}
-                        unoptimized
-                        className="h-full w-full object-cover"
-                      />
-                    </div>
-                    <p className="font-sculptor text-muted-foreground text-xs uppercase">
-                      {member.role}
-                    </p>
-                    <p className="font-gilroy-heavy text-lg font-bold capitalize">
-                      {member.name} {member.surname}
-                    </p>
-                  </div>
+                    member={member}
+                    roleHistory={
+                      roleHistory[`${member.name} ${member.surname}`] ?? []
+                    }
+                  />
                 ))}
               </div>
             </div>
