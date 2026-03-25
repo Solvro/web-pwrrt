@@ -3,8 +3,18 @@ import type { CollectionConfig } from "payload";
 export const TeamMembers: CollectionConfig = {
   slug: "teamMembers",
   admin: {
-    useAsTitle: "name",
+    useAsTitle: "fullName",
     defaultColumns: ["name", "surname", "email", "roles"],
+  },
+  hooks: {
+    beforeChange: [
+      ({ data }) => {
+        if (data.name && data.surname) {
+          data.fullName = `${data.name} ${data.surname}`;
+        }
+        return data;
+      },
+    ],
   },
   fields: [
     {
@@ -20,6 +30,13 @@ export const TeamMembers: CollectionConfig = {
       type: "text",
       required: true,
       admin: { placeholder: "Kowalski" },
+    },
+    {
+      name: "fullName",
+      type: "text",
+      admin: {
+        hidden: true,
+      },
     },
     {
       name: "profile",

@@ -2,10 +2,10 @@ import { getTranslations } from "next-intl/server";
 import Image from "next/image";
 import Link from "next/link";
 
-import { getTeamByFullName } from "@/actions/team";
 import { Text } from "@/components/text";
 import { getContactData } from "@/functions/contact";
 import { cn } from "@/lib/utils";
+import type { TeamMember as PayloadTeamMember } from "@/payload-types";
 
 import { UserCard } from "../team/[teamId]/user-card";
 import { sortRoles } from "../team/[teamId]/utils";
@@ -20,41 +20,17 @@ interface Role {
 }
 
 interface TeamMember {
+  id: string;
   name: string;
   surname: string;
   roles: Role[];
   currentRole: string;
   phoneNumber?: string | null;
   email?: string | null;
+  profile?: any | null;
 }
 
 type RoleHistory = Record<string, Role[]>;
-
-const getMembersData = async (
-  names: string[],
-  bolidName: string,
-): Promise<TeamMember[]> => {
-  const teamMembers: TeamMember[] = [];
-
-  for (const member of names) {
-    const [name, ...rest] = member.split(" ");
-    const surname = rest.join(" ");
-    const memberData = await getTeamByFullName(name, surname);
-    if (memberData.length > 0) {
-      const member2 = memberData[0];
-      const currentRole =
-        member2.roles.find((role: Role) => role.bolidName === bolidName)
-          ?.role ?? "No current role";
-
-      teamMembers.push({
-        ...member2,
-        currentRole,
-      });
-    }
-  }
-
-  return teamMembers;
-};
 
 const formatPhoneNumber = (phoneNumber: string | null | undefined) => {
   if (!phoneNumber) {
@@ -72,27 +48,34 @@ export default async function ContactUsRedesign() {
   const phoneNumber = contactData.phoneNumber.trim();
   const phoneHref = phoneNumber.replaceAll(/\s+/g, "");
 
-  const mainMembers = await getMembersData(
-    [
-      "bartosz sobczak",
-      "yelizaveta amelyaniuk",
-      "hubert kiernożycki",
-      "joanna popielewska",
-    ],
-    "RT15e",
-  );
+  const mainMembers: TeamMember[] = (contactData.people || []).map(
+    (person: { member?: string | PayloadTeamMember }) => {
+      const member = typeof person.member === "object" ? person.member : null;
+      if (!member) {
+        throw new Error("Member is missing");
+      }
 
-  const projectSupervisors = await getMembersData(
-    [
-      "dr hab. inż. Anna Janicka",
-      "dr hab. inż. Damian Derlukiewicz",
-      "dr inż. Gustaw Sierzputowski",
-    ],
-    "RT14e",
+      const profile = member.profile
+        ? typeof member.profile === "object"
+          ? member.profile
+          : null
+        : null;
+
+      return {
+        id: member.id,
+        name: member.name,
+        surname: member.surname,
+        roles: member.roles,
+        currentRole: member.roles?.[0]?.role,
+        email: member.email,
+        phoneNumber: member.phoneNumber,
+        profile: profile as any,
+      };
+    },
   );
 
   const roleHistory: RoleHistory = {};
-  for (const member of [...mainMembers, ...projectSupervisors]) {
+  for (const member of [...mainMembers]) {
     const memberFullName = `${member.name} ${member.surname}`;
     roleHistory[memberFullName] = sortRoles(
       member.roles.map((role) => ({
@@ -166,9 +149,7 @@ export default async function ContactUsRedesign() {
               className="flex flex-col gap-6"
             >
               <UserCard member={member} roleHistory={roleHistory} />
-              <EmailAction
-                email={member.email ?? "pawel.wojcik.pwrrt@gmail.com"}
-              />
+              <EmailAction email={member.email ?? "Brak adresu e-mail"} />
               <EmailAction
                 email={formatPhoneNumber(member.phoneNumber) || "Brak numeru"}
               />

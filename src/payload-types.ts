@@ -239,6 +239,7 @@ export interface TeamMember {
   id: string;
   name: string;
   surname: string;
+  fullName?: string | null;
   profile?: (string | null) | Media;
   roles: {
     role: string;
@@ -486,6 +487,7 @@ export interface PartnersSelect<T extends boolean = true> {
 export interface TeamMembersSelect<T extends boolean = true> {
   name?: T;
   surname?: T;
+  fullName?: T;
   profile?: T;
   roles?:
     | T
@@ -638,10 +640,7 @@ export interface Contact {
   id: string;
   people?:
     | {
-        name: string;
-        role: string;
-        email: string;
-        photo?: (string | null) | Media;
+        member: string | TeamMember;
         id?: string | null;
       }[]
     | null;
@@ -750,10 +749,7 @@ export interface ContactSelect<T extends boolean = true> {
   people?:
     | T
     | {
-        name?: T;
-        role?: T;
-        email?: T;
-        photo?: T;
+        member?: T;
         id?: T;
       };
   phoneNumber?: T;
