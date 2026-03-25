@@ -27,7 +27,7 @@ interface TeamMember {
   currentRole: string;
   phoneNumber?: string | null;
   email?: string | null;
-  profile?: any | null;
+  profile?: Exclude<PayloadTeamMember["profile"], string> | null;
 }
 
 type RoleHistory = Record<string, Role[]>;
@@ -48,7 +48,7 @@ export default async function ContactUsRedesign() {
   const phoneNumber = contactData.phoneNumber.trim();
   const phoneHref = phoneNumber.replaceAll(/\s+/g, "");
 
-  const mainMembers: TeamMember[] = (contactData.people || []).map(
+  const mainMembers: TeamMember[] = (contactData.people ?? []).map(
     (person: { member?: string | PayloadTeamMember }) => {
       const member = typeof person.member === "object" ? person.member : null;
       if (!member) {
@@ -66,16 +66,16 @@ export default async function ContactUsRedesign() {
         name: member.name,
         surname: member.surname,
         roles: member.roles,
-        currentRole: member.roles?.[0]?.role,
+        currentRole: member.roles[0]?.role ?? "",
         email: member.email,
         phoneNumber: member.phoneNumber,
-        profile: profile as any,
+        profile,
       };
     },
   );
 
   const roleHistory: RoleHistory = {};
-  for (const member of [...mainMembers]) {
+  for (const member of mainMembers) {
     const memberFullName = `${member.name} ${member.surname}`;
     roleHistory[memberFullName] = sortRoles(
       member.roles.map((role) => ({
