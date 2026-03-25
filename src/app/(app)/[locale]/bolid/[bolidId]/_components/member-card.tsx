@@ -8,7 +8,6 @@ import { FaCopy, FaEnvelope } from "react-icons/fa";
 import { FiPhone } from "react-icons/fi";
 
 import { Button } from "@/components/button";
-import { Text } from "@/components/text";
 import { getUrlFromMedia } from "@/lib/utils";
 import type { Media } from "@/payload-types";
 
@@ -61,7 +60,7 @@ const copyMailToClipboard = (
   };
 };
 
-const MemberCard = ({ member, roleHistory }: MemberCardProps) => {
+export function MemberCard({ member, roleHistory }: MemberCardProps) {
   const t = useTranslations("bolidSection");
 
   return (
@@ -162,6 +161,4 @@ const MemberCard = ({ member, roleHistory }: MemberCardProps) => {
       </p>
     </div>
   );
-};
-
-export default MemberCard;
+}
