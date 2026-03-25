@@ -4,7 +4,7 @@ import type { ProcessedTeamMember } from "@/actions/team";
 import { Container } from "@/components/container";
 import type { Media } from "@/payload-types";
 
-import MemberCard from "./member-card";
+import { MemberCard } from "./member-card";
 
 interface TeamSectionProps {
   bolidName: string;
@@ -40,6 +40,42 @@ const DEPARTMENT_ORDER = [
   "opiekun naukowy",
 ];
 
+const normalizeRole = (role: string): string => {
+  return role
+    .replaceAll("\u00A0", " ")
+    .replaceAll(/\s+/g, " ")
+    .trim()
+    .toUpperCase();
+};
+
+const parseBolidName = (name: string): number => {
+  if (name === "RTX") {
+    return 10;
+  }
+
+  const match = /RT(\d+)/.exec(name);
+  return match ? Number.parseInt(match[1], 10) : 0;
+};
+
+const sortRoleHistory = (roles: RoleHistoryItem[]): RoleHistoryItem[] => {
+  return roles.toSorted((a, b) => {
+    const aValue = parseBolidName(a.bolidName);
+    const bValue = parseBolidName(b.bolidName);
+    return bValue - aValue;
+  });
+};
+
+const getRolePriority = (role: string): number => {
+  const normalized = normalizeRole(role);
+  if (/\bTEAM\s+LEADER\b/.test(normalized)) {
+    return 0;
+  }
+  if (/\bTECHNICAL\s+LEADER\b/.test(normalized)) {
+    return 1;
+  }
+  return 2;
+};
+
 function organizeMembersByDepartment(
   members: ProcessedTeamMember[],
   bolidName: string,
@@ -47,42 +83,6 @@ function organizeMembersByDepartment(
   byDepartment: Record<string, MemberByDepartment[]>;
   roleHistory: Record<string, RoleHistoryItem[]>;
 } {
-  const normalizeRole = (role: string): string => {
-    return role
-      .replace(/\u00A0/g, " ")
-      .replace(/\s+/g, " ")
-      .trim()
-      .toUpperCase();
-  };
-
-  const parseBolidName = (name: string): number => {
-    if (name === "RTX") {
-      return 10;
-    }
-
-    const match = /RT(\d+)/.exec(name);
-    return match ? Number.parseInt(match[1], 10) : 0;
-  };
-
-  const sortRoleHistory = (roles: RoleHistoryItem[]): RoleHistoryItem[] => {
-    return roles.toSorted((a, b) => {
-      const aValue = parseBolidName(a.bolidName);
-      const bValue = parseBolidName(b.bolidName);
-      return bValue - aValue;
-    });
-  };
-
-  const getRolePriority = (role: string): number => {
-    const normalized = normalizeRole(role);
-    if (/\bTEAM\s+LEADER\b/.test(normalized)) {
-      return 0;
-    }
-    if (/\bTECHNICAL\s+LEADER\b/.test(normalized)) {
-      return 1;
-    }
-    return 2;
-  };
-
   const byDepartment: Record<string, MemberByDepartment[]> = {};
   const roleHistory: Record<string, RoleHistoryItem[]> = {};
 
