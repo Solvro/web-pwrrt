@@ -3,8 +3,8 @@
 import TeamPlaceholderImage from "@public/images/TeamPlaceholder.jpg";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
-import {  useEffect, useRef, useState } from "react";
-import type {KeyboardEvent} from "react";
+import { useEffect, useRef, useState } from "react";
+import type { KeyboardEvent } from "react";
 import { toast } from "react-hot-toast";
 import { FaCopy, FaEnvelope } from "react-icons/fa";
 import { FiPhone } from "react-icons/fi";
