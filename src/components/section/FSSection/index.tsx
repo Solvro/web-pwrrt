@@ -1,6 +1,6 @@
 "use client";
 
-import BolidFSImage from "@public/images/bolidFS.jpeg";
+import BolidFSImage from "@public/images/bolidFS.jpg";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
 

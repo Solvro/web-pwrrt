@@ -1,6 +1,6 @@
 "use client";
 
-import HistoryImage from "@public/images/history.jpg";
+import HistoryImage from "@public/images/our_history.jpg";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
 

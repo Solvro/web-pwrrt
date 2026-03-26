@@ -1,6 +1,6 @@
 "use client";
 
-import Image1 from "@public/images/poznaj_nas.jpg";
+import Image1 from "@public/images/meet_us.jpg";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
 import Link from "next/link";
