@@ -202,7 +202,7 @@ export async function TeamSection({
                   {department}
                 </h3>
               </div>
-              <div className="grid grid-cols-2 gap-6 md:grid-cols-3 lg:grid-cols-4">
+              <div className="grid grid-cols-2 gap-6 max-md:flex max-md:flex-col max-md:items-center md:grid-cols-3 lg:grid-cols-4">
                 {membersByDepartment[department].map((member) => (
                   <MemberCard
                     key={`${member.name}-${member.surname}-${member.role}`}

@@ -3,12 +3,14 @@
 import TeamPlaceholderImage from "@public/images/TeamPlaceholder.jpg";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
+import {  useEffect, useRef, useState } from "react";
+import type {KeyboardEvent} from "react";
 import { toast } from "react-hot-toast";
 import { FaCopy, FaEnvelope } from "react-icons/fa";
 import { FiPhone } from "react-icons/fi";
 
 import { Button } from "@/components/button";
-import { getUrlFromMedia } from "@/lib/utils";
+import { cn, getUrlFromMedia } from "@/lib/utils";
 import type { Media } from "@/payload-types";
 
 interface MemberByDepartment {
@@ -62,13 +64,68 @@ const copyMailToClipboard = (
 
 export function MemberCard({ member, roleHistory }: MemberCardProps) {
   const t = useTranslations("bolidSection");
+  const [isPhoneOverlayOpen, setIsPhoneOverlayOpen] = useState(false);
+  const cardRef = useRef<HTMLDivElement>(null);
+
+  const togglePhoneOverlay = () => {
+    if (window.innerWidth < 768) {
+      setIsPhoneOverlayOpen((previous) => !previous);
+    }
+  };
+
+  const handleCardKeyDown = (event: KeyboardEvent<HTMLDivElement>) => {
+    if (event.key === "Enter" || event.key === " ") {
+      event.preventDefault();
+      togglePhoneOverlay();
+    }
+  };
+
+  useEffect(() => {
+    if (!isPhoneOverlayOpen) {
+      return;
+    }
+
+    const handleOutsideClick = (event: PointerEvent) => {
+      if (window.innerWidth >= 768) {
+        return;
+      }
+      const target = event.target as Node | null;
+
+      if (cardRef.current && target && !cardRef.current.contains(target)) {
+        setIsPhoneOverlayOpen(false);
+      }
+    };
+
+    document.addEventListener("pointerdown", handleOutsideClick);
+    return () => {
+      document.removeEventListener("pointerdown", handleOutsideClick);
+    };
+  }, [isPhoneOverlayOpen]);
 
   return (
     <div
+      ref={cardRef}
       key={`${member.name}-${member.surname}-${member.role}`}
       className="flex flex-col"
     >
-      <div className="group relative mb-3 h-100 w-full overflow-hidden rounded-md bg-gray-200">
+      <div
+        className="group relative mb-3 h-100 w-full overflow-hidden rounded-md bg-gray-200"
+        role="button"
+        tabIndex={0}
+        onKeyDown={handleCardKeyDown}
+        onClick={(event) => {
+          if (window.innerWidth >= 768) {
+            return;
+          }
+
+          const target = event.target as HTMLElement;
+          if (target.closest("button, a")) {
+            return;
+          }
+
+          togglePhoneOverlay();
+        }}
+      >
         <Image
           src={
             member.profile
@@ -81,8 +138,14 @@ export function MemberCard({ member, roleHistory }: MemberCardProps) {
           unoptimized
           className="h-full w-full object-cover"
         />
+
         {roleHistory.length > 1 || member.email || member.phoneNumber ? (
-          <div className="absolute inset-0 z-10 translate-y-full transition-transform duration-300 ease-in-out group-hover:translate-y-0">
+          <div
+            className={cn(
+              "absolute inset-0 z-10 translate-y-full transition-transform duration-300 ease-in-out group-focus-within:translate-y-0 group-hover:translate-y-0",
+              isPhoneOverlayOpen && "max-md:translate-y-0",
+            )}
+          >
             <div className="absolute inset-0 bg-black/90" />
             <div className="absolute inset-0 z-0 h-full w-full rounded-full bg-white opacity-15 blur-3xl" />
 
