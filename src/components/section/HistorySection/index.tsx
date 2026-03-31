@@ -49,7 +49,7 @@ export function HistorySection({ aboutUs = false }: HistorySectionProps) {
                 } flex w-auto justify-between text-center lg:grid lg:w-full lg:grid-cols-2 lg:gap-8`}
               >
                 <div className="flex flex-col">
-                  <Counter targetNumber={90} size="bigger" color="red">
+                  <Counter targetNumber={120} size="bigger" color="red">
                     0
                   </Counter>
                   <div className="text-lg">
@@ -64,7 +64,7 @@ export function HistorySection({ aboutUs = false }: HistorySectionProps) {
                   </Text>
                 </div>
                 <div className="flex flex-col">
-                  <Counter targetNumber={15} size="bigger" color="red">
+                  <Counter targetNumber={16} size="bigger" color="red">
                     0
                   </Counter>
                   <div className="text-lg">
@@ -79,7 +79,7 @@ export function HistorySection({ aboutUs = false }: HistorySectionProps) {
                   </Text>
                 </div>
                 <div className="flex flex-col">
-                  <Counter targetNumber={21} size="bigger" color="red">
+                  <Counter targetNumber={33} size="bigger" color="red">
                     0
                   </Counter>
                   <div className="text-lg">
@@ -94,7 +94,7 @@ export function HistorySection({ aboutUs = false }: HistorySectionProps) {
                   </Text>
                 </div>
                 <div className="flex flex-col">
-                  <Counter targetNumber={33} size="bigger" color="red">
+                  <Counter targetNumber={40} size="bigger" color="red">
                     0
                   </Counter>
                   <div className="text-lg">
