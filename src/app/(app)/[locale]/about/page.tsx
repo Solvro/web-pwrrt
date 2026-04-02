@@ -18,6 +18,8 @@ export const metadata: Metadata = {
   title: "About Us",
 };
 
+export const dynamic = "force-dynamic";
+
 export default async function AboutUs() {
   const payload = await getPayload({ config });
   const teamStats = await payload.findGlobal({
