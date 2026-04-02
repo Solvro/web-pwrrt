@@ -103,8 +103,7 @@ export interface Config {
     'footer-section': FooterSection;
     'join-us': JoinUs;
     contact: Contact;
-    recruitment: Recruitment;
-    'team-history': TeamHistory;
+    'team-stats': TeamStat;
     banner: Banner;
   };
   globalsSelect: {
@@ -113,8 +112,7 @@ export interface Config {
     'footer-section': FooterSectionSelect<false> | FooterSectionSelect<true>;
     'join-us': JoinUsSelect<false> | JoinUsSelect<true>;
     contact: ContactSelect<false> | ContactSelect<true>;
-    recruitment: RecruitmentSelect<false> | RecruitmentSelect<true>;
-    'team-history': TeamHistorySelect<false> | TeamHistorySelect<true>;
+    'team-stats': TeamStatsSelect<false> | TeamStatsSelect<true>;
     banner: BannerSelect<false> | BannerSelect<true>;
   };
   locale: 'en' | 'pl';
@@ -650,25 +648,14 @@ export interface Contact {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "recruitment".
+ * via the `definition` "team-stats".
  */
-export interface Recruitment {
-  id: string;
-  active: boolean;
-  endDate: string;
-  link: string;
-  updatedAt?: string | null;
-  createdAt?: string | null;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "team-history".
- */
-export interface TeamHistory {
+export interface TeamStat {
   id: string;
   achievementsCount: number;
   projectsCount: number;
   membersCount: number;
+  formulaStudentPlaceCount: number;
   updatedAt?: string | null;
   createdAt?: string | null;
 }
@@ -759,24 +746,13 @@ export interface ContactSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "recruitment_select".
+ * via the `definition` "team-stats_select".
  */
-export interface RecruitmentSelect<T extends boolean = true> {
-  active?: T;
-  endDate?: T;
-  link?: T;
-  updatedAt?: T;
-  createdAt?: T;
-  globalType?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "team-history_select".
- */
-export interface TeamHistorySelect<T extends boolean = true> {
+export interface TeamStatsSelect<T extends boolean = true> {
   achievementsCount?: T;
   projectsCount?: T;
   membersCount?: T;
+  formulaStudentPlaceCount?: T;
   updatedAt?: T;
   createdAt?: T;
   globalType?: T;

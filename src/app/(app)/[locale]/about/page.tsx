@@ -1,4 +1,6 @@
+import config from "@payload-config";
 import type { Metadata } from "next";
+import { getPayload } from "payload";
 
 import { FSSection } from "@/components/section/FSSection";
 import { HistorySection } from "@/components/section/HistorySection";
@@ -16,13 +18,18 @@ export const metadata: Metadata = {
   title: "About Us",
 };
 
-export default function AboutUs() {
+export default async function AboutUs() {
+  const payload = await getPayload({ config });
+  const teamStats = await payload.findGlobal({
+    slug: "team-stats",
+  });
+
   return (
     <div className="">
       <HeroAbout />
       <NavAbout />
       <GarageAbout />
-      <HistorySection aboutUs />
+      <HistorySection aboutUs teamStats={teamStats} />
       <DepartmentsAbout />
       <FSSection aboutUs />
       <FSAbout />

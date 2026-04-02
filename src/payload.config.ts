@@ -21,8 +21,7 @@ import Departments from "./globals/departments";
 import FooterSection from "./globals/footer-section";
 import JoinUs from "./globals/join-us";
 import MainPage from "./globals/main-page";
-import Recruitment from "./globals/recruitment";
-import TeamHistory from "./globals/team-history";
+import TeamStats from "./globals/team-stats";
 
 const filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(filename);
@@ -49,8 +48,7 @@ export default buildConfig({
     FooterSection,
     JoinUs,
     Contact,
-    Recruitment,
-    TeamHistory,
+    TeamStats,
     Banner,
   ],
   editor: lexicalEditor(),
