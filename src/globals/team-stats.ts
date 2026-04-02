@@ -1,7 +1,7 @@
 import type { GlobalConfig } from "payload";
 
-const TeamHistory: GlobalConfig = {
-  slug: "team-history",
+const TeamStats: GlobalConfig = {
+  slug: "team-stats",
   access: { read: () => true },
   fields: [
     {
@@ -22,7 +22,13 @@ const TeamHistory: GlobalConfig = {
       type: "number",
       required: true,
     },
+    {
+      name: "formulaStudentPlaceCount",
+      label: "Miejsce w Formula Student",
+      type: "number",
+      required: true,
+    },
   ],
 };
 
-export default TeamHistory;
+export default TeamStats;

@@ -1,8 +1,12 @@
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 "use client";
 
 import HistoryImage from "@public/images/our_history.jpg";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
+
+import type { TeamStat } from "@/payload-types";
 
 import { Container } from "../../container";
 import { SecondaryButton } from "../../secondary-button";
@@ -12,9 +16,13 @@ import { Counter } from "./counter";
 
 interface HistorySectionProps {
   aboutUs?: boolean;
+  teamStats: TeamStat;
 }
 
-export function HistorySection({ aboutUs = false }: HistorySectionProps) {
+export function HistorySection({
+  teamStats,
+  aboutUs = false,
+}: HistorySectionProps) {
   const t = useTranslations("historySection");
 
   return (
@@ -49,7 +57,11 @@ export function HistorySection({ aboutUs = false }: HistorySectionProps) {
                 } flex w-auto justify-between text-center lg:grid lg:w-full lg:grid-cols-2 lg:gap-8`}
               >
                 <div className="flex flex-col">
-                  <Counter targetNumber={120} size="bigger" color="red">
+                  <Counter
+                    targetNumber={teamStats.membersCount ?? 120}
+                    size="bigger"
+                    color="red"
+                  >
                     0
                   </Counter>
                   <div className="text-lg">
@@ -64,7 +76,11 @@ export function HistorySection({ aboutUs = false }: HistorySectionProps) {
                   </Text>
                 </div>
                 <div className="flex flex-col">
-                  <Counter targetNumber={16} size="bigger" color="red">
+                  <Counter
+                    targetNumber={teamStats.projectsCount ?? 30}
+                    size="bigger"
+                    color="red"
+                  >
                     0
                   </Counter>
                   <div className="text-lg">
@@ -79,7 +95,11 @@ export function HistorySection({ aboutUs = false }: HistorySectionProps) {
                   </Text>
                 </div>
                 <div className="flex flex-col">
-                  <Counter targetNumber={33} size="bigger" color="red">
+                  <Counter
+                    targetNumber={teamStats.achievementsCount ?? 50}
+                    size="bigger"
+                    color="red"
+                  >
                     0
                   </Counter>
                   <div className="text-lg">
@@ -94,7 +114,11 @@ export function HistorySection({ aboutUs = false }: HistorySectionProps) {
                   </Text>
                 </div>
                 <div className="flex flex-col">
-                  <Counter targetNumber={40} size="bigger" color="red">
+                  <Counter
+                    targetNumber={teamStats.formulaStudentPlaceCount ?? 33}
+                    size="bigger"
+                    color="red"
+                  >
                     0
                   </Counter>
                   <div className="text-lg">
