@@ -24,9 +24,6 @@ export default async function AboutUs() {
     slug: "team-stats",
   });
 
-  // eslint-disable-next-line no-console
-  console.log("stats", teamStats);
-
   return (
     <div className="">
       <HeroAbout />
