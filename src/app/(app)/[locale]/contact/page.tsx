@@ -86,7 +86,7 @@ export default async function ContactUsRedesign() {
     );
   }
   return (
-    <div className="font-monument-extended pt-[100px] md:pt-[80px]">
+    <div className="font-monument-extended pt-25 md:pt-20">
       <div className="flex min-h-[82vh] w-full flex-col md:flex-row">
         <div className="relative flex h-[60vh] w-full justify-center md:h-auto md:w-[55%]">
           <Image
@@ -95,7 +95,7 @@ export default async function ContactUsRedesign() {
             fill
             className="object-cover object-[20%_center]"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-black/80 to-black/40"></div>
+          <div className="absolute inset-0 bg-linear-to-r from-black/80 to-black/40"></div>
           <div className="absolute bottom-12 flex flex-col items-center text-white">
             <h2 className="text-center text-2xl font-normal tracking-wide uppercase lg:text-4xl">
               {t("contactWithUs")}
@@ -116,10 +116,10 @@ export default async function ContactUsRedesign() {
         </div>
 
         <div className="flex w-full justify-center bg-[#0c0c0c] text-gray-300 md:w-1/2">
-          <div className="flex h-full w-full flex-col justify-between gap-5 px-20 py-12 md:max-w-xl md:gap-0 md:px-6">
+          <div className="flex h-full w-full flex-col justify-between gap-5 px-6 py-12 md:max-w-xl md:gap-0">
             <Link
               href="/partners"
-              className="group flex cursor-pointer items-center gap-[5px]"
+              className="group flex cursor-pointer items-center gap-1.25"
             >
               <span
                 className={cn(
@@ -136,13 +136,13 @@ export default async function ContactUsRedesign() {
           </div>
         </div>
       </div>
-      <div className="mt-16 mb-12 flex w-full flex-col items-center">
+      <div className="container mx-auto mt-16 mb-12 flex w-full flex-col items-center">
         <div className="mb-8">
-          <Text bold medium>
+          <Text bold medium wide>
             {t("theyWillAnswer")}
           </Text>
         </div>
-        <div className="grid w-full grid-cols-1 gap-6 sm:grid-cols-2 xl:grid-cols-4">
+        <div className="grid w-full grid-cols-1 gap-6 md:col-span-2 lg:grid-cols-4">
           {mainMembers.map((member) => (
             <div
               key={member.name + member.surname}
