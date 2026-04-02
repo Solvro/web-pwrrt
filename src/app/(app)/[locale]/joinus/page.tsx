@@ -21,7 +21,7 @@ export default function JoinUsPage() {
 
   return (
     <div className="bg-background relative w-screen overflow-x-hidden">
-      <div className="relative inset-0 max-md:mt-[90px] md:h-screen">
+      <div className="relative inset-0 max-md:mt-22.5 md:h-screen">
         <Image
           src={Photo1}
           alt="Join Us"

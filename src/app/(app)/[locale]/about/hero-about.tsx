@@ -26,9 +26,9 @@ export function HeroAbout() {
       style={{ transform: `translateY(${(offsetY * -0.1).toString()}px)` }}
     >
       <div className="absolute inset-0 z-10 mx-auto grid grid-cols-1 md:container md:grid-cols-2">
-        <div className="z-10 bg-neutral-900 pt-[100px] opacity-90 md:opacity-100">
+        <div className="z-10 bg-neutral-900 pt-25 opacity-90 md:opacity-100">
           <div className="h-full p-8 md:p-20">
-            <div className="flex h-full max-w-[400px] flex-col justify-between">
+            <div className="flex h-full max-w-100 flex-col justify-between">
               <h1 className="font-monument-extended text-3xl font-extrabold tracking-widest text-white lg:text-5xl">
                 {t("title")}
               </h1>
