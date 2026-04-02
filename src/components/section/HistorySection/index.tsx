@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unsafe-member-access */
-/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 "use client";
 
 import HistoryImage from "@public/images/our_history.jpg";
@@ -58,7 +56,7 @@ export function HistorySection({
               >
                 <div className="flex flex-col">
                   <Counter
-                    targetNumber={teamStats.membersCount ?? 120}
+                    targetNumber={teamStats.membersCount}
                     size="bigger"
                     color="red"
                   >
@@ -77,7 +75,7 @@ export function HistorySection({
                 </div>
                 <div className="flex flex-col">
                   <Counter
-                    targetNumber={teamStats.projectsCount ?? 30}
+                    targetNumber={teamStats.projectsCount}
                     size="bigger"
                     color="red"
                   >
@@ -96,7 +94,7 @@ export function HistorySection({
                 </div>
                 <div className="flex flex-col">
                   <Counter
-                    targetNumber={teamStats.achievementsCount ?? 50}
+                    targetNumber={teamStats.achievementsCount}
                     size="bigger"
                     color="red"
                   >
@@ -115,7 +113,7 @@ export function HistorySection({
                 </div>
                 <div className="flex flex-col">
                   <Counter
-                    targetNumber={teamStats.formulaStudentPlaceCount ?? 33}
+                    targetNumber={teamStats.formulaStudentPlaceCount}
                     size="bigger"
                     color="red"
                   >
