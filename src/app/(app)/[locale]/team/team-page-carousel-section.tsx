@@ -23,19 +23,19 @@ export function TeamPageCarouselSection() {
   const slides: SlideData[] = [
     {
       id: 1,
-      title: "90",
+      title: "120",
       description: t("members"),
       imageUrl: "/images/team/team-page-redesign/carousel/photoCarousel1.jpg",
     },
     {
       id: 2,
-      title: "15",
+      title: "16",
       description: t("projects"),
       imageUrl: "/images/team/team-page-redesign/carousel/photoCarousel2.jpg",
     },
     {
       id: 3,
-      title: "21",
+      title: "45",
       description: t("achievements"),
       imageUrl: "/images/team/team-page-redesign/carousel/photoCarousel3.jpg",
     },
