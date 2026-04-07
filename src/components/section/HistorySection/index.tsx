@@ -52,7 +52,7 @@ export function HistorySection({
               <div
                 className={`${
                   aboutUs ? "" : "mb-8 md:mb-12"
-                } flex w-auto justify-between text-center lg:grid lg:w-full lg:grid-cols-2 lg:gap-8`}
+                } grid w-full grid-cols-2 gap-8 text-center`}
               >
                 <div className="flex flex-col">
                   <Counter
