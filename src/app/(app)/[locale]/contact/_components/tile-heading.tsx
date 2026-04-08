@@ -68,7 +68,6 @@ export function TileHeading({
 }: ParametersTileHeading) {
   const [isHovered, setIsHovered] = useState(false);
   const t = useTranslations("teamPage");
-  // Sprawdzamy długość imienia i nazwiska
   const fullName = `${member.name} ${member.surname}`;
   const dynamicTranslate =
     fullName.length > 25 ? "translate-y-[76%]" : "translate-y-[82%]";

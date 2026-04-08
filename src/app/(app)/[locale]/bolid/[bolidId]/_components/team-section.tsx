@@ -65,15 +65,28 @@ const sortRoleHistory = (roles: RoleHistoryItem[]): RoleHistoryItem[] => {
   });
 };
 
-const getRolePriority = (role: string): number => {
+const getRolePriority = (role: string, department: string): number => {
   const normalized = normalizeRole(role);
-  if (/\bTEAM\s+LEADER\b/.test(normalized)) {
-    return 0;
+  if (department === "management") {
+    if (/\bTEAM\s+LEADER\b/.test(normalized)) {
+      return 0;
+    }
+    if (/\bTECHNICAL\s+LEADER\b/.test(normalized)) {
+      return 1;
+    }
+    if (/\bCHIEF\s+FINANCIAL\s+OFFICER\b/.test(normalized)) {
+      return 2;
+    }
+    return 3;
+  } else {
+    if (normalized.includes("LEADER")) {
+      return 0;
+    }
+    if (normalized.includes("MANAGER")) {
+      return 1;
+    }
+    return 2;
   }
-  if (/\bTECHNICAL\s+LEADER\b/.test(normalized)) {
-    return 1;
-  }
-  return 2;
 };
 
 function organizeMembersByDepartment(
@@ -127,11 +140,18 @@ function organizeMembersByDepartment(
     }
   }
 
-  for (const departmentMembers of Object.values(byDepartment)) {
+  for (const [department, departmentMembers] of Object.entries(byDepartment)) {
     departmentMembers.sort((a, b) => {
-      const priorityA = getRolePriority(a.role);
-      const priorityB = getRolePriority(b.role);
-      return priorityA - priorityB;
+      const priorityA = getRolePriority(a.role, department);
+      const priorityB = getRolePriority(b.role, department);
+      if (priorityA !== priorityB) {
+        return priorityA - priorityB;
+      }
+      const surnameCompare = a.surname.localeCompare(b.surname);
+      if (surnameCompare !== 0) {
+        return surnameCompare;
+      }
+      return a.name.localeCompare(b.name);
     });
   }
 

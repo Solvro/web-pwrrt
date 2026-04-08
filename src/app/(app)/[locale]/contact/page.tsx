@@ -7,8 +7,8 @@ import { getContactData } from "@/functions/contact";
 import { cn } from "@/lib/utils";
 import type { TeamMember as PayloadTeamMember } from "@/payload-types";
 
-import { UserCard } from "../team/[teamId]/user-card";
-import { sortRoles } from "../team/[teamId]/utils";
+import { UserCard } from "./_components/user-card";
+import { sortRoles } from "./_components/utils";
 import { ContactReportForm } from "./contact-report";
 import { EmailAction } from "./email-action";
 import { ErrorReportForm } from "./error-report";
