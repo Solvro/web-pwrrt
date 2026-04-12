@@ -12,6 +12,7 @@ import { sortRoles } from "./_components/utils";
 import { ContactReportForm } from "./contact-report";
 import { EmailAction } from "./email-action";
 import { ErrorReportForm } from "./error-report";
+import { PhoneAction } from "./phone-action";
 
 interface Role {
   department: string;
@@ -150,8 +151,8 @@ export default async function ContactUsRedesign() {
             >
               <UserCard member={member} roleHistory={roleHistory} />
               <EmailAction email={member.email ?? "Brak adresu e-mail"} />
-              <EmailAction
-                email={formatPhoneNumber(member.phoneNumber) || "Brak numeru"}
+              <PhoneAction
+                phone={formatPhoneNumber(member.phoneNumber) || "Brak numeru"}
               />
             </div>
           ))}

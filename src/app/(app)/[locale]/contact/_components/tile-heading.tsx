@@ -87,7 +87,7 @@ export function TileHeading({
           opiekun
             ? "bottom-0"
             : `absolute inset-0 capitalize ${dynamicTranslate} transition duration-300 ease-in-out group-hover:translate-y-0 group-hover:p-6 group-hover:opacity-98`
-        } absolute flex flex-col justify-between bg-black p-3`}
+        } absolute flex flex-col justify-between bg-black px-0 py-3`}
       >
         <div className="absolute inset-0 z-0 h-full w-full rounded-full bg-white opacity-15 blur-3xl"></div>
         <div
