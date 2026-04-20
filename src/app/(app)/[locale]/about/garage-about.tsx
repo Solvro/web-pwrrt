@@ -32,7 +32,7 @@ export function GarageAbout() {
           <Title color="white">{t("title")}</Title>
           <div className="mt-4 grid grid-cols-1 gap-6 md:grid-cols-5 md:gap-20">
             <div className="col-span-3 flex flex-col gap-6 md:gap-8">
-              <div className="relative hidden h-2/3 md:block">
+              <div className="relative hidden aspect-video min-h-[250px] md:block">
                 <Image
                   src={Image1}
                   alt="bolid"
@@ -40,11 +40,19 @@ export function GarageAbout() {
                   sizes="100%"
                   style={{
                     objectFit: "cover",
-                    objectPosition: "center 20%",
+                    objectPosition: "50% 0%",
                   }}
                 />
               </div>
-              <Text color="white">{t("paragraph")}</Text>
+              <Text
+                font="monument-extended-light"
+                small
+                wide
+                color="white"
+                center
+              >
+                {t("paragraph")}
+              </Text>
               <div className="flex flex-col items-center justify-between gap-6 md:flex-row md:gap-0">
                 <button
                   onClick={handleMapClick}
@@ -99,7 +107,7 @@ export function GarageAbout() {
                 </div>
               </div>
             </div>
-            <div className="relative col-span-3 h-80 md:col-span-2 md:h-144">
+            <div className="relative col-span-3 h-96 md:col-span-2 md:h-[850px]">
               <Image
                 className="scale-x-[-1]"
                 src={Image2}

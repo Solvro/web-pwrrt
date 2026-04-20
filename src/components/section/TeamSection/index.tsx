@@ -5,6 +5,8 @@ import { useTranslations } from "next-intl";
 import Image from "next/image";
 import Link from "next/link";
 
+import { Text } from "@/components/text";
+
 import { Button } from "../../button";
 import { Title } from "../../title";
 import Avatar1 from "./avatar-1.jpg";
@@ -27,9 +29,13 @@ export function TeamSection() {
       <Title size="big" className="uppercase">
         {t("subtitle")}
       </Title>
-      <div className="font-monument-extended flex max-w-5xl flex-col gap-10 text-xl">
-        <p className="text-white">{t("description1")}</p>
-        <p className="text-muted-foreground">{t("description2")}</p>
+      <div className="flex max-w-5xl flex-col gap-10 text-xl">
+        <Text font="monument-extended-light" small wide center color="white">
+          {t("description1")}
+        </Text>
+        <Text font="monument-extended-light" small wide center color="white">
+          <span className="text-muted-foreground">{t("description2")}</span>
+        </Text>
       </div>
       <div className="mt-8 flex flex-wrap items-center justify-center gap-10 lg:justify-start">
         <div className="flex items-center">

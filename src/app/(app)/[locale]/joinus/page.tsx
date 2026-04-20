@@ -47,11 +47,23 @@ export default function JoinUsPage() {
             <Title font="monument-extended" color="white" size="medium">
               {t("racingTeamTitle")}
             </Title>
-            <Text font="pp-monument-extended" small wide color="white" center>
+            <Text
+              font="monument-extended-light"
+              small
+              wide
+              center
+              color="white"
+            >
               {t("careerDescription1")}
             </Text>
             <div className="opacity-50">
-              <Text font="pp-monument-extended" small wide color="white" center>
+              <Text
+                font="monument-extended-light"
+                small
+                wide
+                center
+                color="white"
+              >
                 {t("careerDescription2")}
               </Text>
             </div>

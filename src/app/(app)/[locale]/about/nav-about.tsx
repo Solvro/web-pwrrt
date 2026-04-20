@@ -18,7 +18,7 @@ function NavAboutItem({ children, scrollToId }: NavAboutItemProps) {
     <li className="min-w-fit p-2 first:pl-0 last:flex last:basis-full last:justify-center lg:p-8 lg:last:block lg:last:basis-auto">
       <Link href={`#${scrollToId}`} passHref scroll>
         <div className="hover:text-custom-red w-full cursor-pointer text-left duration-300 ease-in-out">
-          <Text bold>
+          <Text font="monument-extended" small wide color="white" center>
             <span className="tracking-wider">{children}</span>
           </Text>
         </div>
@@ -49,7 +49,7 @@ export function NavAbout() {
               </NavAboutItem>
             </ul>
             <div className="mt-0 flex flex-col-reverse gap-8 md:mt-12 md:flex-row md:gap-20">
-              <div className="relative h-80 md:h-auto md:w-2/5">
+              <div className="relative h-80 md:h-auto md:w-3/5">
                 <Image
                   className=""
                   src={Image1}
@@ -58,18 +58,32 @@ export function NavAbout() {
                   sizes="100%"
                   style={{
                     objectFit: "cover",
-                    objectPosition: "center 10%",
+                    objectPosition: "57%",
                   }}
                 />
               </div>
               <div className="font-pp-monument-extended flex flex-col gap-8 md:w-3/5">
-                <Text color="white" bold>
-                  <span className="font-monument-extended tracking-widest">
-                    {t("paragraph1")}
-                  </span>
+                <Text font="monument-extended" small wide color="white" center>
+                  {t("paragraph1")}
                 </Text>
-                <Text color="white">{t("paragraph2")}</Text>
-                <Text color="white">{t("paragraph3")}</Text>
+                <Text
+                  font="monument-extended-light"
+                  small
+                  wide
+                  color="white"
+                  center
+                >
+                  {t("paragraph2")}
+                </Text>
+                <Text
+                  font="monument-extended-light"
+                  small
+                  wide
+                  color="white"
+                  center
+                >
+                  {t("paragraph3")}
+                </Text>
               </div>
             </div>
           </div>

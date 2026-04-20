@@ -40,7 +40,7 @@ export function HistorySection({
                 alt="bolid"
                 style={{
                   objectFit: "cover",
-                  objectPosition: "left center",
+                  objectPosition: "center",
                 }}
               />
             </div>
@@ -51,7 +51,7 @@ export function HistorySection({
             >
               <div
                 className={`${
-                  aboutUs ? "" : "mb-8 md:mb-12"
+                  aboutUs ? "pt-8" : "mb-8 md:mb-12"
                 } grid w-full grid-cols-2 gap-8 text-center`}
               >
                 <div className="flex flex-col">
@@ -135,9 +135,15 @@ export function HistorySection({
                 <Title wrap size="big" color="white">
                   {t("subtitle")}
                 </Title>
-                <div className="my-2">
-                  <Text color="white">{t("description")}</Text>
-                </div>
+                <Text
+                  font="monument-extended-light"
+                  small
+                  wide
+                  color="white"
+                  center
+                >
+                  {t("description")}
+                </Text>
                 {!aboutUs && (
                   <SecondaryButton
                     to="/about#history-section"

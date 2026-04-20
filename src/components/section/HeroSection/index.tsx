@@ -5,6 +5,7 @@ import { useTranslations } from "next-intl";
 import { useRef } from "react";
 
 import { Container } from "@/components/container";
+import { Text } from "@/components/text";
 
 import { BackgroundVideo } from "./background-video";
 import { RacingStripes } from "./racing-stripes";
@@ -31,7 +32,7 @@ export function HeroSection() {
     <div className="relative h-svh md:h-screen" ref={heroDivRef}>
       <BackgroundVideo />
       <Container className="z-10 md:py-[8%]">
-        <div className="font-monument-extended text-accent flex h-full flex-col items-center justify-center gap-8 text-center md:gap-4 lg:justify-end">
+        <div className="font-monument-extended text-md flex h-full flex-col items-center justify-center gap-8 text-center md:gap-4 md:text-xl lg:justify-end">
           {/* Animated Titles */}
           <motion.div
             initial="hidden"
@@ -61,9 +62,15 @@ export function HeroSection() {
             variants={textVariants}
             className="max-w-11/12 md:max-w-3/4 md:leading-tight lg:max-w-2/3"
           >
-            <p className="font-pp-monument-extended max-sm:text-xs">
+            <Text
+              font="monument-extended-light"
+              small
+              wide
+              center
+              color="white"
+            >
               {t("description")}
-            </p>
+            </Text>
           </motion.div>
         </div>
       </Container>

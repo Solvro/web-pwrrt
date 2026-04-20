@@ -26,7 +26,7 @@ export function FSSection({ aboutUs = false }: FSSectionProps) {
             <div className="">
               {aboutUs ? (
                 <div className="my-6">
-                  <Title size="big" color="white">
+                  <Title font="monument-extended" color="white" size="big">
                     {t("title")}
                   </Title>
                 </div>
@@ -41,7 +41,15 @@ export function FSSection({ aboutUs = false }: FSSectionProps) {
                   aboutUs ? "font-pp-monument-extended" : "my-2 md:my-6"
                 }
               >
-                <Text color="white">{t("description")}</Text>
+                <Text
+                  font="monument-extended-light"
+                  small
+                  wide
+                  center
+                  color="white"
+                >
+                  {t("description")}
+                </Text>
               </div>
               {!aboutUs && (
                 <SecondaryButton

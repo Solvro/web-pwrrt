@@ -5,8 +5,6 @@ import { useMemo } from "react";
 
 import { Container } from "@/components/container";
 import { Text } from "@/components/text";
-import { Title } from "@/components/title";
-import { camelCaseToSpaceWord } from "@/lib/utils";
 
 interface ResponsibilityItemProps {
   iconPath: string;
@@ -31,7 +29,9 @@ function ResponsibilityItem({
           height: "auto",
         }}
       />
-      <Text color={textColor}>{text}</Text>
+      <Text font="monument-extended-light" small wide center color={textColor}>
+        {text}
+      </Text>
     </div>
   );
 }
@@ -97,13 +97,33 @@ export function DepartmentElement({
         >
           <div className="md:py-20">
             <div className="mb-4 uppercase">
-              <Title wrap color={textColor} size="big">
-                {camelCaseToSpaceWord(department)}
-              </Title>
+              <Text
+                font="monument-extended"
+                medium
+                wide
+                center
+                color={textColor}
+              >
+                {department}
+              </Text>
             </div>
-            <Text color={textColor}>{text}</Text>
+            <Text
+              font="monument-extended-light"
+              small
+              wide
+              color="white"
+              center
+            >
+              {text}
+            </Text>
             <div className="mt-4 flex flex-col gap-4 md:mt-10">
-              <Text color={textColor} bold>
+              <Text
+                font="monument-extended-light"
+                small
+                wide
+                color="white"
+                center
+              >
                 {departmentSubtitle}
               </Text>
               <div className="flex flex-col gap-2">

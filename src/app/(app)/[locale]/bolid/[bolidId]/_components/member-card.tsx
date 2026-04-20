@@ -161,7 +161,7 @@ export function MemberCard({ member, roleHistory }: MemberCardProps) {
                           className="relative flex min-w-0 items-start"
                         >
                           <div className="mt-[7px] h-2 w-2 shrink-0 rounded-full bg-white"></div>
-                          <p className="font-pp-monument-extended ml-3 min-w-0 text-left text-[11px] leading-4 font-normal tracking-tight break-words uppercase">
+                          <p className="font-monument-extended ml-3 min-w-0 text-left text-[11px] leading-4 font-normal tracking-tight break-words uppercase">
                             {`${role.bolidName} - ${role.role}`}
                           </p>
                         </div>
@@ -216,10 +216,10 @@ export function MemberCard({ member, roleHistory }: MemberCardProps) {
         ) : null}
       </div>
 
-      <p className="font-sculptor text-muted-foreground text-xs uppercase">
+      <p className="font-monument-extended text-muted-foreground text-xs uppercase">
         {member.role}
       </p>
-      <p className="font-gilroy-heavy text-lg font-bold capitalize">
+      <p className="font-monument-extended text-lg font-bold capitalize">
         {member.name} {member.surname}
       </p>
     </div>

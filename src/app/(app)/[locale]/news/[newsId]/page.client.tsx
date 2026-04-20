@@ -9,6 +9,7 @@ import Image from "next/image";
 import React from "react";
 
 import { RichText } from "@/components/payload/rich-text";
+import { Text } from "@/components/text";
 import { Link } from "@/i18n/navigation";
 import { cn, getUrlFromMedia } from "@/lib/utils";
 import type { News } from "@/payload-types";
@@ -85,13 +86,15 @@ export function NewsPageClient({
               locale: locale === "pl" ? pl : undefined,
             })}
           </p>
-          <p className="font-monument-extended sm:text-s text-m mb-4 flex pb-8 font-normal text-white">
+          <Text font="monument-extended-light" small wide center color="white">
             {data.shortDescription}
-          </p>
-          <RichText
-            data={data.content}
-            className="font-monument-extended-light sm:text-s text-m text-white"
-          />
+          </Text>
+          <div className="font-monument-extended-light text-white">
+            <RichText
+              data={data.content}
+              className="[&_*]:font-monument-extended-light text-white [&_*]:text-[16px] [&_*]:leading-relaxed [&_*]:tracking-widest"
+            />
+          </div>
         </div>
       </div>
     </div>

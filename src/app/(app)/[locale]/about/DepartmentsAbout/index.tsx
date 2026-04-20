@@ -149,13 +149,13 @@ export function DepartmentsAbout({ lightMode }: DepartmentsAboutProps) {
         </div>
       ) : (
         <Container>
-          <div className="font-pp-monument-extended mt-4 mb-4 w-full md:mt-12">
+          <div className="font-monument-extended mt-4 mb-4 w-full md:mt-12">
             <Title color="white">{t("title")}</Title>
           </div>
         </Container>
       )}
       <div className="w-full">
-        <div className="font-pp-monument-extended flex flex-col gap-12 md:gap-20">
+        <div className="small wide center color={textColor}onument-extended-light flex flex-col gap-12 md:gap-20">
           {departments.map((department, index) => (
             <DepartmentElement
               key={department.name}

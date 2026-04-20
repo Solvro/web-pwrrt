@@ -3,6 +3,7 @@ import { getTranslations } from "next-intl/server";
 import Image from "next/image";
 import Link from "next/link";
 
+import { Text } from "@/components/text";
 import {
   getBronzeSponsors,
   getGoldSponsors,
@@ -36,10 +37,18 @@ export default async function Partners() {
               href={"/contact"}
               className="group flex cursor-pointer items-center gap-[5px] self-end"
             >
-              <p className="color-ring">{t("kontakt")}</p>
+              <Text
+                font="monument-extended-light"
+                small
+                wide
+                center
+                color="white"
+              >
+                {t("kontakt")}
+              </Text>
               <span
                 className={cn(
-                  "inline-block transition-transform duration-300 ease-out",
+                  "text-md inline-block transition-transform duration-300 ease-out md:text-xl",
                   "group-hover:translate-x-1.5",
                 )}
               >
@@ -47,7 +56,15 @@ export default async function Partners() {
               </span>
             </Link>
             <PartnersForm />
-            <p className="text-sm">{t("formDesc")}</p>
+            <Text
+              font="monument-extended-light"
+              small
+              wide
+              center
+              color="white"
+            >
+              {t("formDesc")}
+            </Text>
           </div>
         </div>
         <div className="relative -order-1 flex h-[70vh] w-full justify-center md:order-none md:h-auto md:w-[55%]">
@@ -59,12 +76,18 @@ export default async function Partners() {
           />
           <div className="absolute inset-0 bg-gradient-to-r from-black/80 to-black/40"></div>
           <div className="absolute bottom-12 flex flex-col items-center gap-3 p-8 text-white lg:gap-6">
-            <h2 className="text-center text-3xl font-bold tracking-wide uppercase lg:text-4xl">
-              {t("zostanPartnerem")}
-            </h2>
-            <p className="text-center text-sm lg:text-base">
+            <Text font="monument-extended" medium wide center color="white">
+              {t("zostanPartnerem").toUpperCase()}
+            </Text>
+            <Text
+              font="monument-extended-light"
+              small
+              wide
+              center
+              color="white"
+            >
               {t("mainPhotoDesc")}
-            </p>
+            </Text>
           </div>
         </div>
       </div>
