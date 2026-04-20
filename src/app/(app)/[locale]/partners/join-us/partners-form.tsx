@@ -18,7 +18,7 @@ import {
 } from "@/components/ui/form";
 import { cn } from "@/lib/utils";
 
-import { ReportFormSchema } from "../../../../schemas/index";
+import { ReportFormSchema } from "../../../../../schemas/index";
 
 // async function getCaptchaToken() {
 //   return new Promise<string | null>((resolve) => {

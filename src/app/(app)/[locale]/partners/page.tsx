@@ -1,9 +1,5 @@
 import type { Metadata } from "next";
-import { getTranslations } from "next-intl/server";
-import Image from "next/image";
-import Link from "next/link";
 
-import { Text } from "@/components/text";
 import {
   getBronzeSponsors,
   getGoldSponsors,
@@ -11,9 +7,7 @@ import {
   getSilverSponsors,
   getStrategicSponsors,
 } from "@/functions/partners";
-import { cn } from "@/lib/utils";
 
-import { PartnersForm } from "./partners-form";
 import { PartnersSection } from "./partners-section";
 
 export const metadata: Metadata = {
@@ -21,8 +15,6 @@ export const metadata: Metadata = {
 };
 
 export default async function Partners() {
-  const t = await getTranslations("partnersPage");
-
   const strategicSponsors = await getStrategicSponsors();
   const platinumSponsors = await getPlatinumSponsors();
   const goldSponsors = await getGoldSponsors();
@@ -30,67 +22,6 @@ export default async function Partners() {
   const bronzeSponsors = await getBronzeSponsors();
   return (
     <div className="font-monument-extended pt-[100px] md:pt-[80px]">
-      <div className="flex h-full w-full flex-col md:flex-row lg:h-full">
-        <div className="flex w-full justify-between bg-[#0c0c0c] text-gray-300 md:w-1/2">
-          <div className="mx-auto flex h-full max-w-xl flex-col gap-5 px-6 py-12 lg:gap-15">
-            <Link
-              href={"/contact"}
-              className="group flex cursor-pointer items-center gap-[5px] self-end"
-            >
-              <Text
-                font="monument-extended-light"
-                small
-                wide
-                center
-                color="white"
-              >
-                {t("kontakt")}
-              </Text>
-              <span
-                className={cn(
-                  "text-md inline-block transition-transform duration-300 ease-out md:text-xl",
-                  "group-hover:translate-x-1.5",
-                )}
-              >
-                →
-              </span>
-            </Link>
-            <PartnersForm />
-            <Text
-              font="monument-extended-light"
-              small
-              wide
-              center
-              color="white"
-            >
-              {t("formDesc")}
-            </Text>
-          </div>
-        </div>
-        <div className="relative -order-1 flex h-[70vh] w-full justify-center md:order-none md:h-auto md:w-[55%]">
-          <Image
-            src="/images/partners/main2.jpg"
-            alt="Kontakt"
-            fill
-            className="object-cover"
-          />
-          <div className="absolute inset-0 bg-gradient-to-r from-black/80 to-black/40"></div>
-          <div className="absolute bottom-12 flex flex-col items-center gap-3 p-8 text-white lg:gap-6">
-            <Text font="monument-extended" medium wide center color="white">
-              {t("zostanPartnerem").toUpperCase()}
-            </Text>
-            <Text
-              font="monument-extended-light"
-              small
-              wide
-              center
-              color="white"
-            >
-              {t("mainPhotoDesc")}
-            </Text>
-          </div>
-        </div>
-      </div>
       <PartnersSection
         sponsors={{
           bronze: bronzeSponsors,
