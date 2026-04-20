@@ -2,36 +2,10 @@
 
 import { useTranslations } from "next-intl";
 import Image from "next/image";
-import { useState } from "react";
 
+import { Button } from "@/components/button";
 import { getUrlFromMedia } from "@/lib/utils";
 import type { Media } from "@/payload-types";
-
-import { NavPartner } from "./nav-partner";
-
-function SponsorList({ gridCols, height, sponsors }: SponsorGridProps) {
-  return (
-    <div className={`grid ${gridCols} h-min gap-2 md:w-1/2`}>
-      {sponsors.map((sponsor) => (
-        <a
-          key={sponsor.name}
-          href={sponsor.website}
-          target="_blank"
-          rel="noopener noreferrer"
-          className={`${height} relative mx-6 overflow-hidden rounded-md bg-white duration-300 ease-in-out hover:scale-110`}
-        >
-          <Image
-            src={getUrlFromMedia(sponsor.logo)}
-            alt={sponsor.name}
-            fill
-            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
-            className="object-scale-down"
-          />
-        </a>
-      ))}
-    </div>
-  );
-}
 
 interface SponsorProps {
   name: string;
@@ -41,42 +15,36 @@ interface SponsorProps {
 
 type SponsorKey = "bronze" | "silver" | "gold" | "platinum" | "strategic";
 
-interface SponsorGridProps {
-  sponsorRank: SponsorKey;
+interface SponsorListProps {
   gridCols: string;
   height: string;
-  gap?: string;
   sponsors: SponsorProps[];
 }
 
-function SponsorGrid({
-  sponsorRank,
-  gridCols,
-  height,
-  gap,
-  sponsors,
-}: SponsorGridProps) {
-  // Dynamically split the sponsors array into two halves inside the component
-  const halfIndex = Math.ceil(sponsors.length / 2);
-  const firstHalfSponsors = sponsors.slice(0, halfIndex);
-  const secondHalfSponsors = sponsors.slice(halfIndex);
+function SponsorList({ gridCols, height, sponsors }: SponsorListProps) {
+  if (sponsors.length === 0) {
+    return null;
+  }
 
   return (
-    <div className="flex w-full flex-col items-center text-center">
-      <div className={`flex ${gap ?? ""} w-full flex-col md:flex-row`}>
-        <SponsorList
-          sponsors={firstHalfSponsors}
-          height={height}
-          sponsorRank={sponsorRank}
-          gridCols={gridCols}
-        />
-        <SponsorList
-          sponsors={secondHalfSponsors}
-          height={height}
-          sponsorRank={sponsorRank}
-          gridCols={gridCols}
-        />
-      </div>
+    <div className={`grid ${gridCols} gap-5`}>
+      {sponsors.map((sponsor) => (
+        <a
+          key={sponsor.name}
+          href={sponsor.website}
+          target="_blank"
+          rel="noopener noreferrer"
+          className={`${height} relative overflow-hidden rounded-md bg-white p-2 duration-300 ease-in-out hover:scale-95`}
+        >
+          <Image
+            src={getUrlFromMedia(sponsor.logo)}
+            alt={sponsor.name}
+            fill
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
+            className="object-contain p-1"
+          />
+        </a>
+      ))}
     </div>
   );
 }
@@ -89,38 +57,75 @@ interface PartnersSectionProps {
 
 export function PartnersSection({ sponsors }: PartnersSectionProps) {
   const t = useTranslations("partnersPage");
-  const partners = [
-    { key: "strategic", label: t("strategiczni") },
-    { key: "platinum", label: t("platynowi") },
-    { key: "gold", label: t("złoci") },
-    { key: "silver", label: t("srebrni") },
-    { key: "bronze", label: t("brązowi") },
+  const partnerSections: {
+    key: SponsorKey;
+    label: string;
+    gridCols: string;
+    height: string;
+  }[] = [
+    {
+      key: "strategic",
+      label: t("strategiczni"),
+      gridCols: "grid-cols-1 sm:grid-cols-2",
+      height: "h-45",
+    },
+    {
+      key: "platinum",
+      label: t("platynowi"),
+      gridCols: "grid-cols-2 sm:grid-cols-3",
+      height: "h-35",
+    },
+    {
+      key: "gold",
+      label: t("złoci"),
+      gridCols: "grid-cols-2 sm:grid-cols-3 lg:grid-cols-4",
+      height: "h-30",
+    },
+    {
+      key: "silver",
+      label: t("srebrni"),
+      gridCols: "grid-cols-2 sm:grid-cols-3 lg:grid-cols-4",
+      height: "h-25",
+    },
+    {
+      key: "bronze",
+      label: t("brązowi"),
+      gridCols: "grid-cols-2 sm:grid-cols-4 lg:grid-cols-5",
+      height: "h-20",
+    },
   ] as const;
 
-  const [active, setActive] = useState<SponsorKey>("strategic");
   return (
-    <div className="flex min-h-[20vh] flex-col justify-between gap-5 bg-[var(--color-partners-section)] pt-15 pr-10 pb-15 pl-10 md:flex-row md:gap-0 lg:pr-25 lg:pl-25">
-      <div className="flex w-[70%] flex-col gap-2 sm:w-[40%]">
-        {partners.map((item) => (
-          <NavPartner
-            key={item.key}
-            content={item.label}
-            isActive={active === item.key}
-            onClick={() => {
-              setActive(item.key);
-            }}
-          />
-        ))}
-      </div>
+    <div className="bg-[var(--color-partners-section)] px-6 py-12 md:px-10 lg:px-25">
+      <div className="mx-auto flex w-full max-w-7xl flex-col gap-12">
+        {partnerSections.map((section) => {
+          const sectionSponsors = sponsors[section.key];
 
-      <div className="w-full">
-        <SponsorGrid
-          sponsorRank={active}
-          sponsors={sponsors[active]}
-          height="h-10 md:h-20"
-          gap="gap-3 lg:gap-2"
-          gridCols="grid-cols-2 sm:grid-cols-3 md:grid-cols-2 lg:grid-cols-3"
-        />
+          if (sectionSponsors.length === 0) {
+            return null;
+          }
+
+          return (
+            <section key={section.key} className="flex flex-col gap-5">
+              <h2 className="font-monument-extended text-xl text-white md:text-2xl">
+                {section.label}
+              </h2>
+              <SponsorList
+                sponsors={sectionSponsors}
+                gridCols={section.gridCols}
+                height={section.height}
+              />
+            </section>
+          );
+        })}
+
+        <div className="mt-5 flex justify-center">
+          <Button
+            label={t("zostanPartnerem")}
+            redirectPath="/partners/join-us"
+            className="w-full rounded-xl py-4 text-base font-semibold uppercase sm:max-w-md sm:py-4 sm:text-lg md:max-w-lg md:py-5 md:text-xl lg:max-w-xl lg:py-6 lg:text-2xl"
+          />
+        </div>
       </div>
     </div>
   );
