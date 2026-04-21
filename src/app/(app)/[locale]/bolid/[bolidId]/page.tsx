@@ -83,7 +83,7 @@ async function BolidPage(props: { params: Promise<Iparams> }) {
 
   return (
     <div className="flex flex-col">
-      <section className="flex min-h-[calc(100dvh-2rem)] w-full flex-col rounded-b-[100px] bg-[#D41E3E] max-md:rounded-b-[70px]">
+      <section className="flex min-h-150 w-full flex-col rounded-b-[100px] bg-[#D41E3E] max-md:rounded-b-[70px]">
         <Container className="flex w-full flex-1 flex-col items-start justify-start pt-26 pb-10 max-md:pt-22 max-md:pb-6">
           <div className="w-full shrink-0 max-md:mt-4">
             {previousBolid ? (

@@ -106,7 +106,7 @@ export function MemberCard({ member, roleHistory }: MemberCardProps) {
     <div
       ref={cardRef}
       key={`${member.name}-${member.surname}-${member.role}`}
-      className="flex flex-col"
+      className="flex w-full flex-col"
     >
       <div
         className="group relative mb-3 h-100 w-full overflow-hidden rounded-md bg-gray-200"
