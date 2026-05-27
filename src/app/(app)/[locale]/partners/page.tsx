@@ -10,6 +10,8 @@ import {
 
 import { PartnersSection } from "./partners-section";
 
+export const dynamic = "force-dynamic";
+
 export const metadata: Metadata = {
   title: "Partners",
 };
