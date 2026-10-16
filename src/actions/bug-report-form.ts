@@ -1,6 +1,6 @@
 "use server";
 
-import type { z } from "zod";
+import type * as z from "zod";
 
 import { verifyCaptchaToken } from "@/lib/recaptcha";
 import { ReportFormSchema } from "@/schemas/index";

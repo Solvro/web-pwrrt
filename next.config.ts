@@ -13,9 +13,6 @@ const nextConfig: NextConfig = {
   },
   transpilePackages: ["three"],
   typedRoutes: true,
-  experimental: {
-    viewTransition: true,
-  },
 };
 
 const withNextIntl = createNextIntlPlugin();

@@ -4,8 +4,10 @@ import { getPayload } from "payload";
 import { isPopulatedMedia } from "@/lib/utils";
 import type { Media, TeamMember as PayloadTeamMember } from "@/payload-types";
 
-export interface ProcessedTeamMember
-  extends Omit<PayloadTeamMember, "profile" | "doc"> {
+export interface ProcessedTeamMember extends Omit<
+  PayloadTeamMember,
+  "profile" | "doc"
+> {
   profile?: Media | null;
 }
 
