@@ -6,7 +6,7 @@ import { useTranslations } from "next-intl";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
-import type { z } from "zod";
+import type * as z from "zod";
 
 import { sendContactReportForm } from "@/actions/bug-report-form";
 import {

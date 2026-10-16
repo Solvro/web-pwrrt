@@ -86,6 +86,7 @@ export default async function LocaleLayout({
   if (!locale || !routing.locales.includes(locale as "pl" | "en")) {
     notFound();
   }
+  // eslint-disable-next-line @typescript-eslint/no-deprecated -- see src/i18n/request.ts
   setRequestLocale(locale as "pl" | "en");
 
   const captchaKey = process.env.NEXT_PUBLIC_CAPTCHA_SITE_KEY ?? "";

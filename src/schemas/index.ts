@@ -1,4 +1,4 @@
-import { z } from "zod";
+import * as z from "zod";
 
 // form schema to make sure the user sends only required data
 export const ReportFormSchema = z.object({

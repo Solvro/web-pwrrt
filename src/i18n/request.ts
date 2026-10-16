@@ -6,6 +6,7 @@ import { getRequestConfig } from "next-intl/server";
 
 import { routing } from "./routing";
 
+// eslint-disable-next-line @typescript-eslint/no-deprecated -- next/root-params would make [locale] pages static
 export default getRequestConfig(async ({ requestLocale }) => {
   // Typically corresponds to the `[locale]` segment
   let locale = await requestLocale;
