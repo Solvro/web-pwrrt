@@ -19,6 +19,8 @@ import { ToasterProvider } from "@/providers/toaster-provider";
 
 import "./globals.css";
 
+export const dynamic = "force-dynamic";
+
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
 }
