@@ -109,7 +109,10 @@
     "callMe": "Call me!",
     "writeToMe": "Write to me!",
     "emailClipboardSuccess": "E-mail copied to clipboard!",
-    "emailClipboardError": "Failed to copy e-mail."
+    "emailClipboardError": "Failed to copy e-mail.",
+    "searchPlaceholder": "Search by name or role",
+    "allDepartments": "All",
+    "noResults": "No results"
   },
   "heroAbout": {
     "title": "MEET OUR TEAM"
