@@ -28,7 +28,6 @@ export function Navbar({ bannerItems = [] }: { bannerItems?: string[] }) {
     { label: t("about"), href: "/about" },
     { label: t("recruitment"), href: "/joinus" },
     { label: t("partners"), href: "/partners" },
-    { label: t("news"), href: "/news" },
     { label: t("contact"), href: "/contact" },
   ] as const;
 
