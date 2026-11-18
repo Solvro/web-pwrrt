@@ -48,6 +48,14 @@ const normalizeRole = (role: string): string => {
     .toUpperCase();
 };
 
+const normalizeKey = (value: string): string => {
+  return value
+    .replaceAll(" ", " ")
+    .replaceAll(/\s+/g, " ")
+    .trim()
+    .toLowerCase();
+};
+
 const parseBolidName = (name: string): number => {
   if (name === "RTX") {
     return 10;
@@ -115,27 +123,36 @@ function organizeMembersByDepartment(
       });
     }
 
-    const currentRole = roles.find((r) => r.bolidName === bolidName);
+    const currentRoles = roles.filter(
+      (r) => normalizeKey(r.bolidName) === normalizeKey(bolidName),
+    );
 
-    if (currentRole) {
-      const department = currentRole.department || "Uncategorized";
+    for (const currentRole of currentRoles) {
+      const department =
+        normalizeKey(currentRole.department) || "uncategorized";
+      const roleName = currentRole.role.trim() || "N/A";
 
       byDepartment[department] = byDepartment[department] ?? [];
 
-      const memberKey = `${memberName}-${memberSurname}`;
-      const exists = byDepartment[department].some(
-        (m) => `${m.name}-${m.surname}` === memberKey,
+      const existing = byDepartment[department].find(
+        (m) => m.name === memberName && m.surname === memberSurname,
       );
 
-      if (!exists) {
+      if (!existing) {
         byDepartment[department].push({
           name: memberName,
           surname: memberSurname,
-          role: currentRole.role || "N/A",
+          role: roleName,
           phoneNumber: member.phoneNumber ?? null,
           email: member.email ?? null,
           profile: member.profile,
         });
+      } else if (
+        !existing.role
+          .split(" | ")
+          .some((r) => normalizeKey(r) === normalizeKey(roleName))
+      ) {
+        existing.role = `${existing.role} | ${roleName}`;
       }
     }
   }
