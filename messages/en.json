@@ -55,12 +55,11 @@
   },
   "navigation": {
     "home": "Homepage",
-    "bolid": "Cars",
+    "bolid": "Team",
     "team": "PWR Racing Team",
     "about": "About Us",
     "partners": "Partners",
     "recruitment": "Recruitment",
-    "news": "News",
     "contact": "Contact",
     "joinUs": "Join PWR Racing Team"
   },
@@ -70,7 +69,7 @@
     "findUs": "Where to find us?",
     "navigation": "Navigation",
     "home": "Home",
-    "bolid": "Cars",
+    "bolid": "Team",
     "team": "PWR Racing Team",
     "about": "About Us",
     "partners": "Partners",
