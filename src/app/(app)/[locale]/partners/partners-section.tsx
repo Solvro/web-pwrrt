@@ -27,7 +27,7 @@ function SponsorList({ gridCols, height, sponsors }: SponsorListProps) {
   }
 
   return (
-    <div className={`grid ${gridCols} gap-5`}>
+    <div className={`grid ${gridCols} gap-3 sm:gap-5`}>
       {sponsors.map((sponsor) => (
         <a
           key={sponsor.name}
@@ -40,7 +40,7 @@ function SponsorList({ gridCols, height, sponsors }: SponsorListProps) {
             src={getUrlFromMedia(sponsor.logo)}
             alt={sponsor.name}
             fill
-            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
+            sizes="(max-width: 768px) 50vw, (max-width: 1200px) 33vw, 25vw"
             className="object-contain p-1"
           />
         </a>
@@ -66,32 +66,32 @@ export function PartnersSection({ sponsors }: PartnersSectionProps) {
     {
       key: "strategic",
       label: t("strategiczni"),
-      gridCols: "grid-cols-1 sm:grid-cols-2",
-      height: "h-45",
+      gridCols: "grid-cols-2",
+      height: "h-28 sm:h-45",
     },
     {
       key: "platinum",
       label: t("platynowi"),
-      gridCols: "grid-cols-2 sm:grid-cols-3",
-      height: "h-35",
+      gridCols: "grid-cols-3",
+      height: "h-20 sm:h-35",
     },
     {
       key: "gold",
       label: t("złoci"),
-      gridCols: "grid-cols-2 sm:grid-cols-3 lg:grid-cols-4",
-      height: "h-30",
+      gridCols: "grid-cols-3 lg:grid-cols-4",
+      height: "h-18 sm:h-30",
     },
     {
       key: "silver",
       label: t("srebrni"),
-      gridCols: "grid-cols-2 sm:grid-cols-3 lg:grid-cols-4",
-      height: "h-25",
+      gridCols: "grid-cols-3 lg:grid-cols-4",
+      height: "h-16 sm:h-25",
     },
     {
       key: "bronze",
       label: t("brązowi"),
-      gridCols: "grid-cols-2 sm:grid-cols-4 lg:grid-cols-5",
-      height: "h-20",
+      gridCols: "grid-cols-3 sm:grid-cols-4 lg:grid-cols-5",
+      height: "h-14 sm:h-20",
     },
   ] as const;
 
@@ -123,6 +123,7 @@ export function PartnersSection({ sponsors }: PartnersSectionProps) {
           <Button
             label={t("zostanPartnerem")}
             redirectPath="/partners/join-us"
+            variant="outline"
             className="w-full rounded-xl py-4 text-base font-semibold uppercase sm:max-w-md sm:py-4 sm:text-lg md:max-w-lg md:py-5 md:text-xl lg:max-w-xl lg:py-6 lg:text-2xl"
           />
         </div>
