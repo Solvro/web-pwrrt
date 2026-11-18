@@ -1,5 +1,4 @@
 import Photo1 from "@public/images/joinus/new_images/photo1.jpg";
-import Photo2 from "@public/images/joinus/new_images/photo2.jpg";
 import type { Metadata } from "next";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
@@ -10,7 +9,6 @@ import { Title } from "@/components/title";
 
 import { CarouselSection } from "./carousel-section";
 import { JoinUsTimerSection } from "./join-us-timer-section";
-import { ScrollRevealSection } from "./scroll-reveal-section";
 
 export const metadata: Metadata = {
   title: "Join Us",
@@ -71,13 +69,6 @@ export default function JoinUsPage() {
         </div>
       </PageSection>
       <CarouselSection />
-      <div className="relative inset-0 mt-20 w-screen md:h-screen">
-        <ScrollRevealSection
-          photo={Photo2}
-          quote="If you can dream it, you can do it."
-          quoteAuthor="— Enzo Ferrari"
-        />
-      </div>
     </div>
   );
 }
