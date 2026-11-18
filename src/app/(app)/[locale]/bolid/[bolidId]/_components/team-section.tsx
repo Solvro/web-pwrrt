@@ -2,28 +2,13 @@ import { getTranslations } from "next-intl/server";
 
 import type { ProcessedTeamMember } from "@/actions/team";
 import { Container } from "@/components/container";
-import type { Media } from "@/payload-types";
 
-import { MemberCard } from "./member-card";
+import type { MemberByDepartment, RoleHistoryItem } from "./member-card";
+import { TeamDirectory } from "./team-directory";
 
 interface TeamSectionProps {
   bolidName: string;
   teamMembers: ProcessedTeamMember[];
-}
-
-interface MemberByDepartment {
-  name: string;
-  surname: string;
-  role: string;
-  phoneNumber?: string | null;
-  email?: string | null;
-  profile?: Media | null;
-}
-
-interface RoleHistoryItem {
-  role: string;
-  bolidName: string;
-  department: string;
 }
 
 const DEPARTMENT_ORDER = [
@@ -227,32 +212,16 @@ export async function TeamSection({
           </h2>
         </div>
 
-        <div className="space-y-12">
-          {sortedDepartments.map((department, index) => (
-            <div key={department}>
-              <div className="mb-8 flex items-center gap-10">
-                <h3 className="font-gilroy-heavy text-custom-red uppercase">
-                  0{index + 1}
-                </h3>
-                <div className="bg-custom-red h-0.5 w-25"></div>
-                <h3 className="font-gilroy-heavy text-custom-red uppercase">
-                  {department}
-                </h3>
-              </div>
-              <div className="grid grid-cols-2 gap-6 max-md:flex max-md:flex-col max-md:items-center md:grid-cols-3 lg:grid-cols-4">
-                {membersByDepartment[department].map((member) => (
-                  <MemberCard
-                    key={`${member.name}-${member.surname}-${member.role}`}
-                    member={member}
-                    roleHistory={
-                      roleHistory[`${member.name} ${member.surname}`] ?? []
-                    }
-                  />
-                ))}
-              </div>
-            </div>
-          ))}
-        </div>
+        <TeamDirectory
+          departments={sortedDepartments.map((department) => ({
+            name: department,
+            members: membersByDepartment[department].map((member) => ({
+              ...member,
+              roleHistory:
+                roleHistory[`${member.name} ${member.surname}`] ?? [],
+            })),
+          }))}
+        />
       </Container>
     </section>
   );

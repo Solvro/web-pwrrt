@@ -13,7 +13,7 @@ import { Button } from "@/components/button";
 import { cn, getUrlFromMedia } from "@/lib/utils";
 import type { Media } from "@/payload-types";
 
-interface MemberByDepartment {
+export interface MemberByDepartment {
   name: string;
   surname: string;
   role: string;
@@ -22,7 +22,7 @@ interface MemberByDepartment {
   profile?: Media | null;
 }
 
-interface RoleHistoryItem {
+export interface RoleHistoryItem {
   role: string;
   bolidName: string;
   department: string;
@@ -222,6 +222,28 @@ export function MemberCard({ member, roleHistory }: MemberCardProps) {
       <p className="font-monument-extended text-lg font-bold capitalize">
         {member.name} {member.surname}
       </p>
+      {member.phoneNumber || member.email ? (
+        <div className="mt-2 flex flex-col gap-1 text-sm">
+          {member.phoneNumber ? (
+            <a
+              href={`tel:${member.phoneNumber}`}
+              className="text-muted-foreground flex items-center gap-2 hover:text-white"
+            >
+              <FiPhone className="shrink-0" aria-hidden />
+              <span>{member.phoneNumber}</span>
+            </a>
+          ) : null}
+          {member.email ? (
+            <a
+              href={`mailto:${member.email}`}
+              className="text-muted-foreground flex items-center gap-2 break-all hover:text-white"
+            >
+              <FaEnvelope className="shrink-0" aria-hidden />
+              <span>{member.email}</span>
+            </a>
+          ) : null}
+        </div>
+      ) : null}
     </div>
   );
 }

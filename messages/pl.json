@@ -109,7 +109,10 @@
     "callMe": "Zadzwoń do mnie!",
     "writeToMe": "Napisz do mnie!",
     "emailClipboardSuccess": "E-mail skopiowany do schowka!",
-    "emailClipboardError": "Nie udało się skopiować e-maila."
+    "emailClipboardError": "Nie udało się skopiować e-maila.",
+    "searchPlaceholder": "Szukaj po imieniu, nazwisku lub roli",
+    "allDepartments": "Wszystkie",
+    "noResults": "Brak wyników"
   },
   "heroAbout": {
     "title": "POZNAJ NASZ ZESPÓŁ"
