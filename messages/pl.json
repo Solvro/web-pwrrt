@@ -18,7 +18,7 @@
     "title": "Zespół",
     "subtitle": "Kilka słów o nas",
     "description1": "Młodzi, ambitni, zaangażowani i odważni – tak najlepiej można opisać studentów Politechniki Wrocławskiej, a zwłaszcza Członków PWR Racing Team. Nasza organizacja funkcjonuje w oparciu o strukturę podobną do tej, którą spotyka się w dużych przedsiębiorstwach. Na jej czele stoi trzyosobowy Zarząd.",
-    "description2": "Lider Zespołu ponosi największą odpowiedzialność za jego działalność i rozwój. Współpracuje z nim Dyrektor Finansowy oraz Lider Techniczny, który koordynuje pracę Liderów poszczególnych Działów – Composites, Mechanical, Electrical, Software oraz Vehicle Performance. Wyjątek stanowią Działy Marketing oraz Business, które raportują bezpośrednio do Lidera Zespołu. Każdy Członek PWR Racing Team raportuje do swojego Lidera Działu.",
+    "description2": "Lider Zespołu ponosi największą odpowiedzialność za jego działalność i rozwój. Współpracują z nim Dyrektor Finansowy oraz Lider Techniczny. Zespół dzieli się na trzy piony – Mechaniczny, Elektryczny i Operacyjny – w których działa 16 podprojektów. Każdy podprojekt ma swojego Lidera, do którego raportują jego Członkowie.",
     "buttonLabel": "Poznaj nasz zespół",
     "members": "członków"
   },
@@ -120,7 +120,7 @@
   "navAbout": {
     "garage": "Garaż",
     "teamHistory": "Historia Zespołu",
-    "departments": "Nasze działy",
+    "departments": "Piony i podprojekty",
     "formulaStudent": "Formula Student",
     "paragraph1": "PWR Racing Team to Strategiczne Koło Naukowe Politechniki Wrocławskiej oraz najstarszy i najbardziej utytułowany Zespół wyścigowy Formula Student w Polsce. Od 2009 roku grupa około 90 studentów i studentek wrocławskich uczelni każdego roku projektuje i konstruuje bolidy wyścigowe, z którymi rywalizuje w prestiżowych, międzynarodowych zawodach inżynierskich na całym świecie. Największym sukcesem PWR Racing Teamu jest zwycięstwo w zawodach Formula Student Easter w 2025 roku, obejmujące 1. miejsce w klasyfikacji generalnej oraz wygrane w czterech konkurencjach - Endurance, Efficiency, Cost and Manufacturing oraz Business Plan Presentation. Istotnym kamieniem milowym w historii Zespołu było również wygranie całej edycji zawodów Formula SAE Italy w 2017 roku. Byo to pierwsze zwycięstwo polskiego Zespołu Formula Student w historii.",
     "paragraph2": "Na przestrzeni lat działalności Zespół skonstruował 12 bolidów spalinowych, które wielokrotnie zajmowały czołowe miejsca w zawodach Formula Student w Europie i na całym świecie. Odpowiadając na dynamiczne zmiany w branży motoryzacyjnej, PWR Racing Team podjął nowe wyzwanie i w ciągu zaledwie jednego roku dokonał przejścia na napęd elektryczny. Równolegle opracowano zestaw innowacyjnych rozwiązań umożliwiających jazdę autonomiczną. W efekcie w 2022 roku powstał pierwszy bolid elektryczny z systemami jazdy autonomicznej – RT12e. Obecnie trwają prace nad piątą konstrukcją tego typu – RT16e.",
@@ -133,143 +133,42 @@
     "contact": "Kontakt"
   },
   "departmentsAbout": {
-    "title": "NASZE DZIAŁY",
-    "interestedIn": "JAKI DZIAŁ CIĘ INTERESUJE?",
-    "sectionSubtitle": "W naszym dziale zajmiesz się:",
+    "title": "3 PIONY, 16 PODPROJEKTÓW",
+    "sectionSubtitle": "Podprojekty w tym pionie:"
+  },
+  "divisions": {
     "mechanical": {
-      "description": "Dział zajmuje się projektowaniem i budową układu zawieszenia. Odpowiada również za elementy autonomicznego układu kierowniczego, hamulcowego, części mocowania czy struktury metalowe w monocoque.",
-      "responsibilities": {
-        "responsibility1": {
-          "text": "projektowaniem i budową układu zawieszenia",
-          "icon": "plik.svg"
-        },
-        "responsibility2": {
-          "text": "projektowaniem i budową elementów autonomicznego układu kierowniczego",
-          "icon": "kolo.svg"
-        },
-        "responsibility3": {
-          "text": "projektowaniem i budową układu hamulcowego",
-          "icon": "klucz.svg"
-        },
-        "responsibility4": {
-          "text": "projektowaniem mocowań części",
-          "icon": "box.svg"
-        }
-      }
-    },
-    "composites": {
-      "description": "Dział odpowiada za własnoręczne wykonanie wszystkich elementów kompozytowych obecnych na bolidzie. Poczynając od największego elementu, czyli struktury nośnej, poprzez pakiet aerodynamiczny kończąc na ergonomii kierowcy oraz struktury ochronnej na baterię wysokiego napięcia.",
-      "responsibilities": {
-        "responsibility1": {
-          "text": "modelowaniem elementów kompozytowych w programach CAD",
-          "icon": "plik.svg"
-        },
-        "responsibility2": {
-          "text": "symulacjami wytrzymałościowymi oraz optymalizacją struktur kompozytowych",
-          "icon": "kolo.svg"
-        },
-        "responsibility3": {
-          "text": "symulacjami CFD pakietu aerodynamicznego",
-          "icon": "klucz.svg"
-        },
-        "responsibility4": {
-          "text": "wykonaniem oraz badaniami wytrzymałościowymi elementów kompozytowych",
-          "icon": "box.svg"
-        }
-      }
-    },
-    "marketing": {
-      "description": "Dział zajmujący się wizerunkiem Zespołu i promocją jego działań w mediach społecznościowych. Ponadto odpowiada za logistykę i organizację wydarzeń.",
-      "responsibilities": {
-        "responsibility1": {
-          "text": "tworzeniem materiałów promocyjnych",
-          "icon": "plik.svg"
-        },
-        "responsibility2": {
-          "text": "organizacją wydarzeń",
-          "icon": "klucz.svg"
-        },
-        "responsibility3": {
-          "text": "prowadzeniem social mediów",
-          "icon": "box.svg"
-        }
-      }
-    },
-    "software": {
-      "description": "Dział zajmujący się rozwojem systemu autonomicznego oraz programowaniem mikroprocesorów sterujących interfejsem kierowcy, hamowaniem lub skręcaniem pojazdu. Odpowiada za działanie systemów planowania trasy, kontroli pojazdu czy percepcji, gdy w bolidzie nie znajduje się kierowca. Oprogramowanie pisane jest w takich językach programowania, jak C, C++, czy Python.",
-      "responsibilities": {
-        "responsibility1": {
-          "text": "opracowywaniem algorytmów usprawniających jazdę autonomiczną",
-          "icon": "plik.svg"
-        },
-        "responsibility2": {
-          "text": "rozwojem systemów embedded",
-          "icon": "kolo.svg"
-        }
-      }
+      "name": "Pion Mechaniczny",
+      "description": "Projektuje, wytwarza i testuje mechaniczne układy bolidu – zawieszenie z układem kierowniczym, napęd, hamulce, chłodzenie, monocoque i aerodynamikę – oraz analizuje dynamikę pojazdu.",
+      "forYou": "Dla Ciebie, jeśli lubisz CAD, obliczenia i pracę w warsztacie."
     },
     "electrical": {
-      "description": "Dział zajmujący się projektowaniem płytek PCB, tworzeniem wiązek wysokiego i niskiego napięcia oraz budową autorskiej baterii wysokiego napięcia.",
-      "responsibilities": {
-        "responsibility1": {
-          "text": "projektowaniem i wykonawstwem płytek PCB",
-          "icon": "plik.svg"
-        },
-        "responsibility2": {
-          "text": "projektowaniem w programach CAD oraz wykonawstwem wiązki niskiego oraz wysokiego napięcia zgodnych ze standardami motor sportowymi",
-          "icon": "kolo.svg"
-        },
-        "responsibility3": {
-          "text": "modelowaniem obudów na elektronikę w programach CAD",
-          "icon": "klucz.svg"
-        },
-        "responsibility4": {
-          "text": "projektowaniem oraz wykonawstwem baterii wysokiego napięcia",
-          "icon": "box.svg"
-        },
-        "responsibility5": {
-          "text": "symulacjami termicznymi elektroniki oraz baterii",
-          "icon": "plik.svg"
-        },
-        "responsibility6": {
-          "text": "projektowaniem magistrali CAN",
-          "icon": "kolo.svg"
-        }
-      }
+      "name": "Pion Elektryczny",
+      "description": "Projektuje i buduje baterię wysokiego napięcia, wiązkę elektryczną i elektronikę bolidu, zbiera i analizuje dane z testów oraz rozwija system jazdy autonomicznej.",
+      "forYou": "Dla Ciebie, jeśli interesuje Cię elektronika, wysokie napięcie albo programowanie."
     },
-    "vehiclePerformance": {
-      "description": "Dział zajmujący się maksymalizacją osiągów pojazdu, kinematyką i dynamiką pojazdu, akwizycją danych, układem napędowym oraz organizacją testów.",
-      "responsibilities": {
-        "responsibility1": {
-          "text": "Symulacjami dynamiki pojazdu",
-          "icon": "plik.svg"
-        },
-        "responsibility2": {
-          "text": "Projektowaniem oraz rozwojem układu napędowego",
-          "icon": "kolo.svg"
-        },
-        "responsibility3": {
-          "text": "Analizą danych z przejazdów",
-          "icon": "klucz.svg"
-        }
-      }
+    "operations": {
+      "name": "Pion Operacyjny",
+      "description": "Prowadzi komunikację Zespołu, pozyskuje partnerów i opiekuje się nimi oraz przygotowuje konkurencje statyczne Formuły Student.",
+      "forYou": "Dla Ciebie, jeśli lubisz pracę z ludźmi, liczbami albo treściami – kierunek techniczny nie jest potrzebny."
     },
-    "business": {
-      "description": "Dział odpowiadający za kontakt z partnerami, zarządzanie finansami Zespołu oraz przygotowywanie konkurencji statycznych na zawody Formula Student, takich jak prezentacja biznesowa.",
-      "responsibilities": {
-        "responsibility1": {
-          "text": "Koordynacją zamówień, analizą danych, optymalizacją pracy Zespołu",
-          "icon": "plik.svg"
-        },
-        "responsibility2": {
-          "text": "Przygotowaniem prezentacji biznesowych",
-          "icon": "kolo.svg"
-        },
-        "responsibility3": {
-          "text": "Kontaktem z partnerami",
-          "icon": "klucz.svg"
-        }
-      }
+    "subprojects": {
+      "suspensionSteering": "Projektuje i modeluje elementy zawieszenia oraz układ kierowniczy, wykonuje obliczenia, a następnie składa i serwisuje gotowe rozwiązania – od CAD-u po tor.",
+      "drivetrainBrakes": "Projektuje komponenty układu napędowego i hamulcowego, wykonuje obliczenia (m.in. kół zębatych) i symulacje MES, a następnie składa je w garażu.",
+      "powertrain": "Rozwija, testuje i optymalizuje układ napędowy – od silników i inwertera po przekładnie i baterię wysokiego napięcia. Obsługuje też komputer pokładowy i rozwija na nim autorskie systemy sterowania, takie jak kontrola trakcji i torque vectoring.",
+      "cooling": "Projektuje i testuje układ chłodzenia silników elektrycznych, inwertera i baterii, korzystając z symulacji CFD i obliczeń cieplnych.",
+      "aerodynamics": "Pracuje nad tym, jak powietrze opływa bolid: projektuje komponenty aerodynamiczne, przeprowadza symulacje CFD, a następnie wykonuje je z włókna węglowego.",
+      "chassis": "Własnoręcznie wykonuje strukturę nośną bolidu, czyli monocoque, oraz felgi i odpowiada za ergonomię kierowcy. Pracuje z włóknem węglowym i innymi kompozytami, korzysta z CAD i MES.",
+      "vehicleDynamics": "Analizuje zachowanie bolidu, pracę zawieszenia i modele opon. Rozwija własny model pojazdu i narzędzia do analizy jego zachowania oraz symuluje różne scenariusze.",
+      "battery": "Projektuje w 3D i buduje od podstaw baterię wysokiego napięcia – jeden z kluczowych systemów bolidu.",
+      "wiringHarness": "Projektuje, wykonuje i testuje wiązkę elektryczną, która łączy systemy bolidu i zapewnia im zasilanie i komunikację. Pracuje z przewodami i złączami niskiego i wysokiego napięcia.",
+      "autonomy": "Zajmuje się czujnikami, aktuatorami i oprogramowaniem do jazdy autonomicznej – programuje w C++ i ROS2, od symulacji po testy na prawdziwym pojeździe.",
+      "dataAcquisitionTesting": "Zbiera dane podczas testów, waliduje założenia projektowe i analizuje wyniki, szukając obszarów do poprawy.",
+      "electronics": "Projektuje, montuje i uruchamia układy elektroniczne bolidu: tworzy własne płytki PCB, programuje mikrokontrolery i sprawdza działanie układów w rzeczywistych warunkach.",
+      "marketing": "Prowadzi media społecznościowe, tworzy materiały promocyjne, organizuje wydarzenia i zajmuje się logistyką Zespołu.",
+      "partners": "Pozyskuje partnerów, przygotowuje dla nich oferty współpracy i prowadzi z nimi bieżący kontakt.",
+      "bpp": "Opracowuje biznesplan oparty na bolidzie i wygłasza prezentację biznesową przed sędziami na zawodach Formuły Student.",
+      "cm": "Przygotowuje raport kosztów i dokumentację produkcji bolidu na konkurencję Cost and Manufacturing i omawia je z sędziami."
     }
   },
   "fsAbout": {
@@ -329,30 +228,8 @@
     "career": "KARIERA",
     "careerDescription1": "W naszym zespole każdy znajdzie przestrzeń do rozwoju – niezależnie od kierunku studiów czy doświadczenia. Działamy w wielu obszarach, od zaawansowanej inżynierii i projektowania bolidu, po marketing, PR i kontakty z partnerami.",
     "careerDescription2": "Niezależnie od tego, czy interesuje Cię mechanika, elektronika, zarządzanie projektem, grafika czy media społecznościowe – PWR Racing Team to miejsce, gdzie Twoje umiejętności się liczą. Tworzymy zespół z pasją, a każda ścieżka jest równie ważna w drodze po sukces.",
-    "ourDepartments": "NASZE DZIAŁY",
-    "departments": {
-      "mechanical": {
-        "description": "Dział odpowiada za projektowanie i budowę układu zawieszenia, elementów autonomicznego układu kierowniczego i hamulcowego, a także za mocowania oraz struktury metalowe w monocoque. Do Twoich zadań będzie należeć udział w pracach związanych z każdym z tych obszarów – od koncepcji po realizację."
-      },
-      "electrical": {
-        "description": "Dział zajmuje się projektowaniem płytek PCB, tworzeniem wiązek wysokiego i niskiego napięcia oraz budową autorskiej baterii wysokiego napięcia. Do Twoich zadań będzie należeć projektowanie i wykonawstwo elektroniki, modelowanie obudów w CAD, projektowanie baterii oraz magistrali CAN, a także przeprowadzanie symulacji termicznych komponentów elektronicznych."
-      },
-      "composites": {
-        "description": "Dział zajmuje się własnoręcznym wykonaniem wszystkich elementów kompozytowych bolidu – od struktury nośnej, przez pakiet aerodynamiczny, aż po elementy ergonomiczne i osłonę baterii wysokiego napięcia. Pracując z nami, będziesz projektować komponenty w CAD, przeprowadzać symulacje wytrzymałościowe i CFD, optymalizować struktury kompozytowe, a także brać udział w ich wytwarzaniu i testach."
-      },
-      "software": {
-        "description": "Dział odpowiada za rozwój systemu autonomicznego oraz programowanie mikroprocesorów sterujących interfejsem kierowcy, hamowaniem i skręcaniem pojazdu. Tworzymy oprogramowanie w językach C, C++ i Python, rozwijając systemy percepcji, planowania trasy i kontroli ruchu, umożliwiające jazdę bez udziału kierowcy. W ramach pracy będziesz rozwijać algorytmy autonomicznej jazdy oraz systemy embedded."
-      },
-      "verticalPerformance": {
-        "description": "Dział skupia się na maksymalizacji osiągów bolidu poprzez pracę nad jego kinematyką, dynamiką, układem napędowym, akwizycją danych oraz organizacją testów. Do Twoich zadań będzie należeć prowadzenie symulacji dynamiki pojazdu, rozwój układu napędowego oraz analiza danych z przejazdów."
-      },
-      "business": {
-        "description": "Dział odpowiada za kontakt z partnerami, zarządzanie finansami Zespołu oraz przygotowanie konkurencji statycznych na zawody Formula Student, w tym prezentacji biznesowej. W ramach pracy będziesz zajmować się koordynacją zamówień, analizą danych, optymalizacją procesów, tworzeniem prezentacji oraz utrzymywaniem relacji z partnerami."
-      },
-      "marketing": {
-        "description": "Dział zajmujący się wizerunkiem Zespołu i promocją jego działań w mediach społecznościowych. Ponadto odpowiada za logistykę i organizację wydarzeń."
-      }
-    },
+    "whereToJoin": "GDZIE MOŻESZ DOŁĄCZYĆ",
+    "subprojectsLabel": "Podprojekty:",
     "days": "DNI",
     "hours": "GODZIN",
     "minutes": "MINUT",
