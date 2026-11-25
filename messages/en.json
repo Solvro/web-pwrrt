@@ -18,7 +18,7 @@
     "title": "Team",
     "subtitle": "A few words about us",
     "description1": "Young, ambitious, committed and courageous – this is the best way to describe the students of Wrocław University of Science and Technology, especially the Members of the PWR Racing Team. Our organisation operates on a structure similar to that found in large companies. It is headed by a three-person Management Board.",
-    "description2": "The Team Leader bears the greatest responsibility for its activities and development. He works with the Financial Director and the Technical Leader, who coordinates the work of the Leaders of the individual Departments – Composites, Mechanical, Electrical, Software and Vehicle Performance. The Marketing and Business Departments are exceptions, as they report directly to the Team Leader. Each Member of the PWR Racing Team reports to their Department Leader.",
+    "description2": "The Team Leader bears the greatest responsibility for the team's activities and development, working alongside the Financial Director and the Technical Leader. The team is organised into three divisions – Mechanical, Electrical and Operations – which together run 16 subprojects. Each subproject has its own Leader, to whom its Members report.",
     "buttonLabel": "Discover our team",
     "members": "members"
   },
@@ -120,7 +120,7 @@
   "navAbout": {
     "garage": "Garage",
     "teamHistory": "Team History",
-    "departments": "Our Departments",
+    "departments": "Divisions & Subprojects",
     "formulaStudent": "Formula Student",
     "paragraph1": "PWR Racing Team is a Strategic Research Club at Wrocław University of Technology and the oldest and most successful Formula Student racing team in Poland. Since 2009, a group of about 90 students from Wrocław universities has been designing and constructing racing cars every year, which compete in prestigious international engineering competitions around the world. The greatest success of the PWR Racing Team is its victory in the Formula Student Easter competition in 2025, including 1st place in the overall classification and wins in four competitions - Endurance, Efficiency, Cost and Manufacturing, and Business Plan Presentation. Another important milestone in the Team's history was winning the entire Formula SAE Italy competition in 2017. It was the first victory for a Polish Formula Student Team in history.",
     "paragraph2": "Over the years, the Team has constructed 12 combustion engine racing cars, which have repeatedly taken top places in Formula Student competitions in Europe and around the world. Responding to dynamic changes in the automotive industry, PWR Racing Team took on a new challenge and made the transition to electric drive in just one year. At the same time, a set of innovative solutions enabling autonomous driving was developed. As a result, in 2022, the first electric car with autonomous driving systems was created – the RT12e. Work is currently underway on the fifth racing car of this type – the RT16e.",
@@ -133,139 +133,42 @@
     "contact": "Contact"
   },
   "departmentsAbout": {
-    "title": "OUR DEPARTMENTS",
-    "interestedIn": "WHICH DEPARTMENT ARE YOU INTERESTED IN?",
-    "sectionSubtitle": "In our department, you will take care of:",
+    "title": "3 DIVISIONS, 16 SUBPROJECTS",
+    "sectionSubtitle": "Subprojects in this division:"
+  },
+  "divisions": {
     "mechanical": {
-      "description": "The department is responsible for designing and building the suspension system. It is also responsible for the elements of the autonomous steering and braking systems, mounting parts, and metal structures in the monocoque.",
-      "responsibilities": {
-        "responsibility1": {
-          "text": "designing and building the suspension system",
-          "icon": "plik.svg"
-        },
-        "responsibility2": {
-          "text": "designing and building elements of the autonomous steering system",
-          "icon": "kolo.svg"
-        },
-        "responsibility3": {
-          "text": "designing and building the braking system",
-          "icon": "klucz.svg"
-        },
-        "responsibility4": {
-          "text": "designing mounting parts and metal structures in the monocoque",
-          "icon": "box.svg"
-        }
-      }
-    },
-    "composites": {
-      "description": "The department is responsible for the handmade production of all composite elements present in the bolid. Starting from the largest element, the load-bearing structure, through the aerodynamic package, to the driver's ergonomics and the protective structure for the high-voltage battery.",
-      "responsibilities": {
-        "responsibility1": {
-          "text": "modeling composite elements in CAD programs",
-          "icon": "plik.svg"
-        },
-        "responsibility2": {
-          "text": "strength simulations and optimization of composite structures",
-          "icon": "kolo.svg"
-        },
-        "responsibility3": {
-          "text": "CFD simulations of the aerodynamic package",
-          "icon": "klucz.svg"
-        },
-        "responsibility4": {
-          "text": "production and strength testing of composite elements",
-          "icon": "box.svg"
-        }
-      }
-    },
-    "marketing": {
-      "description": "The department responsible for the team's image and promoting its activities on social media. Additionally, it handles logistics and event organization.",
-      "responsibilities": {
-        "responsibility1": {
-          "text": "Creating promotional materials",
-          "icon": "plik.svg"
-        },
-        "responsibility2": {
-          "text": "Organizing events",
-          "icon": "box.svg"
-        }
-      }
-    },
-    "software": {
-      "description": "The department is responsible for developing the autonomous system and programming microprocessors that control the driver's interface, braking, or steering of the vehicle. It is responsible for the operation of path planning, vehicle control, and perception systems when the driver is not in the bolid. The software is written in programming languages such as C, C++, and Python.",
-      "responsibilities": {
-        "responsibility1": {
-          "text": "developing algorithms that improve autonomous driving",
-          "icon": "plik.svg"
-        },
-        "responsibility2": {
-          "text": "developing embedded systems",
-          "icon": "kolo.svg"
-        }
-      }
+      "name": "Mechanical Division",
+      "description": "Designs, builds and tests the car's mechanical systems – suspension and steering, drivetrain, brakes, cooling, the monocoque and aerodynamics – and analyses vehicle dynamics.",
+      "forYou": "For you if you enjoy CAD, calculations and workshop work."
     },
     "electrical": {
-      "description": "The department is responsible for designing PCBs, creating high and low voltage harnesses, and building a custom high-voltage battery.",
-      "responsibilities": {
-        "responsibility1": {
-          "text": "designing and manufacturing PCBs",
-          "icon": "plik.svg"
-        },
-        "responsibility2": {
-          "text": "designing in CAD programs and manufacturing high and low voltage harnesses compliant with motorsport standards",
-          "icon": "kolo.svg"
-        },
-        "responsibility3": {
-          "text": "modeling housings for electronics in CAD programs",
-          "icon": "klucz.svg"
-        },
-        "responsibility4": {
-          "text": "designing and manufacturing high-voltage batteries",
-          "icon": "box.svg"
-        },
-        "responsibility5": {
-          "text": "thermal simulations of electronics and batteries",
-          "icon": "plik.svg"
-        },
-        "responsibility6": {
-          "text": "designing CAN bus",
-          "icon": "kolo.svg"
-        }
-      }
+      "name": "Electrical Division",
+      "description": "Designs and builds the high-voltage battery, the wiring harness and the car's electronics, collects and analyses test data and develops the driverless system.",
+      "forYou": "For you if you're into electronics, high voltage or programming."
     },
-    "vehiclePerformance": {
-      "description": "The department is responsible for maximizing vehicle performance, vehicle kinematics and dynamics, data acquisition, powertrain, and test organization.",
-      "responsibilities": {
-        "responsibility1": {
-          "text": "Vehicle dynamics simulations",
-          "icon": "plik.svg"
-        },
-        "responsibility2": {
-          "text": "Designing and developing the powertrain",
-          "icon": "kolo.svg"
-        },
-        "responsibility3": {
-          "text": "Analyzing data from runs",
-          "icon": "klucz.svg"
-        }
-      }
+    "operations": {
+      "name": "Operations Division",
+      "description": "Runs the team's communications, brings in and looks after partners, and prepares the Formula Student static events.",
+      "forYou": "For you if you enjoy working with people, numbers or content – no engineering degree required."
     },
-    "business": {
-      "description": "Department responsible for contact with partners, financial management of the Team, and preparation of static competition for Formula Student competitions, such as business presentation.",
-      "responsibilities": {
-        "responsibility1": {
-          "text": "Coordination of orders, data analysis, optimization of the Team's work",
-          "icon": "plik.svg"
-        },
-        "responsibility2": {
-          "text": "Preparation of business presentations",
-          "icon": "kolo.svg"
-        },
-        "responsibility3": {
-          "text": "Contact with partners",
-          "icon": "klucz.svg"
-        }
-      }
+    "subprojects": {
+      "suspensionSteering": "Designs and models the suspension components and the steering system, runs the calculations, then assembles and services the finished parts – from CAD to track.",
+      "drivetrainBrakes": "Designs drivetrain and brake components, runs calculations (including gear calculations) and FEA simulations, then assembles them in the workshop.",
+      "powertrain": "Develops, tests and optimises the powertrain – from the motors and inverter to the gearboxes and the high-voltage battery. Also runs the on-board computer and develops our own control systems on it, such as traction control and torque vectoring.",
+      "cooling": "Designs and tests the cooling system for the electric motors, inverter and battery, using CFD simulations and thermal calculations.",
+      "aerodynamics": "Works on how air flows around the car: designs aerodynamic components, runs CFD simulations and then makes the parts from carbon fibre.",
+      "chassis": "Builds the car's load-bearing structure – the monocoque – and the rims by hand, and is responsible for driver ergonomics. Works with carbon fibre and other composites, using CAD and FEA.",
+      "vehicleDynamics": "Analyses the car's behaviour, suspension behaviour and tyre models. Develops our own vehicle model and analysis tools and simulates different scenarios.",
+      "battery": "Designs in 3D and builds from scratch the high-voltage battery – one of the car's key systems.",
+      "wiringHarness": "Designs, builds and tests the wiring harness that connects the car's systems and supplies their power and communication. Works with low- and high-voltage wires and connectors.",
+      "autonomy": "Works on the sensors, actuators and software for driverless driving – programming in C++ and ROS2, from simulation to testing on the real car.",
+      "dataAcquisitionTesting": "Collects data during testing, validates design assumptions and analyses the results to find areas for improvement.",
+      "electronics": "Designs, assembles and brings up the car's electronic systems: makes our own PCBs, programs microcontrollers and checks how the systems work in real conditions.",
+      "marketing": "Runs social media, creates promotional content, organises events and handles team logistics.",
+      "partners": "Brings in partners, prepares partnership offers and handles day-to-day contact with them.",
+      "bpp": "Develops a business plan built around the car and delivers the business presentation to the judges at Formula Student events.",
+      "cm": "Prepares the cost report and manufacturing documentation for the Cost and Manufacturing event and discusses them with the judges."
     }
   },
   "fsAbout": {
@@ -325,30 +228,8 @@
     "career": "CAREER",
     "careerDescription1": "In our team, everyone will find space for development – regardless of their field of study or experience. We operate in many areas, from advanced engineering and car design to marketing, PR, and partner relations.",
     "careerDescription2": "Regardless of whether you are interested in mechanics, electronics, project management, graphics, or social media – PWR Racing Team is a place where your skills matter. We create a team with passion, and every path is equally important on the road to success.",
-    "ourDepartments": "OUR DEPARTMENTS",
-    "departments": {
-      "mechanical": {
-        "description": "This department is responsible for the design and construction of the suspension system, autonomous steering and braking components, as well as the mounting and metal structures within the monocoque. Your responsibilities will include participating in work related to each of these areas – from concept to implementation."
-      },
-      "electrical": {
-        "description": "This department is responsible for designing PCB boards, creating high and low voltage wiring harnesses, and building a custom high-voltage battery. Your tasks will include designing and manufacturing electronics, modeling enclosures in CAD, designing batteries and CAN bus, as well as conducting thermal simulations of electronic components."
-      },
-      "composites": {
-        "description": "This department is responsible for the manual production of all composite elements of the car – from the load-bearing structure, through the aerodynamic package, to ergonomic elements and the high-voltage battery cover. Working with us, you will design components in CAD, conduct strength and CFD simulations, optimize composite structures, and participate in their manufacturing and testing."
-      },
-      "software": {
-        "description": "This department is responsible for the development of the autonomous system and programming microcontrollers controlling the driver interface, braking, and steering of the vehicle. We create software in C, C++, and Python, developing perception, path planning, and motion control systems that enable driverless driving. As part of the work, you will develop autonomous driving algorithms and embedded systems."
-      },
-      "verticalPerformance": {
-        "description": "This department focuses on maximizing the car's performance through work on its kinematics, dynamics, drivetrain, data acquisition, and test organization. Your tasks will include conducting vehicle dynamics simulations, developing the drivetrain, and analyzing data from runs."
-      },
-      "business": {
-        "description": "This department is responsible for partner relations, team financial management, and preparing static events for the Formula Student competition, including the business presentation. Your work will involve coordinating orders, data analysis, process optimization, creating presentations, and maintaining relationships with partners."
-      },
-      "marketing": {
-        "description": "This department is responsible for the team's image and promoting its activities on social media. Additionally, it handles logistics and event organization."
-      }
-    },
+    "whereToJoin": "WHERE YOU CAN JOIN",
+    "subprojectsLabel": "Subprojects:",
     "days": "DAYS",
     "hours": "HOURS",
     "minutes": "MINUTES",

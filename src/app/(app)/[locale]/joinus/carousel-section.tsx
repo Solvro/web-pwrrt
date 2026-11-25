@@ -7,9 +7,11 @@ import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 import { Carousel } from "@/components/carousel/index";
 import type { CarouselRef, SlideData } from "@/components/carousel/index";
 import { PageSection } from "@/components/section/PageSection";
+import { DIVISIONS } from "@/lib/divisions";
 
 export function CarouselSection() {
   const t = useTranslations("joinUs");
+  const tDivisions = useTranslations("divisions");
   const carouselRef = useRef<CarouselRef>(null);
 
   const moveToNext = () => {
@@ -20,57 +22,28 @@ export function CarouselSection() {
     carouselRef.current?.moveToPrevious();
   };
 
-  const slides: SlideData[] = [
-    {
-      id: 1,
-      title: "ELECTRICAL",
-      description: t("departments.electrical.description"),
-      imageUrl: "/images/departments/electrical.png",
-    },
-    {
-      id: 2,
-      title: "MECHANICAL",
-      description: t("departments.mechanical.description"),
-      imageUrl: "/images/departments/mechanical.png",
-    },
-    {
-      id: 3,
-      title: "SOFTWARE",
-      description: t("departments.software.description"),
-      imageUrl: "/images/departments/software.png",
-    },
-    {
-      id: 4,
-      title: "COMPOSITES",
-      description: t("departments.composites.description"),
-      imageUrl: "/images/departments/composites.png",
-    },
-    {
-      id: 5,
-      title: "VEHICLE PERFORMANCE",
-      description: t("departments.verticalPerformance.description"),
-      imageUrl: "/images/departments/vehiclePerformance.png",
-    },
+  const slides: SlideData[] = DIVISIONS.map((division, index) => {
+    const subprojectNames = division.subprojects
+      .map((subproject) => subproject.name)
+      .join(", ");
 
-    {
-      id: 6,
-      title: "MARKETING",
-      description: t("departments.marketing.description"),
-      imageUrl: "/images/departments/marketing.png",
-    },
-    {
-      id: 7,
-      title: "BUSINESS",
-      description: t("departments.business.description"),
-      imageUrl: "/images/departments/business.png",
-    },
-  ];
+    return {
+      id: index + 1,
+      title: tDivisions(`${division.key}.name`).toUpperCase(),
+      description: [
+        tDivisions(`${division.key}.description`),
+        `${t("subprojectsLabel")} ${subprojectNames}.`,
+        tDivisions(`${division.key}.forYou`),
+      ].join(" "),
+      imageUrl: division.image,
+    };
+  });
 
   return (
     <PageSection
       isRedBackground={false}
       sectionNumber={2}
-      header={t("ourDepartments")}
+      header={t("whereToJoin")}
     >
       <div className="flex w-full items-center justify-between">
         <div className="z-20 flex w-full justify-end px-4">
