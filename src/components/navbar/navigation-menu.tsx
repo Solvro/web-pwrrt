@@ -11,7 +11,6 @@ export function NavigationMenu() {
       <ul className="flex h-full space-x-4">
         <NavItem to="/">{t("home")}</NavItem>
         <NavItem to="/bolid">{t("bolid")}</NavItem>
-        <NavItem to="/team">{t("team")}</NavItem>
         <NavItem to="/about">{t("about")}</NavItem>
         <NavItem to="/partners">{t("partners")}</NavItem>
         <NavItem to="/contact">{t("contact")}</NavItem>

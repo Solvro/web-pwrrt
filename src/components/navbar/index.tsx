@@ -24,7 +24,6 @@ export function Navbar({ bannerItems = [] }: { bannerItems?: string[] }) {
   const MENU_ITEMS = [
     { label: t("home"), href: "/" },
     { label: t("bolid"), href: "/bolid" },
-    { label: t("team"), href: "/team" },
     { label: t("about"), href: "/about" },
     { label: t("recruitment"), href: "/joinus" },
     { label: t("partners"), href: "/partners" },

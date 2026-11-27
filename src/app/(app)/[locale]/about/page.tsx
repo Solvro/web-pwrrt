@@ -12,6 +12,7 @@ import { DepartmentsAbout } from "./DepartmentsAbout";
 import { FSAbout } from "./fs-about";
 import { GarageAbout } from "./garage-about";
 import { HeroAbout } from "./hero-about";
+import { InternationalAbout } from "./international-about";
 import { NavAbout } from "./nav-about";
 
 export const metadata: Metadata = {
@@ -32,6 +33,7 @@ export default async function AboutUs() {
       <NavAbout />
       <GarageAbout />
       <HistorySection aboutUs teamStats={teamStats} />
+      <InternationalAbout />
       <DepartmentsAbout />
       <FSSection aboutUs />
       <FSAbout />

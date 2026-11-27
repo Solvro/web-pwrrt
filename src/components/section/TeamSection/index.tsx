@@ -53,7 +53,7 @@ export function TeamSection() {
           variant={null}
           className="font-monument-extended group flex flex-0 flex-col items-start text-lg! leading-4 font-light! text-white uppercase"
         >
-          <Link href="/team">
+          <Link href="/bolid">
             <div className="flex items-center gap-2">
               <span className="underline decoration-transparent transition-colors group-hover:decoration-white">
                 {t("buttonLabel")}

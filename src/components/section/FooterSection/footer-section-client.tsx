@@ -38,7 +38,6 @@ export function FooterSectionClient({
                 </div>
                 <ul className="mt-3 flex flex-col items-center gap-4 md:mt-12">
                   <FooterLink href="/">{t("home")}</FooterLink>
-                  <FooterLink href="/team">{t("team")}</FooterLink>
                   <FooterLink href="/bolid">{t("bolid")}</FooterLink>
                   <FooterLink href="/about">{t("about")}</FooterLink>
                   <FooterLink href="/partners">{t("partners")}</FooterLink>

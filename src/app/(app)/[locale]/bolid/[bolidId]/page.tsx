@@ -259,6 +259,8 @@ async function BolidPage(props: { params: Promise<Iparams> }) {
         </Container>
       </section>
 
+      <TeamSection bolidName={bolid.name} teamMembers={teamMembers} />
+
       {achievements.length > 0 && (
         <section className="w-full py-16">
           <Container className="flex-col">
@@ -328,8 +330,6 @@ async function BolidPage(props: { params: Promise<Iparams> }) {
           </Container>
         </section>
       )}
-
-      <TeamSection bolidName={bolid.name} teamMembers={teamMembers} />
     </div>
   );
 }
