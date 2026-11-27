@@ -3,7 +3,7 @@
 import Image1 from "@public/images/meet_us.jpg";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
-import Link from "next/link";
+import { useEffect } from "react";
 
 import { Container } from "@/components/container";
 import { Text } from "@/components/text";
@@ -13,22 +13,47 @@ interface NavAboutItemProps {
   scrollToId: string;
 }
 
+// Scroll without adding "#section" to the address, so it stays /about.
+function scrollToSection(id: string, behavior: ScrollBehavior) {
+  document.querySelector(`#${CSS.escape(id)}`)?.scrollIntoView({ behavior });
+}
+
 function NavAboutItem({ children, scrollToId }: NavAboutItemProps) {
   return (
     <li className="min-w-fit p-2 first:pl-0 last:flex last:basis-full last:justify-center lg:p-8 lg:last:block lg:last:basis-auto">
-      <Link href={`#${scrollToId}`} passHref scroll>
-        <div className="hover:text-custom-red w-full cursor-pointer text-left duration-300 ease-in-out">
-          <Text font="monument-extended" small wide color="white" center>
-            <span className="tracking-wider">{children}</span>
-          </Text>
-        </div>
-      </Link>
+      <a
+        href={`#${scrollToId}`}
+        onClick={(event) => {
+          event.preventDefault();
+          scrollToSection(scrollToId, "smooth");
+        }}
+        className="hover:text-custom-red block w-full cursor-pointer text-left duration-300 ease-in-out"
+      >
+        <Text font="monument-extended" small wide color="white" center>
+          <span className="tracking-wider">{children}</span>
+        </Text>
+      </a>
     </li>
   );
 }
 
 export function NavAbout() {
   const t = useTranslations("navAbout");
+
+  // Links from other pages (e.g. /about#history-section) still land on the
+  // section, then the "#..." part is removed from the address.
+  useEffect(() => {
+    const id = decodeURIComponent(window.location.hash.slice(1));
+    if (id === "") {
+      return;
+    }
+    scrollToSection(id, "instant");
+    window.history.replaceState(
+      window.history.state,
+      "",
+      window.location.pathname + window.location.search,
+    );
+  }, []);
   return (
     <div className="bg-black pt-160">
       <div className="relative bg-neutral-800">
