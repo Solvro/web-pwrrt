@@ -36,12 +36,17 @@ export function NewsList({ allNews }: NewsListProps) {
   const slug = currentItem.slug ?? currentItem.id;
 
   const cards = allNews.map((item) => (
-    <NewsCard
+    <Link
       key={item.id}
-      title={item.title}
-      shortDescription={item.shortDescription}
-      mainImage={item.heroImage}
-    />
+      href={`/news/${item.slug ?? item.id}`}
+      className="block"
+    >
+      <NewsCard
+        title={item.title}
+        shortDescription={item.shortDescription}
+        mainImage={item.heroImage}
+      />
+    </Link>
   ));
 
   return (
@@ -78,6 +83,7 @@ export function NewsList({ allNews }: NewsListProps) {
         <SwipeCarousel
           items={cards}
           onChange={setCurrent}
+          moveByClick={false}
           slidesPerView={{
             mobile: "basis-4/5",
             tablet: "md:basis-2/5",
