@@ -112,7 +112,12 @@
     "emailClipboardError": "Nie udało się skopiować e-maila.",
     "searchPlaceholder": "Szukaj po imieniu, nazwisku lub roli",
     "allDepartments": "Wszystkie",
-    "noResults": "Brak wyników"
+    "noResults": "Brak wyników",
+    "teamGroups": {
+      "management": "Management",
+      "supervisors": "Opiekunowie",
+      "drivers": "Kierowcy i trenerzy"
+    }
   },
   "heroAbout": {
     "title": "POZNAJ NASZ ZESPÓŁ"

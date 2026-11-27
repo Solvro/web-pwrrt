@@ -93,17 +93,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 0.8,
     },
     {
-      url: "https://racing-pwr.pl/team",
-      lastModified: new Date(),
-      alternates: {
-        languages: {
-          en: "https://racing-pwr.pl/en/team",
-          pl: "https://racing-pwr.pl/pl/team",
-        },
-      },
-      priority: 0.8,
-    },
-    {
       url: "https://racing-pwr.pl/news",
       lastModified: new Date(),
       alternates: {

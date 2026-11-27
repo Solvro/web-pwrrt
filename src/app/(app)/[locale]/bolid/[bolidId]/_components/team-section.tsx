@@ -2,28 +2,21 @@ import { getTranslations } from "next-intl/server";
 
 import type { ProcessedTeamMember } from "@/actions/team";
 import { Container } from "@/components/container";
+import {
+  TEAM_GROUPS,
+  normalizeDepartment,
+  placeDepartment,
+} from "@/lib/team-groups";
+import type { TeamGroupKey } from "@/lib/team-groups";
 
 import type { MemberByDepartment, RoleHistoryItem } from "./member-card";
 import { TeamDirectory } from "./team-directory";
+import type { DirectoryGroup } from "./team-directory";
 
 interface TeamSectionProps {
   bolidName: string;
   teamMembers: ProcessedTeamMember[];
 }
-
-const DEPARTMENT_ORDER = [
-  "management",
-  "marketing",
-  "business",
-  "composites",
-  "software",
-  "electrical",
-  "mechanical",
-  "vehicle performance",
-  "workshop",
-  "drivers",
-  "opiekun naukowy",
-];
 
 const normalizeRole = (role: string): string => {
   return role
@@ -31,14 +24,6 @@ const normalizeRole = (role: string): string => {
     .replaceAll(/\s+/g, " ")
     .trim()
     .toUpperCase();
-};
-
-const normalizeKey = (value: string): string => {
-  return value
-    .replaceAll(" ", " ")
-    .replaceAll(/\s+/g, " ")
-    .trim()
-    .toLowerCase();
 };
 
 const parseBolidName = (name: string): number => {
@@ -58,9 +43,9 @@ const sortRoleHistory = (roles: RoleHistoryItem[]): RoleHistoryItem[] => {
   });
 };
 
-const getRolePriority = (role: string, department: string): number => {
+const getRolePriority = (role: string, group: string): number => {
   const normalized = normalizeRole(role);
-  if (department === "management") {
+  if (group === "management") {
     if (/\bTEAM\s+LEADER\b/.test(normalized)) {
       return 0;
     }
@@ -82,14 +67,31 @@ const getRolePriority = (role: string, department: string): number => {
   }
 };
 
-function organizeMembersByDepartment(
+interface PlacedMember extends MemberByDepartment {
+  rank: number;
+}
+
+interface Subgroup {
+  name: string | null;
+  order: number;
+  members: PlacedMember[];
+}
+
+interface Group {
+  key: string;
+  group: TeamGroupKey | null;
+  label: string;
+  subgroups: Map<string, Subgroup>;
+}
+
+function organizeMembersByGroup(
   members: ProcessedTeamMember[],
   bolidName: string,
 ): {
-  byDepartment: Record<string, MemberByDepartment[]>;
+  groups: Map<string, Group>;
   roleHistory: Record<string, RoleHistoryItem[]>;
 } {
-  const byDepartment: Record<string, MemberByDepartment[]> = {};
+  const groups = new Map<string, Group>();
   const roleHistory: Record<string, RoleHistoryItem[]> = {};
 
   for (const member of members) {
@@ -109,83 +111,95 @@ function organizeMembersByDepartment(
     }
 
     const currentRoles = roles.filter(
-      (r) => normalizeKey(r.bolidName) === normalizeKey(bolidName),
+      (r) =>
+        normalizeDepartment(r.bolidName) === normalizeDepartment(bolidName),
     );
 
     for (const currentRole of currentRoles) {
-      const department =
-        normalizeKey(currentRole.department) || "uncategorized";
+      const department = currentRole.department.trim() || "uncategorized";
+      const placement = placeDepartment(department);
+      const groupKey =
+        placement.group ?? `other:${normalizeDepartment(department)}`;
+
+      let group = groups.get(groupKey);
+      if (group === undefined) {
+        group = {
+          key: groupKey,
+          group: placement.group,
+          label: department,
+          subgroups: new Map(),
+        };
+        groups.set(groupKey, group);
+      }
+
+      const subgroupKey =
+        placement.subgroup === null
+          ? ""
+          : normalizeDepartment(placement.subgroup);
+      let subgroup = group.subgroups.get(subgroupKey);
+      if (subgroup === undefined) {
+        subgroup = {
+          name: placement.subgroup,
+          order: placement.subgroupOrder,
+          members: [],
+        };
+        group.subgroups.set(subgroupKey, subgroup);
+      }
+
       const roleName = currentRole.role.trim() || "N/A";
-
-      byDepartment[department] = byDepartment[department] ?? [];
-
-      const existing = byDepartment[department].find(
+      const existing = subgroup.members.find(
         (m) => m.name === memberName && m.surname === memberSurname,
       );
 
       if (!existing) {
-        byDepartment[department].push({
+        subgroup.members.push({
           name: memberName,
           surname: memberSurname,
           role: roleName,
           phoneNumber: member.phoneNumber ?? null,
           email: member.email ?? null,
           profile: member.profile,
+          rank: placement.memberRank,
         });
       } else if (
         !existing.role
           .split(" | ")
-          .some((r) => normalizeKey(r) === normalizeKey(roleName))
+          .some((r) => normalizeDepartment(r) === normalizeDepartment(roleName))
       ) {
         existing.role = `${existing.role} | ${roleName}`;
       }
     }
   }
 
-  for (const [department, departmentMembers] of Object.entries(byDepartment)) {
-    departmentMembers.sort((a, b) => {
-      const priorityA = getRolePriority(a.role, department);
-      const priorityB = getRolePriority(b.role, department);
-      if (priorityA !== priorityB) {
-        return priorityA - priorityB;
-      }
-      const surnameCompare = a.surname.localeCompare(b.surname);
-      if (surnameCompare !== 0) {
-        return surnameCompare;
-      }
-      return a.name.localeCompare(b.name);
-    });
-  }
-
   for (const key of Object.keys(roleHistory)) {
     roleHistory[key] = sortRoleHistory(roleHistory[key]);
   }
 
-  return { byDepartment, roleHistory };
+  return { groups, roleHistory };
 }
 
-function sortDepartments(departments: string[]): string[] {
-  return departments.toSorted((a, b) => {
-    if (a === "opiekun naukowy") {
-      return 1;
-    }
-    if (b === "opiekun naukowy") {
-      return -1;
-    }
+// Known groups in TEAM_GROUPS order, then departments we could not place, A–Z.
+function groupSortValue(group: Group): number {
+  return group.group === null
+    ? TEAM_GROUPS.length
+    : TEAM_GROUPS.indexOf(group.group);
+}
 
-    const aIndex = DEPARTMENT_ORDER.indexOf(a);
-    const bIndex = DEPARTMENT_ORDER.indexOf(b);
-
-    if (aIndex === -1 && bIndex === -1) {
-      return a.localeCompare(b);
+function sortMembers(members: PlacedMember[], group: string) {
+  return members.toSorted((a, b) => {
+    if (a.rank !== b.rank) {
+      return a.rank - b.rank;
     }
-    if (aIndex === -1) {
-      return 1;
+    const priorityA = getRolePriority(a.role, group);
+    const priorityB = getRolePriority(b.role, group);
+    if (priorityA !== priorityB) {
+      return priorityA - priorityB;
     }
-    if (bIndex === -1) {
-      return -1;
+    const surnameCompare = a.surname.localeCompare(b.surname);
+    if (surnameCompare !== 0) {
+      return surnameCompare;
     }
-    return aIndex - bIndex;
+    return a.name.localeCompare(b.name);
   });
 }
 
@@ -194,14 +208,46 @@ export async function TeamSection({
   teamMembers,
 }: TeamSectionProps) {
   const t = await getTranslations("bolidSection");
+  const tDivisions = await getTranslations("divisions");
 
-  const { byDepartment: membersByDepartment, roleHistory } =
-    organizeMembersByDepartment(teamMembers, bolidName);
-  const sortedDepartments = sortDepartments(Object.keys(membersByDepartment));
+  const groupLabel = (group: TeamGroupKey): string =>
+    group === "management" || group === "supervisors" || group === "drivers"
+      ? t(`teamGroups.${group}`)
+      : tDivisions(`${group}.name`);
 
-  if (sortedDepartments.length === 0) {
+  const { groups, roleHistory } = organizeMembersByGroup(
+    teamMembers,
+    bolidName,
+  );
+
+  if (groups.size === 0) {
     return null;
   }
+
+  const directory: DirectoryGroup[] = [...groups.values()]
+    .toSorted(
+      (a, b) =>
+        groupSortValue(a) - groupSortValue(b) || a.label.localeCompare(b.label),
+    )
+    .map((group) => ({
+      key: group.key,
+      name: group.group === null ? group.label : groupLabel(group.group),
+      subgroups: [...group.subgroups.values()]
+        .toSorted(
+          (a, b) =>
+            a.order - b.order || (a.name ?? "").localeCompare(b.name ?? ""),
+        )
+        .map((subgroup) => ({
+          name: subgroup.name,
+          members: sortMembers(subgroup.members, group.group ?? "").map(
+            ({ rank: _rank, ...member }) => ({
+              ...member,
+              roleHistory:
+                roleHistory[`${member.name} ${member.surname}`] ?? [],
+            }),
+          ),
+        })),
+    }));
 
   return (
     <section className="w-full py-16">
@@ -212,16 +258,7 @@ export async function TeamSection({
           </h2>
         </div>
 
-        <TeamDirectory
-          departments={sortedDepartments.map((department) => ({
-            name: department,
-            members: membersByDepartment[department].map((member) => ({
-              ...member,
-              roleHistory:
-                roleHistory[`${member.name} ${member.surname}`] ?? [],
-            })),
-          }))}
-        />
+        <TeamDirectory groups={directory} />
       </Container>
     </section>
   );

@@ -112,7 +112,12 @@
     "emailClipboardError": "Failed to copy e-mail.",
     "searchPlaceholder": "Search by name or role",
     "allDepartments": "All",
-    "noResults": "No results"
+    "noResults": "No results",
+    "teamGroups": {
+      "management": "Management",
+      "supervisors": "Supervisors",
+      "drivers": "Drivers & Coaches"
+    }
   },
   "heroAbout": {
     "title": "MEET OUR TEAM"
