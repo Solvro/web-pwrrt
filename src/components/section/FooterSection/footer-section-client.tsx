@@ -96,9 +96,8 @@ export function FooterSectionClient({
                 </ul>
               </div>
             </div>
-            <div className="text-md mt-[5vh] mb-2 flex flex-col items-center justify-between py-3 text-center font-normal text-[#5C5C5C] md:mt-[15vh] md:mb-5 md:flex-row md:px-12 md:py-6">
-              <div className="flex flex-col gap-12">
-                <div>{t("seasonDescription")}</div>
+            <div className="text-md mt-[5vh] mb-2 flex flex-col items-center py-3 text-center font-normal text-[#5C5C5C] md:mt-[15vh] md:mb-5 md:px-12 md:py-6">
+              <div className="flex flex-col items-center gap-12">
                 <div className="flex flex-col">
                   <p className="text-md font-normal text-[#5C5C5C]">
                     ©{new Date().getFullYear()} PWR RACING TEAM - All rights
@@ -110,6 +109,14 @@ export function FooterSectionClient({
                 </div>
               </div>
             </div>
+          </div>
+          {/* Large car outline from the logo: full content width, fading downwards (logo red),
+              its bottom cut off by the divider below. Decorative, so hidden from screen readers. */}
+          <div
+            aria-hidden="true"
+            className="pointer-events-none mt-6 w-full overflow-hidden md:mt-12"
+          >
+            <div className="aspect-[1292/239] w-full translate-y-[12%] bg-linear-to-b from-[#d41e3e]/70 to-[#d41e3e]/15 mask-[url(/images/car-logo.svg)] mask-contain mask-center mask-no-repeat" />
           </div>
           <div className="flex w-full flex-col items-center justify-between border-t border-[#5C5C5C] py-3 md:flex-row md:py-6">
             <div className="text-center text-sm font-medium text-[#5C5C5C]">
