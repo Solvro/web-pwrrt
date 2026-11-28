@@ -23,8 +23,9 @@ export function CtaCard({
     section === "team" ? "/joinus" : "/partners";
   const title = t(`${section}.title`);
   const text = t(`${section}.text`);
+  // The card is as wide as its grid column; text sizes follow the card (@container queries), not the screen.
   return (
-    <div className="group font-monument-extended relative z-0 flex aspect-[1] w-2xl flex-col items-center justify-end gap-2 overflow-hidden rounded-3xl p-6 shadow-lg sm:gap-8">
+    <div className="group font-monument-extended @container relative z-0 flex aspect-[1] w-full flex-col items-center justify-end gap-2 overflow-hidden rounded-3xl p-6 shadow-lg @xs:gap-6 @lg:gap-8">
       <Image
         className={cn(
           "absolute inset-0 -z-10 size-full scale-130 object-cover transition-transform duration-700 group-hover:scale-135",
@@ -39,18 +40,16 @@ export function CtaCard({
       />
       <div className="text-custom-red flex items-center gap-4">
         <AccentLine />
-        <h3 className="text-sm uppercase [@media(min-width:480px)]:text-lg">
-          {title}
-        </h3>
+        <h3 className="text-sm uppercase @2xs:shrink-0 @sm:text-lg">{title}</h3>
         <AccentLine />
       </div>
-      <p className="text-center text-sm font-light text-white sm:text-3xl [@media(min-width:480px)]:text-xl">
+      <p className="text-center text-sm font-light text-white @xs:text-xl @lg:text-3xl">
         {text}
       </p>
       <Button
         asChild
         variant={null}
-        className="text-sm text-white sm:text-xl [@media(min-width:480px)]:text-lg"
+        className="text-sm text-white @xs:text-lg @lg:text-xl"
       >
         <Link href={href}>
           <span className="underline">{t("buttonText")}</span>
