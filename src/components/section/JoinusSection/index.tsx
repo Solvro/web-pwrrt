@@ -8,7 +8,7 @@ export function JoinusSection() {
   return (
     <div
       id="joinus"
-      className="flex flex-wrap justify-center gap-4 md:gap-8 xl:justify-end"
+      className="mx-auto grid w-full max-w-[86rem] grid-cols-1 gap-4 md:grid-cols-2 md:gap-8"
     >
       <CtaCard
         section="team"
