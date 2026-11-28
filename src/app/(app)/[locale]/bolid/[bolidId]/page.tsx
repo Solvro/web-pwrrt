@@ -121,7 +121,7 @@ async function BolidPage(props: { params: Promise<Iparams> }) {
                   className={cn(
                     "font-gilroy-heavy font-bold max-md:leading-[0.9] xl:text-[200px]",
                     isDraft
-                      ? "mt-6 text-[200px] max-md:text-[150px]"
+                      ? "mt-6 text-[200px] max-md:text-[min(150px,28vw)]"
                       : "mt-10 text-9xl max-md:text-7xl",
                   )}
                 >
